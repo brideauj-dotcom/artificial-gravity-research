@@ -39,11 +39,13 @@ python -m pip install -r requirements-research.txt
 python -m unittest discover -s tests -v
 ```
 
-Accepted `.npz` checkpoints are immutable, integrity-checked research
-artifacts tracked with Git LFS. After cloning, run `git lfs install` and
-`git lfs pull`. Their independent full-file digests are recorded in
-[`models/checkpoints/SHA256SUMS`](models/checkpoints/SHA256SUMS). Mutable work
-checkpoints are deliberately ignored.
+Accepted `.npz` checkpoints and deliberately retained work snapshots are
+integrity-checked research artifacts tracked with Git LFS. After cloning, run
+`git lfs install` and `git lfs pull`. Their independent full-file digests are
+recorded in [`models/checkpoints/SHA256SUMS`](models/checkpoints/SHA256SUMS).
+Work snapshots preserve exact prior solver states so later agents can inspect
+or resume the recorded path; a work suffix is not an acceptance or physics
+claim. Disposable `.partial.npz` and `.tmp.npz` files remain ignored.
 
 ## Nightly Automation Purpose
 

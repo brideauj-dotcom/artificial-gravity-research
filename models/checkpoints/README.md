@@ -4,12 +4,21 @@ These files preserve accepted numerical states for the independent
 wide-directional 2-Hessian validation. They are solver artifacts for a
 hypothetical PDE, not observations or full-source physics results.
 
-The immutable `.npz` files are stored through Git LFS. Their independent
-container hashes are listed in [`SHA256SUMS`](SHA256SUMS); from this directory,
-verify them with `shasum -a 256 -c SHA256SUMS`. Mutable `*_work_*.npz` files
-are restart scratch space and are intentionally excluded from version control.
-If a failed state has enduring boundary value, rename it as a dated immutable
-failure artifact, document the failure, and add its digest before committing.
+The `.npz` files are stored through Git LFS. Their independent container
+hashes are listed in [`SHA256SUMS`](SHA256SUMS); from this directory, verify
+them with `shasum -a 256 -c SHA256SUMS`. Two retained work snapshots are
+tracked deliberately for continuity:
+
+- `e028_h0125_m4_campaign_stage4_work_20260723.npz` is byte-identical to the
+  accepted `e028_h0125_m4_campaign_checkpoint_20260723.npz` state.
+- `e028_h0125_m4_campaign_stage5_work_20260724.npz` is byte-identical to the
+  accepted `e028_h0125_m4_campaign_checkpoint_20260724.npz` state.
+
+The work suffix preserves solver lineage and is not an acceptance or physics
+claim. Before replacing a tracked work snapshot, commit the prior version and
+document the transition. Disposable `*.partial.npz` and `*.tmp.npz` files
+remain excluded. If a failed state has enduring boundary value, retain it as a
+dated, documented artifact and add its digest before committing.
 
 ## `e025_h025_m3_11of12.npz`
 

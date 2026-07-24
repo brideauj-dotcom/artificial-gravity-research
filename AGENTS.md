@@ -34,10 +34,14 @@ Leave a concrete next best step.
   changes.
 - Do not bypass checkpoint provenance, fingerprint, digest, loader-identity,
   admissibility, or convergence gates.
-- Accepted checkpoints are immutable and use Git LFS. Mutable restart files
-  must use a `*_work_*.npz`, `*.partial.npz`, or `*.tmp.npz` name and remain
-  untracked.
-- When adding or removing an accepted checkpoint, update
+- Accepted checkpoints are immutable and use Git LFS. Deliberately retained
+  `*_work_*.npz` snapshots are also tracked with Git LFS when they preserve a
+  meaningful prior solver state for continuity or audit; a work suffix is not
+  an acceptance or physics claim.
+- Before replacing a tracked work snapshot, preserve the prior version in Git
+  and document the state transition in the research ledger. Disposable
+  `*.partial.npz` and `*.tmp.npz` files remain untracked.
+- When adding or removing any checkpoint or retained work snapshot, update
   `models/checkpoints/SHA256SUMS`, its checkpoint note, and the relevant
   research ledger entries in the same change.
 - Preserve meaningful failed states only as dated, documented, immutable
@@ -49,4 +53,5 @@ Leave a concrete next best step.
 
 Use a fresh `codex/*` or `claude/*` branch in an isolated worktree. Open PRs
 ready for review, use squash merging, and leave `main` clean. Do not commit
-secrets, local environments, mutable work checkpoints, or generated caches.
+secrets, local environments, or generated caches. Checkpoint and work-snapshot
+commits must remain documented and provenance-checked.
