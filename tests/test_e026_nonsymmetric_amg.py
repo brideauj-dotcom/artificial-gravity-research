@@ -1,5 +1,6 @@
 import hashlib
 import json
+import platform
 import tempfile
 import unittest
 from pathlib import Path
@@ -151,8 +152,26 @@ class NonsymmetricAmgTests(unittest.TestCase):
     def test_canonical_campaign_matches_artifact_and_retains_spatial_warning(
         self,
     ) -> None:
-        field, report = run_exact_campaign(include_annulus_diagnostics=False)
         saved_field, saved_report = load_campaign_artifact(DEFAULT_OUTPUT_ARTIFACT)
+        self.assertEqual(
+            saved_report["input_checkpoint"]["sha256"], EXPECTED_INPUT_SHA256
+        )
+        try:
+            field, report = run_exact_campaign(include_annulus_diagnostics=False)
+        except ValueError as error:
+            incompatible_operator = (
+                "checkpoint system_digest does not match the requested solve"
+                in str(error)
+            )
+            canonical_platform = (
+                platform.system() == "Darwin" and platform.machine() == "arm64"
+            )
+            if incompatible_operator and not canonical_platform:
+                self.skipTest(
+                    "canonical checkpoint has an exact Darwin/arm64 discrete-"
+                    f"operator fingerprint and was correctly rejected: {error}"
+                )
+            raise
         self.assertTrue(np.array_equal(field, saved_field))
         self.assertEqual(report["output_field_sha256"], saved_report["output_field_sha256"])
         self.assertEqual(
