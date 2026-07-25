@@ -1082,3 +1082,154 @@ weighted and unweighted margin tails, the tangent/secant ledger, tracked warning
 locations, and a fresh coarse `6/12` same-amplitude control. Do not begin the
 outer-box, density, asymmetry, target, or propulsion extensions before full
 source passes.
+
+## 2026-07-25 - E-028 Six-Twelfths Continuation Gate
+
+**Focus question:** Can a collision-checked byte-identical work copy of
+E-028's accepted current-runtime native fine-grid `5/12` checkpoint advance
+exactly to `6/12` without relaxing any provenance, nonlinear, direct-GMRES,
+iteration-cap, line-search, wide, fixed, centered, or full shifted-`Gamma_2`
+gate; and do the accepted path, margin-tail, Jacobian-health, tangent/secant,
+tracked-location, and fresh same-amplitude coarse diagnostics remain
+consistent with a healthy sampled discrete continuation?
+
+**Sources reviewed:** Re-read Froese, Oberman, and Salvador's elliptic
+2-Hessian cone, monotone extension, and Cartesian convergence theorem
+(`h -> 0`, angular fill distance `dtheta -> 0`, and `h/dtheta -> 0`);
+Finlay and Oberman's coupled physical-reach/angular-error analysis; Awanou's
+local discrete `k`-Hessian Newton result under a close seed and smooth
+nondegenerate solution; Qi and Sun's semismooth-Newton theorem requiring
+nonsingularity of every generalized Jacobian in the relevant neighborhood;
+Azimzadeh's weakly chained diagonally dominant nonsingular M-matrix criterion;
+and Kearfott and Xing's interval step control for proving that continuation
+steps remain on one solution curve. These are high-quality sources for their
+stated schemes and finite-dimensional theorems, but none directly certifies
+E-028's reflected-axis cylindrical construction, its nearby generalized
+Jacobians, or physical realization of the cubic-Galileon model.
+
+**Provenance failure and recovery:** Exact resume from accepted stage 5
+correctly stopped before solving because the saved implementation fingerprint
+contained the former `requirements-research.txt` digest
+`cd1df48db71c...`, while the committed file now hashes to
+`b44e38d9b1076b4de3497d8d81a2dbfb2bf0405494ea129bfe3d3d6af0e46349`.
+Python and the numerical-library versions were unchanged, but the exact guard
+was not bypassed. A fresh current-provenance replay through `5/12` took
+`164.61 s` and reproduced the accepted field bit for bit, with maximum absolute
+difference zero and unchanged field SHA-256
+`ab5b23f15f729cb0f72589c2287e1013f8f6b05a7dbe91ad6b1debffe272f5c7`.
+Stage 6 was advanced only from that replay lineage.
+
+**Deepening work completed:** The `6/12` corrector closed in five undamped
+Newton steps and `254` GMRES inner iterations (`52 / 59 / 48 / 56 / 39`).
+Every linear solve reported `info=0`; the largest independently recomputed
+true-residual ratio was `9.1541e-9`, and the final nonlinear relative
+`L2=5.4588e-8`. Wide pair/spatial/time minima are
+`0.0192176 / 0.0384351 / 1.00000237`; native fixed/centered spatial minima are
+`0.0330635 / 0.0327836`. Full active/fixed/native-centered shifted
+`Gamma_2` minima `(sigma_1, pair, sigma_2)` are respectively
+`(0.750001, 0.0192176, 0.187484)`,
+`(0.750042, 0.0165318, 0.0425205)`, and
+`(0.750039, 0.0163918, 0.0421584)`, with zero nonpositive counts. The centered
+common-window `sigma_2` minimum remains positive at physical steps
+`0.125 / 0.25 / 0.5`, namely
+`0.0421584 / 0.0664598 / 0.127299`.
+
+**Accepted-path and operator audit:** A fresh accepted-path replay is bitwise
+identical at the endpoint. Every accepted state and nine samples on each
+piecewise-affine connecting segment pass all three shifted-`Gamma_2`
+reconstructions. The global sampled minima occur on the first correction:
+active `(0.749547, 0.0174449, 0.122257)`, fixed
+`(0.749542, 0.00225488, 0.00494198)`, and centered
+`(0.749531, 0.00223272, 0.00488522)`. Endpoint tangent-equation mismatch falls
+`0.06048 -> 0.04821 -> 0.04005` from stages 4 through 6; weighted successive
+increment cosines are `0.999903` and `0.999935`, while new-increment secant
+misses fall `0.04166 -> 0.03659`. Four exact endpoint active-frame ties occur
+at axis nodes `z=7.75, 7.875, 8.0, 8.125`; enumerating all `16` selections
+produces one bitwise-identical Jacobian. With sign normalized as `-J`, its
+`322319` diagonal entries are positive, no off-diagonal is positive, all rows
+are weakly diagonally dominant within rounding tolerance, `3047` are strict,
+and the directed graph is one strong component. This removes the observed
+tie-selection ambiguity at the endpoint only; it supplies neither a nearby
+inverse bound nor an interval no-jump certificate.
+
+**Low-tail geometry and same-amplitude control:** On the centered
+common-window reconstruction at physical step `0.25`, pair minima erode
+`0.057109 -> 0.035896 -> 0.025246 -> 0.019365` from stages 3 through 6.
+At stage 6, `227/310365` nodes lie below `0.05`; their full-window
+axisymmetric nodal-quadrature weight is only `6.535e-5`, but their
+source-support-relative weight is `0.003139`. They form one connected thin
+strip from `rho=0` to `6.25`, `z=0` to `0.75`, reaching the inner source
+smoothing layer rather than isolated numerical speckles. A fresh strict
+coarse `(h,m)=(0.25,3)` stage-6 control reproduces all prior stage counts and
+closes in five Newton steps and `174` GMRES iterations. Fine-to-coarse changes
+are `+1.728%` in the `r=1` ratio, `+0.321%` in the diagnostic-endpoint
+gradient, `-29.185% / -47.148%` in matched original/White residual,
+`-37.866%` in worst flux-deficit magnitude, and `-93.664%` in source-charge
+error. The native margin trend is mixed, while the matched-step centered
+spatial margin improves `0.0382235 -> 0.0387306`. Two grids are encouraging
+but cannot establish asymptotic order.
+
+**What changed:** E-028 now reaches exactly half source on a strict,
+checkpointed fine-grid lineage. The stage-6 `r=1` force ratio is `2.604856`;
+the maximum sampled gradient is `6.756110` at the diagnostic endpoint
+`r=12`, not a proven global peak. Centered original/White residuals are
+`1.10908% / 0.228795%`, fixed-window values are
+`1.06821% / 0.226834%`, fixed-sphere flux deficits are
+`-0.962787% / -0.990948% / -0.988775%`, and sampled source-charge error is
+`-4.3163e-6`. The campaign now totals `42` Newton corrections and `1685`
+GMRES iterations through six accepted stages.
+
+**Failure or boundary found:** No strict stage-6 solver, endpoint-cone, or
+sampled-path failure occurred. The important failure is interpretive: the
+shrinking margin is spatially connected to the source-transition region, and
+the first accepted correction approaches fixed/centered `sigma_2` near
+`0.0049`. Full-domain weighting alone understates this source-relative
+structure. The endpoint M-matrix pattern, smooth secants, and finite segment
+sampling do not meet Qi-Sun's neighborhood hypothesis or Kearfott-Xing's
+validated-continuation standard. Full source, a coupled asymptotic sequence,
+outer-box stability, physical-density continuation, target response, EFT
+validity, reaction accounting, useful artificial gravity, inertial control,
+spacetime engineering, FTL, and propulsion therefore remain unresolved.
+
+**Blank space or new idea:** Keep the global tail ledger, but add a
+source-support-weighted connected-component ledger and track the minimum over
+accepted corrections separately from the endpoint. Before promoting branch
+health to branch certification, a future method project could combine
+verified residual intervals with an interval inverse bound around each source
+step. That is a numerical-analysis opportunity, not evidence for a device or
+new physical mechanism.
+
+**Hypothesis updates:** H-019 remains `Medium-low`. E-028 gains strong
+fixed-grid evidence through half source, exact replay evidence, positive
+sampled-path margins, an encouraging mixed two-grid comparison, and removal
+of the observed endpoint tie ambiguity. B-027 is extended through `6/12`;
+B-028 records that an implementation-fingerprint change required fresh replay;
+and B-029 records the connected low-margin path and the still-open
+neighborhood/inverse/interval boundary.
+
+**Verification and artifact identity:** The accepted stage-6 checkpoint and
+retained work snapshot are byte-identical at SHA-256
+`ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`.
+The stage-6 artifact SHA-256 is
+`64a0fca132dd6b068c543f102c74c3ffa09a545509d9f822857cc13e179c5476`;
+field SHA-256 is
+`cd806ff41c0a33d541cc5c1dba44a3c7ad693ddb6b81dda5eae2ac1db8757c3`;
+report SHA-256 is
+`fe2c11e1d2e7806b12836325eaaed565137b5495efbb25417f4c6545fd3a256c`;
+and the unchanged module SHA-256 is
+`e3e4029e8e83a08ee9d1df8068e325a1b9f954d4fd26232de12f6c46bb8eb95d`.
+Invocation peak RSS was about `1.614 GiB`, with maximum explicitly counted
+A/P/R storage `72,586,832` bytes. All `96` workspace unit tests pass; the
+complete checkpoint SHA-256 manifest verifies, checkpoint/work/artifact
+loaders agree exactly, every model/test module compiles, and `pip check`
+reports no broken requirements.
+
+**Next best step:** Keep accepted checkpoint SHA
+`ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`
+immutable and advance only a fingerprint-matching work copy exactly to
+`7/12`. Preserve every strict gate and repeat endpoint, accepted-path,
+source-relative connected-tail, tracked-location, generalized-Jacobian-tie,
+tangent/secant, and fresh coarse `7/12` checks. Stop if any frame becomes
+nonpositive or if the low-margin strip broadens materially. Do not begin the
+outer box, density, asymmetry, target, EFT, or propulsion extensions before a
+strict full-source endpoint passes.

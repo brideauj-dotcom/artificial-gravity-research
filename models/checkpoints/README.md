@@ -6,13 +6,15 @@ hypothetical PDE, not observations or full-source physics results.
 
 The `.npz` files are stored through Git LFS. Their independent container
 hashes are listed in [`SHA256SUMS`](SHA256SUMS); from this directory, verify
-them with `shasum -a 256 -c SHA256SUMS`. Two retained work snapshots are
+them with `shasum -a 256 -c SHA256SUMS`. Three retained work snapshots are
 tracked deliberately for continuity:
 
 - `e028_h0125_m4_campaign_stage4_work_20260723.npz` is byte-identical to the
   accepted `e028_h0125_m4_campaign_checkpoint_20260723.npz` state.
 - `e028_h0125_m4_campaign_stage5_work_20260724.npz` is byte-identical to the
   accepted `e028_h0125_m4_campaign_checkpoint_20260724.npz` state.
+- `e028_h0125_m4_campaign_stage6_work_20260725.npz` is byte-identical to the
+  accepted `e028_h0125_m4_campaign_checkpoint_20260725.npz` state.
 
 The work suffix preserves solver lineage and is not an acceptance or physics
 claim. Before replacing a tracked work snapshot, commit the prior version and
@@ -463,3 +465,126 @@ does not enforce shifted-`sigma_2`, accepted-iterate reconstructed cones, or
 tail diagnostics. The manual/replay checks above are part of acceptance.
 This is a five-twelfths-source branch-reach result, not a full-source,
 continuum, artificial-gravity, inertial-control, FTL, or propulsion result.
+
+## `e028_h0125_m4_5of12_pgsa_replay_20260725.npz`
+
+- Date: 2026-07-25
+- Purpose: fresh replay through `5/12` under the exact committed
+  `requirements-research.txt` fingerprint after strict resume of the 2026-07-24
+  checkpoint correctly stopped on a requirements-file hash mismatch
+- Runtime: macOS `26.5.2`, Python `3.14.6`, NumPy `2.5.1`, SciPy `1.18.0`,
+  PyAMG `5.3.0`
+- Replay versus accepted 2026-07-24 stage-5 field: bitwise equal; maximum
+  absolute difference `0`
+- Field SHA-256:
+  `ab5b23f15f729cb0f72589c2287e1013f8f6b05a7dbe91ad6b1debffe272f5c7`
+- Artifact SHA-256:
+  `b3adf0714c96815ece3782232dafa5b623e6fc7dcdfeaae4239e1f52267f2ab4`
+
+The old checkpoint embedded requirements hash
+`cd1df48db71f3a60d6d85fc10d1636b64db217e1228ed733c9dc968af43dc7aa`;
+the committed file has hash
+`b44e38d9b1076b4de3497d8d81a2dbfb2bf0405494ea129bfe3d3d6af0e46349`.
+The numerical dependencies and runtime were unchanged, but exact provenance
+means even nonnumerical file drift is a hard stop. The guard was not bypassed:
+the full current-provenance campaign was replayed, reproduced stage 5 bit for
+bit, and only that replay was advanced. This is a reproducibility/provenance
+result, not new physics evidence.
+
+## `e028_h0125_m4_campaign_checkpoint_20260725.npz`
+
+- Date: 2026-07-25
+- Lineage: fresh current-committed-provenance replay through `5/12`, then
+  exact plain-seed continuation through `6/12`
+- Accepted amplitude: `6/12=0.5`
+- Pending target: `7/12`
+- Latest-stage closure: five full Newton corrections, `254` GMRES inner
+  iterations, final relative nonlinear `L2=5.45884e-8`
+- Campaign totals through six stages: `42` Newton corrections and `1685`
+  GMRES inner iterations
+- Maximum direct true-residual ratio in stage 6: `9.15407e-9`; maximum inner
+  iterations in one correction: `59`
+- Wide pair/spatial/time:
+  `0.01921756 / 0.03843512 / 1.00000237`
+- Fixed/centered spatial:
+  `0.03306351 / 0.03278356`, no nonpositive nodes
+- Post-hoc active/fixed/centered shifted-`sigma_2`:
+  `0.18748363 / 0.04252053 / 0.04215838`, no nonpositive nodes
+- Centered shifted-`sigma_2` at physical steps `0.125/0.25/0.5`:
+  `0.04215838 / 0.06645977 / 0.12729943`
+- Field SHA-256:
+  `cd806ff41c0a33d541cc5c1dba44a3c7ad693ddb6b81dda5eae2ac1db8757c3e`
+- Report SHA-256:
+  `fe2c11e1d2e7806b12836325eaaed565137b5495efbb25417f4c6545fd3a256c`
+- Full linear-field SHA-256:
+  `6fe081d1b9eb5a02e88e6c0e79531f6419aa35053f75c87090cf03be1f5bc606`
+- Model-module SHA-256:
+  `e3e4029e8e83a08ee9d1df8068e325a1b9f954d4fd26232de12f6c46bb8eb95d`
+- Checkpoint SHA-256:
+  `ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`
+
+This accepted checkpoint is byte-identical to
+`e028_h0125_m4_campaign_stage6_work_20260725.npz`. Preserve both and run
+stage 7 only from a new collision-checked byte-identical copy. If interrupted,
+restart from another accepted stage-6 copy rather than treating an in-progress
+field as an endpoint.
+
+The deterministic stage-6 replay ends bit for bit at the retained field and
+reproduces five Newton/`254` GMRES. Every accepted state and nine tested points
+on every piecewise-affine connecting segment remain in active, fixed, and
+centered shifted `Gamma_2`. The smallest state/segment fixed pair/`sigma_2`
+are `0.00225488 / 0.00494198`; centered values are
+`0.00223272 / 0.00488521`, all on the first accepted correction. This is a
+close positive path margin, not an interval or no-jump certificate.
+
+At the endpoint's four exact active-frame ties, all `2^4=16` frame-selection
+vertices assemble to one bitwise-identical Jacobian matrix. That matrix has
+positive sign-normalized diagonal, nonpositive off-diagonal, one strongly
+connected component, all `322319` rows weakly diagonally dominant to the
+stated numerical tolerance, and `3047` strict rows. This removes the observed
+tie-selection ambiguity at this endpoint, but supplies no inverse-norm,
+rounding, nearby-state, or continuum bound.
+
+## `e028_h0125_m4_6of12_pgsa_20260725.npz`
+
+- Date: 2026-07-25
+- Grid/source and accepted state: canonical E-028 values above, amplitude
+  `6/12=0.5`
+- Latest-stage closure and branch values: identical to the accepted stage-6
+  checkpoint section above
+- Partial-source observables: ratio at `r/r0=1` `2.604856`; maximum finite
+  ratio `3.022631`; maximum sampled gradient `6.756110` at the fixed-ray
+  endpoint `r=12`; centered original/White residuals
+  `1.10908% / 0.228795%`; sampled-charge flux deficits
+  `-0.962787% / -0.990948% / -0.988775%`
+- Source charge error: `-4.31633e-6` (`-0.000431633%`)
+- Maximum explicit A/P/R sparse storage: `72,586,832` bytes
+- Current-invocation peak RSS: about `1.614 GiB`; replay-campaign high-water
+  remains about `1.832 GiB`
+- Field SHA-256:
+  `cd806ff41c0a33d541cc5c1dba44a3c7ad693ddb6b81dda5eae2ac1db8757c3e`
+- Report SHA-256:
+  `fe2c11e1d2e7806b12836325eaaed565137b5495efbb25417f4c6545fd3a256c`
+- Artifact SHA-256:
+  `64a0fca132dd6b068c543f102c74c3ffa09a545509d9f822857cc13e179c5476`
+
+A fresh same-amplitude coarse `(h,m)=(0.25,3)` control closes in five
+Newton/`174` GMRES. Fine versus coarse changes are `+1.728%` in the `r=1`
+ratio, `+0.321%` in the sampled endpoint gradient, `-29.19% / -47.15%` in
+matched-step common-window original/White residuals, `-37.87%` in worst
+flux-deficit magnitude, and `-93.66%` in source-charge-error magnitude.
+Fine stage GMRES rises `45.98%`. Native fixed/centered margins decline with
+refinement, while the matched-`0.25` centered margin improves; this is a mixed
+two-grid comparison, not an asymptotic order.
+
+At matched centered step `0.25`, the pair minimum is `0.0193653`, and
+`227/310365` common-window nodes lie below pair `0.05`. They form one connected
+near-midplane component over `rho=0-6.25`, `z=0-0.75`, reaching the inner
+source smoothing layer. Its full-window axisymmetric weight fraction is only
+`6.535e-5`, but its source-support-relative weight fraction is `0.003139`.
+Threshold sensitivity confirms a real localized tail: even pair `<0.02`
+contains ten nodes in one component. No sampled node has `sigma_2<0.05`.
+
+This is a half-source discrete branch-reach result, not a full-source or
+continuum refinement and not evidence of artificial gravity, inertial
+control, spacetime engineering, FTL, or propulsion.
