@@ -1209,3 +1209,153 @@ Add sources here with enough detail that future runs can judge quality quickly.
   comparison, density/asymmetry, target response, EFT validity, reaction
   accounting, useful gravity, inertial control, FTL, and propulsion remain
   blocked.
+
+### E-028 `6/12` Endpoint, Connected-Tail, Tie-Vertex, and Same-Amplitude Audit
+
+- **Links:** Froese, Oberman, and Salvador,
+  https://arxiv.org/abs/1502.04969 and
+  https://doi.org/10.1093/imanum/drw007; Finlay and Oberman,
+  https://arxiv.org/abs/1807.05150 and
+  https://doi.org/10.1137/18M1200269; Awanou,
+  https://arxiv.org/abs/1406.5366 and
+  https://doi.org/10.4310/MAA.2018.v25.n1.a3; Qi and Sun,
+  https://doi.org/10.1007/BF01581275; Azimzadeh,
+  https://arxiv.org/abs/1701.06951 and
+  https://doi.org/10.1090/mcom/3347; Kearfott and Xing,
+  https://doi.org/10.1137/0731048; internal calculation and artifacts dated
+  2026-07-25.
+- **Type and transfer boundary:** Primary/high-quality numerical-analysis
+  sources plus an integrity-checked nonlinear continuation, deterministic
+  accepted-path replay, independent full-cone reconstruction, connected-tail
+  audit, exhaustive observed tie-vertex enumeration, and fresh
+  same-amplitude grid control. Froese-Oberman-Salvador's continuum result
+  couples `h`, angular resolution, and stencil reach within its Cartesian
+  monotone framework; Finlay-Oberman likewise makes spatial and angular
+  refinement inseparable. Neither theorem automatically transfers to
+  E-028's cylindrical reflected-axis/curved-boundary construction. Awanou's
+  local uniqueness result assumes a smooth nondegenerate solution, a
+  sufficiently close seed, and sufficiently small `h`. Qi-Sun require
+  nonsingularity of every generalized Jacobian for their local semismooth
+  Newton conclusion, while Kearfott-Xing obtain a no-jump certificate only
+  through a successful interval enclosure. The calculations below satisfy
+  none of those full hypotheses and provide no evidence that nature realizes
+  the cubic-Galileon model.
+- **Provenance failure and fresh replay:** Strict resume from accepted stage 5
+  stopped before solving because the saved `requirements-research.txt`
+  fingerprint was
+  `cd1df48db71c...`, whereas the committed file fingerprint is
+  `b44e38d9b107...`; numerical package versions and the runtime otherwise
+  matched. The guard was not bypassed and the accepted checkpoint remained
+  immutable. A fresh current-provenance replay through `5/12` took
+  `164.61 s` and produced a field bitwise identical to accepted stage 5
+  (maximum absolute difference zero; field SHA-256
+  `ab5b23f15f729cb0f72589c2287e1013f8f6b05a7dbe91ad6b1debffe272f5c7`).
+  The retained replay artifact SHA-256 is
+  `b3adf0714c96815ece3782232dafa5b623e6fc7dcdfeaae4239e1f52267f2ab4`.
+  This establishes numerical continuity across a provenance change without
+  weakening the recorded loader policy.
+- **Strict stage result:** The current-provenance lineage advances from the
+  replayed stage 5 field to `6/12` in five full Newton corrections and
+  `254` GMRES inner iterations (`52,59,48,56,39`). Every step length is one,
+  every `info` is zero, maximum direct true-residual ratio is
+  `9.15407e-9`, and final nonlinear relative `L2/Linf` are
+  `5.45884e-8 / 1.78440e-6`. Wide pair/spatial/time minima are
+  `0.01921756 / 0.03843512 / 1.00000237`; fixed/centered spatial minima are
+  `0.03306351 / 0.03278356` at `(6.0,0.5)`, with zero nonpositive counts.
+  The campaign totals through stage 6 are `42` Newton corrections and
+  `1685` GMRES inner iterations.
+- **Endpoint full-`Gamma_2` audit:** Active shifted
+  `sigma_1/pair/sigma_2` minima are
+  `0.75000118 / 0.01921756 / 0.18748363`. Fixed minima are
+  `0.75004236 / 0.01653175 / 0.04252053`; centered native-step minima are
+  `0.75003875 / 0.01639178 / 0.04215838`. All three reconstructions have
+  zero nonpositive counts. Centered common-window `sigma_2` remains positive
+  at physical steps `0.125/0.25/0.5`, with minima
+  `0.04215838 / 0.06645977 / 0.12729943`. Active raw `sigma_2` agrees with
+  the monotone extension to `1.78e-15`; maximum pointwise shifted-source
+  residual is `1.63670e-5`. The tracked points `(6.25,0.75)` and
+  `(6.25,0.375)` remain positive in active, fixed, and centered
+  reconstructions; these are finite-grid postprocessors, not interval
+  bounds.
+- **Accepted-path replay:** A deterministic replay ends at a field bitwise
+  identical to the retained endpoint and exactly repeats five Newton and
+  `254` GMRES iterations. All accepted states and nine sampled points on
+  every piecewise-affine correction segment remain positive in the tested
+  active/fixed/centered `Gamma_2` reconstructions. The smallest sampled
+  `sigma_1/pair/sigma_2` values occur on the first correction:
+  `0.74954661 / 0.01744492 / 0.12225661` active,
+  `0.74954222 / 0.00225488 / 0.00494198` fixed, and
+  `0.74953072 / 0.00223272 / 0.00488522` centered. The endpoint later
+  recovers margin. This is a close but positive sampled solver path, not a
+  rounded interval certificate or proof that no branch jump occurred.
+- **Connected margin tail:** At matched centered step `0.25` on the common
+  `r<=78.5` window, stages `3/12,4/12,5/12,6/12` have pair minima
+  `0.05711,0.03590,0.02525,0.01937` and pair `0.01%` weighted quantiles
+  `0.11887,0.09529,0.08334,0.07520`. At stage 6, `227/310365` nodes lie
+  below pair margin `0.05` (`223` with positive quadrature weight):
+  the full-window weighted fraction is `6.535e-5`, but the
+  source-support-relative and source-transition-relative fractions are
+  `0.003139 / 0.003339`. Those nodes form one connected component from
+  `rho=0` to `6.25` and `z=0` to `0.75`, reaching the inner source
+  smoothing layer. Threshold scans find `10` nodes below `0.02`, `118`
+  below `0.03`, `177` below `0.04`, and `263` below `0.06`; the matched
+  centered `sigma_2` minimum is `0.06646`, with only five nodes below
+  `0.08`. The tail is therefore geometrically thin but connected and more
+  prominent relative to the source layer than the outer-vacuum-dominated
+  full-window denominator suggests.
+- **Continuation and generalized-Jacobian audit:** Tangent-equation mismatch
+  proxies decrease `0.06048 -> 0.04821 -> 0.04005` over stages 4--6;
+  consecutive weighted increment cosines are
+  `0.999903 / 0.999935`, while secant misses at stages 5 and 6 are
+  `4.166% / 3.659%` of the new increments. This supports a smooth sampled
+  fixed-grid path only. At stage 6, four exact active-frame ties occur on
+  the axis at `z=7.75,7.875,8.0,8.125` between frames 8 and 11. Exhausting
+  all `2^4=16` selections yields one bitwise-identical matrix (SHA-256
+  `68710ffa7e9c26d961c7401e070bee8962d587bd7dd42c48cbfe8e251ea89211`).
+  For sign-normalized `A=-J`, all `322319` diagonal entries are positive,
+  no off-diagonal is positive, the graph has one strongly connected
+  component, all rows are weakly diagonally dominant to tolerance, and
+  `3047` rows are strict; Frobenius asymmetry is `0.09127`. Azimzadeh's
+  criterion supports nonsingularity of this observed endpoint matrix
+  pattern. It does not supply an inverse norm, rounding enclosure, all
+  nearby-source generalized Jacobians, or a continuum uniqueness result,
+  so the Qi-Sun and no-jump hypotheses remain incomplete.
+- **Partial-source observables:** At one-half source, ratio at `r/r0=1` is
+  `2.604856`; maximum finite sampled ratio is `3.022631`; and maximum
+  sampled nonlinear gradient is `6.756110` at the diagnostic ray endpoint
+  `r=12`, not a resolved global peak. Native-step centered original/White
+  residuals are `1.10908% / 0.22880%`; fixed-sphere sampled-charge flux
+  deficits are `-0.96279% / -0.99095% / -0.98878%`; sampled source-charge
+  error is `-4.31633e-6`.
+- **Same-amplitude control:** A fresh coarse `(h,m)=(0.25,3)` `6/12`
+  control closes in five full Newton corrections and `174` GMRES iterations
+  after exactly reproducing all earlier coarse stage counts. Fine versus
+  coarse changes are `+1.728%` in ratio, `+0.321%` in endpoint gradient,
+  `-29.19% / -47.15%` in matched-step common-window original/White
+  residuals, `-37.87%` in worst flux-deficit magnitude, and `-93.66%` in
+  source-charge-error magnitude, while stage GMRES work rises `45.98%`.
+  Wide pair/spatial margins rise `0.878%`, but native fixed/centered spatial
+  and `sigma_2` minima decline; at matched physical step `0.25`, the
+  centered spatial margin rises only `1.327%` and fine centered
+  `sigma_2=0.06646` versus coarse `0.04704`. These are mixed, encouraging
+  two-grid trends, not an asymptotic convergence order.
+- **Artifacts and resources:** Accepted checkpoint and byte-identical
+  retained work-snapshot SHA-256 are
+  `ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`.
+  Stage-6 artifact, field, and report SHA-256 values are
+  `64a0fca132dd6b068c543f102c74c3ffa09a545509d9f822857cc13e179c5476`,
+  `cd806ff41c0a33d541cc5c1dba44a3c7ad693ddb6b81dda5eae2ac1db8757c3e`,
+  and
+  `fe2c11e1d2e7806b12836325eaaed565137b5495efbb25417f4c6545fd3a256c`.
+  Peak RSS is `1.614 GiB`; maximum explicitly counted A/P/R storage remains
+  `72,586,832` bytes.
+- **Impact on hypotheses:** H-019 remains `Medium-low`. E-028 now reaches a
+  reproducible half-source discrete endpoint with a strictly replayed
+  positive sampled correction path, improving integrated same-amplitude
+  diagnostics, and no selection ambiguity at the four observed endpoint
+  ties. Margin erosion is nevertheless a connected source-layer feature,
+  and neither endpoint matrix structure nor two grids supplies continuum
+  admissibility, uniqueness, or a no-jump theorem. The remaining six source
+  stages, another coupled refinement, fixed-box comparison,
+  density/asymmetry, target response, EFT validity, reaction accounting,
+  useful gravity, inertial control, FTL, and propulsion remain blocked.

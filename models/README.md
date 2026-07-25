@@ -1096,47 +1096,88 @@ and
 `7207528839fcdd909ed19467e6de349374c09ff2fcbd7a97e9780e568f2174c0`.
 The checkpoint and artifact loaders return exactly equal fields and reports.
 
-Subject to exact checkpoint, runtime, and code matches, stage 6 should again
-run only from a new, collision-checked byte-identical working copy. The
-following names assume the next run is dated 2026-07-25; choose unused
-date-stamped names if it is not:
+The first strict attempt to resume stage 5 correctly stopped before solving:
+the checkpoint embedded requirements-file SHA
+`cd1df48db71c...`, while the committed file is
+`b44e38d9b107...`. The numerical dependencies and runtime were unchanged, but
+the exact provenance guard includes the whole file. It was not bypassed. A
+fresh campaign under the committed fingerprint replayed through `5/12` in
+`164.6 s` and reproduced the accepted stage-5 field bit for bit. Only that
+current-provenance replay advanced to stage 6.
 
-```bash
-(
-  set -euo pipefail
+Stage 6 closes `6/12=0.5` in five full Newton corrections and `254` GMRES
+inner iterations. Every GMRES `info=0`; maximum direct true-residual ratio is
+`9.154e-9`, maximum one-correction work is `59`, and final nonlinear relative
+`L2/Linf` are `5.459e-8 / 1.784e-6`. Wide pair/spatial/time are
+`0.0192176 / 0.0384351 / 1.00000237`; fixed/centered spatial minima are
+`0.0330635 / 0.0327836`, with no nonpositive nodes or conflict.
 
-  e028_source_checkpoint=models/checkpoints/e028_h0125_m4_campaign_checkpoint_20260724.npz
-  e028_stage6_work=models/checkpoints/e028_h0125_m4_campaign_stage6_work_20260725.npz
-  e028_stage6_artifact=models/checkpoints/e028_h0125_m4_6of12_pgsa_20260725.npz
+Manual endpoint active/fixed/centered shifted `sigma_2` minima are
+`0.187484 / 0.042521 / 0.042158`; all corresponding `sigma_1`, pair, and
+`sigma_2` counts remain positive. Centered `sigma_2` at physical difference
+steps `0.125/0.25/0.5` is
+`0.042158 / 0.066460 / 0.127299`. The tracked `(6.25,0.75)` and
+`(6.25,0.375)` locations remain positive.
 
-  test ! -e "$e028_stage6_work"
-  test ! -e "$e028_stage6_artifact"
-  shasum -a 256 \
-    "$e028_source_checkpoint" \
-    models/e028_fine_grid_campaign.py \
-    models/e025_axisymmetric_wide_2hessian.py \
-    models/e026_nonsymmetric_amg.py \
-    requirements-research.txt
-  cp -p "$e028_source_checkpoint" "$e028_stage6_work"
-  cmp "$e028_source_checkpoint" "$e028_stage6_work"
-  shasum -a 256 "$e028_source_checkpoint" "$e028_stage6_work"
+A deterministic stage-6 replay returns the retained field bit for bit and
+reproduces five Newton/`254` GMRES. All five accepted states and nine tested
+points on every piecewise-affine segment remain inside active, fixed, and
+centered shifted `Gamma_2`, but the first accepted full correction comes
+close: fixed pair/`sigma_2` are `0.002255 / 0.004942`, and centered values are
+`0.002233 / 0.004885`. Later accepted states recover the endpoint margin.
+This is a positive sampled search path, not an interval enclosure.
 
-  .venv/bin/python -m models.e028_fine_grid_campaign \
-    --resume \
-    --preconditioner pgsa \
-    --stop-after-stage 6 \
-    --checkpoint "$e028_stage6_work" \
-    --output-artifact "$e028_stage6_artifact" \
-    --json
-)
-```
+The endpoint has four exact active-frame ties at the axis. Enumerating all
+`2^4=16` active selections produces one bitwise-identical Jacobian matrix.
+Its sign-normalized form has positive diagonal, nonpositive off-diagonal, one
+strongly connected component, all `322319` rows weakly diagonally dominant
+to numerical tolerance, and `3047` strict rows. Thus the observed tie
+selection does not generate alternate endpoint matrices. This still does not
+bound the inverse, roundoff, nearby source states, or continuum conditioning,
+and it does not replace a validated continuation enclosure.
 
-Verify the source and working-copy hashes before running. If interrupted,
-restart from another accepted stage-5 copy. A requested-final artifact is only
-solver-completed until loader equality, final wide/fixed/centered checks, and
-manual active/fixed/centered full-`Gamma_2` checks pass. Replay accepted
-iterates and connecting segments, and retain both global minima and
-weighted/unweighted low-margin tails. Smooth tangent/secant behavior is a branch-health
-diagnostic, not a Jacobian-invertibility or interval no-jump proof. Stage 5
-remains a partial-source numerical result; no physical artificial-gravity,
-inertial-control, FTL, or propulsion claim follows.
+At matched centered step `0.25`, stages `3/12` through `6/12` have pair minima
+`0.05711 / 0.03590 / 0.02525 / 0.01937` and pair `0.01%` weighted quantiles
+`0.11887 / 0.09529 / 0.08334 / 0.07520`. At stage 6,
+`227/310365` common-window nodes lie below pair `0.05`. They form one
+connected near-midplane component spanning `rho=0-6.25`, `z=0-0.75` and
+touching the inner source smoothing layer. Its full-window axisymmetric
+weight fraction is `6.535e-5`, but its source-support-relative fraction is
+`0.003139`. Even the stricter pair `<0.02` set contains ten nodes in one
+component. The tail is localized but genuine; the large outer vacuum
+denominator understates its source-relative prominence.
+
+A fresh same-amplitude coarse `(h,m)=(0.25,3)` control closes in five
+Newton/`174` GMRES. Fine versus coarse changes are `+1.728%` in `r=1` force
+ratio, `+0.321%` in sampled endpoint gradient, `-29.19% / -47.15%` in
+matched common-window original/White residuals, `-37.87%` in worst
+flux-deficit magnitude, and `-93.66%` in source-charge-error magnitude.
+Native fixed/centered margins decline, while the matched-`0.25` centered
+margin improves. This mixed two-grid evidence is not an asymptotic order.
+
+The immutable accepted stage-6 checkpoint is
+`models/checkpoints/e028_h0125_m4_campaign_checkpoint_20260725.npz`, SHA-256
+`ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`.
+The stage-6 artifact is
+`models/checkpoints/e028_h0125_m4_6of12_pgsa_20260725.npz`, SHA-256
+`64a0fca132dd6b068c543f102c74c3ffa09a545509d9f822857cc13e179c5476`.
+Its field/report SHA-256 values are
+`cd806ff41c0a33d541cc5c1dba44a3c7ad693ddb6b81dda5eae2ac1db8757c3e`
+and
+`fe2c11e1d2e7806b12836325eaaed565137b5495efbb25417f4c6545fd3a256c`.
+The checkpoint and artifact loaders return exactly equal fields and reports.
+
+Subject to exact checkpoint, runtime, and code matches, stage 7 should run
+only from a new collision-checked byte-identical stage-6 working copy.
+Choose unused date-stamped names and stop rather than bypassing any mismatch.
+If interrupted, restart from another accepted stage-6 copy. Require the
+existing strict solver and endpoint gates, deterministic accepted-path replay,
+the source-relative connected-tail ledger, all active-frame tie selections,
+and a fresh coarse `7/12` control. The first accepted correction now deserves
+special scrutiny because its independent margin is much smaller than the
+endpoint's. Do not begin outer-box, density, asymmetry, target, or propulsion
+extensions before full source passes.
+
+Stage 6 remains a half-source numerical result for a hypothetical scalar PDE.
+No detected field, physical artificial gravity, inertial control, spacetime
+engineering, FTL, or propulsion claim follows.
