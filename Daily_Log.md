@@ -1233,3 +1233,157 @@ tangent/secant, and fresh coarse `7/12` checks. Stop if any frame becomes
 nonpositive or if the low-margin strip broadens materially. Do not begin the
 outer box, density, asymmetry, target, EFT, or propulsion extensions before a
 strict full-source endpoint passes.
+
+## 2026-07-26 - E-028 Seven-Twelfths Continuation Gate
+
+**Focus question:** Can a collision-checked byte-identical work copy of
+E-028's accepted native fine-grid `6/12` checkpoint advance exactly to
+`7/12` without relaxing any provenance, nonlinear, direct-GMRES,
+iteration-cap, line-search, wide, fixed, centered, or full shifted-`Gamma_2`
+gate; and do the accepted path, source-relative connected low-margin tail,
+tracked locations, generalized-Jacobian ties, tangent/secant ledger, and a
+fresh same-amplitude coarse control remain consistent with a healthy sampled
+discrete continuation?
+
+**Sources reviewed:** Caffarelli, Nirenberg, and Spruck, "The Dirichlet
+problem for nonlinear second-order elliptic equations, III" (*Acta
+Mathematica* 155, 1985, DOI `10.1007/BF02392544`); Froese, Oberman, and
+Salvador, "Numerical methods for the 2-Hessian elliptic partial differential
+equation" (*IMA Journal of Numerical Analysis* 37, 2017, DOI
+`10.1093/imanum/drw007`); Qi and Sun, "A nonsmooth version of Newton's
+method" (*Mathematical Programming* 58, 1993, DOI
+`10.1007/BF01581275`); Kearfott and Xing, "An interval step control for
+continuation methods" (*SIAM Journal on Numerical Analysis* 31, 1994, DOI
+`10.1137/0731048`); and Azimzadeh, "A fast and stable test to check if a
+weakly diagonally dominant matrix is a nonsingular M-matrix" (*Mathematics
+of Computation* 88, 2019, DOI `10.1090/mcom/3347`).
+
+**Deepening work completed:** Verified that the accepted stage-6 checkpoint,
+its saved runtime, every implementation fingerprint, and the current
+scientific Python environment match exactly. A collision-checked copy then
+advanced to `7/12` in five full Newton corrections and `277` total GMRES
+iterations. Every direct GMRES solve returned `info=0`, maximum true-residual
+ratio was `9.0733e-9`, final nonlinear relative `L2/Linf` were
+`1.86895e-8 / 6.04628e-7`, and all step lengths were one. The endpoint
+passes the stored wide gates with pair/spatial/time minima
+`0.0156637 / 0.0313274 / 1.00000258`, fixed/centered spatial minima
+`0.0205178 / 0.0201393`, and no nonpositive nodes.
+
+The independent endpoint reconstructions also pass. Active
+`sigma_1/pair/sigma_2` minima are
+`0.750001 / 0.0156637 / 0.187494`; fixed minima are
+`0.750043 / 0.0102589 / 0.0276443`; and centered native-step minima are
+`0.750040 / 0.0100696 / 0.0271270`. Centered common-window `sigma_2` stays
+positive at physical steps `0.125/0.25/0.5`, with minima
+`0.0271270 / 0.0533162 / 0.122429`. The endpoint field/report/linear-field
+SHA-256 values are
+`92b625491af99cea96bb5bacbdeb211f0ef04323d34103f9c84b0073bc2c990f`,
+`7bf2cada15267c53c7934916d6f07291a358860a0538cf7dead24fa6db3ce997`,
+and
+`6fe081d1b9eb5a02e88e6c0e79531f6419aa35053f75c87090cf03be1f5bc606`.
+
+**What changed:** The endpoint is retained only as a dated path-conflict
+artifact and work checkpoint, not promoted into the accepted campaign
+lineage. A deterministic canonical replay ends bitwise-identically and
+repeats five Newton/`277` GMRES, but its first accepted full correction
+leaves both independent reconstructed cones: fixed pair/`sigma_2` reach
+`-0.00244344 / -0.00762639`, and centered values reach
+`-0.00252146 / -0.00783733`. Active values remain positive. Later accepted
+states recover all endpoint margins. Nine-point samples on the first
+piecewise-affine segment reproduce the same negative minima.
+
+A separate scratch sensitivity using `alpha=0.5` for the first correction
+keeps the active/fixed/centered cones positive
+(`0.016995 / 0.007405 / 0.007246` minimum pair sums after that half step),
+then closes in four full corrections and `237` GMRES iterations. It reaches
+the canonical endpoint to relative field `L2=7.49e-12` and maximum absolute
+difference `7.02e-8`, with final relative residual `3.37e-9`. This supports
+the same sampled fixed-grid root by a path-dependent corrector, but it does
+not repair the predefined canonical path gate or prove uniqueness.
+
+**Reasoning:** Continuous `Gamma_2` admissibility underlies ellipticity, but
+the cited convergence theorem concerns a jointly refined Cartesian monotone
+scheme, not this reflected cylindrical operator. Likewise, sampled
+continuation is not the interval no-path-jump certificate described by
+Kearfott and Xing. The four exact endpoint frame ties again generate
+`2^4=16` selections, yet the tied frames have identical curvature triples
+and gradients and every selection assembles the same matrix (SHA-256
+`c724a0e2e02765550d3d45e6f5d5b3c3c893b8694695c10a5584c1664142120c`).
+The sign-normalized matrix has positive diagonal, no positive off-diagonal,
+all rows weakly diagonally dominant to numerical tolerance, and `3036`
+strict rows. Its graph has a singleton weak component at `(rho,z)=(0,7.625)`
+feeding the strict-containing `322318`-node component, so the numerical
+WCDD path-to-strict condition holds even though irreducibility does not.
+This is endpoint conditioning evidence only: no interval inequalities,
+inverse bound, nearby-source enclosure, or continuum theorem follows.
+
+The stage-4 through stage-7 tangent-mismatch proxies improve monotonically
+`0.060480 -> 0.048207 -> 0.040049 -> 0.034506`. The stage-7 weighted
+successive-increment cosine is `0.999953776`, and the secant miss divided by
+the new increment is `0.0327969`. Active/fixed/centered checks at both
+tracked locations `(6.25,0.375)` and `(6.25,0.75)` remain positive. These
+support smooth sampled endpoint geometry only; they do not override the
+negative canonical first correction, supply a no-jump theorem, or establish
+continuum convergence.
+
+The matched centered-step `0.25` tail supplies the second stop signal. From
+stage 6 to stage 7, the pair minimum falls `0.0193653 -> 0.0157346`.
+The `pair<0.05` set grows `227 -> 240` nodes while remaining one connected
+source-layer strip; its full-window weight grows
+`6.535e-5 -> 7.054e-5`, and its source-support weight remains about
+`0.003139`. More importantly, the `pair<0.02` core broadens from `10` to
+`74` nodes and its source-support weight grows
+`0.000270 -> 0.000721`, a factor of `2.67`. The tail is still localized,
+but the predeclared material-broadening stop condition is met.
+
+A fresh coarse `(h,m)=(0.25,3)` `7/12` control closes in four Newton
+corrections and `141` GMRES iterations. Fine versus coarse changes are
+`+2.882%` in the `r=1` ratio, `+0.304%` in endpoint gradient,
+`-28.32% / -46.37%` in matched original/White residuals,
+`-37.75%` in worst flux-deficit magnitude, and `-93.66%` in source-charge
+error magnitude. Fine stage GMRES rises `96.45%`, while native
+fixed/centered spatial margins decline `34.19% / 35.54%`. Some integrated
+diagnostics improve, but the local cone margin and work trend worsen; two
+grids do not establish convergence.
+
+**Failure or boundary found:** The predeclared stage-7 acceptance gate fails
+twice: the canonical first full correction becomes fixed/centered
+`Gamma_2`-nonpositive, and the strict low-pair core broadens materially.
+Therefore the accepted E-028 lineage remains at `6/12`, SHA-256
+`ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`.
+The positive stage-7 endpoint is useful negative/path evidence, not an
+accepted checkpoint and not evidence for a physical scalar field.
+
+**Blank space or new idea:** The half-step sensitivity identifies a narrow
+computational opportunity: migrate to a new fingerprinted campaign whose
+line search explicitly enforces active, fixed, and centered full-`Gamma_2`
+positivity and records those margins per accepted iterate. Retry only the
+`6/12 -> 7/12` source interval with source-step bisection (starting at the
+`13/24` midpoint), then demand compatible fine/coarse paths and a
+predeclared tail cap. This would test whether the conflict is a corrector
+artifact without rewriting the failed canonical history.
+
+**Hypothesis updates:** H-019 remains `Medium-low`, but verified branch reach
+does not advance beyond `6/12`. E-028 is blocked at its canonical stage-7
+path/refinement gate. B-030 records the new endpoint-versus-path boundary,
+and E-029 defines the diagnostic-cone-safe retry. The exact center remains
+force-free, the cosmological `r0=1 m` translation remains only about
+`6e-35 m/s^2`, and no artificial-gravity, inertial-control, spacetime-
+engineering, reactionless-propulsion, or faster-than-light conclusion
+follows.
+
+**Verification and artifact identity:** The retained stage-7 path-conflict
+artifact SHA-256 is
+`96ce02aca8198d23c1bb5c563bdf18b14c79ef4009dd03fd75fa2e77525c479b`;
+the retained work-checkpoint SHA-256 is
+`00fa8ce4cddece362e01b179f01f6ecfe8cc93cbc7b8eaa2e0eaeb520418e9c2`.
+Their loaders agree exactly on the endpoint field and report. Neither name
+or work suffix denotes acceptance.
+
+**Next best step:** Implement E-029 as a fingerprinted, schema-compatible
+diagnostic-cone-safe continuation branch. Preserve accepted stage 6 and this
+failed stage-7 history; bisect `6/12 -> 7/12`, persist all three cone
+diagnostics per accepted iterate, and require a positive fine/coarse sampled
+path plus a non-broadening tail before reconsidering `7/12`. Do not advance
+to `8/12` or start outer-box, density, asymmetry, target, EFT, or propulsion
+work.

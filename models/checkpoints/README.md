@@ -1,12 +1,13 @@
 # E-025 and E-028 Research Checkpoints
 
-These files preserve accepted numerical states for the independent
-wide-directional 2-Hessian validation. They are solver artifacts for a
-hypothetical PDE, not observations or full-source physics results.
+These files preserve accepted numerical states and explicitly labeled
+retained work/failure states for the independent wide-directional 2-Hessian
+validation. They are solver artifacts for a hypothetical PDE, not
+observations or full-source physics results.
 
 The `.npz` files are stored through Git LFS. Their independent container
 hashes are listed in [`SHA256SUMS`](SHA256SUMS); from this directory, verify
-them with `shasum -a 256 -c SHA256SUMS`. Three retained work snapshots are
+them with `shasum -a 256 -c SHA256SUMS`. Four retained work snapshots are
 tracked deliberately for continuity:
 
 - `e028_h0125_m4_campaign_stage4_work_20260723.npz` is byte-identical to the
@@ -15,6 +16,10 @@ tracked deliberately for continuity:
   accepted `e028_h0125_m4_campaign_checkpoint_20260724.npz` state.
 - `e028_h0125_m4_campaign_stage6_work_20260725.npz` is byte-identical to the
   accepted `e028_h0125_m4_campaign_checkpoint_20260725.npz` state.
+- `e028_h0125_m4_campaign_stage7_work_20260726.npz` preserves a converged
+  endpoint whose canonical accepted path and margin-tail gate failed. It is
+  not byte-identical to an accepted checkpoint and must not be promoted
+  without a new experiment.
 
 The work suffix preserves solver lineage and is not an acceptance or physics
 claim. Before replacing a tracked work snapshot, commit the prior version and
@@ -588,3 +593,77 @@ contains ten nodes in one component. No sampled node has `sigma_2<0.05`.
 This is a half-source discrete branch-reach result, not a full-source or
 continuum refinement and not evidence of artificial gravity, inertial
 control, spacetime engineering, FTL, or propulsion.
+
+## `e028_h0125_m4_campaign_stage7_work_20260726.npz`
+
+- Date: 2026-07-26
+- Input lineage: collision-checked byte-identical copy of accepted stage 6,
+  SHA-256
+  `ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`
+- Stored endpoint amplitude: `7/12=0.5833333`
+- Acceptance status: **not accepted**; retained as a path-conflict work
+  snapshot
+- Endpoint closure: five full Newton corrections, `277` GMRES inner
+  iterations, final nonlinear relative `L2/Linf`
+  `1.86895e-8 / 6.04628e-7`
+- Maximum direct true-residual ratio: `9.0733e-9`; every `info=0`
+- Wide pair/spatial/time:
+  `0.0156637 / 0.0313274 / 1.00000258`
+- Fixed/centered spatial:
+  `0.0205178 / 0.0201393`, no endpoint conflict
+- Endpoint active/fixed/centered shifted-`sigma_2`:
+  `0.187494 / 0.0276443 / 0.0271270`
+- Centered shifted-`sigma_2` at physical steps `0.125/0.25/0.5`:
+  `0.0271270 / 0.0533162 / 0.122429`
+- Field SHA-256:
+  `92b625491af99cea96bb5bacbdeb211f0ef04323d34103f9c84b0073bc2c990f`
+- Report SHA-256:
+  `7bf2cada15267c53c7934916d6f07291a358860a0538cf7dead24fa6db3ce997`
+- Full linear-field SHA-256:
+  `6fe081d1b9eb5a02e88e6c0e79531f6419aa35053f75c87090cf03be1f5bc606`
+- Work-checkpoint SHA-256:
+  `00fa8ce4cddece362e01b179f01f6ecfe8cc93cbc7b8eaa2e0eaeb520418e9c2`
+
+A deterministic canonical replay ends bitwise-identically and repeats five
+Newton/`277` GMRES, but its first accepted full correction leaves both
+independent reconstructed cones: fixed pair/`sigma_2` become
+`-0.00244344 / -0.00762639`, and centered values become
+`-0.00252146 / -0.00783733`. Later states recover. A scratch half first step
+stays positive in active/fixed/centered reconstructions and reaches the same
+endpoint to relative field `L2=7.49e-12`, but it is a sensitivity, not the
+canonical lineage or a uniqueness proof.
+
+At matched centered step `0.25`, the `pair<0.02` connected source-layer core
+grows from `10` nodes at stage 6 to `74` nodes at stage 7, and its
+source-support-relative weight grows `2.67x`. This independently triggers the
+predeclared broadening stop. Preserve this work snapshot and its dated
+failure context; never rename it as an accepted campaign checkpoint.
+
+## `e028_h0125_m4_7of12_path_conflict_pgsa_20260726.npz`
+
+- Date: 2026-07-26
+- Field/report and endpoint values: exactly equal to the work-checkpoint
+  section above
+- Partial-source ratio at `r/r0=1`: `2.893673`
+- Maximum sampled gradient: `7.576358` at `r=12`
+- Centered native original/White residuals:
+  `1.138998% / 0.217652%`
+- Matched-step `0.25` original/White residuals:
+  `1.298384% / 0.211407%`
+- Sampled-charge flux deficits: approximately
+  `-1.0065% / -1.0433% / -1.0446%`
+- Artifact SHA-256:
+  `96ce02aca8198d23c1bb5c563bdf18b14c79ef4009dd03fd75fa2e77525c479b`
+
+A fresh same-amplitude coarse `(h,m)=(0.25,3)` control closes in four
+Newton/`141` GMRES. Fine versus coarse changes are `+2.882% / +0.304%` in
+ratio/endpoint gradient, `-28.32% / -46.37%` in matched original/White
+residuals, `-37.75%` in worst flux-deficit magnitude, and `-93.66%` in
+source-charge-error magnitude. Fine stage work rises `96.45%`, while native
+fixed/centered margins decline `34.19% / 35.54%`.
+
+This artifact is intentionally named `path_conflict`: the endpoint passes,
+but the predeclared canonical-path and margin-tail gates fail. It is retained
+negative evidence for E-029, not a full-source, continuum, physical-field,
+artificial-gravity, inertial-control, spacetime-engineering, FTL, or
+propulsion result.

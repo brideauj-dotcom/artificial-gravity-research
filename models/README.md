@@ -1181,3 +1181,27 @@ extensions before full source passes.
 Stage 6 remains a half-source numerical result for a hypothetical scalar PDE.
 No detected field, physical artificial gravity, inertial control, spacetime
 engineering, FTL, or propulsion claim follows.
+
+Stage 7 was deliberately retained as a path-conflict result rather than an
+accepted continuation state. A verified byte-identical stage-6 work copy
+closes `7/12` in five full Newton corrections and `277` GMRES iterations with
+positive stored and endpoint full-`Gamma_2` gates. However, deterministic
+replay shows that the first canonical full correction drives the independent
+fixed and centered pair/`sigma_2` reconstructions negative. A half first
+correction remains positive and later reaches the same endpoint to relative
+field `L2=7.49e-12`, demonstrating solver-path sensitivity without satisfying
+the predefined gate. The matched-step `pair<0.02` source-layer core also
+expands from `10` to `74` nodes and grows `2.67x` in source-support weight.
+
+The resulting files are
+`models/checkpoints/e028_h0125_m4_campaign_stage7_work_20260726.npz`
+(SHA-256
+`00fa8ce4cddece362e01b179f01f6ecfe8cc93cbc7b8eaa2e0eaeb520418e9c2`)
+and
+`models/checkpoints/e028_h0125_m4_7of12_path_conflict_pgsa_20260726.npz`
+(SHA-256
+`96ce02aca8198d23c1bb5c563bdf18b14c79ef4009dd03fd75fa2e77525c479b`).
+They preserve an auditable negative state; neither is an accepted checkpoint.
+Accepted campaign lineage remains at stage 6. E-029 must create a new
+fingerprinted diagnostic-cone-safe continuation, bisect the source step, and
+pass fine/coarse path and tail gates before stage 7 can be reconsidered.
