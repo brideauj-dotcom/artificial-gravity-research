@@ -1359,3 +1359,118 @@ Add sources here with enough detail that future runs can judge quality quickly.
   stages, another coupled refinement, fixed-box comparison,
   density/asymmetry, target response, EFT validity, reaction accounting,
   useful gravity, inertial control, FTL, and propulsion remain blocked.
+
+### E-028 `7/12` Endpoint-versus-Path and Refinement Boundary
+
+- **Links:** Caffarelli, Nirenberg, and Spruck,
+  https://doi.org/10.1007/BF02392544; Froese, Oberman, and Salvador,
+  https://arxiv.org/abs/1502.04969 and
+  https://doi.org/10.1093/imanum/drw007; Qi and Sun,
+  https://doi.org/10.1007/BF01581275; Kearfott and Xing,
+  https://doi.org/10.1137/0731048; Azimzadeh,
+  https://arxiv.org/abs/1701.06951 and
+  https://doi.org/10.1090/mcom/3347; internal calculation and retained
+  path-conflict artifacts dated 2026-07-26.
+- **Continuous admissibility and transfer boundary:** Caffarelli,
+  Nirenberg, and Spruck place the continuous `k`-Hessian equation in its
+  Gårding admissible cone. Froese-Oberman-Salvador characterize
+  three-dimensional `Gamma_2` by positive eigenvalue pair sums together with
+  positive `sigma_2`, but their convergence result is for a Cartesian
+  monotone scheme under coupled spatial/angular refinement. It neither
+  validates E-028's reflected-axis cylindrical construction nor makes a
+  converged accurate discretization unique. Their accurate scheme is also a
+  warning that empirical Newton closure need not carry a convergence proof
+  or guarantee selection of the desired root.
+- **Path and generalized-Jacobian boundary:** Qi-Sun's local semismooth
+  Newton result requires nonsingularity of every relevant Clarke
+  generalized-Jacobian element. At this endpoint the monotone extension is
+  strictly on its smooth raw-`sigma_2` branch, and each of the four observed
+  frame ties has exactly identical tied curvature triples and gradients.
+  All `16` frame selections therefore assemble to one numerical matrix.
+  Kearfott-Xing certify absence of path jumping with interval inclusion over
+  a smooth finite-dimensional path; endpoint closure, finite segment
+  samples, and tangent/secant agreement do not meet that standard, and the
+  min operator adds a nonsmooth transfer issue.
+- **WCDD interpretation:** Azimzadeh proves that a weakly diagonally
+  dominant L-matrix is a nonsingular M-matrix exactly when it is weakly
+  chained diagonally dominant. E-028's sign-normalized endpoint matrix has
+  positive diagonal, no positive off-diagonal, all rows weakly diagonally
+  dominant to numerical tolerance, and `3036` strict rows. It has two
+  strongly connected components rather than one: the weak singleton
+  `(rho,z)=(0,7.625)` points into the `322318`-node component containing
+  strict rows. Thus every component can reach a strict component and the
+  numerical WCDD graph condition passes. Floating signs and dominance
+  tolerances are not interval inequalities, so this is M-matrix-pattern
+  support rather than a proved inverse or exact-root enclosure.
+- **Tracked points and continuation geometry:** Active/fixed/centered checks
+  at `(6.25,0.375)` and `(6.25,0.75)` remain positive. Tangent-mismatch
+  proxies improve across stages 4--7 as
+  `0.060480 / 0.048207 / 0.040049 / 0.034506`; the stage-7 weighted
+  successive-increment cosine is `0.999953776`, and the secant miss divided
+  by the new increment is `0.0327969`. These are finite-grid branch-health
+  diagnostics, not a no-jump or continuum certificate.
+- **Strict endpoint result:** Starting from a collision-checked
+  byte-identical copy of accepted stage 6, the fine campaign reaches `7/12`
+  in five full Newton corrections and `277` GMRES iterations. Maximum direct
+  true-residual ratio is `9.0733e-9`; final nonlinear relative `L2/Linf` are
+  `1.86895e-8 / 6.04628e-7`. Wide pair/spatial/time minima are
+  `0.0156637 / 0.0313274 / 1.00000258`, and fixed/centered spatial minima
+  are `0.0205178 / 0.0201393`.
+- **Endpoint full-cone result:** Active
+  `sigma_1/pair/sigma_2` minima are
+  `0.750001 / 0.0156637 / 0.187494`; fixed minima are
+  `0.750043 / 0.0102589 / 0.0276443`; centered native-step minima are
+  `0.750040 / 0.0100696 / 0.0271270`. All nonpositive counts are zero.
+  Centered common-window `sigma_2` minima at steps `0.125/0.25/0.5` are
+  `0.0271270 / 0.0533162 / 0.122429`.
+- **Canonical-path failure:** A deterministic replay ends bitwise-identically
+  and repeats five Newton/`277` GMRES. Its first accepted full correction
+  remains active-cone positive but drives fixed pair/`sigma_2` to
+  `-0.00244344 / -0.00762639` and centered values to
+  `-0.00252146 / -0.00783733`. Nine-point segment sampling reproduces the
+  negative excursion. Later states recover. Because the prior run explicitly
+  required stopping if any frame became nonpositive, the endpoint cannot be
+  promoted into the accepted lineage.
+- **Cone-positive sensitivity:** Replacing only that first correction by a
+  half step leaves active/fixed/centered pair margins positive at
+  `0.016995 / 0.007405 / 0.007246`. Four later full corrections close in
+  `237` GMRES and reach the canonical root to relative field
+  `L2=7.49e-12`, maximum absolute difference `7.02e-8`, and relative
+  residual `3.37e-9`. This identifies a solver-path sensitivity and supports
+  a common sampled fixed-grid root; it does not certify a continuously
+  admissible source homotopy or supersede the failed canonical replay.
+- **Tail stop:** At matched centered step `0.25` on `rho<=78.5`, stage
+  `6/12 -> 7/12` lowers the pair minimum
+  `0.0193653 -> 0.0157346`. The `pair<0.05` set remains one connected
+  source-layer component and grows `227 -> 240` nodes; full-window weight
+  grows `6.535e-5 -> 7.054e-5`, while source-support weight stays near
+  `0.003139`. The stricter `pair<0.02` core grows `10 -> 74` nodes and its
+  source-support weight grows `0.000270 -> 0.000721`, a `2.67x`
+  broadening. That independently meets the predeclared material-broadening
+  stop rule.
+- **Fresh coarse control:** A custom same-amplitude `(h,m)=(0.25,3)` solve
+  closes in four Newton/`141` GMRES. Fine versus coarse changes are
+  `+2.882% / +0.304%` in ratio/endpoint gradient,
+  `-28.32% / -46.37%` in matched original/White residual,
+  `-37.75%` in worst flux-deficit magnitude, and `-93.66%` in source-charge
+  error magnitude. Fine stage work rises `96.45%`, while native
+  fixed/centered margins decline `34.19% / 35.54%`. The integrated
+  diagnostics improve, but local admissibility margins and solver work do
+  not; two grids are not an asymptotic convergence study.
+- **Artifact and decision:** Retain
+  `e028_h0125_m4_campaign_stage7_work_20260726.npz` (SHA-256
+  `00fa8ce4cddece362e01b179f01f6ecfe8cc93cbc7b8eaa2e0eaeb520418e9c2`)
+  and `e028_h0125_m4_7of12_path_conflict_pgsa_20260726.npz` (SHA-256
+  `96ce02aca8198d23c1bb5c563bdf18b14c79ef4009dd03fd75fa2e77525c479b`)
+  as documented work/failure evidence. Accepted lineage remains at stage 6,
+  SHA-256
+  `ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`.
+  A new fingerprinted diagnostic-cone-safe campaign may bisect the source
+  interval and record independent cone status per accepted iterate. It must
+  preserve this negative result and pass a predeclared tail/refinement gate.
+- **Impact on hypotheses:** H-019 remains `Medium-low`, but its accepted
+  source reach does not advance. E-028 is blocked at the canonical stage-7
+  path/refinement gate; E-029 is the corrective numerical experiment. This
+  remains a hypothetical dilute scalar PDE whose cosmological translation is
+  negligible. It is not evidence for artificial gravity, inertial control,
+  spacetime engineering, FTL, or propulsion.

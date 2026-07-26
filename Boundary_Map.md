@@ -288,8 +288,8 @@ Faster-than-light travel generally creates causality issues in relativity. Any p
 - **Same-observable boundary:** The current annulus diagnostic chooses flux radii as fractions of the numerical box. An `R=80` versus `R=160` run would therefore sample different physical spheres and cannot by itself establish outer-box stability. Any later box comparison must hold physical flux radii and the interior diagnostic window fixed, while separately reporting global minima over each full box.
 - **Continuation-geometry boundary:** The full stage-2 secant remains a preserved failed predictor, while plain previous-stage seeds close stages 3 through 6. Stage-4-to-5 and stage-5-to-6 increment cosines are `0.999903 / 0.999935`, and their secant misses are `4.166% / 3.659%` of the new increments. These support a smooth sampled fixed-grid continuation but do not supply a Jacobian inverse bound, analytic uniqueness argument, or validated enclosure. Global minima and tracked warning locations move differently, and centered quantitative trends depend on physical difference step; neither global-only nor fixed-location-only tracking is sufficient. Predictor or schedule changes require separate fingerprints and may not rewrite accepted provenance.
 - **Solver-path and tail boundary:** The canonical first correction toward `4/12` passes strict GMRES, Armijo decrease, and solved wide gates but temporarily leaves the fixed/centered `Gamma_2` reconstructions; a separate half-step replay stays positive and reaches the same endpoint. By contrast, fresh stage-5 and stage-6 replays end bitwise-identically, and stage 6 keeps all five accepted corrections plus nine samples on every piecewise-affine segment positive in the three reconstructions. The minimum sampled pair sums are nevertheless close: `0.017445 / 0.002255 / 0.002233` in active/fixed/centered frames. This supports one sampled fixed-grid path; it does not prove a unique continuum branch. At matched centered step `0.25`, the pair minimum erodes `0.05711 -> 0.03590 -> 0.02525 -> 0.01937` across stages 3--6. At stage 6, `pair<0.05` occupies `227/310365` common-window nodes and only `6.54e-5` of full-window axisymmetric weight, but `0.00314` of source-support weight and `0.00334` of source-transition weight. Its `223` positive-weight nodes form one connected near-midplane component spanning `rho=0--6.25`, `z=0--0.75` and reaching the inner source smoothing layer; the full-window denominator therefore understates its source-relative prominence. Record connectivity, threshold sensitivity, source-relative weights, and node counts alongside global minima. In-progress checkpoints remain search states, not scientific endpoints.
-- **Possible cracks:** Integrity-checked accepted-stage replay makes strict `7/12` through full-source continuation testable one stage at a time. A full-source fine state whose fixed and centered node is nonnegative, or demonstrably converges under another coupled refinement, could justify the fixed-observable outer-box check. Even that would support only a local dimensionless feature of a hypothetical scalar PDE; it would not address the `~6e-35 m/s^2` absolute scale, useful artificial gravity, inertial control, FTL, or reactionless propulsion.
-- **Sources:** Froese, Oberman, and Salvador 2016; Finlay and Oberman 2018/2019; Sala and Tuminaro 2008; Uecker 2022; Kearfott and Xing 1994; PyAMG 5.3 and SciPy 1.18 official documentation; internal E-028 calculations 2026-07-20 through 2026-07-25.
+- **Possible cracks:** The strict `7/12` endpoint closes, but its canonical first correction leaves the independent cones and its low-margin core broadens, so accepted branch reach remains `6/12`; see B-030. E-029 can test whether a new fingerprinted cone-safe source-step bisection passes on fine and coarse grids without rewriting that failure. Only a full-source fine state with positive path/tail gates and convincing coupled refinement could justify the fixed-observable outer-box check. Even that would support only a local dimensionless feature of a hypothetical scalar PDE; it would not address the `~6e-35 m/s^2` absolute scale, useful artificial gravity, inertial control, FTL, or reactionless propulsion.
+- **Sources:** Froese, Oberman, and Salvador 2016; Finlay and Oberman 2018/2019; Sala and Tuminaro 2008; Uecker 2022; Kearfott and Xing 1994; PyAMG 5.3 and SciPy 1.18 official documentation; internal E-028 calculations 2026-07-20 through 2026-07-26.
 
 ### B-028: Runtime Or Implementation Provenance Drift Requires Replay, Not Silent Continuation
 
@@ -310,6 +310,57 @@ Faster-than-light travel generally creates causality issues in relativity. Any p
 - **Operational rule:** In-progress fields are computational search states. Preserve the last accepted amplitude immutably; never quote force/flux from an incomplete iterate; require final loader equality plus strict nonlinear/Krylov/wide and active/fixed/centered `Gamma_2` checks. If path identity matters, compare a separately labeled cone-preserving replay without rewriting the canonical lineage. Agreement supports a fixed-grid root only.
 - **Possible cracks:** A checkpoint-compatible schema migration could store independent cone status and exact tie selections per iterate and enforce a diagnostic-cone-safe line search, followed by a clean replay. Repeating full tie enumeration and bounded segment audits at each new amplitude would extend the observed fixed-grid evidence. A matrix-free smallest-singular-value or inverse-norm estimate could warn of nearby singularity but would not be rigorous without validated bounds. A formal uniqueness result, a feasible interval enclosure for the exact cylindrical discrete operator, or convergence of canonical/cone-positive paths under coupled refinement would strengthen branch identity. None would by itself establish physical realization or useful gravity.
 - **Sources:** Froese, Oberman, and Salvador 2016; Awanou 2014/2016; Qi and Sun 1993; Finlay and Oberman 2018/2019; Uecker 2022; Kearfott and Xing 1994; Azimzadeh 2019; internal E-028 canonical and replay calculations, 2026-07-23 through 2026-07-25.
+
+### B-030: A Positive Stage-7 Endpoint Does Not Pass a Failed Canonical Path and Refinement Gate
+
+- **Claim:** A positive converged endpoint and an alternate cone-positive
+  corrector path cannot retroactively pass a predeclared canonical-path gate.
+  If the canonical accepted correction leaves an independently reconstructed
+  admissible cone or a predeclared low-margin tail broadens materially, the
+  accepted continuation lineage stops at the preceding checkpoint.
+- **Why it matters:** E-028's strict `7/12` endpoint passes every stored
+  nonlinear, Krylov, line-search, wide, fixed, centered, and endpoint
+  full-`Gamma_2` check. Its first canonical full Newton correction
+  nevertheless drives fixed pair/`sigma_2` to
+  `-0.002443/-0.007626` and centered values to
+  `-0.002521/-0.007837`. The matched-step `pair<0.02` source-layer core
+  simultaneously broadens from `10` to `74` nodes and grows `2.67x` in
+  source-support-relative weight.
+- **Strength:** Established internally for this deterministic sampled
+  discrete campaign. A half first correction remains positive in all three
+  reconstructions and later reaches the canonical endpoint to relative field
+  `L2=7.49e-12`, so the excursion is solver-path dependent. That agreement
+  supports a common sampled fixed-grid root; it does not satisfy the
+  predefined canonical gate, certify the continuous source homotopy, or
+  establish a unique continuum branch.
+- **Assumptions and theorem boundary:** `Gamma_2` positivity is evaluated by
+  finite-precision active, fixed, and centered reconstructions. The endpoint
+  frame ties collapse to one numerical matrix, and its two-component graph
+  satisfies the numerical WCDD path-to-strict condition, but there is no
+  interval dominance proof, inverse bound, nearby-source enclosure, or
+  Kearfott-Xing-style no-path-jump certificate. Froese-Oberman-Salvador's
+  Cartesian coupled-refinement theorem does not transfer automatically to
+  this reflected cylindrical discretization. A fresh coarse control improves
+  integrated residuals while fine local margins and Krylov work worsen; two
+  grids do not prove convergence.
+- **Operational rule:** Preserve accepted stage-6 checkpoint SHA
+  `ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`
+  immutably. Retain the stage-7 endpoint only under explicit
+  `work`/`path_conflict` names with digests and ledger context. Do not advance
+  to `8/12`, outer-box, density, asymmetry, target, or engineering work until
+  a new fingerprinted experiment resolves the path and tail gates. Never
+  present a work checkpoint as acceptance or physics evidence.
+- **Possible cracks:** E-029 can add a schema-compatible line search that
+  records and enforces active/fixed/centered full-`Gamma_2` positivity,
+  bisect `6/12 -> 7/12` beginning at `13/24`, and require compatible
+  fine/coarse sampled paths plus fixed source-relative tail caps. A successful
+  retry would strengthen fixed-grid continuation evidence only. Validated
+  interval continuation and coupled-refinement agreement would still be
+  needed for a substantially stronger mathematical conclusion.
+- **Sources:** Caffarelli, Nirenberg, and Spruck 1985; Froese, Oberman, and
+  Salvador 2017; Qi and Sun 1993; Kearfott and Xing 1994; Azimzadeh 2019;
+  internal E-028 endpoint, canonical replay, half-step sensitivity, tail, and
+  coarse-control calculations, 2026-07-26.
 
 ## Boundary Entry Template
 
