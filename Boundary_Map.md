@@ -362,6 +362,53 @@ Faster-than-light travel generally creates causality issues in relativity. Any p
   internal E-028 endpoint, canonical replay, half-step sensitivity, tail, and
   coarse-control calculations, 2026-07-26.
 
+### B-031: A Cone-Safe Corrector Path Does Not Rescue a Broadening Source-Layer Tail
+
+- **Claim:** Keeping accepted Newton states and bounded segment samples inside
+  multiple reconstructed full-`Gamma_2` cones does not establish a healthy
+  source continuation when a separately predeclared, resolution-specific
+  low-pair tail broadens. Path admissibility and endpoint margin erosion are
+  independent gates.
+- **Why it matters:** E-029 repairs E-028's corrector excursion at the
+  prescribed `13/24` midpoint. Fine and fresh coarse solves remain positive
+  in active, fixed, native-centered, and matched-centered reconstructions at
+  every accepted state and nine interior samples per correction segment.
+  Nevertheless, the fine matched-step `pair<0.02` tail grows from the frozen
+  stage-6 cap `10` nodes/one component/source-support weight `0.000270316` to
+  `35`/one/`0.000512697`; coarse grows from
+  `5`/one/`0.000414605` to `16`/two/`0.001586027`.
+- **Strength:** Established internally for the two deterministic sampled
+  E-029 grids and the declared thresholds. A separately labeled no-write
+  continuation to `7/12` also stays sampled-cone positive while reproducing
+  the broad fine tail (`74` nodes, weight `0.000721390`) and coarse tail
+  (`30` nodes, two components, weight `0.00173081`). This distinguishes the
+  corrector-path repair from the tail failure, but it is not an asymptotic
+  convergence result.
+- **Assumptions and theorem boundary:** Gårding-cone convexity applies to a
+  fixed affine reconstruction; it does not certify floating active-frame
+  changes, interval positivity, a unique source branch, or continuum
+  convergence. Froese-Oberman-Salvador's Cartesian coupled-refinement theorem
+  does not automatically transfer to this reflected cylindrical operator.
+  Nine samples per segment are finite checks, not Kearfott-Xing interval
+  continuation. E-029 also stops before the required genuine endpoint
+  active-frame tie enumeration and WCDD/M-matrix-pattern audit.
+- **Operational rule:** Preserve immutable accepted E-028 stage `6/12`, SHA
+  `ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`.
+  Retain E-029 fine/coarse `13/24` states only as dated `tail_conflict`
+  artifacts with role-bound reports and digests. Do not accept `13/24` or
+  `7/12`, relax the frozen tail gate, or begin `8/12`, outer-box, density,
+  asymmetry, target, or engineering work.
+- **Possible cracks:** E-030 may determine whether the observed jump is mainly
+  a hard-threshold crossing or a mesh-dependent precursor to loss of
+  admissibility. Use the accepted stage-6 tangent to predict the crossing
+  spectrum, add a threshold-free weighted margin deficit, and verify only
+  `49/96` and `25/48` on both grids. Even agreement would be numerical
+  diagnostic evidence, not a physical-field or engineering opportunity.
+- **Sources:** Gårding 1959; Caffarelli, Nirenberg, and Spruck 1985; Froese,
+  Oberman, and Salvador 2017; Awanou 2018; den Heijer and Rheinboldt 1981;
+  Kearfott and Xing 1994; Qi and Sun 1993; internal E-029 fine/coarse
+  calculations and scratch sensitivity, 2026-07-27.
+
 ## Boundary Entry Template
 
 ```markdown

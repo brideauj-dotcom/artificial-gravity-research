@@ -1387,3 +1387,149 @@ diagnostics per accepted iterate, and require a positive fine/coarse sampled
 path plus a non-broadening tail before reconsidering `7/12`. Do not advance
 to `8/12` or start outer-box, density, asymmetry, target, EFT, or propulsion
 work.
+
+## 2026-07-27 - E-029 Diagnostic-Cone-Safe Continuation
+
+**Focus question:** Can a new, fingerprinted continuation campaign advance
+from immutable accepted E-028 stage `6/12` through the prescribed `13/24`
+midpoint to `7/12` while keeping every accepted iterate and bounded segment
+sample inside the active, fixed, and centered full shifted-`Gamma_2` cones on
+both fine and fresh coarse grids, without broadening the predeclared
+source-relative low-pair tails?
+
+**Sources read:**
+
+- L. Gårding, “An inequality for hyperbolic polynomials,” *Journal of
+  Mathematics and Mechanics* **8** (1959), 957-965,
+  DOI `10.1512/IUMJ.1959.8.58061`; and L. Caffarelli, L. Nirenberg, and
+  J. Spruck, “The Dirichlet problem for nonlinear second-order elliptic
+  equations, III,” *Acta Mathematica* **155** (1985), 261-301,
+  DOI `10.1007/BF02392544`. These support the convex hyperbolicity cone and
+  concavity setting, not a branch-uniqueness claim for this discretization.
+- B. Froese, A. Oberman, and T. Salvador, “Numerical methods for the
+  2-Hessian elliptic partial differential equation,” *IMA Journal of
+  Numerical Analysis* **37** (2017), 2093-2122,
+  DOI `10.1093/imanum/drw007`, arXiv:`1502.04969`; and G. Awanou,
+  “Iterative methods for k-Hessian equations,” *Methods and Applications of
+  Analysis* **25** (2018), 51-72,
+  DOI `10.4310/MAA.2018.v25.n1.a3`, arXiv:`1406.5366`. Their convergence
+  and local-iteration results require hypotheses not established for the
+  reflected cylindrical min-of-frames campaign.
+- J.-M. Mirebeau, “Discretization of the 3D Monge-Ampere operator, between
+  wide stencils and power diagrams,” *ESAIM: M2AN* **49** (2015),
+  1511-1523, DOI `10.1051/m2an/2015016`; C. den Heijer and
+  W. Rheinboldt, “On steplength algorithms for a class of continuation
+  methods,” *SIAM Journal on Numerical Analysis* **18** (1981), 925-948,
+  DOI `10.1137/0718066`; and R. Kearfott and Z. Xing, “An interval step
+  control for continuation methods,” *SIAM Journal on Numerical Analysis*
+  **31** (1994), 892-914, DOI `10.1137/0731048`. Residual backtracking and
+  corrector diagnostics motivate dyadic source-step subdivision, but a true
+  no-jump result would require validated interval/rank hypotheses absent
+  here.
+- L. Qi and J. Sun, “A nonsmooth version of Newton's method,”
+  *Mathematical Programming* **58** (1993), 353-367,
+  DOI `10.1007/BF01581275`. Semismooth Newton convergence requires
+  generalized-Jacobian regularity that was not proved for this active-frame
+  operator.
+
+**Deepening performed:** Added a separate E-029 campaign rather than altering
+E-028. It validates the immutable stage-6 container, field, linear field,
+report, system, source, runtime, dependencies, and implementation contents.
+Historical absolute module paths are treated as non-semantic only after the
+stored module bytes match exactly; the E-028 validator itself is unchanged.
+The new line search preserves the strict nonlinear/Krylov/wide gates and
+requires positive active, fixed, native-centered, and matched-centered
+`sigma_1`, minimum pair sum, and `sigma_2` at each accepted endpoint plus
+nine evenly spaced interior samples of every accepted Newton segment.
+
+The endpoint tail audit uses the predeclared matched centered step `0.25`,
+common window `rho<=78.5`, four-neighbor topology, and both raw/positive-
+weight node counts and source-relative cylindrical weights. Grid-specific
+caps were frozen from the immutable fine stage 6 and a freshly reconstructed
+coarse stage 6 before testing `13/24`. Tails are endpoint acceptance gates,
+not off-root Newton-state gates.
+
+**What changed:** Fine `13/24` closes in four Newton corrections and `208`
+GMRES inner iterations at relative residual `4.85255e-8`; coarse `13/24`
+closes in three corrections and `106` GMRES at `1.17625e-8`. Every accepted
+step is `1.0`, every direct linear residual is below `1e-8`, and all four
+full-cone reconstructions plus every nine-point segment audit remain
+positive. Fine endpoint active `sigma_1/pair/sigma_2` minima are
+`0.7500013 / 0.0172407 / 0.1874845`; fixed values are
+`0.7500410 / 0.00991990 / 0.0259839`; native-centered values are
+`0.7500384 / 0.00974052 / 0.0255058`; and matched-centered values are
+`0.7501307 / 0.0173536 / 0.0605420`.
+
+The fine `pair<0.02` tail nevertheless grows from its frozen stage-6 cap of
+`10` nodes, one component, and source-support weight `0.000270316` to `35`
+nodes, one component, and `0.000512697`. Fine `pair<0.05` also grows
+`227 -> 232` nodes even though its source-support weight remains
+`0.003138624`. On the coarse grid, `pair<0.02` grows from `5` nodes, one
+component, and `0.000414605` to `16` nodes, two components, and
+`0.001586027`; its `pair<0.05` tail passes. Each grid therefore fails its
+own frozen no-broadening cap already at the midpoint.
+
+**Reasoning:** Dyadic source-step subdivision repairs the E-028 corrector-path
+excursion at `13/24`, but it does not repair the independently declared
+tail/refinement boundary. Convexity of a fixed reconstruction's
+hyperbolicity cone helps interpret an exactly checked chord; it does not make
+finite sampling an interval certificate, smooth the active-frame selection,
+prove uniqueness, or transfer a Cartesian convergence theorem to this
+cylindrical scheme. Path admissibility and source-layer margin erosion are
+therefore separate gates.
+
+A separately labeled scratch sensitivity continued the cone-safe split path
+from `13/24` to `7/12`: all sampled cone paths stayed positive and the fine
+endpoint matched the rejected E-028 stage-7 field to relative `L2=9.36e-12`.
+The fine `pair<0.02` tail still reached `74` nodes and source-support weight
+`0.000721390`; the coarse tail reached `30` nodes in two components and
+weight `0.00173081`. This was not written as a campaign artifact and cannot
+be accepted, but it shows that the tail failure is not cured by the repaired
+corrector path.
+
+**Failure or boundary found:** E-029 fails its predeclared tail gate on both
+grids at `13/24`, before `7/12` and before the still-required endpoint
+active-frame tie/WCDD audit. The campaign stops and leaves immutable accepted
+lineage at E-028 stage `6/12`, checkpoint SHA-256
+`ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`.
+The two retained E-029 files are explicitly `tail_conflict` artifacts, not
+accepted checkpoints or evidence of a physical field.
+
+**Blank space or new idea:** The remaining narrow numerical question is
+whether the low-pair growth is mainly a brittle hard-threshold crossing or a
+mesh-dependent precursor to genuine loss of admissibility. E-030 should use
+the accepted stage-6 tangent equation to predict where the margin spectrum
+crosses `0.05` and `0.02`, add a threshold-free weighted deficit diagnostic,
+and verify only the dyadic amplitudes `49/96` and `25/48` on fine and coarse
+grids. This is an unclear numerical regime, not an engineering or physics
+crack.
+
+**Hypothesis updates:** H-019 remains `Medium-low`; its accepted reach stays
+at `6/12`. E-029 is complete as a negative path-versus-tail separation.
+B-031 records that a cone-safe corrector path does not rescue a broadening
+source-layer tail, and E-030 becomes the next bounded diagnostic. The exact
+center remains force-free, the cosmological `r0=1 m` translation remains
+about `6e-35 m/s^2`, and no artificial-gravity, inertial-control, spacetime-
+engineering, reactionless-propulsion, or faster-than-light conclusion
+follows.
+
+**Verification and artifact identity:** The retained fine `13/24`
+tail-conflict artifact has container SHA-256
+`12459bdb21a8eefdd1a1ccfadf65b04556f533968d2f7b743eeb43ad27e7cf45`
+and field SHA-256
+`8cfefb872228b31139af1db64c31f582d1e82e9ccf9f35346ec28e0127891dd0`.
+The retained coarse artifact has container SHA-256
+`75242c78edadbf3f1e9194f82380b17ed4b7abcadc539ccc12025f25def36c9e`
+and field SHA-256
+`8681fd3614a54389d5fc58166077cd0090490c8480fa0d1872f9144173929329`.
+Their embedded reports reproduce the final canonical run and loader-verified
+field digests. The full repository suite passes `104/104`; every checkpoint
+manifest digest verifies; `pip check` reports no broken requirements; and
+`git diff --check` is clean.
+
+**Next best step:** Run E-030 from immutable accepted stage 6: compute the
+fine/coarse tangent-predicted low-pair margin-crossing spectrum, then verify
+only `49/96` and `25/48` with the unchanged cone/path and tail bookkeeping.
+Do not relax E-029, accept any state beyond `6/12`, revisit `7/12`, advance
+to `8/12`, or begin outer-box, density, asymmetry, target, EFT, or propulsion
+work.
