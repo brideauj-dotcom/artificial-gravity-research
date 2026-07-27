@@ -1474,3 +1474,137 @@ Add sources here with enough detail that future runs can judge quality quickly.
   remains a hypothetical dilute scalar PDE whose cosmological translation is
   negligible. It is not evidence for artificial gravity, inertial control,
   spacetime engineering, FTL, or propulsion.
+
+## 2026-07-27 - E-029 Admissibility-Preserving Continuation Sources
+
+- **Gårding 1959:** L. Gårding, “An inequality for hyperbolic polynomials,”
+  *Journal of Mathematics and Mechanics* **8**, 957-965,
+  DOI `10.1512/IUMJ.1959.8.58061`.
+  - The connected hyperbolicity component containing the positive cone is
+    convex. For a single fixed affine Hessian reconstruction, exact positive
+    endpoint membership therefore supports the whole chord remaining in that
+    same cone.
+  - **Transfer limit:** E-029 selects active frames with a nonsmooth minimum,
+    evaluates floating-point arrays, and samples nine chord points. The
+    theorem does not turn those samples into interval arithmetic, certify
+    active-frame switches, or establish solution-branch uniqueness.
+- **Caffarelli, Nirenberg, and Spruck 1985:** L. Caffarelli,
+  L. Nirenberg, and J. Spruck, “The Dirichlet problem for nonlinear
+  second-order elliptic equations, III: Functions of the eigenvalues of the
+  Hessian,” *Acta Mathematica* **155**, 261-301,
+  DOI `10.1007/BF02392544`.
+  - Supplies the classical admissible-cone setting in which
+    `sigma_k^(1/k)` is concave.
+  - **Transfer limit:** It does not validate the reflected cylindrical
+    discrete operator, the chosen min-of-frames extension, or a numerical
+    continuation path.
+- **Froese, Oberman, and Salvador 2017:** B. Froese, A. Oberman, and
+  T. Salvador, “Numerical methods for the 2-Hessian elliptic partial
+  differential equation,” *IMA Journal of Numerical Analysis* **37**,
+  2093-2122, DOI `10.1093/imanum/drw007`, arXiv:`1502.04969`.
+  - Their three-dimensional ellipticity characterization requires positive
+    eigenvalue pair sums; positive `sigma_2` by itself is not enough. Their
+    monotone extension is defined outside the cone, so Newton closure alone
+    does not certify an admissible path.
+  - **Transfer limit:** Their convergence result couples Cartesian spatial
+    and angular refinement. It does not transfer automatically to E-029's
+    fixed reflected cylindrical grids.
+- **Awanou 2018:** G. Awanou, “Iterative methods for k-Hessian equations,”
+  *Methods and Applications of Analysis* **25**, 51-72,
+  DOI `10.4310/MAA.2018.v25.n1.a3`, arXiv:`1406.5366`.
+  - Supports local convergence near a smooth, nondegenerate uniformly
+    elliptic solution.
+  - **Transfer limit:** E-029 has no proven close-seed radius, uniform
+    elliptic neighborhood, or continuum nondegeneracy estimate.
+- **Mirebeau 2015:** J.-M. Mirebeau, “Discretization of the 3D
+  Monge-Ampere operator, between wide stencils and power diagrams,”
+  *ESAIM: M2AN* **49**, 1511-1523,
+  DOI `10.1051/m2an/2015016`.
+  - Proves global convergence of a damped Newton solver for that paper's
+    discrete Monge-Ampere system under its properness, smoothness, and
+    invertibility setting.
+  - **Transfer limit:** That result does not cover E-029's semismooth
+    cylindrical 2-Hessian minimum or supply a source-homotopy certificate.
+- **den Heijer and Rheinboldt 1981:** C. den Heijer and W. Rheinboldt,
+  “On steplength algorithms for a class of continuation methods,”
+  *SIAM Journal on Numerical Analysis* **18**, 925-948,
+  DOI `10.1137/0718066`.
+  - Corrector-iterate sequences can estimate corrector quality and guide
+    continuation step length.
+  - **Transfer limit:** The paper explicitly distinguishes those useful
+    estimates from a rigorous convergence-radius bound, which needs global
+    information. E-029 therefore uses the phrase “dyadic source-step
+    subdivision,” not scalar root “bisection.”
+- **Kearfott and Xing 1994:** R. B. Kearfott and Z. Xing, “An interval step
+  control for continuation methods,” *SIAM Journal on Numerical Analysis*
+  **31**, 892-914, DOI `10.1137/0731048`.
+  - Gives a genuinely validated route to preventing path jumps by interval
+    enclosure and same-curve uniqueness checks.
+  - **Transfer limit:** Positive endpoints and nine interior samples are not
+    that certificate. E-029 computes no interval inverse, rank enclosure, or
+    unique-curve box.
+- **Qi and Sun 1993:** L. Qi and J. Sun, “A nonsmooth version of Newton's
+  method,” *Mathematical Programming* **58**, 353-367,
+  DOI `10.1007/BF01581275`.
+  - Semismooth Newton has strong local behavior when every relevant
+    generalized Jacobian is nonsingular.
+  - **Transfer limit:** E-029 has not established that regularity. A genuine
+    endpoint frame-tie enumeration and WCDD/M-matrix-pattern audit remains an
+    acceptance prerequisite if the earlier path and tail screens ever pass.
+
+## 2026-07-27 - E-029 `13/24` Cone-Safe Midpoint and Tail Conflict
+
+- **Implementation and provenance:** `models/e029_cone_safe_campaign.py`
+  is a new campaign; E-025, E-026, and E-028 are unchanged. It validates the
+  immutable accepted E-028 stage-6 container
+  `ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`,
+  field, linear field, report, source, system, runtime, dependencies, and
+  module contents. Historical absolute paths are not treated as semantic
+  after exact module-content hashes match.
+- **Path screen:** Fine `13/24` closes in four Newton/`208` GMRES with
+  relative residual `4.85255e-8`; coarse closes in three Newton/`106` GMRES
+  with `1.17625e-8`. All accepted steps are full, every direct linear
+  residual is below `1e-8`, and active, fixed, native-centered, and
+  matched-centered full-`Gamma_2` are positive at every accepted endpoint
+  and all nine interior samples of every accepted segment.
+- **Fine endpoint margins:** Active `sigma_1/pair/sigma_2` minima are
+  `0.7500013 / 0.0172407 / 0.1874845`; fixed are
+  `0.7500410 / 0.00991990 / 0.0259839`; native-centered are
+  `0.7500384 / 0.00974052 / 0.0255058`; matched-centered are
+  `0.7501307 / 0.0173536 / 0.0605420`.
+- **Frozen tail gate:** At matched centered step `0.25` and
+  `rho<=78.5`, the fine `pair<0.02` set grows from its stage-6 cap
+  `10` nodes/one component/source-support weight `0.000270316` to
+  `35`/one/`0.000512697`; `pair<0.05` grows `227 -> 232` nodes.
+  Coarse `pair<0.02` grows from `5`/one/`0.000414605` to
+  `16`/two/`0.001586027`; coarse `pair<0.05` passes. Each grid fails its
+  own predeclared cap, so raw counts are never compared across resolutions.
+- **Decision:** The campaign stops at the first midpoint with
+  `tail_conflict`. Because the earlier tail screen fails, it does not claim
+  the unimplemented endpoint active-frame tie/WCDD audit passed. Accepted
+  lineage remains the E-028 `6/12` checkpoint; no `13/24` or `7/12` state is
+  accepted.
+- **Separately labeled sensitivity:** A no-write split continuation to
+  `7/12` kept the sampled cone path positive and reproduced the rejected
+  E-028 fine endpoint to relative field `L2=9.36e-12`, but the fine
+  `pair<0.02` tail still reached `74` nodes and weight `0.000721390`; coarse
+  reached `30` nodes/two components/`0.00173081`. This is diagnostic scratch
+  evidence, not a retained or accepted campaign state.
+- **Retained negative artifacts:** Fine
+  `e029_h0125_m4_13of24_tail_conflict_20260727.npz` has container/field
+  SHA-256
+  SHA-256
+  `12459bdb21a8eefdd1a1ccfadf65b04556f533968d2f7b743eeb43ad27e7cf45`
+  and field SHA-256
+  `8cfefb872228b31139af1db64c31f582d1e82e9ccf9f35346ec28e0127891dd0`.
+  Coarse `e029_h025_m3_13of24_tail_conflict_20260727.npz` has
+  container SHA-256
+  `75242c78edadbf3f1e9194f82380b17ed4b7abcadc539ccc12025f25def36c9e`
+  and field SHA-256
+  `8681fd3614a54389d5fc58166077cd0090490c8480fa0d1872f9144173929329`.
+- **Impact:** E-029 separates a repaired corrector path from a still-failing
+  refinement/tail boundary. H-019 remains `Medium-low`, with accepted source
+  reach fixed at `6/12`. E-030 should locate the onset of margin-spectrum
+  growth without relaxing any acceptance gate. No continuum, physical-field,
+  artificial-gravity, inertial-control, spacetime-engineering, FTL, or
+  propulsion conclusion follows.

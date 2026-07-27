@@ -1205,3 +1205,66 @@ They preserve an auditable negative state; neither is an accepted checkpoint.
 Accepted campaign lineage remains at stage 6. E-029 must create a new
 fingerprinted diagnostic-cone-safe continuation, bisect the source step, and
 pass fine/coarse path and tail gates before stage 7 can be reconsidered.
+
+## 2026-07-27 E-029 diagnostic-cone-safe midpoint
+
+`models/e029_cone_safe_campaign.py` is a separate, fingerprinted retry of
+only E-028's blocked `6/12 -> 7/12` interval. It does not modify or reinterpret
+the E-028 campaign. The driver:
+
+- validates the immutable accepted stage-6 container, field, linear field,
+  report, operator/source, runtime, dependencies, and module-content hashes;
+- stores logical repository-relative provenance while requiring the exact
+  historical module bytes, so a worktree path change is not mistaken for a
+  physics or implementation change;
+- tries the prescribed `13/24` midpoint before `14/24`;
+- keeps E-028's nonlinear, direct true-residual, Krylov, and wide-stencil
+  gates;
+- records active, fixed, native-centered, and matched-centered full
+  shifted-`Gamma_2` diagnostics at each accepted endpoint and at all nine
+  interior fractions `0.1,...,0.9` of every accepted correction segment,
+  including each sampled field SHA-256; and
+- applies grid-specific stage-6 caps to matched-step `pair<0.05` and
+  `pair<0.02` endpoint tails using four-neighbor topology, positive-weight
+  counts, and source-relative cylindrical weights.
+
+Fine `13/24` closes in four Newton corrections and `208` GMRES inner
+iterations with relative residual `4.85255e-8`. Fresh coarse `13/24` closes
+in three corrections and `106` GMRES with `1.17625e-8`. Every accepted step
+is full, all stored segment samples pass all four cone reconstructions, and
+the fine endpoint active/fixed/native-centered/matched-centered minimum pair
+sums are `0.0172407 / 0.00991990 / 0.00974052 / 0.0173536`.
+
+The predeclared tail gate fails before `7/12`. Fine `pair<0.02` grows from
+`10` nodes, one component, and source-support weight `0.000270316` at stage 6
+to `35`, one, and `0.000512697`; fine `pair<0.05` also grows
+`227 -> 232` nodes. Coarse `pair<0.02` grows from `5`, one, and
+`0.000414605` to `16`, two, and `0.001586027`; coarse `pair<0.05` passes.
+Because both grids must pass every cap, E-029 stops with `tail_conflict`.
+
+The retained role-bound artifacts are:
+
+- `models/checkpoints/e029_h0125_m4_13of24_tail_conflict_20260727.npz`,
+  container SHA-256
+  `12459bdb21a8eefdd1a1ccfadf65b04556f533968d2f7b743eeb43ad27e7cf45`,
+  field SHA-256
+  `8cfefb872228b31139af1db64c31f582d1e82e9ccf9f35346ec28e0127891dd0`;
+- `models/checkpoints/e029_h025_m3_13of24_tail_conflict_20260727.npz`,
+  container SHA-256
+  `75242c78edadbf3f1e9194f82380b17ed4b7abcadc539ccc12025f25def36c9e`,
+  field SHA-256
+  `8681fd3614a54389d5fc58166077cd0090490c8480fa0d1872f9144173929329`.
+
+Each embedded report declares `artifact_role` and a generic
+`output_field_sha256`; the existing artifact loader checks the metadata,
+report, and field digests agree. These are retained negative work states, not
+accepted checkpoints. The unimplemented endpoint active-frame tie/WCDD audit
+would remain required after a future path/tail pass; E-029 does not claim it
+passed.
+
+Accepted lineage remains the E-028 stage-6 checkpoint
+`ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`.
+Nine samples are not an interval enclosure, two grids are not a convergence
+theorem, and this hypothetical dimensionless PDE result is not evidence for a
+physical field, artificial gravity, inertial control, spacetime engineering,
+FTL, or propulsion.

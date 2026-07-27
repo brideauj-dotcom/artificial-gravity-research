@@ -667,3 +667,67 @@ but the predeclared canonical-path and margin-tail gates fail. It is retained
 negative evidence for E-029, not a full-source, continuum, physical-field,
 artificial-gravity, inertial-control, spacetime-engineering, FTL, or
 propulsion result.
+
+## `e029_h0125_m4_13of24_tail_conflict_20260727.npz`
+
+- Date: 2026-07-27
+- Grid/source: canonical fine `(h,m)=(0.125,4)` smooth annulus, continued
+  from immutable accepted E-028 stage `6/12`, checkpoint SHA-256
+  `ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`
+- Stored amplitude: `13/24=0.5416667`
+- Acceptance status: **not accepted**; retained as a fine-grid
+  `tail_conflict` work snapshot
+- Closure: four Newton corrections, `208` GMRES inner iterations, nonlinear
+  relative `L2=4.85255e-8`; all direct true-residual ratios are below `1e-8`
+- Path audit: active, fixed, native-centered, and matched-centered full
+  shifted-`Gamma_2` are positive at every accepted state and all nine stored
+  interior samples per correction segment
+- Endpoint active `sigma_1/pair/sigma_2`:
+  `0.7500013 / 0.0172407 / 0.1874845`
+- Endpoint fixed/native-centered/matched-centered pair:
+  `0.00991990 / 0.00974052 / 0.0173536`
+- Tail failure at matched step `0.25`, `rho<=78.5`:
+  `pair<0.05` grows from the frozen stage-6 cap `227` nodes to `232`;
+  `pair<0.02` grows from `10` nodes/one component/source-support weight
+  `0.000270316` to `35`/one/`0.000512697`
+- Field SHA-256:
+  `8cfefb872228b31139af1db64c31f582d1e82e9ccf9f35346ec28e0127891dd0`
+- Artifact SHA-256:
+  `12459bdb21a8eefdd1a1ccfadf65b04556f533968d2f7b743eeb43ad27e7cf45`
+- Loader identity: embedded `artifact_role=fine`; embedded generic
+  `output_field_sha256` matches the field and container metadata
+
+The sampled path repair does not override the failed endpoint tail gate.
+Preserve this file as immutable negative evidence; it is not an accepted
+checkpoint and cannot seed a later accepted state.
+
+## `e029_h025_m3_13of24_tail_conflict_20260727.npz`
+
+- Date: 2026-07-27
+- Grid/source: freshly reconstructed coarse `(h,m)=(0.25,3)` smooth annulus;
+  its six source stages are rebuilt under the recorded PG-SA configuration
+- Stored amplitude: `13/24=0.5416667`
+- Acceptance status: **not accepted**; retained as a coarse-grid
+  `tail_conflict` control snapshot
+- Closure: three Newton corrections, `106` GMRES inner iterations, nonlinear
+  relative `L2=1.17625e-8`; all direct true-residual ratios are below `1e-8`
+- Path audit: active, fixed, native-centered, and matched-centered full
+  shifted-`Gamma_2` are positive at every accepted state and all nine stored
+  interior samples per correction segment
+- Tail result at matched step `0.25`, `rho<=78.5`:
+  `pair<0.05` passes; `pair<0.02` grows from the frozen coarse stage-6 cap
+  `5` nodes/one component/source-support weight `0.000414605` to
+  `16`/two/`0.001586027`
+- Field SHA-256:
+  `8681fd3614a54389d5fc58166077cd0090490c8480fa0d1872f9144173929329`
+- Artifact SHA-256:
+  `75242c78edadbf3f1e9194f82380b17ed4b7abcadc539ccc12025f25def36c9e`
+- Loader identity: embedded `artifact_role=coarse`; embedded generic
+  `output_field_sha256` matches the field and container metadata
+
+Raw node counts are never compared between fine and coarse grids; each field
+is measured against its own frozen stage-6 cap. Both grids fail at least one
+cap, so accepted lineage remains E-028 stage `6/12`. This coarse snapshot is
+negative refinement evidence, not a continuum, physical-field,
+artificial-gravity, inertial-control, spacetime-engineering, FTL, or
+propulsion result.
