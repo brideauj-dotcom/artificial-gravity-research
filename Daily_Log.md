@@ -1533,3 +1533,150 @@ only `49/96` and `25/48` with the unchanged cone/path and tail bookkeeping.
 Do not relax E-029, accept any state beyond `6/12`, revisit `7/12`, advance
 to `8/12`, or begin outer-box, density, asymmetry, target, EFT, or propulsion
 work.
+
+## 2026-07-28 - E-030 Tangent-Predicted Margin Spectrum
+
+**Focus question:** Starting from immutable accepted E-028 stage `6/12`, does
+the early E-029 low-pair tail growth arise chiefly because grid samples cross
+the hard `0.05` and `0.02` cutoffs, or does a threshold-free source-weighted
+diagnostic still show a mesh-dependent precursor to loss of admissibility?
+Predict with the exact stage-6 tangent and verify only `49/96` and `25/48` on
+fine and fresh coarse grids without changing accepted lineage.
+
+**Sources reviewed:**
+
+- Froese, Oberman, and Salvador, *IMA Journal of Numerical Analysis* **37**
+  (2017), 209-236, DOI `10.1093/imanum/drw007`, for the positive pair-sum
+  characterization of the three-dimensional `Gamma_2` branch and the need
+  for coupled spatial/directional refinement.
+- Barles and Souganidis, *Asymptotic Analysis* **4** (1991), 271-283,
+  DOI `10.3233/ASY-1991-4305`, for the monotone/stable/consistent plus
+  comparison-principle convergence framework that this cylindrical
+  two-grid diagnostic does not establish.
+- Cohen-Steiner, Edelsbrunner, and Harer, *Discrete & Computational
+  Geometry* **37** (2007), 103-120,
+  DOI `10.1007/s00454-006-1276-5`, for stability of sublevel persistence on
+  one common space under a sup-norm perturbation. This complicates any claim
+  based on raw component counts from different grids.
+
+**Deepening work completed:** (1) reviewed three primary numerical/topological
+sources, including a theorem that narrows what topology can mean here; (2)
+derived and solved the exact active stage-6 tangent equation on both grids;
+(3) scanned tangent-predicted crossings throughout `1/2 <= a <= 13/24` but
+ran nonlinear roots only at the two predeclared amplitudes; (4) compared the
+local tangent bound with four full nonlinear solves under unchanged E-029
+gates; (5) separated E-029-compatible source-support-volume weighting from
+literal source-charge weighting `w*S`; (6) retained four-neighbor topology
+and the frozen tail ledger; and (7) designed a common-space persistence test
+precisely enough for the next run.
+
+**What changed:** Added `models/e030_margin_spectrum.py` and nine focused unit
+tests. The module validates the accepted stage-6 container, field, linear
+field, report, source/operator, runtime, AMG configuration, and historical
+module bytes through E-029's existing loader. It reconstructs coarse stage 6
+freshly and writes no field artifact.
+
+For
+
+```text
+F(phi,a) = M(phi) - 3/(16 c_3^2) - a S/(2 c_3),
+```
+
+the tangent obeys `J_6 dphi/da = S/(2c_3)`. The strict helper solves
+`(-J)x=rhs`, so E-030 supplies `rhs=-S/(2c_3)` and separately audits
+`J_6 dphi/da-S/(2c_3)`. Fine/coarse tangents take `56/42` GMRES iterations
+with direct residual ratios `6.385e-9 / 6.265e-10`.
+
+The prescribed nonlinear roots all close without relaxing a gate:
+
+| Grid and amplitude | Newton / GMRES | Relative nonlinear `L2` |
+| --- | ---: | ---: |
+| Fine `49/96` | `3 / 156` | `2.52e-10` |
+| Fine `25/48` | `3 / 155` | `1.88e-10` |
+| Coarse `49/96` | `3 / 108` | `2.19e-12` |
+| Coarse `25/48` | `2 / 79` | `4.52e-9` |
+
+Every endpoint and accepted Newton state passes the active, fixed,
+native-centered, and matched-centered full-`Gamma_2` checks plus wide and
+direct-Krylov gates. Nine stored points on each accepted correction segment
+pass all four full-`Gamma_2` cone checks; the wide and Krylov gates are
+endpoint/accepted-state diagnostics rather than interior-sample claims.
+
+**Threshold result:** The tangent predicts the hard counts unusually well.
+For fine `pair<0.02`, predicted/observed totals are `14/14` at `49/96` and
+`22/20` at `25/48`; coarse is exactly `7/7` and `11/11`. Fine
+`pair<0.05` is `228/228` and `231/231`; coarse is `66/66` and `67/66`.
+The raw count growth is therefore consistent with grid samples crossing
+fixed thresholds smoothly; the sampled evidence does not indicate a jump.
+
+**Threshold-free and topology result:** That explanation is not a rescue.
+Fine `pair<0.02` changes `10 -> 14 -> 20` nodes and stays one connected
+component. Its source-support-volume tail weight is unchanged at
+`0.000270316` through `49/96`, showing that the first four new fine nodes are
+cutoff-sensitive but outside source support, then rises to `0.000340976` at
+`25/48`. Coarse changes `5 -> 7 -> 11`, creates a second source-supported
+component already at `49/96`, and grows
+`0.000414605 -> 0.000730494 -> 0.001296462`.
+
+Source-support-volume mean positive deficits at `49/96` and `25/48` are fine
+`9.794e-5 / 1.904e-4` and coarse `1.433e-4 / 2.809e-4`, making coarse
+`1.46-1.48x` larger. Source-charge means are much smaller: fine
+`1.041e-6 / 1.969e-6`, coarse `1.686e-6 / 3.294e-6`. Only about
+`0.28-0.34%` of sampled source charge sits where the pair margin decreases,
+so the erosion is concentrated in the low-density smoothing layer. The
+charge-weighted coarse/fine discrepancy remains `1.62-1.67x`, however, and
+the split topology remains.
+
+**Reasoning:** Hard-threshold node counts are brittle, and the tangent shows
+that E-029's apparent jump overlays a smooth local trend. The smooth trend is
+still resolution dependent in magnitude and component structure. The two
+weightings answer different questions: support-volume weighting is sensitive
+to the physical extent of the smoothing layer, while `w*S` measures how much
+sampled source strength occupies it. Neither may be silently substituted for
+the other. Two grids and positive sampled paths cannot decide whether the
+detached lobe converges, disappears, or is a derivative-reconstruction
+artifact.
+
+**Failure or boundary found:** E-030 is a mixed/negative diagnostic. It
+finds the raw count jump consistent with smooth threshold crossings rather
+than evidence of a sudden branch event, but it does not clear the
+tail/refinement boundary. Both grids fail a frozen tail cap by `49/96`;
+coarse/fine normalized deficits and topology disagree.
+No E-030 field was saved, accepted, or added to the checkpoint manifest.
+Accepted lineage remains E-028 stage `6/12`, SHA
+`ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`.
+
+**Blank space or new idea:** The unresolved numerical question is now a
+common-space stability problem. E-031 should restrict the fine matched
+pair-margin field to exactly coincident coarse nodes in the source-layer
+window, put both scalar fields on one four-neighbor complex, and compare
+their zero-dimensional sublevel persistence with their common-node sup-norm
+difference `epsilon`. A feature of lifetime `p` costs `p/2` to match to the
+diagonal, so a detached component with `p <= 2 epsilon` remains unresolved
+under the Cohen-Steiner stability bound. Keep source-support-volume and
+source-charge deficit spectra separate.
+
+**Hypothesis updates:** H-019 remains `Medium-low`; B-032 records that
+tangent-predictable cutoff counts do not erase mesh-dependent erosion. E-030
+is complete and E-031 is the next bounded experiment. The symmetric center
+remains force-free, the fiducial cosmological translation remains only about
+`6e-35 m/s^2`, and nothing here supports useful artificial gravity, inertial
+control, spacetime engineering, reactionless propulsion, or faster-than-light
+travel.
+
+**Verification and provenance:** Final transient report SHA-256
+`428f093858c3c326e1470bb8ea6a95eef095259192a54f1ffb777fee5c71448b`;
+E-030 module SHA-256
+`d2d96f1cc0d2366fe8408e26df99c79f5bcbb58adc8c897170203352ecf01baf`.
+The report records peak RSS `1.573 GiB` and `87.14 s` for the final canonical
+run. All `113` workspace unit tests, module compilation, checkpoint-manifest
+integrity, dependency, LFS, and diff checks pass.
+
+**Next best step:** Run E-031 only at `49/96` and `25/48`: compare the fine
+and coarse matched pair-margin fields on identical physical nodes and one
+four-neighbor complex using common-node sup norm and zero-dimensional
+sublevel persistence/merge trees, requiring feature lifetime greater than
+twice the sup discrepancy before calling it stable. Do not accept beyond
+`6/12`, advance to
+`13/24` or `7/12`, or begin outer-box, density, asymmetry, target, EFT, or
+propulsion work.

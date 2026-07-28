@@ -1268,3 +1268,49 @@ Nine samples are not an interval enclosure, two grids are not a convergence
 theorem, and this hypothetical dimensionless PDE result is not evidence for a
 physical field, artificial gravity, inertial control, spacetime engineering,
 FTL, or propulsion.
+
+## 2026-07-28 E-030 tangent-predicted margin spectrum
+
+`models/e030_margin_spectrum.py` is a diagnostic-only continuation audit. It
+validates immutable accepted E-028 stage 6, reconstructs fresh coarse stage 6,
+and solves the exact active tangent equation
+
+```text
+J_6 (d phi / d a) = full_source / (2 c_3).
+```
+
+The shared strict solver evaluates `(-J)x=rhs`, so E-030 supplies the negative
+source derivative and independently verifies the direct tangent residual.
+Fine/coarse tangent ratios are `6.385e-9 / 6.265e-10`.
+
+The affine tangent predicts matched-step `pair<0.02` counts at only the
+predeclared nonlinear checks:
+
+| Grid | `49/96` predicted / actual | `25/48` predicted / actual |
+| --- | ---: | ---: |
+| Fine `(h,m)=(0.125,4)` | `14 / 14` | `22 / 20` |
+| Coarse `(h,m)=(0.25,3)` | `7 / 7` | `11 / 11` |
+
+All four nonlinear roots and accepted Newton states pass E-029's unchanged
+nonlinear, direct-Krylov, wide, and full-`Gamma_2` gates. Nine interior
+samples per accepted segment pass the four full-cone checks; wide/Krylov are
+not asserted for those samples. No root is accepted or saved. The fine
+low-pair set stays one component and changes
+`10 -> 14 -> 20` nodes. The coarse set changes `5 -> 7 -> 11`, splits into
+two components at the first check, and its source-support-volume weight grows
+`0.000414605 -> 0.000730494 -> 0.001296462`.
+
+The threshold-free report keeps two distinct measures. With E-029-compatible
+source-support cylindrical-volume weights, mean positive deficits are fine
+`9.794e-5 / 1.904e-4` and coarse `1.433e-4 / 2.809e-4`. With literal sampled
+source-charge weights `w*S`, they are fine `1.041e-6 / 1.969e-6` and coarse
+`1.686e-6 / 3.294e-6`. The low-margin erosion therefore occupies a
+low-density smoothing layer, but its magnitude and topology remain
+mesh-dependent.
+
+E-030 concludes that hard counts are tangent-predictable threshold crossings,
+not that the tail is healthy. Accepted lineage remains stage 6, SHA
+`ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`.
+No checkpoint manifest changes are made. E-031 should compare both fields on
+one common physical node complex with a sup-norm and zero-dimensional
+sublevel-persistence ledger before any further amplitude is considered.
