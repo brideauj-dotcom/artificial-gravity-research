@@ -409,6 +409,50 @@ Faster-than-light travel generally creates causality issues in relativity. Any p
   Kearfott and Xing 1994; Qi and Sun 1993; internal E-029 fine/coarse
   calculations and scratch sensitivity, 2026-07-27.
 
+### B-032: Tangent-Predictable Threshold Counts Do Not Remove Mesh-Dependent Margin Erosion
+
+- **Claim:** When a local branch tangent accurately predicts how many nodes
+  cross a hard ellipticity-margin cutoff, the count jump may be a sampling
+  artifact rather than a discontinuous solver event. That does not make the
+  underlying erosion benign when normalized deficit magnitude or sublevel
+  topology remains resolution dependent.
+- **Why it matters:** E-030 predicts fine `pair<0.02` totals `14/22` versus
+  observed `14/20` and coarse `7/11` exactly at `49/96` and `25/48`.
+  Nevertheless, fine stays one component while coarse develops a second
+  source-supported component at the first amplitude. Coarse
+  source-support-volume mean deficits are `1.46-1.48x` fine and
+  source-charge-weighted means are `1.62-1.67x` fine.
+- **Strength:** Established internally for the prescribed E-030 tangent,
+  four nonlinear roots, two grids, matched `0.25` reconstruction, and two
+  weighting measures. All roots and sampled corrector segments stay inside
+  every retained cone diagnostic, so the disagreement is not explained by
+  an observed nonlinear/Krylov/path failure. It remains only a two-grid
+  discrete diagnostic.
+- **Assumptions and theorem boundary:** The active tangent freezes one
+  semismooth generalized Jacobian. Source-support-volume weights emphasize
+  the smoothing-layer volume; source-charge weights `w*S` emphasize where
+  source strength resides, and neither can silently stand in for the other.
+  Four-neighbor counts were computed on different node complexes.
+  Cohen-Steiner-Edelsbrunner-Harer stability requires functions on a common
+  space and a sup-norm comparison; Barles-Souganidis and
+  Froese-Oberman-Salvador convergence hypotheses are not established here.
+- **Operational rule:** Keep E-028 accepted stage `6/12` immutable. E-030
+  fields are diagnostics only and must not be saved or described as accepted
+  branch reach. Do not relax E-029's frozen caps, average away topology, or
+  advance amplitude, outer box, density, asymmetry, target, EFT, or
+  engineering work.
+- **Possible cracks:** E-031 can restrict fine and coarse pair-margin fields
+  to identical physical nodes and one four-neighbor complex, compute their
+  sup discrepancy and zero-dimensional sublevel persistence, and test whether
+  the detached component's lifetime exceeds twice the cross-grid sup
+  discrepancy, since matching it to the persistence diagonal costs half its
+  lifetime.
+  A successful common-space comparison would sharpen the numerical diagnosis,
+  not establish a continuum field or propulsion opportunity.
+- **Sources:** Froese, Oberman, and Salvador 2017; Barles and Souganidis
+  1991; Cohen-Steiner, Edelsbrunner, and Harer 2007; internal E-030 tangent,
+  spectrum, nonlinear-root, and topology calculations, 2026-07-28.
+
 ## Boundary Entry Template
 
 ```markdown

@@ -1608,3 +1608,98 @@ Add sources here with enough detail that future runs can judge quality quickly.
   growth without relaxing any acceptance gate. No continuum, physical-field,
   artificial-gravity, inertial-control, spacetime-engineering, FTL, or
   propulsion conclusion follows.
+
+## 2026-07-28 - E-030 Margin-Spectrum and Topology Sources
+
+- **Froese, Oberman, and Salvador 2017:** B. D. Froese, A. M. Oberman, and
+  T. Salvador, “Numerical methods for the 2-Hessian elliptic partial
+  differential equation,” *IMA Journal of Numerical Analysis* **37**,
+  209-236, DOI `10.1093/imanum/drw007`, arXiv:`1502.04969`.
+  - Positive sums of every eigenvalue pair characterize the elliptic
+    `Gamma_2` branch in three dimensions; a positive `sigma_2` alone is not
+    enough. Their provably convergent Cartesian monotone construction couples
+    spatial and directional refinement.
+  - **Transfer limit:** E-030 samples a reflected cylindrical adaptation on
+    only two coupled grids. Positive roots, a local tangent, and margin
+    distributions do not satisfy that convergence theorem.
+- **Barles and Souganidis 1991:** G. Barles and P. E. Souganidis,
+  “Convergence of approximation schemes for fully nonlinear second order
+  equations,” *Asymptotic Analysis* **4**, 271-283,
+  DOI `10.3233/ASY-1991-4305`.
+  - Their general viscosity-solution route requires monotonicity, stability,
+    consistency, and a comparison principle.
+  - **Transfer limit:** E-030 does not establish all four ingredients for the
+    cylindrical min-of-frames scheme. A smoothly varying diagnostic along one
+    discrete branch is not a substitute.
+- **Cohen-Steiner, Edelsbrunner, and Harer 2007:** D. Cohen-Steiner,
+  H. Edelsbrunner, and J. Harer, “Stability of persistence diagrams,”
+  *Discrete & Computational Geometry* **37**, 103-120,
+  DOI `10.1007/s00454-006-1276-5`.
+  - For tame functions on one topological space, bottleneck distance between
+    persistence diagrams is bounded by the functions' sup-norm difference.
+    This motivates comparing sublevel topology only after putting fine and
+    coarse pair-margin fields on one common physical complex.
+  - **Transfer limit and complicating evidence:** Raw four-neighbor component
+    counts on different grids have no such certificate. E-030 retains those
+    counts for E-029 compatibility but does not call them stable topology.
+
+## 2026-07-28 - E-030 Tangent Prediction and Two-Grid Verification
+
+- **Implementation:** Added `models/e030_margin_spectrum.py`. It validates the
+  immutable accepted E-028 stage-6 container and reconstructs a fresh coarse
+  stage 6. At each grid it solves
+  `J_6 (d phi/d a) = S/(2 c_3)` using the exact active Jacobian and strict
+  PG-SA GMRES gate. Because the shared solver evaluates
+  `(-J)x=rhs`, E-030 supplies `rhs=-S/(2c_3)` and independently checks the
+  direct tangent residual.
+- **Tangent result:** Fine/coarse tangents use `56/42` GMRES iterations and
+  have direct residual ratios `6.385e-9 / 6.265e-10`. The affine predictor
+  scans only `1/2 <= a <= 13/24`; it left-censors nodes already below a
+  threshold and does not extrapolate the branch.
+- **Prescribed nonlinear roots:** Fine `49/96` and `25/48` close in
+  `3/156` and `3/155` Newton/GMRES; coarse closes in `3/108` and `2/79`.
+  Relative nonlinear residuals are respectively `2.52e-10`, `1.88e-10`,
+  `2.19e-12`, and `4.52e-9`. Every root and accepted Newton state passes
+  E-029's active/fixed/native-centered/matched-centered full-`Gamma_2` plus
+  wide/Krylov gates. Nine stored segment samples pass the four full-cone
+  checks; wide/Krylov are not claimed for those interior samples. The roots
+  remain diagnostic, unaccepted, and unsaved.
+- **Threshold prediction:** For `pair<0.02`, tangent-predicted versus observed
+  total counts are fine `14/14` at `49/96` and `22/20` at `25/48`; coarse is
+  exactly `7/7` and `11/11`. Fine `pair<0.05` is `228/228` and `231/231`;
+  coarse is `66/66` and `67/66`. The count growth is consistent with smooth
+  threshold crossings; the sampled evidence does not indicate a jump.
+- **Topology and frozen-tail result:** Fine `pair<0.02` grows
+  `10 -> 14 -> 20` nodes while remaining one component. Its
+  source-support-volume weight is unchanged at `0.000270316` for `49/96`
+  before rising to `0.000340976`. Coarse grows `5 -> 7 -> 11`, becomes two
+  components already at `49/96`, and grows in weight
+  `0.000414605 -> 0.000730494 -> 0.001296462`. Both grids fail at least one
+  frozen cap at the first verification amplitude.
+- **Threshold-free spectra:** Source-support-volume mean positive deficits at
+  `49/96` and `25/48` are fine `9.794e-5 / 1.904e-4` and coarse
+  `1.433e-4 / 2.809e-4`, so coarse is `1.46-1.48x` larger. Literal
+  source-charge weighting gives much smaller fine
+  `1.041e-6 / 1.969e-6` and coarse `1.686e-6 / 3.294e-6`; only about
+  `0.28-0.34%` of sampled source charge lies where margin decreases. The
+  erosion is concentrated in the low-density smoothing layer, but its
+  coarse/fine charge-weighted mean still differs by `1.62-1.67x`.
+- **Decision:** E-030 is a mixed/negative diagnostic. Hard counts are brittle
+  and tangent-predictable, but the detached coarse component and systematic
+  cross-grid deficit difference prevent a benign or continuum-stable
+  interpretation. Accepted lineage remains immutable E-028 stage `6/12`,
+  SHA `ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`.
+  No output field or checkpoint was written.
+- **Reproducibility:** Final report SHA-256
+  `428f093858c3c326e1470bb8ea6a95eef095259192a54f1ffb777fee5c71448b`;
+  E-030 module SHA-256
+  `d2d96f1cc0d2366fe8408e26df99c79f5bcbb58adc8c897170203352ecf01baf`.
+  The report is a transient run record, not a tracked artifact.
+- **Impact and next route:** H-019 remains `Medium-low`. E-031 should put both
+  margin fields on exactly coincident coarse nodes and one four-neighbor
+  complex, then compare zero-dimensional sublevel persistence with the
+  common-node sup discrepancy `epsilon`. Since a persistence point of
+  lifetime `p` lies `p/2` from the diagonal, `p <= 2 epsilon` remains
+  removable within the stability bound. This can test whether the detached
+  lobe exceeds discretization disagreement; it still cannot prove continuum
+  realization or useful gravity.
