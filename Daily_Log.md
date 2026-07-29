@@ -1680,3 +1680,142 @@ twice the sup discrepancy before calling it stable. Do not accept beyond
 `6/12`, advance to
 `13/24` or `7/12`, or begin outer-box, density, asymmetry, target, EFT, or
 propulsion work.
+
+## 2026-07-29 - E-031 Common-Space Persistence Screen
+
+**Focus question:** At only the unaccepted `49/96` and `25/48` diagnostics,
+does E-030's detached coarse `pair<0.02` component have finite
+zero-dimensional persistence lifetime greater than twice the fine/coarse
+pair-margin sup discrepancy after both fields are placed on exactly the same
+physical node graph?
+
+**Sources reviewed:**
+
+- Edelsbrunner, Letscher, and Zomorodian, *Discrete & Computational Geometry*
+  **28** (2002), 511-533, DOI `10.1007/s00454-002-2885-2`, for filtered
+  complexes, persistence, and feature lifetime.
+- Cohen-Steiner, Edelsbrunner, and Harer, *Discrete & Computational
+  Geometry* **37** (2007), 103-120,
+  DOI `10.1007/s00454-006-1276-5`, for the common-space bottleneck bound
+  `d_B <= ||f-g||_infinity`.
+- Chazal, Cohen-Steiner, Glisse, Guibas, and Oudot, *SoCG 2009*, 237-246,
+  DOI `10.1145/1542362.1542407`, as complicating evidence that different-space
+  comparisons require explicit algebraic proximity rather than raw component
+  counts.
+- Barles and Souganidis 1991; Crandall, Ishii, and Lions 1992; and Froese,
+  Oberman, and Salvador 2017 for the separate viscosity/discretization
+  boundary. The correct Froese-Oberman-Salvador page range is
+  `2093-2122`; the prior E-030 log's `209-236` was a bibliographic typo and
+  is corrected explicitly here without rewriting that historical entry.
+
+**Deepening work completed:** (1) reviewed four primary source families,
+including different-space and derivative-convergence complications; (2)
+predeclared ordinary-H0 lower-star and strict `p>2 epsilon` conventions;
+(3) reconstructed only the two E-030 endpoints under unchanged gates;
+(4) mapped every coarse node to the exact `2i,2j` fine lattice node with no
+interpolation between grids; (5) ran persistence on the full connected common
+window and a positive-source induced sensitivity; (6) audited essential
+classes, crop-boundary contact, birth/death levels, dying-branch bounding
+boxes, and nearby fine intervals; (7) recomputed source-support-volume and
+source-charge deficits with one common quadrature; and (8) designed E-032 to
+attack the dominant scalar discrepancy rather than advancing the branch.
+
+**What changed:** Added `models/e031_common_space_persistence.py` and nine
+focused tests. Equal-valued vertices and edges enter at one filtration level;
+ordinary-H0 finite intervals use `[birth,death)`, essential deaths are
+recorded as null, and deterministic ties can create only zero-lifetime
+representatives. Persistence and `epsilon` are unweighted. Volume and
+`w*S` source-charge spectra remain separate.
+
+The primary common graph has `77,735` vertices, `154,840` four-neighbor
+edges, and one terminal component. The connected positive-source sensitivity
+has `907` vertices and `1,688` edges. Fine source values equal coarse source
+values bit for bit on mapped nodes.
+
+| Amplitude | `epsilon` | `2 epsilon` | coarse birth | coarse death | lifetime `p` | `p/(2 epsilon)` |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| `49/96` | `0.119040574` | `0.238081148` | `0.019760745` | `0.024382798` | `0.004622053` | `0.019414` |
+| `25/48` | `0.120302377` | `0.240604753` | `0.019320319` | `0.023836178` | `0.004515859` | `0.018769` |
+
+The detached dying branch contains three nodes over
+`rho=5.75-6.25`, `z=0.5`. One node lies below `0.02` at `49/96`; two do at
+`25/48`. The branch does not touch the full-window crop boundary. It does
+touch the positive-source mask boundary, so that induced graph is a
+conditional sensitivity rather than the theorem-level decision surface.
+
+The fine full-graph diagram contains a nearby bar at the same birth coordinate
+with birth/death `0.024265289/0.030417719` and
+`0.023845922/0.029937659`; its `L-infinity` diagram distance from the coarse
+bar is `0.00603492/0.00610148`. It is born above `0.02`, so it does not make
+a second fine component at the display threshold. This is a useful
+threshold-crossing clue, not a proven spatial matching.
+
+With one common coarse quadrature, fine/coarse mean positive deficits are:
+
+| Measure | `49/96` fine / coarse / ratio | `25/48` fine / coarse / ratio |
+| --- | ---: | ---: |
+| Source-support volume | `9.654e-5 / 1.433e-4 / 1.484` | `1.874e-4 / 2.809e-4 / 1.499` |
+| Source charge `w*S` | `1.066e-6 / 1.686e-6 / 1.582` | `2.065e-6 / 3.294e-6 / 1.595` |
+
+**Reasoning:** On one finite graph with linear edge interpolation, the vertex
+sup difference is the graph-function sup norm, so persistence stability gives
+an `epsilon`-matching. A finite bar of lifetime `p` is `p/2` from the
+diagonal. The coarse lobe's lifetime is only `1.94%/1.88%` of
+`2 epsilon`, so the theorem permits it to disappear into the diagonal by a
+wide margin. This does not show that the lobe is numerical noise; it shows
+that the observed two-grid discrepancy is far too large to certify it.
+
+The full-window and source-mask birth/death values agree, which removes one
+obvious crop-death ambiguity. The systematic common-quadrature deficit ratios
+remain, however. The sup discrepancy is localized at
+`(rho,z)=(8.75,0.75)`, where fine/coarse pair margins are
+`0.258418/0.139377` and `0.259653/0.139350`. That scale is the next
+diagnostic target.
+
+**Failure or boundary found:** E-031 does not validate the detached coarse
+lobe as common-space persistence-stable, native-fine, or continuum topology.
+It also does not disprove the feature. Persistence guarantees concern some
+off-diagonal counterpart, not spatial identity; restricting the fine field
+discards between-node information; and no theorem here gives convergence of
+a Hessian-derived diagnostic. Accepted lineage remains immutable E-028 stage
+`6/12`, checkpoint SHA
+`ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`.
+
+**Blank space or new idea:** The unresolved space is now component-level
+rather than topological. E-032 should keep the same transient endpoints and
+node map, decompose the `~0.12` discrepancy into radial, mixed, axial, and
+azimuthal matched-Hessian terms, and repeat only predeclared common physical
+difference steps at the sup-error hotspot and lobe basin. This can distinguish
+post-processing/reconstruction sensitivity from a broader field discrepancy.
+It remains a numerical diagnostic, not an engineering opportunity.
+
+**Hypothesis updates:** H-019 remains `Medium-low`. E-031 is complete as an
+unresolved stability screen; B-033 records the new boundary; E-032 becomes
+the next bounded experiment. Living-map pointers that still described E-029
+or E-030 as future work were advanced explicitly. The exact center remains
+force-free, the cosmological `r0=1 m` translation remains about
+`6e-35 m/s^2`, and no artificial-gravity, inertial-control,
+spacetime-engineering, reactionless-propulsion, or faster-than-light
+conclusion follows.
+
+**Verification and provenance:** Fine endpoints reproduce
+`3/156` and `3/155` Newton/GMRES with relative residuals
+`2.52e-10/1.88e-10`; coarse reproduces `3/108` and `2/79` with
+`2.19e-12/4.52e-9`. All endpoints and accepted Newton states pass the
+unchanged nonlinear, direct-Krylov, wide, and four full-`Gamma_2` gates;
+every frozen tail gate remains failed. The transient canonical report SHA-256
+is `f208acb17bb6c2243a8fae6364e84e12e2d1beb12e5b00ac8e7bea2a30b58278`;
+the E-031 module SHA-256 is
+`0017917e7152427d97474e6f4c30a1f39d41466ce5f670080145aa63d01326bc`.
+The report records `85.82 s` elapsed and `1.572 GiB` peak RSS. All `122`
+workspace tests pass, all model/test modules compile, dependencies are
+consistent, and every checkpoint matches `SHA256SUMS`. No field, checkpoint,
+or manifest entry was written.
+
+**Next best step:** Run E-032 only at transient `49/96` and `25/48` from
+immutable stage 6. On identical nodes, decompose the matched pair-margin
+discrepancy into radial, mixed, axial, azimuthal, eigenvalue, and physical
+difference-step contributions at `(8.75,0.75)` and the
+`rho=5.75-6.25, z=0.5` lobe basin. Do not save an endpoint, advance to
+`13/24` or `7/12`, or begin outer-box, density, asymmetry, target, EFT, or
+propulsion work.

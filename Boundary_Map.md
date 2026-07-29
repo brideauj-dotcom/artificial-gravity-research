@@ -276,7 +276,7 @@ Faster-than-light travel generally creates causality issues in relativity. Any p
 - **Why it matters:** E-026 closes the exact full-source Krylov wall and produces the first completed independent-discretization refinement point. Without a new boundary, that success could be misreported as confirmation of E-024's force profile or as evidence for a useful field.
 - **Strength:** established as numerical logic; demonstrated internally by the remaining observable and admissibility errors. Deterministic PyAMG nonsymmetric-SA and lAIR fields agree to relative `L2=1.67e-15`, yet the full-source E-025 ratio `3.2830`, peak `11.0713`, and flux deficits `1.86-1.99%` still differ from E-024's `3.4067`, `11.7523`, and `0.188%` flux error. The centered original residual remains `1.963%`, and the independent centered/fixed-frame spatial-principal check reaches `-0.0251` at one node even though the solved wide-stencil gates are positive.
 - **Assumptions:** The active semismooth Jacobian and source/checkpoint fingerprints are correct; each V-cycle is fixed within GMRES; `info=0`, the direct true residual, nonlinear decrease, and all-frame pair/spatial/time gates are enforced; reported comparisons use the same physical normalization.
-- **Possible cracks:** The coupled `(h,m)=(0.125,4)` grid now closes strict partial-source stages through `5/12`, with campaign high-water near `1.832 GiB`; this establishes a computational route, not the requested full-source point. A same-observable outer-box comparison remains blocked until the fine campaign reaches full source with acceptable global, low-tail, and tracked fixed/centered locations. A positive result would raise confidence in a local dimensionless anti-screening feature only. It would not address the `~6e-35 m/s^2` absolute scale, density continuation over more than `32` orders in `mu`, center symmetry, target response, EFT validity, or reaction momentum.
+- **Possible cracks:** The coupled `(h,m)=(0.125,4)` grid closes strict accepted partial-source stages through `6/12`, with campaign high-water near `1.832 GiB`; this establishes a computational route, not the requested full-source point. E-029 through E-031 do not clear the subsequent tail/refinement boundary. A same-observable outer-box comparison remains blocked until the fine campaign reaches full source with acceptable global, low-tail, and tracked fixed/centered locations. A positive result would raise confidence in a local dimensionless anti-screening feature only. It would not address the `~6e-35 m/s^2` absolute scale, density continuation over more than `32` orders in `mu`, center symmetry, target response, EFT validity, or reaction momentum.
 - **Sources:** Sala and Tuminaro 2008; Manteuffel, Ruge, and Southworth 2018; PyAMG 5.3 and SciPy 1.18 official documentation; Froese, Oberman, and Salvador 2016; internal E-026 calculation.
 
 ### B-027: Partial-Source Fine-Grid Stages Are Branch Reach, Not Full-Source Refinement
@@ -288,7 +288,7 @@ Faster-than-light travel generally creates causality issues in relativity. Any p
 - **Same-observable boundary:** The current annulus diagnostic chooses flux radii as fractions of the numerical box. An `R=80` versus `R=160` run would therefore sample different physical spheres and cannot by itself establish outer-box stability. Any later box comparison must hold physical flux radii and the interior diagnostic window fixed, while separately reporting global minima over each full box.
 - **Continuation-geometry boundary:** The full stage-2 secant remains a preserved failed predictor, while plain previous-stage seeds close stages 3 through 6. Stage-4-to-5 and stage-5-to-6 increment cosines are `0.999903 / 0.999935`, and their secant misses are `4.166% / 3.659%` of the new increments. These support a smooth sampled fixed-grid continuation but do not supply a Jacobian inverse bound, analytic uniqueness argument, or validated enclosure. Global minima and tracked warning locations move differently, and centered quantitative trends depend on physical difference step; neither global-only nor fixed-location-only tracking is sufficient. Predictor or schedule changes require separate fingerprints and may not rewrite accepted provenance.
 - **Solver-path and tail boundary:** The canonical first correction toward `4/12` passes strict GMRES, Armijo decrease, and solved wide gates but temporarily leaves the fixed/centered `Gamma_2` reconstructions; a separate half-step replay stays positive and reaches the same endpoint. By contrast, fresh stage-5 and stage-6 replays end bitwise-identically, and stage 6 keeps all five accepted corrections plus nine samples on every piecewise-affine segment positive in the three reconstructions. The minimum sampled pair sums are nevertheless close: `0.017445 / 0.002255 / 0.002233` in active/fixed/centered frames. This supports one sampled fixed-grid path; it does not prove a unique continuum branch. At matched centered step `0.25`, the pair minimum erodes `0.05711 -> 0.03590 -> 0.02525 -> 0.01937` across stages 3--6. At stage 6, `pair<0.05` occupies `227/310365` common-window nodes and only `6.54e-5` of full-window axisymmetric weight, but `0.00314` of source-support weight and `0.00334` of source-transition weight. Its `223` positive-weight nodes form one connected near-midplane component spanning `rho=0--6.25`, `z=0--0.75` and reaching the inner source smoothing layer; the full-window denominator therefore understates its source-relative prominence. Record connectivity, threshold sensitivity, source-relative weights, and node counts alongside global minima. In-progress checkpoints remain search states, not scientific endpoints.
-- **Possible cracks:** The strict `7/12` endpoint closes, but its canonical first correction leaves the independent cones and its low-margin core broadens, so accepted branch reach remains `6/12`; see B-030. E-029 can test whether a new fingerprinted cone-safe source-step bisection passes on fine and coarse grids without rewriting that failure. Only a full-source fine state with positive path/tail gates and convincing coupled refinement could justify the fixed-observable outer-box check. Even that would support only a local dimensionless feature of a hypothetical scalar PDE; it would not address the `~6e-35 m/s^2` absolute scale, useful artificial gravity, inertial control, FTL, or reactionless propulsion.
+- **Possible cracks:** The strict `7/12` endpoint closes, but its canonical first correction leaves the independent cones and its low-margin core broadens, so accepted branch reach remains `6/12`; see B-030. E-029 subsequently repaired the sampled path but failed the frozen tail gate, E-030 found mesh-dependent deficit growth, and E-031 found the detached coarse persistence feature unresolved under the common-graph sup discrepancy. E-032 may isolate which matched Hessian component or reconstruction scale dominates that discrepancy, but only a full-source fine state with positive path/tail gates and convincing coupled refinement could justify the fixed-observable outer-box check. Even that would support only a local dimensionless feature of a hypothetical scalar PDE; it would not address the `~6e-35 m/s^2` absolute scale, useful artificial gravity, inertial control, FTL, or reactionless propulsion.
 - **Sources:** Froese, Oberman, and Salvador 2016; Finlay and Oberman 2018/2019; Sala and Tuminaro 2008; Uecker 2022; Kearfott and Xing 1994; PyAMG 5.3 and SciPy 1.18 official documentation; internal E-028 calculations 2026-07-20 through 2026-07-26.
 
 ### B-028: Runtime Or Implementation Provenance Drift Requires Replay, Not Silent Continuation
@@ -350,13 +350,14 @@ Faster-than-light travel generally creates causality issues in relativity. Any p
   to `8/12`, outer-box, density, asymmetry, target, or engineering work until
   a new fingerprinted experiment resolves the path and tail gates. Never
   present a work checkpoint as acceptance or physics evidence.
-- **Possible cracks:** E-029 can add a schema-compatible line search that
-  records and enforces active/fixed/centered full-`Gamma_2` positivity,
-  bisect `6/12 -> 7/12` beginning at `13/24`, and require compatible
-  fine/coarse sampled paths plus fixed source-relative tail caps. A successful
-  retry would strengthen fixed-grid continuation evidence only. Validated
-  interval continuation and coupled-refinement agreement would still be
-  needed for a substantially stronger mathematical conclusion.
+- **Possible cracks:** E-029 added the schema-compatible cone-safe line search
+  and repaired the sampled corrector path, but the frozen fine/coarse tail caps
+  failed already at `13/24`. E-030 and E-031 then found a smooth but
+  mesh-dependent deficit and a detached coarse persistence feature that does
+  not exceed the common-graph stability threshold. E-032 may decompose the
+  dominant reconstruction discrepancy without rewriting any failure.
+  Validated interval continuation and coupled-refinement agreement would still
+  be needed for a substantially stronger mathematical conclusion.
 - **Sources:** Caffarelli, Nirenberg, and Spruck 1985; Froese, Oberman, and
   Salvador 2017; Qi and Sun 1993; Kearfott and Xing 1994; Azimzadeh 2019;
   internal E-028 endpoint, canonical replay, half-step sensitivity, tail, and
@@ -398,12 +399,14 @@ Faster-than-light travel generally creates causality issues in relativity. Any p
   artifacts with role-bound reports and digests. Do not accept `13/24` or
   `7/12`, relax the frozen tail gate, or begin `8/12`, outer-box, density,
   asymmetry, target, or engineering work.
-- **Possible cracks:** E-030 may determine whether the observed jump is mainly
-  a hard-threshold crossing or a mesh-dependent precursor to loss of
-  admissibility. Use the accepted stage-6 tangent to predict the crossing
-  spectrum, add a threshold-free weighted margin deficit, and verify only
-  `49/96` and `25/48` on both grids. Even agreement would be numerical
-  diagnostic evidence, not a physical-field or engineering opportunity.
+- **Possible cracks:** E-030 found that the hard counts are chiefly smooth
+  tangent-predicted crossings but that normalized deficits and topology remain
+  mesh dependent. E-031 places both fields on one common graph and finds the
+  detached coarse bar far below the `p>2 epsilon` stability threshold. E-032
+  may identify which matched Hessian component or reconstruction scale
+  dominates the remaining `~0.12` common-node discrepancy. Even agreement
+  would be numerical diagnostic evidence, not a physical-field or engineering
+  opportunity.
 - **Sources:** Gårding 1959; Caffarelli, Nirenberg, and Spruck 1985; Froese,
   Oberman, and Salvador 2017; Awanou 2018; den Heijer and Rheinboldt 1981;
   Kearfott and Xing 1994; Qi and Sun 1993; internal E-029 fine/coarse
@@ -441,17 +444,79 @@ Faster-than-light travel generally creates causality issues in relativity. Any p
   branch reach. Do not relax E-029's frozen caps, average away topology, or
   advance amplitude, outer box, density, asymmetry, target, EFT, or
   engineering work.
-- **Possible cracks:** E-031 can restrict fine and coarse pair-margin fields
-  to identical physical nodes and one four-neighbor complex, compute their
-  sup discrepancy and zero-dimensional sublevel persistence, and test whether
-  the detached component's lifetime exceeds twice the cross-grid sup
-  discrepancy, since matching it to the persistence diagonal costs half its
-  lifetime.
-  A successful common-space comparison would sharpen the numerical diagnosis,
-  not establish a continuum field or propulsion opportunity.
+- **Possible cracks:** E-031 performed the common-space comparison and found
+  the detached component unresolved because its lifetime is only
+  `1.94%/1.88%` of the strict `2 epsilon` threshold; see B-033. E-032 can
+  now keep those exact nodes and endpoints fixed while decomposing the
+  `~0.12` discrepancy into matched Hessian and reconstruction-step
+  contributions. A smaller explained post-processing discrepancy would
+  sharpen the numerical diagnosis, not establish a continuum field or
+  propulsion opportunity.
 - **Sources:** Froese, Oberman, and Salvador 2017; Barles and Souganidis
   1991; Cohen-Steiner, Edelsbrunner, and Harer 2007; internal E-030 tangent,
   spectrum, nonlinear-root, and topology calculations, 2026-07-28.
+
+### B-033: A Short Common-Graph Persistence Bar Does Not Establish a Mesh-Stable Lobe
+
+- **Claim:** A low-margin component seen on one resolution is not certified
+  persistence-stable against an observed fine/coarse scalar-field discrepancy
+  when its finite zero-dimensional lifetime `p` does not strictly exceed
+  `2 epsilon`, where `epsilon` is the sup norm on one identical graph.
+  `p <= 2 epsilon` permits a persistence-diagram match to the diagonal; it
+  does not prove that the component is noise, absent, or removable by an
+  admissible PDE perturbation.
+- **Why it matters:** E-031 repairs E-030's different-complex topology
+  comparison. The theorem-level graph contains all `77,735` exactly
+  coincident matched-window coarse nodes and `154,840` four-neighbor edges.
+  It is connected. At `49/96`, the detached coarse branch is born at
+  `0.0197607`, dies at `0.0243828`, and has `p=0.00462205`, while
+  `epsilon=0.119041` and `2 epsilon=0.238081`. At `25/48`, birth/death are
+  `0.0193203/0.0238362`, `p=0.00451586`, and
+  `2 epsilon=0.240605`. Thus `p/(2 epsilon)=0.0194/0.0188`, far below the
+  strict screen.
+- **Strength:** Established internally for the two deterministic E-031 roots,
+  fixed matched step `0.25`, exact coincident-node map, ordinary-H0 lower-star
+  filtration, and declared full graph. A connected positive-source induced
+  sensitivity (`907` vertices, `1,688` edges) gives the same birth/death
+  values, but the dying branch touches that artificial mask boundary. On the
+  full graph the branch does not touch the outer crop boundary. The fine
+  diagram contains a nearby bar at the same birth coordinate with
+  birth/death `0.0242653/0.0304177` and
+  `0.0238459/0.0299377`; it is born above the `0.02` display cutoff.
+  E-031 did not compute or prove a spatially constrained bottleneck matching.
+- **Assumptions and theorem boundary:** Cohen-Steiner-Edelsbrunner-Harer
+  stability applies to tame functions on one common space. Here the finite
+  graph with linear edge interpolation supplies that space, and the vertex
+  maximum equals the piecewise-linear sup norm. The guarantee concerns the
+  existence of an off-diagonal persistence counterpart, not the spatial
+  identity or bounding box of a lobe. Restriction discards native-fine
+  structure between coarse nodes. The reported `epsilon` does not add a
+  separately validated nonlinear/roundoff error bound. Barles-Souganidis or
+  Froese-Oberman-Salvador convergence of a potential, even if established,
+  would not automatically give uniform convergence of this Hessian-derived
+  margin.
+- **Threshold-free result:** With one common coarse quadrature for both
+  fields, coarse/fine mean positive-deficit ratios are `1.484/1.499` by
+  source-support volume and `1.582/1.595` by literal source charge at
+  `49/96` and `25/48`. The topology screen therefore does not erase the
+  systematic margin-discrepancy boundary.
+- **Operational rule:** Preserve immutable accepted E-028 stage `6/12`, SHA
+  `ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`.
+  E-031 endpoints are transient diagnostics and must not be saved or
+  described as accepted reach. Do not use the nearby fine bar to validate a
+  continuum lobe, relax any frozen cap, or begin `13/24`, `7/12`, `8/12`,
+  outer-box, density, asymmetry, target, EFT, or engineering work.
+- **Possible cracks:** E-032 can hold the endpoints and physical node set
+  fixed while decomposing the `~0.12` sup discrepancy into radial, mixed,
+  axial, azimuthal, eigenvalue, and reconstruction-step contributions at the
+  `(8.75,0.75)` hotspot and the three-node dying basin
+  `rho=5.75-6.25, z=0.5`. A smaller explained post-processing discrepancy
+  would sharpen the numerical diagnosis only; it would not retroactively
+  pass E-029's tail gate or establish a physical field.
+- **Sources:** Edelsbrunner, Letscher, and Zomorodian 2002; Cohen-Steiner,
+  Edelsbrunner, and Harer 2007; Chazal et al. 2009; Barles and Souganidis
+  1991; Crandall, Ishii, and Lions 1992; Froese, Oberman, and Salvador 2017;
+  internal E-031 common-graph calculations, 2026-07-29.
 
 ## Boundary Entry Template
 

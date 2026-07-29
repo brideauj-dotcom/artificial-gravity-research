@@ -1314,3 +1314,51 @@ not that the tail is healthy. Accepted lineage remains stage 6, SHA
 No checkpoint manifest changes are made. E-031 should compare both fields on
 one common physical node complex with a sup-norm and zero-dimensional
 sublevel-persistence ledger before any further amplitude is considered.
+
+## 2026-07-29 E-031 common-space persistence screen
+
+`models/e031_common_space_persistence.py` recomputes only the transient
+`49/96` and `25/48` E-030 roots. It maps each coarse lattice node `(i,j)` to
+the exact fine node `(2i,2j)`, evaluates both matched centered pair-margin
+fields with physical difference step `0.25`, and builds one undirected
+four-neighbor graph. It does not modify E-030 or any checkpoint.
+
+The primary full matched-window graph has `77,735` vertices and `154,840`
+edges and is connected. A connected positive-source induced sensitivity has
+`907` vertices and `1,688` edges. The latter is explicitly crop-sensitive:
+the detached branch touches the source-mask boundary, while it does not touch
+the full-window outer crop.
+
+E-031 computes ordinary-H0 lower-star persistence. Vertices enter at their
+pair-margin value and edges at the maximum endpoint value. Finite intervals
+use `[birth,death)`; the one essential component has null death/lifetime in
+JSON. Equal-valued events share one filtration level. The bottleneck screen is
+strict: a lifetime `p` must exceed `2 epsilon`, where `epsilon` is the
+unweighted common-graph sup difference, before the stability theorem forces an
+off-diagonal counterpart.
+
+| Amplitude | `epsilon` | detached coarse lifetime | `2 epsilon` | `p/(2 epsilon)` |
+| --- | ---: | ---: | ---: | ---: |
+| `49/96` | `0.119040574` | `0.004622053` | `0.238081148` | `0.019414` |
+| `25/48` | `0.120302377` | `0.004515859` | `0.240604753` | `0.018769` |
+
+The branch is born/dies at `0.019760745/0.024382798` and
+`0.019320319/0.023836178`. Immediately before merging it contains three
+nodes over `rho=5.75-6.25`, `z=0.5`. A nearby fine bar is present at the same
+birth coordinate but is born above `0.02`; E-031 does not treat that as a
+stable spatial match.
+
+Using one common coarse quadrature for both fields, coarse/fine mean positive
+deficit ratios are `1.484/1.499` by source-support volume and
+`1.582/1.595` by literal source charge. The detached feature is therefore
+unresolved, not validated or disproved, while the margin discrepancy remains.
+
+Fine endpoints reproduce `3/156` and `3/155` Newton/GMRES; coarse reproduces
+`3/108` and `2/79`. All unchanged nonlinear, direct-Krylov, wide, and four
+full-cone gates pass. Frozen tail gates remain failed. No output field,
+checkpoint, work snapshot, or manifest entry is written. Accepted lineage
+remains E-028 stage 6, SHA
+`ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`.
+This is a numerical diagnostic for a hypothetical PDE, not evidence of a
+continuum solution, physical field, artificial gravity, inertial control,
+spacetime engineering, FTL, or propulsion.

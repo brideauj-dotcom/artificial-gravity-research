@@ -1703,3 +1703,118 @@ Add sources here with enough detail that future runs can judge quality quickly.
   removable within the stability bound. This can test whether the detached
   lobe exceeds discretization disagreement; it still cannot prove continuum
   realization or useful gravity.
+
+## 2026-07-29 - E-031 Common-Space Persistence Sources
+
+- **Edelsbrunner, Letscher, and Zomorodian 2002:** H. Edelsbrunner,
+  D. Letscher, and A. Zomorodian, “Topological Persistence and
+  Simplification,” *Discrete & Computational Geometry* **28**, 511-533,
+  DOI `10.1007/s00454-002-2885-2`.
+  - Formalizes persistence for a filtered growing complex and supplies the
+    foundational feature-lifetime and algorithmic framework. E-031 uses the
+    ordinary zero-dimensional lower-star filtration on a finite graph:
+    vertices enter at `f(v)` and an edge enters at the maximum of its endpoint
+    values. Equal-valued events are processed at one filtration level;
+    deterministic ordering can change only zero-lifetime representatives.
+  - **Transfer limit:** Persistence is a topological summary of the declared
+    graph function. It does not confer physical meaning, PDE admissibility, or
+    continuum convergence on a numerical feature.
+- **Cohen-Steiner, Edelsbrunner, and Harer 2007:** D. Cohen-Steiner,
+  H. Edelsbrunner, and J. Harer, “Stability of Persistence Diagrams,”
+  *Discrete & Computational Geometry* **37**, 103-120,
+  DOI `10.1007/s00454-006-1276-5`.
+  - For tame functions on one triangulable space, the bottleneck distance
+    between persistence diagrams is bounded by the function sup norm. A
+    finite graph with linear edge interpolation is tame, and the maximum
+    absolute fine/coarse difference occurs at a vertex.
+  - In the standard `L-infinity` birth-death metric, a finite bar
+    `(birth,death)` with lifetime `p` lies `p/2` from the diagonal. Therefore
+    `p > 2 epsilon` forces an off-diagonal counterpart under an
+    `epsilon`-matching. Equality is not enough. `p <= 2 epsilon` only permits
+    a diagonal match; it does not establish that a feature is noise or absent.
+  - **Transfer limit:** The theorem guarantees some diagram counterpart, not
+    the same spatial lobe, generator, or bounding box. It excludes no
+    admissible PDE error not already included in `epsilon`.
+- **Chazal et al. 2009:** F. Chazal, D. Cohen-Steiner, M. Glisse,
+  L. J. Guibas, and S. Y. Oudot, “Proximity of Persistence Modules and Their
+  Diagrams,” *Proceedings of the 25th Annual Symposium on Computational
+  Geometry*, 237-246, DOI `10.1145/1542362.1542407`.
+  - Develops algebraic proximity tools that can compare persistence modules
+    from different spaces.
+  - **Complicating evidence:** Raw fine/coarse component counts on different
+    grids have no automatic sup-norm certificate. E-031 avoids importing the
+    stronger different-space machinery by restricting both fields to the
+    same exactly coincident coarse-node graph. This deliberately discards
+    native-fine structure between those nodes.
+- **Barles and Souganidis 1991; Crandall, Ishii, and Lions 1992; Froese,
+  Oberman, and Salvador 2017:**
+  - Barles and Souganidis, *Asymptotic Analysis* **4**, 271-283,
+    DOI `10.3233/ASY-1991-4305`, require monotonicity, stability,
+    consistency, and a comparison principle for their viscosity-solution
+    convergence route.
+  - Crandall, Ishii, and Lions, “User's Guide to Viscosity Solutions of
+    Second Order Partial Differential Equations,” *Bulletin of the American
+    Mathematical Society* **27**, 1-67,
+    DOI `10.1090/S0273-0979-1992-00266-5`, emphasize that viscosity solutions
+    may be merely continuous and are characterized through smooth test
+    functions.
+  - Froese, Oberman, and Salvador, *IMA Journal of Numerical Analysis* **37**,
+    **2093-2122**, DOI `10.1093/imanum/drw007`, prove convergence for their
+    particular Cartesian monotone coupled-refinement construction under a
+    unique continuous viscosity solution.
+  - **Transfer limit:** Even a locally uniform convergence result for the
+    potential would not automatically imply uniform convergence of E-031's
+    Hessian-derived pair-margin field. The reflected cylindrical adaptation
+    also has not satisfied the cited Cartesian theorem's hypotheses.
+- **Bibliographic correction:** The 2026-07-28 E-030 entries in
+  `Daily_Log.md` and this file gave the Froese-Oberman-Salvador page range as
+  `209-236`. The correct published range is `2093-2122`. This correction is
+  recorded here rather than silently rewriting those historical entries.
+
+## 2026-07-29 - E-031 Common-Graph Persistence Result
+
+- **Implementation and provenance:** Added
+  `models/e031_common_space_persistence.py`. It validates immutable accepted
+  E-028 stage 6, reconstructs fresh coarse stage 6, and sequentially
+  recomputes only `49/96` and `25/48`. Fine roots reproduce
+  `3/156` and `3/155` Newton/GMRES; coarse roots reproduce `3/108` and
+  `2/79`. All endpoints and accepted Newton states pass the unchanged
+  nonlinear, direct-Krylov, wide, and four full-`Gamma_2` gates. Every frozen
+  tail gate remains failed. No field or checkpoint is written.
+- **Common graphs:** The theorem-level graph contains all `77,735` exactly
+  coincident matched-window coarse nodes and `154,840` four-neighbor edges;
+  it is connected. Its outer crop boundary has `445` vertices. The dying
+  detached branch does not touch that boundary. A connected positive-source
+  induced sensitivity contains `907` vertices and `1,688` edges; the same
+  branch touches this artificial mask boundary, so the full graph controls
+  the decision.
+- **Persistence result:**
+
+  | Amplitude | `epsilon` | `2 epsilon` | coarse birth | coarse death | lifetime `p` | `p/(2 epsilon)` |
+  | --- | ---: | ---: | ---: | ---: | ---: | ---: |
+  | `49/96` | `0.119040574` | `0.238081148` | `0.019760745` | `0.024382798` | `0.004622053` | `0.019414` |
+  | `25/48` | `0.120302377` | `0.240604753` | `0.019320319` | `0.023836178` | `0.004515859` | `0.018769` |
+
+  The dying branch has three nodes and bounding box
+  `rho=5.75-6.25`, `z=0.5`. At the strict `0.02` threshold, one node is
+  visible at `49/96` and two at `25/48`.
+- **Nearby fine feature:** The full fine diagram has a bar at the same birth
+  coordinate, with birth/death `0.024265289/0.030417719` at `49/96` and
+  `0.023845922/0.029937659` at `25/48`. Its diagram distance from the coarse
+  bar is `0.00603492/0.00610148`, but it is born above the display cutoff.
+  E-031 does not infer a stable spatial correspondence from that observation.
+- **Common-quadrature deficits:** At `49/96` and `25/48`, fine/coarse
+  source-support-volume means are
+  `9.654e-5/1.433e-4` and `1.874e-4/2.809e-4`, giving ratios
+  `1.484/1.499`. Source-charge means are
+  `1.066e-6/1.686e-6` and `2.065e-6/3.294e-6`, giving
+  `1.582/1.595`. These differ slightly from E-030 because E-031 uses exactly
+  the same coarse nodes and quadrature for both fields.
+- **Decision:** The detached feature is unresolved under the declared
+  common-graph stability screen by a wide margin. This neither validates nor
+  disproves a native-fine or continuum lobe. Accepted lineage remains E-028
+  stage `6/12`, checkpoint SHA
+  `ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`.
+  No checkpoint manifest changed, and no physical-field, artificial-gravity,
+  inertial-control, spacetime-engineering, FTL, or propulsion conclusion
+  follows.
