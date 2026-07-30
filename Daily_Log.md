@@ -1819,3 +1819,145 @@ difference-step contributions at `(8.75,0.75)` and the
 `rho=5.75-6.25, z=0.5` lobe basin. Do not save an endpoint, advance to
 `13/24` or `7/12`, or begin outer-box, density, asymmetry, target, EFT, or
 propulsion work.
+
+## 2026-07-30 - E-032 Matched-Hessian Discrepancy Decomposition
+
+**Focus question:** At only the transient `49/96` and `25/48` endpoints,
+which radial, mixed, axial, azimuthal, eigenvalue, or physical
+reconstruction-step contribution dominates E-031's approximately `0.12`
+fine/coarse common-node pair-margin discrepancy at `(rho,z)=(8.75,0.75)`
+and in the `rho=5.75-6.25`, `z=0.5` detached-lobe basin?
+
+**Sources reviewed:** NIST DLMF section 3.4 and Prentice 2011 on centered
+finite-difference error and step selection; Hoffman and Wielandt 1953, Ky Fan
+1949, Overton and Womersley 1992, Magnus 1985, Lewis 1996, and Davis and Kahan
+1970 on symmetric eigenvalue sums, perturbation bounds, differentiability,
+and gap dependence; Barles and Souganidis 1991, Crandall, Ishii, and Lions
+1992, and Froese, Oberman, and Salvador 2017 on the separate
+potential-versus-derivative convergence boundary. Official Oxford metadata
+also shows that the Froese-Oberman-Salvador article is pages `209-236`, not
+`2093-2122`; the E-031 historical entry's attempted correction was itself
+wrong, and this entry corrects that mistake explicitly rather than rewriting
+history.
+
+**Deepening work completed:** (1) replayed E-031 under its exact provenance
+before adding the new diagnostic; (2) reviewed more than three primary or
+authoritative numerical-analysis sources, including nonsmooth/gap and
+step-size complications; (3) derived the exact axisymmetric identity
+`pair=trace(H)-lambda_max(H)+2 shift`; (4) added an order-neutral
+four-component Shapley ledger with all coalition-marginal envelopes and exact
+closure; (5) checked Weyl and Hoffman-Wielandt perturbation bounds; (6)
+recomputed only the two frozen transient endpoints and separated their grid
+gap from the stage-6 baseline gap; (7) repeated the four fixed ROI nodes at
+mesh-compatible physical steps `0.25` and `0.5`; (8) retained common-volume,
+source-charge, eigenbranch, and lobe-node sign diagnostics; and (9) designed
+E-033 to localize the remaining scale dependence without advancing or saving
+the branch.
+
+**What changed:** Added `models/e032_hessian_discrepancy.py` and focused
+tests. The campaign validates immutable E-028 stage 6, reproduces fine
+`49/96` and `25/48` in `3/156` and `3/155` Newton/GMRES and coarse in
+`3/108` and `2/79`, then evaluates no new amplitude. All unchanged solver,
+Krylov, wide, and four full-`Gamma_2` gates pass; every frozen tail gate
+remains failed.
+
+At the E-031 hotspot, signed differences and exact Shapley attributions are:
+
+| Amplitude | Step | Fine minus coarse `pair` | Radial | Mixed | Axial | Azimuthal |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| `49/96` | `0.25` | `0.119041` | `0.02350` | `0.01354` | `0.08039` | `0.00161` |
+| `49/96` | `0.50` | `0.034289` | `0.02091` | `-0.00103` | `0.01290` | `0.00151` |
+| `25/48` | `0.25` | `0.120302` | `0.02384` | `0.01338` | `0.08150` | `0.00159` |
+| `25/48` | `0.50` | `0.034688` | `0.02146` | `-0.00112` | `0.01286` | `0.00149` |
+
+At step `0.25`, axial is order-robust: its smallest coalition marginal is
+`0.07777/0.07885`, larger than every competing maximum. The exact spectral
+identity shows large cancellation rather than an eigenvalue switch:
+`Delta trace=0.47083/0.47999` and
+`-Delta lambda_max=-0.35178/-0.35969`. Every audited fine/coarse pair branch
+remains lower-meridional plus azimuthal. The smallest transient-endpoint
+top-eigenvalue gap is `1.2719`; including the stage-6 ROI baselines, the
+minimum is `1.2637`.
+
+At step `0.5`, however, the hotspot discrepancy falls by
+`71.20%/71.17%` and radial becomes order-robustly dominant. Most of the
+canonical hotspot mismatch also predates the transient continuation:
+stage 6 already has `Delta pair=0.117658` at step `0.25`; progression to
+`49/96` and `25/48` adds only `0.001383` and `0.002645`. This separates a
+grid/reconstruction gap from the later source-amplitude response.
+
+The lobe basin is heterogeneous. At step `0.25`, its three nodewise
+differences are `0.00725, 0.00450, 0.01839` at `49/96` and
+`0.00758, 0.00453, 0.01735` at `25/48`. At step `0.5`, the first node changes
+sign and every fine/coarse lobe pair exceeds `0.046`; the `pair<0.02`
+three-node basin therefore leaves the sublevel set under that smoother
+reconstruction. E-032 did not search the full step-`0.5` common field for a
+displaced component. This is a scale sensitivity, not evidence that the
+feature is noise or absent.
+
+**Reasoning:** The pair margin is the sum of the two smallest shifted
+eigenvalues. For the axisymmetric Hessian it equals
+`trace(H)-lambda_max(H)+2 shift`, so the spectral cancellation can be
+checked exactly. Weyl gives `|Delta pair| <= 2||Delta H||_2`, and
+Hoffman-Wielandt supplies the ordered-eigenvalue Frobenius check; every
+reported point passes both. Shapley averaging over all `24` component
+replacement orders then supplies one explicit, symmetric attribution
+convention without pretending that a nonlinear eigenvalue function has a
+unique causal component budget.
+
+The physical-step comparison is more decisive than the canonical component
+ranking. Both `0.25` and `0.5` land on lattice nodes of both grids, yet they
+produce different dominant components and a `~71%` discrepancy change. A
+smaller `0.125` step was rejected from the primary comparison because it is
+half a coarse cell: bilinear interpolation would multiply pure coarse
+second differences by `H/delta=2` while treating mixed and first derivatives
+differently.
+
+**Failure or boundary found:** E-032 explains the declared E-031
+`0.25`-step discrepancy but does not identify a reconstruction-independent
+cause. Axial curvature dominates that one postprocessor; radial dominates at
+`0.5`, one lobe node changes sign, and all three frozen lobe-basin nodes leave
+the cutoff. The full step-`0.5` field was not searched for a displaced
+component. Uniform convergence of a potential would not imply convergence of
+this recovered Hessian, and only two grids exist. Accepted lineage therefore
+remains immutable E-028 stage `6/12`, checkpoint SHA
+`ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`.
+
+**Blank space or new idea:** The remaining blank space is numerical and
+testable: is the `0.25` axial excess produced by a one-cell-scale curvature
+mode in the exact common-node potential difference, or by a spatially
+coherent feature that survives a declared local recovery scale? E-033 should
+hold the same endpoints fixed, express every Hessian-component difference as
+an exact stencil applied to `e=phi_fine-phi_coarse` on common nodes, compare
+nested `0.25/0.5` axial stencils and one predeclared local quadratic-recovery
+window, and map signed cancellation across the hotspot and lobe strip. This
+can test whether the behavior is more consistent with a one-cell artifact or
+a coherent error field and inform whether to park the branch. It still cannot
+establish continuum Hessian convergence; that would require a justified
+recovery analysis and a refined nonlinear-grid sequence.
+
+**Hypothesis updates:** H-019 remains `Medium-low` and accepted branch reach
+remains `6/12`. E-032 is complete as a negative/mixed
+reconstruction-sensitivity result; B-034 records the new boundary and E-033
+becomes the next bounded diagnostic. No physical field, artificial gravity,
+inertial control, spacetime engineering, reactionless propulsion, or
+faster-than-light conclusion follows.
+
+**Verification and provenance:** The transient E-032 report SHA-256 is
+`c167d3db04f4798b8dedce79745a5bc8a570a02a1a0325aab7b3d6f30d342b36`;
+the campaign module SHA-256 before documentation-only edits is
+`5772d892b652ba03878b50162f2e8391c284c174eda7f4999310a057f941a7b7`.
+The report records `80.70 s` elapsed and `1.570 GiB` peak RSS. No field,
+checkpoint, retained work snapshot, or manifest entry was written. All `130`
+workspace tests pass, every model/test module compiles, `pip check` reports no
+broken requirements, every tracked checkpoint matches `SHA256SUMS`, Git LFS
+integrity passes, and the final diff has no whitespace errors.
+
+**Next best step:** Run E-033 only at the same transient `49/96` and
+`25/48` endpoints from immutable stage 6. On the fixed common lattice,
+decompose the fine-minus-coarse potential error into exact nested
+`0.25/0.5` component stencils and one predeclared local quadratic recovery at
+the hotspot and lobe strip. Stop after assessing whether the axial excess is
+more consistent with a one-cell-scale or spatially coherent error. Do not save
+endpoints, relax any tail gate, advance amplitude, or begin outer-box, density,
+asymmetry, target, EFT, or propulsion work.

@@ -1362,3 +1362,60 @@ remains E-028 stage 6, SHA
 This is a numerical diagnostic for a hypothetical PDE, not evidence of a
 continuum solution, physical field, artificial gravity, inertial control,
 spacetime engineering, FTL, or propulsion.
+
+## 2026-07-30 E-032 matched-Hessian discrepancy decomposition
+
+`models/e032_hessian_discrepancy.py` validates immutable accepted E-028 stage
+6, recomputes only the transient E-031 endpoints `49/96` and `25/48`, and
+compares fine and interpolated-coarse Hessian recoveries on the exact same
+`77,735` common nodes. It changes no provenance-sensitive predecessor module
+and saves no endpoint field.
+
+The diagnostic uses the two predeclared mesh-compatible physical difference
+steps `0.25` and `0.5`. A subcell `0.125` recovery is deliberately excluded:
+bilinear interpolation inside a coarse cell cannot reproduce coarse-grid pure
+second differences at that step. At the E-031 sup-discrepancy hotspot
+`(rho,z)=(8.75,0.75)`, exact four-component Shapley replacement accounting
+allocates changes among radial, mixed, axial, and azimuthal Hessian terms.
+Every Shapley sum closes to the direct pair-margin difference. The matrix
+identity
+
+```text
+pair = trace(H) - lambda_max(H) + 2 shift
+```
+
+also closes directly, and all Weyl and Hoffman-Wielandt screens pass.
+
+| Amplitude | Step | `Delta pair` | Radial | Mixed | Axial | Azimuthal |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| `49/96` | `0.25` | `0.119041` | `0.023500` | `0.013543` | `0.080386` | `0.001612` |
+| `25/48` | `0.25` | `0.120302` | `0.023835` | `0.013378` | `0.081497` | `0.001592` |
+| `49/96` | `0.5` | `0.034289` | `0.020908` | `-0.001034` | `0.012905` | `0.001510` |
+| `25/48` | `0.5` | `0.034688` | `0.021463` | `-0.001124` | `0.012863` | `0.001486` |
+
+At step `0.25`, the axial marginal exceeds every competitor in every one of
+the `24` replacement orders. At step `0.5`, the radial marginal does so
+instead, while the total discrepancy is `71.2%` smaller. No
+largest-eigenvalue branch switch occurs; the minimum gap is greater than
+`1.27` at the transient endpoints and greater than `1.26` when the stage-6
+ROI baselines are included. At the canonical step, large trace changes
+`0.470825/0.479994` are mostly cancelled by spectral-selection changes
+`-0.351785/-0.359692`.
+
+The three-node E-031 lobe basin does not move uniformly between reconstruction
+steps. Its first node changes fine-minus-coarse discrepancy sign, and at step
+`0.5` neither field is below the `pair<0.02` display cutoff there. The full
+step-`0.5` common field was not searched for a displaced component. Most of
+the hotspot discrepancy is also already present at accepted stage 6:
+`0.117658` at step `0.25` and `0.033785` at step `0.5`; the transient
+continuation adds little.
+
+E-032 therefore records
+`reconstruction_scale_sensitive_no_unique_dominant_cause`. It does not
+classify the lobe as noise or disprove it, and it does not establish a
+continuum Hessian attribution. Accepted lineage remains stage 6, SHA
+`ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`.
+No checkpoint, retained work snapshot, `SHA256SUMS`, or manifest entry is
+changed. E-033 should localize the behavior in exact potential-error stencils
+before any amplitude, outer-box, density, asymmetry, target, EFT, or
+engineering work.
