@@ -1818,3 +1818,142 @@ Add sources here with enough detail that future runs can judge quality quickly.
   No checkpoint manifest changed, and no physical-field, artificial-gravity,
   inertial-control, spacetime-engineering, FTL, or propulsion conclusion
   follows.
+
+## 2026-07-30 - E-032 Hessian-Recovery and Spectral-Perturbation Sources
+
+- **NIST Digital Library of Mathematical Functions, section 3.4:**
+  equations `3.4.22` and `3.4.25` give the centered pure and mixed
+  finite-difference formulas and their `O(delta^2)` consistency for
+  sufficiently smooth functions.
+  - Taylor expansion gives
+    `D_xx^delta u = u_xx + delta^2 u_xxxx/12 + O(delta^4)` and
+    `D_xy^delta u = u_xy + delta^2(u_xxxy+u_xyyy)/6 + O(delta^4)`.
+  - **Transfer limit:** These are smooth-function truncation statements.
+    They do not prove that a computed viscosity-solution sequence has a
+    convergent Hessian, and they do not describe a sub-cell
+    piecewise-bilinear interpolant.
+- **Prentice 2011:** J. S. C. Prentice, “Truncation and roundoff errors in
+  three-point approximations of first and second derivatives,” *Applied
+  Mathematics and Computation* **217**, 4576-4581,
+  DOI `10.1016/j.amc.2010.11.008`.
+  - Derives competing truncation and roundoff terms and an optimal
+    second-derivative step. It supports testing a physical step range rather
+    than assuming the smallest available step is best.
+  - **Complicating evidence:** Its error model does not include PDE
+    discretization error, solver error, or nonsmooth interpolation. E-032
+    therefore uses it as a postprocessor warning, not an error bar.
+- **Hoffman and Wielandt 1953:** A. J. Hoffman and H. Wielandt, “The
+  Variation of the Spectrum of a Normal Matrix,” *Duke Mathematical Journal*
+  **20**, 37-39, DOI `10.1215/S0012-7094-53-02004-3`.
+  - For symmetric/normal matrices, appropriately matched eigenvalue
+    differences have squared sum bounded by the squared Frobenius norm of
+    the matrix perturbation. E-032 checks the consistently ordered symmetric
+    specialization at every reported point.
+- **Ky Fan 1949; Overton and Womersley 1992:**
+  - Ky Fan, “On a Theorem of Weyl Concerning Eigenvalues of Linear
+    Transformations I,” *PNAS* **35**, 652-655,
+    DOI `10.1073/pnas.35.11.652`.
+  - M. L. Overton and R. S. Womersley, “On the Sum of the Largest
+    Eigenvalues of a Symmetric Matrix,” *SIAM Journal on Matrix Analysis and
+    Applications* **13**, 41-45, DOI `10.1137/0613006`.
+  - Supply variational structure for ordered symmetric-eigenvalue sums.
+    Together with Weyl's ordered-eigenvalue bound, they justify the E-032
+    screen `|Delta pair| <= 2 ||Delta H||_2`.
+  - **Transfer limit:** This is a perturbation bound, not an attribution of
+    error to individual Hessian entries.
+- **Magnus 1985; Lewis 1996; Davis and Kahan 1970:**
+  - J. R. Magnus, “On Differentiating Eigenvalues and Eigenvectors,”
+    *Econometric Theory* **1**, 179-191,
+    DOI `10.1017/S0266466600011129`.
+  - A. S. Lewis, “Derivatives of Spectral Functions,” *Mathematics of
+    Operations Research* **21**, 576-588,
+    DOI `10.1287/moor.21.3.576`.
+  - C. Davis and W. M. Kahan, “The Rotation of Eigenvectors by a
+    Perturbation. III,” *SIAM Journal on Numerical Analysis* **7**, 1-46,
+    DOI `10.1137/0707001`.
+  - A simple symmetric eigenvalue has differential `d lambda = v^T(dH)v`;
+    repeated eigenvalues require nonsmooth/generalized-gradient treatment,
+    and eigenspace stability depends on a separating gap. E-032 therefore
+    records the top gap, branch identity, eigenvector overlap, and an exact
+    finite-change remainder rather than treating a first-order split as
+    unique.
+- **Shapley 1953:** L. S. Shapley, “A Value for n-Person Games,” in
+  *Contributions to the Theory of Games II*, Annals of Mathematics Studies
+  **28**, 307-318, DOI `10.1515/9781400881970-018`.
+  - E-032 borrows the permutation-averaged marginal convention to give each
+    of the four Hessian components an order-neutral finite replacement
+    attribution.
+  - **Transfer limit:** This is an explicit symmetric bookkeeping
+    convention. It is not a causal decomposition of discretization error.
+- **Barles and Souganidis 1991; Crandall, Ishii, and Lions 1992; Froese,
+  Oberman, and Salvador 2017:**
+  - Barles and Souganidis, *Asymptotic Analysis* **4**, 271-283,
+    DOI `10.3233/ASY-1991-4305`.
+  - Crandall, Ishii, and Lions, *Bulletin of the AMS* **27**, 1-67,
+    DOI `10.1090/S0273-0979-1992-00266-5`.
+  - Froese, Oberman, and Salvador, “Numerical methods for the 2-Hessian
+    elliptic partial differential equation,” *IMA Journal of Numerical
+    Analysis* **37**(1), **209-236**,
+    DOI `10.1093/imanum/drw007`.
+  - The cited viscosity route yields locally uniform potential convergence
+    under its hypotheses, not convergence of recovered Hessians. The
+    Froese-Oberman-Salvador consistency statement applies to `C4` test
+    functions and its theorem also requires the stated coupled Cartesian
+    refinement.
+- **Bibliographic correction of the correction:** Official Oxford Academic
+  volume metadata confirms that DOI `10.1093/imanum/drw007` is pages
+  `209-236`. The 2026-07-29 E-031 source/log entries incorrectly called
+  `2093-2122` the corrected range. That historical text is preserved; this
+  entry explicitly supersedes only its page-range assertion.
+- **Sub-cell interpolation identity:** At an interior coarse node with
+  piecewise-bilinear interpolation, spacing `H`, and `0 < delta <= H`,
+  direct substitution gives
+  `D_xx^delta I_H u = (H/delta) D_xx^H u`, while centered first and mixed
+  derivatives have different scaling. Thus coarse `delta=0.125` with
+  `H=0.25` doubles pure reconstructed curvature. E-032 excludes it from the
+  like-for-like comparison and predeclares lattice-aligned
+  `delta=0.25/0.5`.
+
+## 2026-07-30 - E-032 Matched-Hessian Decomposition Result
+
+- **Implementation and provenance:** Added
+  `models/e032_hessian_discrepancy.py`. It validates immutable accepted E-028
+  stage 6, recomputes only transient `49/96` and `25/48`, preserves every
+  E-029 nonlinear/Krylov/wide/full-cone/tail ledger, and writes no field or
+  checkpoint.
+- **Canonical hotspot:** At `(rho,z)=(8.75,0.75)` and step `0.25`, exact
+  fine-minus-coarse pair differences are `0.119040574/0.120302377`. Shapley
+  contributions `[radial,mixed,axial,azimuthal]` are
+  `[0.02350,0.01354,0.08039,0.00161]` and
+  `[0.02384,0.01338,0.08150,0.00159]`. Axial is order-robust across every
+  coalition marginal.
+- **Spectral cancellation:** Exact
+  `Delta pair=Delta trace-Delta lambda_max` gives trace responses
+  `0.470825/0.479994` and spectral-selection responses
+  `-0.351785/-0.359692`. No audited branch changes; the smallest transient-
+  endpoint top-eigenvalue gap is `1.2719`, and the minimum including the
+  stage-6 ROI baselines is `1.2637`. All Weyl and Hoffman-Wielandt checks
+  pass.
+- **Baseline-versus-continuation split:** Stage 6 already has hotspot
+  difference `0.117657849` at step `0.25`. Continuing to `49/96` and
+  `25/48` adds only `0.001382725/0.002644527`. The global E-031 discrepancy
+  is therefore primarily a pre-existing two-grid/reconstruction difference,
+  not an effect created by the two transient source increments.
+- **Physical-step sensitivity:** At step `0.5`, the hotspot differences fall
+  to `0.0342885/0.0346884`, reductions of about `71.2%`, and radial becomes
+  order-robustly dominant. The component explanation is not stable across
+  the two mesh-compatible postprocessors.
+- **Lobe basin:** At step `0.25`, the three nodewise differences are
+  `0.00725/0.00450/0.01839` and
+  `0.00758/0.00453/0.01735`. At step `0.5`, the first node changes sign and
+  every fine/coarse pair in the basin exceeds `0.046`, so the displayed
+  three-node basin leaves the `pair<0.02` sublevel set at that recovery
+  scale. The full step-`0.5` common field was not searched for a displaced
+  component.
+- **Decision:** E-032 completes the requested attribution but finds
+  reconstruction-scale sensitivity. It neither validates nor disproves the
+  lobe as continuum structure. Accepted lineage remains E-028 stage `6/12`,
+  SHA
+  `ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`.
+  No physical-field, artificial-gravity, inertial-control,
+  spacetime-engineering, FTL, or propulsion conclusion follows.
