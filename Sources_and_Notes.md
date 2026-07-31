@@ -1957,3 +1957,112 @@ Add sources here with enough detail that future runs can judge quality quickly.
   `ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`.
   No physical-field, artificial-gravity, inertial-control,
   spacetime-engineering, FTL, or propulsion conclusion follows.
+
+## 2026-07-31 - E-033 Local Hessian-Recovery and Stencil-Scale Sources
+
+- **Savitzky and Golay 1964:** Abraham Savitzky and Marcel J. E. Golay,
+  “Smoothing and Differentiation of Data by Simplified Least Squares
+  Procedures,” *Analytical Chemistry* **36**(8), 1627-1639,
+  DOI `10.1021/ac60214a047`.
+  - A fixed local polynomial least-squares fit can be expressed as linear
+    convolution weights for smoothing and differentiation. E-033 records
+    those exact weights for its one symmetric 25-node quadratic fit.
+  - **Transfer limit:** Polynomial reproduction and a fixed linear-weight
+    ledger validate the declared postprocessor. They do not bound PDE
+    discretization error or establish convergence of a recovered Hessian.
+
+- **Picasso, Alauzet, Borouchaki, and George 2011:** Marco Picasso,
+  Frédéric Alauzet, Houman Borouchaki, and Paul-Louis George, “A Numerical
+  Study of Some Hessian Recovery Techniques on Isotropic and Anisotropic
+  Meshes,” *SIAM Journal on Scientific Computing* **33**(3), 1058-1076,
+  DOI `10.1137/100798715`.
+  - Their local least-squares construction fits
+    `p=a0+a1 x+a2 z+a3 x^2+a4 xz+a5 z^2` on at least six patch nodes and
+    recovers the Hessian from `[2a3,a4; a4,2a5]`. The sampling matrix is
+    nonsingular when the selected nodes do not lie on one conic.
+  - **Transfer limit:** Their Poisson/P1 finite-element study finds strong
+    mesh-topology dependence and no general Hessian-convergence guarantee.
+    E-033's manufactured quadratic reproduction validates its declared
+    operator, not convergence of the transient Galileon fields.
+
+- **Zhang and Naga 2005; Guo, Zhang, and Zhao 2017:**
+  - Zhimin Zhang and Ahmed Naga, “A New Finite Element Gradient Recovery
+    Method: Superconvergence Property,” *SIAM Journal on Scientific
+    Computing* **26**(4), 1192-1213,
+    DOI `10.1137/S1064827503402837`.
+  - Hailong Guo, Zhimin Zhang, and Ren Zhao, “Hessian Recovery for Finite
+    Element Methods,” *Mathematics of Computation* **86**(306), 1671-1692,
+    DOI `10.1090/mcom/3186`.
+  - Polynomial-preserving recovery is based on local least-squares fitting.
+    The Hessian construction preserves specified polynomial classes, with
+    stronger preservation and superconvergence under additional
+    translation-invariance, symmetry, regularity, and mesh-structure
+    hypotheses.
+  - **Transfer limit:** E-033 compares two nonlinear finite-difference
+    fields at exact common lattice nodes. It has not established the cited
+    finite-element supercloseness or mildly structured refinement
+    hypotheses. Polynomial exactness and recovery agreement therefore
+    remain consistency diagnostics.
+
+- **Kamenski and Huang 2014:** Lennard Kamenski and Weizhang Huang, “How a
+  Nonconvergent Recovered Hessian Works in Mesh Adaptation,” *SIAM Journal on
+  Numerical Analysis* **52**(4), 1692-1708,
+  DOI `10.1137/120898796`.
+  - A recovered Hessian from a convergent linear finite-element solution can
+    remain nonconvergent while still supplying useful directional
+    information for mesh adaptation.
+  - **Transfer limit:** Downstream utility or potential agreement is not a
+    Hessian-error certificate. E-033 must not infer continuum curvature from
+    either persistence or attenuation under one local recovery.
+
+- **Lele 1992; Warming and Hyett 1974:**
+  - Sanjiva K. Lele, “Compact Finite Difference Schemes with Spectral-like
+    Resolution,” *Journal of Computational Physics* **103**(1), 16-42,
+    DOI `10.1016/0021-9991(92)90324-R`.
+  - R. F. Warming and B. J. Hyett, “The Modified Equation Approach to the
+    Stability and Accuracy Analysis of Finite-Difference Methods,” *Journal
+    of Computational Physics* **14**(2), 159-179,
+    DOI `10.1016/0021-9991(74)90011-4`.
+  - Fourier symbols and modified equations expose how derivative stencils
+    transmit or suppress different spatial scales. E-033 therefore records
+    the exact centered and least-squares recovery weights and applies them to
+    the common-node potential error before the nonlinear eigenvalue map.
+  - **Transfer limit:** Modified-equation expansions assume sufficient
+    smoothness, while Fourier symbols characterize declared linear
+    postprocessors. They can classify fixed-field scale response but cannot
+    establish a continuum Hessian or a grid-convergence order.
+
+## 2026-07-31 - E-033 Common-Node Potential-Error Result
+
+- **Implementation and provenance:** Added
+  `models/e033_potential_error_stencils.py`. It validates immutable E-028
+  stage 6, reconstructs fresh coarse stage 6, and recomputes only transient
+  `49/96` and `25/48`. It maps four fixed `5 x 5` patches through integer
+  coarse indices and the exact `2:1` fine map: `100` references, `60` unique
+  common nodes, and no interpolation.
+- **Exact error-first closure:** At both physical steps `0.25` and `0.5`,
+  radial, mixed, axial, and azimuthal fine-minus-coarse components equal the
+  explicit stencil of `e=phi_fine-phi_coarse` within `2e-11`. The
+  `0.25-minus-0.5` pure-curvature details close as negative fourth
+  differences divided by `4 h^2`. The nonlinear pair is always
+  re-evaluated from separately recovered fine and coarse Hessians.
+- **Fixed recovery:** One unweighted total-degree-two least-squares fit uses
+  all 25 nodes over fixed `+/-0.5` support. The dimensionless design has rank
+  `6`, condition number `3.7364`, exact recorded weights, and roundoff-level
+  reproduction of all six degree-two basis monomials and one general
+  quadratic.
+- **Measured scale response:** The recovered error-component vector is closer
+  in Frobenius norm to the `0.5` centered vector at all eight endpoint/ROI
+  cases. Hotspot axial gaps are `0.440309/0.449122` at `0.25`,
+  `0.251346/0.255821` at `0.5`, and `0.215699/0.219232` under recovery. The
+  three lobe nodes retain recovered axial values `0.178-0.218`; their fit
+  residual RMS is `10.99-11.80%` of the potential-error range.
+- **Decision:** The exact `0.25-minus-0.5` component detail is localized and
+  the fixed fit returns nonzero axial coefficients, but the result is
+  non-identifying. The recovery shares the larger stencil's outer support,
+  and the nonlinear recovered pair is closer to the `0.5` pair only at the
+  hotspot, not the six lobe cases. Smooth quartic, long-wave, and Nyquist
+  controls all produce the same component-nearest ordering as the endpoints.
+  No one-cell, smooth higher-order, or alias cause; spatial/continuum
+  coherence; stable lobe; physical field; artificial gravity; inertial
+  control; spacetime engineering; FTL; or propulsion is established.

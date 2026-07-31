@@ -1419,3 +1419,48 @@ No checkpoint, retained work snapshot, `SHA256SUMS`, or manifest entry is
 changed. E-033 should localize the behavior in exact potential-error stencils
 before any amplitude, outer-box, density, asymmetry, target, EFT, or
 engineering work.
+
+## 2026-07-31 E-033 exact common-node potential-error stencils
+
+`models/e033_potential_error_stencils.py` validates immutable accepted E-028
+stage 6, reconstructs fresh coarse stage 6, and sequentially recomputes only
+the transient `49/96` and `25/48` endpoints. It writes no endpoint field or
+checkpoint.
+
+For the E-031 hotspot and three lobe-basin nodes, E-033 maps one frozen
+`5 x 5` patch by integer coarse indices and the exact `2:1` fine-node map.
+The four patches contain `100` references to `60` unique common nodes. No
+interpolation is used in the potential-error patches. Every radial, mixed,
+axial, and azimuthal fine-minus-coarse component at physical steps `0.25`
+and `0.5` equals its explicit linear stencil of
+`e=phi_fine-phi_coarse` within `2e-11`. The nested pure-curvature detail is
+the corresponding negative fourth difference divided by `4 h^2`.
+
+One predeclared unweighted quadratic fit uses all 25 nodes over fixed
+`+/-0.5` support. Its dimensionless design has rank `6`, condition number
+`3.7364`, and exact recorded component weights. All six degree-two basis
+monomials and a general quadratic reproduce to roundoff.
+
+| Location/amplitude | Axial `0.25` | Axial `0.5` | Axial quadratic |
+| --- | ---: | ---: | ---: |
+| Hotspot `49/96` | `0.440309` | `0.251346` | `0.215699` |
+| Hotspot `25/48` | `0.449122` | `0.255821` | `0.219232` |
+| Lobe range, both endpoints | `0.400-0.663` | `0.212-0.287` | `0.178-0.218` |
+
+The quadratic error-component vector is nearer the `0.5` centered vector at
+all eight endpoint/ROI cases, but this ordering is non-identifying. A smooth
+quartic with zero analytic center Hessian, a smooth long wave, and an axial
+Nyquist mode all give the same nearest-scale ordering. The nonlinear pair,
+which is recomputed from separately recovered fine and coarse Hessians, is
+nearer `0.5` only at the two hotspot cases because component changes undergo
+spectral cancellation.
+
+E-033 therefore records `nonidentifying_mixed_recovery_result`. It exactly
+localizes the nested component detail and reports one fit's coefficients; it
+does not identify smooth higher-order versus grid-scale/aliased content,
+establish spatial coherence, validate a continuum Hessian or lobe, or prove
+an interpolation artifact. Accepted lineage remains E-028 stage 6, SHA
+`ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`.
+No checkpoint, retained work snapshot, `SHA256SUMS`, or manifest entry is
+changed. E-034 should qualify the exact postprocessor transfer functions
+analytically before any further nonlinear replay.
