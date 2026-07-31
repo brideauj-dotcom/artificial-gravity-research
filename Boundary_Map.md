@@ -288,7 +288,7 @@ Faster-than-light travel generally creates causality issues in relativity. Any p
 - **Same-observable boundary:** The current annulus diagnostic chooses flux radii as fractions of the numerical box. An `R=80` versus `R=160` run would therefore sample different physical spheres and cannot by itself establish outer-box stability. Any later box comparison must hold physical flux radii and the interior diagnostic window fixed, while separately reporting global minima over each full box.
 - **Continuation-geometry boundary:** The full stage-2 secant remains a preserved failed predictor, while plain previous-stage seeds close stages 3 through 6. Stage-4-to-5 and stage-5-to-6 increment cosines are `0.999903 / 0.999935`, and their secant misses are `4.166% / 3.659%` of the new increments. These support a smooth sampled fixed-grid continuation but do not supply a Jacobian inverse bound, analytic uniqueness argument, or validated enclosure. Global minima and tracked warning locations move differently, and centered quantitative trends depend on physical difference step; neither global-only nor fixed-location-only tracking is sufficient. Predictor or schedule changes require separate fingerprints and may not rewrite accepted provenance.
 - **Solver-path and tail boundary:** The canonical first correction toward `4/12` passes strict GMRES, Armijo decrease, and solved wide gates but temporarily leaves the fixed/centered `Gamma_2` reconstructions; a separate half-step replay stays positive and reaches the same endpoint. By contrast, fresh stage-5 and stage-6 replays end bitwise-identically, and stage 6 keeps all five accepted corrections plus nine samples on every piecewise-affine segment positive in the three reconstructions. The minimum sampled pair sums are nevertheless close: `0.017445 / 0.002255 / 0.002233` in active/fixed/centered frames. This supports one sampled fixed-grid path; it does not prove a unique continuum branch. At matched centered step `0.25`, the pair minimum erodes `0.05711 -> 0.03590 -> 0.02525 -> 0.01937` across stages 3--6. At stage 6, `pair<0.05` occupies `227/310365` common-window nodes and only `6.54e-5` of full-window axisymmetric weight, but `0.00314` of source-support weight and `0.00334` of source-transition weight. Its `223` positive-weight nodes form one connected near-midplane component spanning `rho=0--6.25`, `z=0--0.75` and reaching the inner source smoothing layer; the full-window denominator therefore understates its source-relative prominence. Record connectivity, threshold sensitivity, source-relative weights, and node counts alongside global minima. In-progress checkpoints remain search states, not scientific endpoints.
-- **Possible cracks:** The strict `7/12` endpoint closes, but its canonical first correction leaves the independent cones and its low-margin core broadens, so accepted branch reach remains `6/12`; see B-030. E-029 subsequently repaired the sampled path but failed the frozen tail gate, E-030 found mesh-dependent deficit growth, and E-031 found the detached coarse persistence feature unresolved under the common-graph sup discrepancy. E-032 then found that the canonical axial attribution changes to radial and shrinks by about `71.2%` at the larger mesh-compatible reconstruction step; see B-034. E-033 may localize that scale dependence, but only a full-source fine state with positive path/tail gates and convincing coupled refinement could justify the fixed-observable outer-box check. Even that would support only a local dimensionless feature of a hypothetical scalar PDE; it would not address the `~6e-35 m/s^2` absolute scale, useful artificial gravity, inertial control, FTL, or reactionless propulsion.
+- **Possible cracks:** The strict `7/12` endpoint closes, but its canonical first correction leaves the independent cones and its low-margin core broadens, so accepted branch reach remains `6/12`; see B-030. E-029 subsequently repaired the sampled path but failed the frozen tail gate, E-030 found mesh-dependent deficit growth, and E-031 found the detached coarse persistence feature unresolved under the common-graph sup discrepancy. E-032 then found that the canonical axial attribution changes to radial and shrinks by about `71.2%` at the larger mesh-compatible reconstruction step; see B-034. E-033 localizes the exact nested detail but finds its fixed recovery non-identifying across smooth and aliased controls; see B-035. Only a full-source fine state with positive path/tail gates and convincing coupled refinement could justify the fixed-observable outer-box check. Even that would support only a local dimensionless feature of a hypothetical scalar PDE; it would not address the `~6e-35 m/s^2` absolute scale, useful artificial gravity, inertial control, FTL, or reactionless propulsion.
 - **Sources:** Froese, Oberman, and Salvador 2016; Finlay and Oberman 2018/2019; Sala and Tuminaro 2008; Uecker 2022; Kearfott and Xing 1994; PyAMG 5.3 and SciPy 1.18 official documentation; internal E-028 calculations 2026-07-20 through 2026-07-26.
 
 ### B-028: Runtime Or Implementation Provenance Drift Requires Replay, Not Silent Continuation
@@ -356,9 +356,9 @@ Faster-than-light travel generally creates causality issues in relativity. Any p
   mesh-dependent deficit and a detached coarse persistence feature that does
   not exceed the common-graph stability threshold. E-032 decomposed the
   common-node discrepancy but found its component attribution
-  reconstruction-scale sensitive; see B-034. E-033 can test whether that
-  sensitivity is one-cell-scale or spatially coherent without rewriting any
-  failure.
+  reconstruction-scale sensitive; see B-034. E-033 then closed the exact
+  potential-error stencil identities but found the fixed recovery
+  non-identifying across smooth and aliased controls; see B-035.
   Validated interval continuation and coupled-refinement agreement would still
   be needed for a substantially stronger mathematical conclusion.
 - **Sources:** Caffarelli, Nirenberg, and Spruck 1985; Froese, Oberman, and
@@ -408,9 +408,10 @@ Faster-than-light travel generally creates causality issues in relativity. Any p
   detached coarse bar far below the `p>2 epsilon` stability threshold. E-032
   finds the remaining `~0.12` common-node discrepancy axial-dominant only at
   the canonical step; it falls by about `71.2%` and becomes radial-dominant at
-  the larger reconstruction step. E-033 may localize that scale dependence.
-  Even agreement would be numerical diagnostic evidence, not a physical-field
-  or engineering opportunity.
+  the larger reconstruction step. E-033 localizes the exact nested component
+  detail, but its recovery ordering is shared by smooth-quartic, long-wave,
+  and Nyquist controls; see B-035. This remains numerical diagnostic
+  evidence, not a physical-field or engineering opportunity.
 - **Sources:** Gårding 1959; Caffarelli, Nirenberg, and Spruck 1985; Froese,
   Oberman, and Salvador 2017; Awanou 2018; den Heijer and Rheinboldt 1981;
   Kearfott and Xing 1994; Qi and Sun 1993; internal E-029 fine/coarse
@@ -452,10 +453,11 @@ Faster-than-light travel generally creates causality issues in relativity. Any p
   the detached component unresolved because its lifetime is only
   `1.94%/1.88%` of the strict `2 epsilon` threshold; see B-033. E-032 keeps
   those exact nodes and endpoints fixed but finds the matched-Hessian
-  attribution reconstruction-scale sensitive; see B-034. E-033 can inspect
-  the underlying potential-error stencils. A localized post-processing
-  explanation would sharpen the numerical diagnosis, not establish a
-  continuum field or propulsion opportunity.
+  attribution reconstruction-scale sensitive; see B-034. E-033's exact
+  potential-error stencils localize that detail, but the declared recovery
+  cannot distinguish smooth higher-order from grid-scale content; see B-035.
+  This sharpens the numerical diagnosis without establishing a continuum
+  field or propulsion opportunity.
 - **Sources:** Froese, Oberman, and Salvador 2017; Barles and Souganidis
   1991; Cohen-Steiner, Edelsbrunner, and Harer 2007; internal E-030 tangent,
   spectrum, nonlinear-root, and topology calculations, 2026-07-28.
@@ -513,11 +515,11 @@ Faster-than-light travel generally creates causality issues in relativity. Any p
 - **Possible cracks:** E-032 holds the endpoints and physical node set fixed
   and finds the `~0.12` canonical-step sup discrepancy axial-dominant, but
   the total falls about `71.2%` and becomes radial-dominant at step `0.5`;
-  see B-034. E-033 can inspect exact potential-error stencils at the
+  see B-034. E-033 inspects exact potential-error stencils at the
   `(8.75,0.75)` hotspot and the three-node dying basin
-  `rho=5.75-6.25, z=0.5`. A local stencil explanation would sharpen the
-  numerical diagnosis only; it would not retroactively pass E-029's tail
-  gate or establish a physical field.
+  `rho=5.75-6.25, z=0.5`, but mutually different manufactured controls share
+  its nearest-recovery ordering; see B-035. The result does not retroactively
+  pass E-029's tail gate or establish a physical field.
 - **Sources:** Edelsbrunner, Letscher, and Zomorodian 2002; Cohen-Steiner,
   Edelsbrunner, and Harer 2007; Chazal et al. 2009; Barles and Souganidis
   1991; Crandall, Ishii, and Lions 1992; Froese, Oberman, and Salvador 2017;
@@ -567,18 +569,74 @@ Faster-than-light travel generally creates causality issues in relativity. Any p
   entry. Do not promote the axial or radial allocation as a continuum
   mechanism, relax the frozen tail gate, advance amplitude, or begin
   outer-box, density, asymmetry, target, EFT, or engineering work.
-- **Possible cracks:** E-033 can compute exact common-node
-  potential-difference stencils at the hotspot and lobe basin, add a
-  manufactured-solution recovery check, and compare centered differences with
-  a local quadratic reconstruction. That can test whether the behavior is
-  more consistent with a one-cell interpolation/stencil artifact or a
-  spatially coherent error field. A justified Hessian-recovery analysis and
-  a refined nonlinear-grid sequence—not a third grid alone—would still be
-  required for any continuum claim.
+- **Possible cracks:** E-033 computes the exact common-node
+  potential-difference stencils and one fixed quadratic recovery; see B-035.
+  It localizes the nested component detail but does not discriminate a
+  one-cell mode, smooth higher-order error, or aliasing. E-034 can qualify
+  the exact postprocessor transfer functions without another PDE solve. A
+  justified Hessian-recovery analysis and a predeclared refined nonlinear-grid
+  sequence—not a third grid alone—would still be required for any continuum
+  claim.
 - **Sources:** NIST DLMF section 3.4; Hoffman and Wielandt 1953; Magnus 1985;
   Lewis 1996; Shapley 1953; Barles and Souganidis 1991; Crandall, Ishii, and
   Lions 1992; Froese, Oberman, and Salvador 2017; internal E-032
   matched-Hessian calculations, 2026-07-30.
+
+### B-035: A Polynomial-Exact Local Recovery Is Not a Continuum-Hessian Certificate
+
+- **Claim:** On a fixed common lattice, every linear fine-minus-coarse
+  Hessian-component gap is exactly the corresponding recovery operator
+  applied to the potential error `e=phi_fine-phi_coarse`. Comparing nested
+  centered stencils with one fixed, polynomial-exact local quadratic recovery
+  localizes reconstruction sensitivity, but agreement, persistence,
+  attenuation, or nearest-scale ordering under those operators does not
+  establish a continuum Hessian. Even uniform potential convergence is
+  insufficient: an error family with amplitude `O(h^2)` and wavelength
+  `O(h)` can vanish uniformly while retaining `O(1)` second derivatives.
+- **Why it matters:** E-033 closes all four component identities on `100`
+  patch references (`60` unique exact common nodes). Its fixed recovered
+  component vector is nearer the `0.5` centered vector at all eight
+  endpoint/ROI cases, while the recovered nonlinear pair is so only at the
+  two hotspot cases. Smooth-quartic, long-wave, and Nyquist controls all
+  produce that same component-nearest ordering. E-033 can therefore report
+  the exact nested detail and fitted coefficients, but may not call a
+  suppressed feature numerical noise, a nonzero coefficient spatially
+  coherent, or a surviving feature validated continuum structure.
+- **Strength:** Established analytically for linear stencil/recovery
+  commutation and the manufactured polynomial class; established internally
+  only for the same two transient endpoints, four frozen ROI points, nested
+  `0.25/0.5` centered stencils, and one predeclared 25-node quadratic patch.
+  No independent asymptotic refinement sequence, derivative-controlling
+  error norm, nonlinear-solver enclosure, or full-field larger-scale
+  component search is supplied. The overlapping lobe patches and nearby
+  amplitudes are not independent samples.
+- **Recovery boundary:** The local quadratic fit retains frozen coordinates,
+  weights, rank `6`, condition number `3.7364`, and manufactured-field tests.
+  It uses the same `+/-0.5` outer support as the larger centered stencil.
+  Published polynomial-preservation and superconvergence results require
+  mesh, regularity, symmetry, and finite-element supercloseness hypotheses
+  not established for these nonlinear finite-difference fields. Exact
+  quadratic reproduction tests implementation consistency only.
+- **Operational rule:** Preserve immutable accepted E-028 stage `6/12`, SHA
+  `ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`.
+  E-033 saves no endpoint field, checkpoint, work snapshot, or manifest
+  entry. Do not relax the frozen tail gate, advance amplitude, or begin
+  outer-box, density, asymmetry, target, EFT, useful-gravity,
+  inertial-control, or propulsion work.
+- **Possible cracks:** E-034 can derive the exact Fourier/modified-wavenumber
+  transfer functions of the three frozen postprocessors and predeclare what
+  a later recovery study must resolve. A stronger continuum conclusion would
+  still require a coupled nonlinear-grid refinement sequence in an observed
+  asymptotic regime, with fixed domain, source, evaluation region, and
+  recovery; increasingly resolved source transitions; solver error below
+  discretization error; uniformly stable recovery; and agreement in a norm
+  controlling the required derivatives. One additional grid alone is not
+  such a sequence. Even success would support only a continuum feature of
+  the hypothetical PDE, not a detected field or practical artificial-gravity
+  mechanism.
+- **Sources:** Picasso et al. 2011; Zhang and Naga 2005; Guo, Zhang, and Zhao
+  2017; Kamenski and Huang 2014; Lele 1992; Warming and Hyett 1974; internal
+  E-033 exact-stencil and manufactured-recovery calculations, 2026-07-31.
 
 ## Boundary Entry Template
 

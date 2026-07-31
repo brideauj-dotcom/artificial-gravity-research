@@ -1961,3 +1961,132 @@ the hotspot and lobe strip. Stop after assessing whether the axial excess is
 more consistent with a one-cell-scale or spatially coherent error. Do not save
 endpoints, relax any tail gate, advance amplitude, or begin outer-box, density,
 asymmetry, target, EFT, or propulsion work.
+
+## 2026-07-31 - E-033 Common-Node Potential-Error Stencils
+
+**Focus question:** At only the same transient `49/96` and `25/48`
+endpoints, is E-032's reconstruction-scale change more consistent with
+one-cell-scale content in the exact common-node potential error or with a
+spatially coherent error that survives one predeclared local quadratic
+recovery at the frozen hotspot and three-node lobe basin?
+
+**Sources reviewed:** Savitzky and Golay 1964 on local least-squares
+differentiation; Warming and Hyett 1974 and Lele 1992 on modified-equation
+and modified-wavenumber diagnostics; Zhang and Naga 2005 and Guo, Zhang, and
+Zhao 2017 on polynomial-preserving recovery under stated mesh hypotheses;
+Picasso et al. 2011 and Kamenski and Huang 2014 on local quadratic Hessian
+recovery, topology dependence, and the possibility of a nonconvergent
+recovered Hessian. These support a manufactured polynomial gate and an
+auditable fixed recovery, not a superconvergence claim for these nonlinear
+finite-difference fields.
+
+**Deepening work completed:** (1) froze the window, weights, basis, endpoints,
+and two centered steps before the replay; (2) mapped all four `5 x 5`
+patches by integer coarse indices and the exact `2:1` fine map, producing
+`100` references to `60` unique common nodes and using no interpolation;
+(3) recorded all `25` fine, coarse, and error values per patch; (4) expressed
+radial, mixed, axial, and azimuthal fine-minus-coarse component gaps as exact
+linear stencils of `e=phi_fine-phi_coarse`; (5) exposed the exact nested
+`0.25-minus-0.5` detail stencils, including the negative fourth-difference
+identity for pure curvatures; (6) applied one unweighted total-degree-two
+least-squares recovery over the same `+/-0.5` support, recording rank,
+condition, weights, and residuals; (7) validated all degree-two monomials
+and a general quadratic to roundoff; and (8) retained smooth-quartic,
+long-wave, and Nyquist controls that show why scale disagreement does not
+identify its own cause.
+
+**What changed:** Added `models/e033_potential_error_stencils.py` and focused
+tests. The campaign validates immutable E-028 stage 6, reconstructs fresh
+coarse stage 6, and recomputes only `49/96` and `25/48`. Fine roots reproduce
+`3/156` and `3/155` Newton/GMRES and coarse roots reproduce `3/108` and
+`2/79`. All inherited nonlinear, direct-Krylov, wide, and four
+full-`Gamma_2` gates pass; every frozen tail gate remains failed.
+
+At the E-031 hotspot, the fine-minus-coarse component gaps are:
+
+| Amplitude | Recovery | Radial | Mixed | Axial | Azimuthal |
+| --- | --- | ---: | ---: | ---: | ---: |
+| `49/96` | centered `0.25` | `0.028904` | `-0.017571` | `0.440309` | `0.001612` |
+| `49/96` | centered `0.5` | `0.022047` | `0.002340` | `0.251346` | `0.001510` |
+| `49/96` | quadratic | `0.007631` | `-0.001174` | `0.215699` | `0.001884` |
+| `25/48` | centered `0.25` | `0.029280` | `-0.017399` | `0.449122` | `0.001592` |
+| `25/48` | centered `0.5` | `0.022607` | `0.002568` | `0.255821` | `0.001486` |
+| `25/48` | quadratic | `0.007857` | `-0.000942` | `0.219232` | `0.001869` |
+
+The quadratic error-component vector is nearer in Frobenius norm to the
+`0.5` centered vector at every one of the `8` endpoint/ROI cases. At the
+hotspot its axial value is about `6.3x` closer to `0.5` than to `0.25`, and
+the fit residual RMS is `4.80%/4.83%` of the local error range. Across the
+three lobe nodes, axial values fall from `0.400-0.663` at `0.25` to
+`0.212-0.287` at `0.5` and `0.178-0.218` under the quadratic recovery.
+The fit also returns a nonzero axial coefficient at every lobe node. Lobe fit
+residual RMS is `10.99-11.80%` of range and maximum residual is
+`19.10-20.44%`, so it is not a clean local quadratic.
+
+**Reasoning:** Differentiation is linear, so every component gap must equal
+the declared stencil applied to the exact common-node potential error; all
+closures pass within `2e-11`. The pair margin is nonlinear in Hessian
+eigenvalues, however. Re-eigenvaluating the separately recovered fine and
+coarse Hessians makes the quadratic pair discrepancy closer to the `0.5`
+pair at only the two hotspot cases, not at the six lobe cases. That is not a
+contradiction: radial, mixed, axial, and azimuthal changes undergo spectral
+cancellation. It prevents the component-localization result from becoming a
+recovery-independent lobe statement.
+
+The quadratic fit itself shares the larger stencil's `+/-0.5` outer support.
+Its proximity to the `0.5` result is therefore not an independent convergence
+point. More strongly, the smooth quartic, long-wave, and Nyquist controls all
+put the quadratic component vector nearer the `0.5` vector despite encoding
+mutually different mechanisms; the quartic even has a zero analytic Hessian
+at its center. The observed nearest-scale ordering is therefore
+non-identifying.
+
+**Failure or boundary found:** E-033 exactly localizes the nested
+`0.25-minus-0.5` component detail and finds a nonzero axial coefficient under
+the one fixed quadratic recovery, but the controls prevent either quantity
+from being classified as a one-cell cause or a coherent continuum component.
+It does not prove an interpolation artifact—no interpolation was used in the
+patches—nor certify a continuum Hessian, classify the lobe as noise, or
+recover a stable pair-margin feature. The overlapping lobe windows are
+correlated, the two amplitudes are not independent samples, solver error is
+not enclosed as a Hessian interval, and only two grids exist. Accepted
+lineage remains immutable E-028 stage `6/12`, checkpoint SHA
+`ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`.
+
+**Blank space or new idea:** Before another expensive nonlinear replay,
+E-034 should qualify the postprocessors themselves. Compute the exact 2D
+Fourier/modified-wavenumber symbols of the `0.25`, `0.5`, and fixed
+25-node quadratic component stencils, including the local
+`phi_r/rho` factor; map their resolvable and null bands; and show the
+non-unique smooth/grid-scale mode mixtures compatible with E-033's recorded
+component ratios. This is an analytic/manufactured calculation only. A later
+nonlinear refinement would require a preregistered three-grid recovery
+sequence, not another recovery window chosen after seeing these endpoints.
+
+**Hypothesis updates:** H-019 remains `Medium-low`, but its status now records
+E-033's mixed error-first localization. B-035 records that exact stencil
+closure and polynomial recovery do not supply derivative convergence. E-033
+is complete; E-034 becomes the next bounded calculation. The exact center
+remains force-free, the cosmological `r0=1 m` translation remains about
+`6e-35 m/s^2`, and no physical field, artificial gravity, inertial control,
+spacetime engineering, reactionless propulsion, or faster-than-light
+conclusion follows.
+
+**Verification and provenance:** The final transient report SHA-256 is
+`032b19f33f61d0b7892c4c7c902d721f5e0795bffdc1748c236c9a6de53febfe`;
+the E-033 module SHA-256 before documentation-only edits is
+`ff12ad13b6bc807b0b5c814ea2ea1a932941f7da1eff8ac26223a8aca02d840e`.
+The report records `81.66 s` elapsed and `1.535 GiB` peak RSS. No field,
+checkpoint, retained work
+snapshot, or manifest entry was written. All `141` workspace tests pass;
+every model/test module compiles; `pip check` reports no broken requirements;
+all tracked checkpoints match `SHA256SUMS`; Git LFS integrity passes; and the
+final diff has no whitespace errors.
+
+**Next best step:** Run E-034 as a no-PDE-solve transfer-function
+qualification of exactly the three frozen E-033 postprocessors. Derive and
+test their component symbols against smooth polynomial, long-wave, and
+Nyquist modes, and predeclare what a future three-grid recovery study would
+have to show. Do not replay or save transient endpoints, relax a tail gate,
+advance amplitude, or begin outer-box, density, asymmetry, target, EFT, or
+propulsion work.
