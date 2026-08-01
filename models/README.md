@@ -1464,3 +1464,84 @@ an interpolation artifact. Accepted lineage remains E-028 stage 6, SHA
 No checkpoint, retained work snapshot, `SHA256SUMS`, or manifest entry is
 changed. E-034 should qualify the exact postprocessor transfer functions
 analytically before any further nonlinear replay.
+
+## 2026-08-01 E-034 exact postprocessor transfer functions
+
+`models/e034_postprocessor_transfer.py` is a checkpoint-free analytic and
+manufactured qualification of exactly the three E-033 component
+postprocessors. It does not load a field or solve a PDE. For lattice modes
+`exp(i*(i*theta_rho+j*theta_z))` with `h=0.25`, it validates all twelve closed
+symbols against direct transforms of the E-033 5x5 weights within `1.56e-14`.
+
+For centered stride `s=1,2`, the symbols are
+
+```text
+S_rr = -4 sin^2(s theta_rho/2)/(s h)^2
+S_rz = -sin(s theta_rho) sin(s theta_z)/(s h)^2
+S_zz = -4 sin^2(s theta_z/2)/(s h)^2
+S_aa =  i sin(s theta_rho)/(s h rho0)
+```
+
+The last line is only a frozen-local symbol at the declared `rho0`; the
+cylindrical `1/rho` coefficient is not globally translation invariant.
+
+For the fixed 25-node quadratic fit, define
+
+```text
+D(t) = 1 + 2 cos(t) + 2 cos(2t)
+A(t) = 4 cos(2t) - 2 cos(t) - 2
+P(t) = sin(t) + 2 sin(2t)
+```
+
+Then
+
+```text
+S_rr =  A(theta_rho) D(theta_z)/(35 h^2)
+S_rz = -P(theta_rho) P(theta_z)/(25 h^2)
+S_zz =  D(theta_rho) A(theta_z)/(35 h^2)
+S_aa =  i P(theta_rho) D(theta_z)/(25 h rho0)
+```
+
+The transverse factor `D` is decisive. It vanishes at
+`|theta|=2 pi/5,4 pi/5` and changes sign between those lines. `A` changes sign
+at `acos(-3/4)=0.7699465 pi`; `P` changes sign at
+`acos(-1/4)=0.5804306 pi`. The centered stride-2 mixed and azimuthal symbols
+also reverse above half Nyquist. Degree-two exactness therefore coexists with
+high-band nulls and reversals.
+
+Using project-defined 90%-operator-amplitude (10%-relative-amplitude-error)
+and descriptive 50% continuum-operator-amplitude
+criteria, E-034 maps the
+largest guaranteed origin-centered 2D wavenumber squares. The
+90%-operator-amplitude cutoffs are:
+
+| Postprocessor | Radial | Mixed | Axial | Local azimuthal |
+| --- | ---: | ---: | ---: | ---: |
+| centered `0.25` | `0.35603 pi` | `0.17801 pi` | `0.35603 pi` | `0.25041 pi` |
+| centered `0.5` | `0.17801 pi` | `0.08901 pi` | `0.17801 pi` | `0.12520 pi` |
+| quadratic 5x5 | `0.08772 pi` | `0.09664 pi` | `0.08772 pi` | `0.08207 pi` |
+
+These are operator-response bands, not recovered endpoint spectra.
+
+E-034 also freezes two disjoint 17-mode manufactured dictionaries. The
+lower-band dictionary uses angle components at or below `0.50 pi`; the
+grid-scale dictionary uses `0.55-0.95 pi`. Each response matrix has rank `12`
+and reproduces all twelve rounded E-033 hotspot component values at both
+`49/96` and `25/48` within `6.2e-15`. Their 5x5 patches remain different by
+at least `0.302` in `L2`. This concrete inverse nonuniqueness does not infer
+which spectrum generated an unretained transient field.
+
+Run the bounded report with:
+
+```bash
+python -m models.e034_postprocessor_transfer \
+  --report-json /tmp/e034-transfer-report.json
+```
+
+The campaign records `qualified_nonidentifying_transfer_functions`. It
+predeclares a later source-resolved coupled-grid derivative screen but treats
+three grids only as a contraction/apparent-order test; a fourth rate check or
+independent validated derivative enclosure is still required. Accepted E-028
+stage 6 remains immutable. No field, checkpoint, retained work snapshot,
+manifest, amplitude, outer box, density, asymmetry, target, or physical claim
+changes.

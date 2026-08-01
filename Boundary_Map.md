@@ -638,6 +638,75 @@ Faster-than-light travel generally creates causality issues in relativity. Any p
   2017; Kamenski and Huang 2014; Lele 1992; Warming and Hyett 1974; internal
   E-033 exact-stencil and manufactured-recovery calculations, 2026-07-31.
 
+### B-036: Polynomial Exactness Does Not Prevent Spectral Nulls, Reversals, or Nonuniqueness
+
+- **Claim:** Exact reproduction of degree-two polynomials is a zero-wavenumber
+  consistency property, not a guarantee that a local recovered derivative
+  resolves, attenuates, or signs higher-frequency content correctly. For
+  E-033's unweighted 25-node total-degree-two fit, the exact pure-curvature
+  symbols contain a transverse five-point factor
+  `D(t)=1+2 cos(t)+2 cos(2t)`. It vanishes at
+  `|t|=2 pi/5,4 pi/5` and changes sign between those lines. The same recovery's
+  pure differentiated-axis factor changes sign at
+  `acos(-3/4)=0.76995 pi`, while its mixed/first-derivative factor changes
+  sign at `acos(-1/4)=0.58043 pi`. The centered `0.5` mixed and local
+  azimuthal operators also have sign-reversing bands above half Nyquist; the
+  mixed transfer reverses only when exactly one axis is in the high band.
+- **Why it matters:** E-034 validates all twelve closed symbols against direct
+  transforms of E-033's frozen weights within `1.56e-14`. With a predeclared
+  project-defined 90% operator-amplitude criterion on an origin-centered 2D
+  wavenumber square, the quadratic recovery transmits only
+  `0.08772 pi` radial/axial, `0.09664 pi` mixed, and `0.08207 pi` local
+  azimuthal. Those are operator passbands, not measurements of the endpoint
+  spectrum. More decisively, two disjoint 17-mode manufactured dictionaries,
+  one restricted to components at or below `0.50 pi` and the other to
+  `0.55-0.95 pi`, each have rank `12` and reproduce all twelve rounded E-033
+  hotspot component measurements at both amplitudes within `6.2e-15` while
+  producing different 5x5 patches. The recorded component measurements
+  therefore cannot identify a unique lower-band or grid-scale generating
+  spectrum.
+- **Strength:** Established analytically for the declared infinite-lattice
+  linear operators and internally checked by weight transforms, sampled plane
+  waves, exact reciprocal-lattice aliases, and manufactured mode mixtures.
+  The mixture targets are six-decimal ledger values, and the fits use
+  cancellation without a smoothness, positivity, PDE, energy, or
+  probabilistic prior. This proves finite-measurement nonuniqueness; it does
+  not reconstruct the unretained transient fields or show that either
+  manufactured dictionary generated them.
+- **Frozen-coefficient and finite-window boundary:** The cylindrical
+  `phi_r/rho` component has only a local symbol after freezing `rho=rho0`.
+  It has no single global translation-invariant symbol across the axis,
+  variable coefficient, boundary, or finite patch. Likewise, reciprocal-
+  lattice aliasing is exact for integer samples, while E-033's 5x5 window
+  adds leakage and cannot recover a unique continuous spectrum. The nonlinear
+  pair margin is excluded from the linear mixture fit.
+- **Operational rule:** Preserve immutable accepted E-028 stage `6/12`, SHA
+  `ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`,
+  and every tail/path/refinement failure. E-034 reads no checkpoint or
+  retained field array/file; its embedded targets are rounded field-derived
+  ledger measurements. It writes no field, checkpoint, retained work
+  snapshot, or manifest entry. Do not choose a new
+  recovery window after viewing another endpoint, infer continuum Hessian
+  convergence from postprocessor agreement, or advance amplitude, outer box,
+  density, asymmetry, target, EFT, useful-gravity, inertial-control, or
+  propulsion work.
+- **Possible cracks:** E-035 may preflight a fixed, source-resolved coupled
+  refinement sequence with scale-covariant shrinking supports, exact common
+  nodes, derivative-controlling norms, solver error below grid differences,
+  and transfer-band occupancy fixed before any solve. Three grids can only
+  screen for contraction and apparent order; a fourth rate check or an
+  independent validated derivative-error enclosure remains necessary. Even
+  that would concern a hypothetical PDE continuum feature, not a detected
+  field or artificial-gravity mechanism.
+- **Sources:** Lele 1992, DOI `10.1016/0021-9991(92)90324-R`; Schmid, Rath,
+  and Diebold 2022 with 2023 correction, DOIs
+  `10.1021/acsmeasuresciau.1c00054` and
+  `10.1021/acsmeasuresciau.3c00017`; Diskin, Thomas, and Mineck, NASA/TM-
+  2004-213037; Petersen and Middleton 1962, DOI
+  `10.1016/S0019-9958(62)90633-2`; Celik et al. 2008, DOI
+  `10.1115/1.2960953`; internal E-034 exact-symbol and manufactured-mixture
+  calculations, 2026-08-01.
+
 ## Boundary Entry Template
 
 ```markdown

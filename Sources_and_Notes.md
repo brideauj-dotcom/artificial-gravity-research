@@ -2066,3 +2066,138 @@ Add sources here with enough detail that future runs can judge quality quickly.
   No one-cell, smooth higher-order, or alias cause; spatial/continuum
   coherence; stable lobe; physical field; artificial gravity; inertial
   control; spacetime engineering; FTL; or propulsion is established.
+
+## 2026-08-01 - E-034 Transfer-Function and Grid-Verification Sources
+
+- **Lele 1992:** Sanjiva K. Lele, “Compact Finite Difference Schemes with
+  Spectral-like Resolution,” *Journal of Computational Physics* **103**(1),
+  16-42, DOI `10.1016/0021-9991(92)90324-R`.
+  - A Fourier mode turns a discrete derivative into a modified-wavenumber
+    response. Lele defines resolving efficiency only after selecting a
+    relative-error tolerance and explicitly compares `10%`, `1%`, and
+    `0.1%` thresholds.
+  - **E-034 use:** “Resolved” is not left qualitative. Motivated by Lele's
+    requirement to declare a tolerance, the report uses project-defined 90%
+    operator-amplitude origin-square cutoffs and separately reports
+    descriptive 50% transmission boundaries. These are not Lele's relative
+    modified-wavenumber-error thresholds.
+  - **Transfer limit:** Modified-wavenumber analysis qualifies a declared
+    linear stencil. It does not measure the spectrum of an unretained field
+    or establish PDE convergence.
+
+- **Schmid, Rath, and Diebold 2022, with 2023 correction:** Michael Schmid,
+  David Rath, and Ulrike Diebold, “Why and How Savitzky-Golay Filters Should
+  Be Replaced,” *ACS Measurement Science Au* **2**(2), 185-196, DOI
+  `10.1021/acsmeasuresciau.1c00054`; correction in **3**(3), 236, DOI
+  `10.1021/acsmeasuresciau.3c00017`.
+  - Local polynomial smoothing and differentiation are finite impulse-
+    response filters. Polynomial preservation gives a flat low-frequency
+    response, while traditional Savitzky-Golay filters can have weak
+    stopband rejection; this matters especially after differentiation.
+  - **E-034 use:** The fixed E-033 fit is transformed from its actual 2D
+    weights rather than treated as a generic smoother. Its exact transverse
+    nulls and sidelobe sign changes are reported explicitly.
+  - **Complicating evidence:** The paper's quantitative sidelobes are mainly
+    for 1D filters. They are not copied onto E-033's 2D total-degree fit.
+
+- **Diskin, Thomas, and Mineck 2004:** Boris Diskin, James L. Thomas, and
+  Raymond E. Mineck, *Textbook Multigrid Efficiency for Leading Edge
+  Stagnation*, NASA/TM-2004-213037, NASA Langley Research Center, May 2004.
+  - Local-mode analysis of a variable-coefficient operator freezes
+    coefficient combinations that actually occur in the physical domain;
+    freely combining impossible coefficient values can mislead.
+  - **E-034 use:** `phi_r/rho` is assigned only a local symbol at the stated
+    `rho0=8.75`. E-034 does not claim one global translation-invariant
+    azimuthal symbol.
+  - **Transfer limit:** Freezing `1/rho` omits coefficient change across the
+    patch, the axis, finite boundaries, and every nonlinear eigenvalue map.
+
+- **Petersen and Middleton 1962:** Daniel P. Petersen and David Middleton,
+  “Sampling and Reconstruction of Wave-Number-Limited Functions in
+  N-Dimensional Euclidean Spaces,” *Information and Control* **5**(4),
+  279-323, DOI `10.1016/S0019-9958(62)90633-2`.
+  - Periodic spatial sampling repeats spectra on the reciprocal lattice;
+    exact band-limited reconstruction requires nonoverlap of reciprocal-
+    lattice translates.
+  - **E-034 use:** A mode shifted by `2 pi` in lattice angle has the same
+    integer samples while its originating continuum derivative differs.
+    E-034 verifies this exact sample alias before constructing finite mode-
+    mixture counterexamples.
+  - **Transfer limit:** The theorem concerns ideal lattices and band-limited
+    functions. A finite 5x5 patch adds windowing and leakage, further
+    weakening spectral identification.
+
+- **Celik et al. 2008:** Ismail B. Celik, Urmila Ghia, Patrick J. Roache,
+  Christopher J. Freitas, Hugh Coleman, and Peter E. Raad, “Procedure for
+  Estimation and Reporting of Uncertainty Due to Discretization in CFD
+  Applications,” *Journal of Fluids Engineering* **130**(7), 078001, DOI
+  `10.1115/1.2960953`.
+  - The procedure uses three systematically refined grids to report apparent
+    order, extrapolation, relative error, and grid-convergence index; it warns
+    that oscillatory or nearly zero differences can invalidate the estimate.
+  - **E-034 use:** A future study must freeze comparable grids and recovered
+    quantities before solving. Three grids are treated only as a contraction/
+    apparent-order screen, with solver error separated from grid difference.
+  - **Complicating evidence:** The procedure cannot establish that these
+    nonlinear cylindrical fields have reached an asymptotic regime. E-034
+    therefore requires a fourth rate check or independent validated
+    derivative-error enclosure before any continuum conclusion.
+
+## 2026-08-01 - E-034 Exact Postprocessor Transfer Result
+
+- **Implementation and scope:** Added
+  `models/e034_postprocessor_transfer.py`. It imports E-033's frozen linear
+  weights but loads no checkpoint, reconstructs no endpoint, solves no PDE,
+  and writes no field, retained work snapshot, or manifest entry. The
+  analysis uses lattice angles `theta_rho=k_rho h`, `theta_z=k_z h`,
+  `h=0.25`, and the principal zone `[-pi,pi]^2`.
+- **Exact centered symbols:** For stride `s=1,2`, pure components are
+  `-4 sin^2(s theta/2)/(s h)^2`, mixed is
+  `-sin(s theta_rho) sin(s theta_z)/(s h)^2`, and frozen local azimuthal is
+  `i sin(s theta_rho)/(s h rho0)`. The stride-2 mixed symbol reverses when
+  exactly one axis lies above half Nyquist, and its azimuthal symbol reverses
+  whenever `|theta_rho|>pi/2`.
+- **Exact quadratic symbols:** Define
+  `D(t)=1+2 cos(t)+2 cos(2t)`,
+  `A(t)=4 cos(2t)-2 cos(t)-2`, and
+  `P(t)=sin(t)+2 sin(2t)`. The four symbols are
+  `A(theta_rho)D(theta_z)/(35 h^2)`,
+  `-P(theta_rho)P(theta_z)/(25 h^2)`,
+  `D(theta_rho)A(theta_z)/(35 h^2)`, and
+  `i P(theta_rho)D(theta_z)/(25 h rho0)`.
+  Direct transforms of all E-033 weights and sampled plane waves agree with
+  these forms within `1.56e-14`.
+- **Null and reversal map:** `D` vanishes on transverse lines
+  `|t|=2 pi/5,4 pi/5`; `A` has its nontrivial zero at
+  `acos(-3/4)=0.7699465 pi`; and `P` at
+  `acos(-1/4)=0.5804306 pi` and Nyquist. Every factor changes sign across its
+  corresponding band. The recovery is therefore a genuinely 2D filter, not
+  a wider one-axis derivative.
+- **Predeclared resolution squares:** The largest 2D origin-centered squares
+  retaining at least 90% of continuum amplitude are:
+
+  | Postprocessor | Radial | Mixed | Axial | Local azimuthal |
+  | --- | ---: | ---: | ---: | ---: |
+  | centered `0.25` | `0.35603 pi` | `0.17801 pi` | `0.35603 pi` | `0.25041 pi` |
+  | centered `0.5` | `0.17801 pi` | `0.08901 pi` | `0.17801 pi` | `0.12520 pi` |
+  | quadratic 5x5 | `0.08772 pi` | `0.09664 pi` | `0.08772 pi` | `0.08207 pi` |
+
+  The quadratic result is narrower because pure and azimuthal components
+  inherit transverse averaging. These are response definitions, not endpoint
+  spectral measurements.
+- **Nonunique manufactured inverses:** For each rounded E-033 hotspot table
+  at `49/96` and `25/48`, a 17-mode lower-band dictionary with angle
+  components `<=0.50 pi` and a disjoint 17-mode grid-scale dictionary at
+  `0.55-0.95 pi` both map with rank `12` onto the twelve linear component
+  measurements. Least-squares fits reproduce every rounded target within
+  `6.2e-15`; their reconstructed patches differ in `L2` by at least `0.302`.
+  This is a concrete nonuniqueness proof for the finite rounded measurements,
+  not evidence that either dictionary generated the transient field.
+- **Decision and impact:** E-034 records
+  `qualified_nonidentifying_transfer_functions`. It adds B-036 alongside
+  B-035: exact stencil closure and polynomial preservation coexist with
+  nulls, sign reversals, aliasing, and nonunique spectral inverses. H-019
+  remains `Medium-low`; immutable accepted lineage stays E-028 stage `6/12`,
+  SHA `ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`.
+  No continuum solution, physical field, artificial gravity, inertial
+  control, spacetime engineering, FTL, or propulsion is established.

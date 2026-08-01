@@ -2090,3 +2090,160 @@ Nyquist modes, and predeclare what a future three-grid recovery study would
 have to show. Do not replay or save transient endpoints, relax a tail gate,
 advance amplitude, or begin outer-box, density, asymmetry, target, EFT, or
 propulsion work.
+
+## 2026-08-01 - E-034 Exact Postprocessor Transfer Functions
+
+**Focus question:** What spatial scales do E-033's centered `0.25`, centered
+`0.5`, and fixed 25-node quadratic radial, mixed, axial, and local azimuthal
+postprocessors transmit, suppress, null, alias, or reverse, and can their
+recorded component measurements distinguish a lower-band cause from grid-scale
+content without another PDE solve?
+
+**Sources reviewed:** Lele 1992 on tolerance-declared modified-wavenumber
+resolution; Schmid, Rath, and Diebold 2022 with the 2023 correction on the
+frequency-response limits of local polynomial filters; Diskin, Thomas, and
+Mineck 2004 on frozen local-mode analysis for variable coefficients;
+Petersen and Middleton 1962 on multidimensional reciprocal-lattice sampling
+and aliasing; and Celik et al. 2008 on three-grid discretization-uncertainty
+screens and their failure modes. The cited results motivate operator
+qualification and a fixed future refinement protocol. They do not establish
+a continuum Hessian for this nonlinear finite-difference model.
+
+**Deepening work completed:** (1) derived the exact 2D symbols of all twelve
+frozen linear component operators; (2) independently reduced the quadratic
+normal equations to integer 5x5 weights; (3) compared each closed symbol with
+direct weight transforms and sampled complex plane waves; (4) mapped every
+analytic null line and sign-reversal partition, including the Nyquist
+endpoints; (5) froze project-defined 90% and descriptive 50% operator-
+amplitude resolution squares and verified their full 2D minima; (6) tested an
+exact reciprocal-lattice alias whose lattice samples agree while its
+continuum derivatives do not; (7) fit two disjoint full-rank manufactured
+mode dictionaries to all twelve rounded hotspot measurements at both
+transient amplitudes; and (8) converted the result into a coupled spatial/
+directional, source-resolved future derivative screen with measurable norms,
+recovery-stability checks, failure serialization, and explicit stop rules.
+
+**What changed:** Added `models/e034_postprocessor_transfer.py` and seventeen
+focused tests. The module imports only E-033's frozen linear operators and
+E-025's directional-basis geometry. It loads no checkpoint or retained field
+array, reconstructs no endpoint, runs no nonlinear solver, and writes no
+field, checkpoint, retained work snapshot, or manifest entry. The two E-033
+hotspot tables are embedded only as rounded six-decimal diagnostic targets.
+
+For lattice angles `theta_rho=k_rho h`, `theta_z=k_z h`, the centered stride
+`s=1,2` symbols are
+
+```text
+S_rr = -4 sin^2(s theta_rho/2)/(s h)^2
+S_rz = -sin(s theta_rho) sin(s theta_z)/(s h)^2
+S_zz = -4 sin^2(s theta_z/2)/(s h)^2
+S_aa =  i sin(s theta_rho)/(s h rho0)
+```
+
+For the quadratic recovery, define
+`D(t)=1+2 cos(t)+2 cos(2t)`,
+`A(t)=4 cos(2t)-2 cos(t)-2`, and
+`P(t)=sin(t)+2 sin(2t)`. Its symbols are
+
+```text
+S_rr =  A(theta_rho) D(theta_z)/(35 h^2)
+S_rz = -P(theta_rho) P(theta_z)/(25 h^2)
+S_zz =  D(theta_rho) A(theta_z)/(35 h^2)
+S_aa =  i P(theta_rho) D(theta_z)/(25 h rho0)
+```
+
+Every closed form agrees with the direct frozen-weight transform within
+`1.56e-14`; the maximum long-wave relative error at the declared small-angle
+check is `1.10e-8`. Shifting `theta_rho` by `2 pi` changes the continuum
+component vector by up to `865.4` in the dimensionless benchmark but changes
+the 5x5 lattice samples by only `1.36e-15`.
+
+The quadratic operator's transverse `D` factor vanishes at
+`|theta|=2 pi/5,4 pi/5` and reverses between them. Its pure differentiated-
+axis factor has a nontrivial zero at
+`acos(-3/4)=0.7699465 pi`; the mixed/first factor vanishes at
+`acos(-1/4)=0.5804306 pi` and Nyquist. The centered `0.5` mixed and local
+azimuthal operators also have sign-reversing bands above half Nyquist. For
+mixed, reversal requires exactly one axis in the high band.
+
+The project-defined 10%-relative-amplitude-error (90%-operator-amplitude)
+origin-square cutoffs are:
+
+| Postprocessor | Radial | Mixed | Axial | Local azimuthal |
+| --- | ---: | ---: | ---: | ---: |
+| centered `0.25` | `0.35603 pi` | `0.17801 pi` | `0.35603 pi` | `0.25041 pi` |
+| centered `0.5` | `0.17801 pi` | `0.08901 pi` | `0.17801 pi` | `0.12520 pi` |
+| quadratic 5x5 | `0.08772 pi` | `0.09664 pi` | `0.08772 pi` | `0.08207 pi` |
+
+These are operator-response definitions, not measurements of the transient
+field spectrum. They are deliberately described as project thresholds rather
+than Lele's relative modified-wavenumber-error tolerances.
+
+**Reasoning:** The quadratic fit is not merely a wider same-axis derivative.
+Its pure and local azimuthal rows average across the transverse coordinate,
+which produces exact Dirichlet-kernel null lines and additional sign changes.
+Degree-two reproduction is therefore compatible with a very narrow 2D
+origin passband and high-frequency ambiguity.
+
+The inverse ambiguity is constructive. One frozen 17-mode dictionary uses
+angle components from `0.08 pi` through `0.50 pi`; a disjoint grid-scale
+dictionary uses `0.55-0.95 pi`. Each response matrix has rank `12` and
+nullity `5`. Each reproduces all twelve rounded E-033 hotspot component
+values at both `49/96` and `25/48` within `6.2e-15`, while the resulting 5x5
+patches differ by at least `0.302` in `L2`. The coefficients use cancellation
+and no smoothness, positivity, PDE, energy, or probabilistic prior, so this is
+an existence proof of finite-measurement nonuniqueness, not an inferred
+endpoint spectrum.
+
+**Failure or boundary found:** E-034 successfully qualifies the operators but
+fails to identify the cause of E-033's component measurements. Exact stencil
+closure, polynomial preservation, nearest-recovery ordering, and even the
+complete twelve-number hotspot vector cannot distinguish the two constructed
+spectral classes. The local `phi_r/rho` symbol also freezes `rho=rho0`; it is
+not a global symbol across the variable coefficient, axis, finite window, or
+boundary. Pair margin remains a nonlinear eigenvalue functional and was not
+put into the linear mixture fit. B-036 records this boundary.
+
+**Blank space or new idea:** A continuum derivative claim now has a sharper
+necessary screen, but its feasibility is unknown. E-034 freezes the candidate
+`R=80` coupled triplet `(h,m)=(0.125,4),(0.0625,5),(0.03125,6)`. Its minimum
+source-transition resolution improves `6.4 -> 12.8 -> 25.6` cells,
+`h/delta_theta` decreases `1.0205 -> 0.6332 -> 0.3784`, and maximum physical
+wide-stencil reach shrinks `0.625 -> 0.400 -> 0.244`. The approximate
+quarter-disk unknown counts rise `0.322M -> 1.287M -> 5.147M`; a fourth
+`h=0.015625,m=7` rate check would be still larger. E-035 should therefore be
+a no-solve resource and preregistration audit. It must freeze exact common
+ROIs, shrinking-support operators, derivative-controlling weighted `L2` and
+`Linf` norms, signed pointwise orientation, solver/grid separation,
+transfer-band occupancy, recovery stability, resource caps, and stop rules.
+If infeasible, record the block rather than shrinking the box or source.
+
+**Hypothesis updates:** H-019 remains `Medium-low`; E-034 adds no continuum or
+physical evidence. E-034 is complete as
+`qualified_nonidentifying_transfer_functions`; B-036 is added and E-035 is
+queued. Immutable accepted E-028 stage `6/12` remains SHA
+`ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`.
+The exact center remains force-free and the cosmological `r0=1 m` translation
+remains about `6e-35 m/s^2`. No continuum solution, detected physical field,
+artificial gravity, inertial control, spacetime engineering, reactionless
+propulsion, or FTL conclusion follows.
+
+**Verification and provenance:** Module SHA-256 is
+`cbb7b74620145ee5dbaaf442a57b86f306531ca3c9f1a49b297e62ca9a7929be`;
+test SHA-256 is
+`9b5c71f49aa92cb5aade4c903931df29500392602fe4efb6e5c5787c49a35651`.
+The canonical analytic report used Python `3.14.6`, NumPy `2.5.1`, and
+Accelerate BLAS/LAPACK. All seventeen focused tests and all `158` workspace
+tests pass. All model and test modules compile; `pip check`, every checkpoint
+manifest digest, Git LFS integrity, the canonical JSON report, and Git diff
+checks pass. Failed analytic/manufactured gates are serialized before the CLI
+exits nonzero, so a future runtime drift does not erase its evidence.
+
+**Next best step:** Run E-035 as a no-PDE-solve feasibility and complete
+preregistration audit for the fixed source-resolved coupled-grid screen. Do
+not replay transient endpoints, run one opportunistic extra grid, relax a
+tail/path/cone gate, change `R=80` or the source, advance amplitude, or begin
+outer-box, density, asymmetry, target, EFT, useful-gravity, inertial-control,
+FTL, or propulsion work. Treat three grids only as a screen; require a fourth
+rate check or an independent validated derivative-error enclosure before any
+continuum conclusion.
