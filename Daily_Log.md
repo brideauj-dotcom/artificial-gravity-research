@@ -2247,3 +2247,150 @@ outer-box, density, asymmetry, target, EFT, useful-gravity, inertial-control,
 FTL, or propulsion work. Treat three grids only as a screen; require a fourth
 rate check or an independent validated derivative-error enclosure before any
 continuum conclusion.
+
+## 2026-08-02 - E-035 Coupled-Grid Feasibility Preregistration
+
+**Focus question:** Is the fixed `R=80`, source-resolved coupled-grid sequence
+`(h,m)=(0.125,4),(0.0625,5),(0.03125,6)` feasible under explicit memory and
+runtime constraints, and which common-node, derivative-norm, solver-error,
+transfer-band, recovery-stability, and stop-rule definitions remain to be
+made executable before any new nonlinear solve?
+
+**Sources reviewed:** Celik et al. 2008 and Roache 1994 on Richardson/GCI
+reporting; Eca and Hoekstra 2014 on three-parameter power-law fits,
+asymptotic-range assumptions, and iterative-error separation; Phillips and
+Roy 2014 on slow/nonmonotone local-quantity convergence; Salas and Atkins
+2009 on same-family nested refinement, positive difference norms, and
+postprocessor contamination; Vallet et al. 2007 on separate manufactured
+qualification of Hessian recoveries; and Nosek et al. 2018 on fixing analyses
+before outcomes while preserving exploratory deviations. These are numerical
+verification and research-design sources, not evidence for the hypothetical
+Galileon model or a physical field.
+
+**Deepening work completed:** (1) distinguished E-034's valid half-height
+source proxy from E-035's new full-positive-support criterion; (2) computed exact strict
+quarter-disk node counts rather than area estimates; (3) enumerated
+directional bases, retained operators, angular resolution, and physical
+stencil reach through the proposed fourth grid; (4) calibrated static memory
+with a no-solve build/accounting run on the existing `h=0.125,m=4` system;
+(5) projected build and one partially timed standard-campaign core with lower/
+upper scaling models tied to retained E-028 measurements; (6) audited the coupled path
+against the single-parameter/asymptotic assumptions behind Richardson and
+GCI; (7) mapped four exact dyadic diagnostic points and audited which full-
+mask, boundary-support, recovery, orientation, transfer/parity, eigengap, and
+tolerance definitions remain incomplete; (8)
+drafted a multi-tolerance output-sensitivity screen, while recording that its
+exact tolerances and cost are unresolved; and (9) retained an independent
+actual-solution derivative enclosure as an explicit missing requirement.
+
+**What changed:** Added
+`models/e035_coupled_grid_preregistration.py` and ten focused tests. The
+module loads no checkpoint or field, builds no PDE system, and solves no PDE.
+It records `blocked_before_nonlinear_solve` and leaves immutable E-028 stage
+`6/12`, SHA
+`ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`,
+unchanged.
+
+The fixed radial window begins at `r=8-6/2=5 r0`. E-034's half-height proxy
+at `r=8 r0` correctly gives `8*0.1=0.8 r0`, or `6.4` cells. E-035 adds the
+new prospective requirement that the entire positive support be resolved.
+Its local tangential transition scale has infimum `5*0.1=0.5 r0`, only `4`
+cells at `h=0.125 r0`; the widest `m=4` stencil reaches `0.625 r0`, or `1.25x`
+that scale. These equal meters only under the conditional fiducial `r0=1 m`
+translation. The source amplitude tends to zero at the exact endpoint, and no
+amplitude cutoff was preregistered; adding one would define a different
+protocol.
+
+Exact grid/resource results are:
+
+| Grid `(h,m)` | Unknowns | Bases/operators | Projected peak RSS | One standard campaign core only | Decision |
+| --- | ---: | ---: | ---: | ---: | --- |
+| `(0.125,4)` | `322,319` | `12 / 25` | `1.83 GiB` observed | `2.98 min` calibrated | existing baseline core |
+| `(0.0625,5)` | `1,288,052` | `20 / 41` | `8.49-11.79 GiB` | `14.59-19.85 min` | core within caps; screen unbudgeted |
+| `(0.03125,6)` | `5,149,725` | `24 / 49` | `36.44-56.25 GiB` | `63.68-95.18 min` | blocked by conservative `40 GiB`/nightly caps |
+| `(0.015625,7)` | `20,593,789` | `36 / 73` | `177.95-336.40 GiB` | `5.31-9.51 h` | blocked before build |
+
+These times omit the native-linear solve, stage preflight/report/checkpoint
+work, and proposed tighter-tolerance replays; they are lower bounds, not
+complete-screen runtimes. The fourth grid's calibrated retained
+CSR/offset/coordinate core alone is
+`66.93 GiB`, already above this `64 GiB` host before a `16.57 GiB`
+curvature tensor, `5.52 GiB` candidate array, AMG hierarchy, Krylov vectors,
+sorting copies, or Python construction temporaries. These projections hold
+Newton/GMRES history fixed; conditioning deterioration can only worsen them.
+
+**Reasoning:** Spatial `h` halves, but directional resolutions are
+`0.122489, 0.098698, 0.082574, 0.070949 rad`. Their successive ratios are
+only `1.2411, 1.1953, 1.1639`, corresponding to exponents versus halving `h`
+of `0.3116, 0.2573, 0.2189`. The sequence therefore changes two error scales
+non-geometrically. `log2(D_0/D_1)` can be reported only as an effective
+coupled-path contraction index. It is not a pure spatial order, Richardson
+extrapolate, or GCI input.
+
+Three values exactly fit the three unknowns in a leading model
+`phi(h)=phi_0+alpha h^p`; they provide no redundancy against scatter or mixed
+orders. A fourth result would add effective-path consistency, redundancy, and
+fit/scatter diagnostics, but it still could not establish pure spatial
+convergence on this coupled path, and current storage makes it infeasible. A
+manufactured recovery test or tighter solver
+replay validates implementation/sensitivity but does not enclose derivative
+error for the actual nonlinear solution. No such enclosure currently exists.
+
+**Failure or boundary found:** The proposed screen fails before any new solve.
+E-035's new full-positive-support policy fails on the coarsest grid; even the
+partially timed one-campaign core for the mandatory finest grid exceeds local
+resource/time caps; the fourth grid is categorically infeasible in the
+retained-operator representation; and the prospective derivative protocol is
+not executable. Non-geometric directional refinement is separately an
+interpretation limit: it does not forbid empirical contraction, but it does
+forbid a pure-spatial Richardson/GCI claim. The possible three-grid
+contraction screen cannot advance accepted lineage or establish continuum
+admissibility.
+
+**Blank space or new idea:** The remaining blank space is numerical and
+classified `blocked/unclear`, not a physical mechanism. Only the four signed
+points have exact integer maps; full masks, boundary-valid reflected
+recoveries, tolerance schedules, absolute transfer/parity gates, orientation
+floors, eigengap criteria, and a complete runtime budget remain unspecified.
+An independently
+validated, two-parameter derivative-error enclosure for the *actual* fixed
+solution/ROI might replace the infeasible fourth nonlinear grid if it covers
+spatial truncation, directional resolution, algebraic error, the reflected
+axis, curved boundary, source transition, and between-node behavior. If such
+an enclosure cannot be constructed, an exactly equivalent on-demand or
+compressed directional-operator representation would need separate
+manufactured and row-action equivalence validation before resource
+feasibility could be reconsidered.
+
+**Hypothesis updates:** H-019 remains `Medium-low` as a discrete partial-source
+continuation only, but its next refinement is now blocked before solve. B-037
+records the newly explicit source-resolution policy, coupled-rate
+interpretation limit, incomplete protocol, and resource boundary.
+E-035 is complete as `blocked_before_nonlinear_solve`; E-036 becomes the next
+no-solve analytic task. No continuum solution, detected field, artificial
+gravity, inertial control, spacetime engineering, reactionless propulsion,
+or FTL conclusion follows.
+
+**Verification and provenance:** The canonical JSON report records zero
+checkpoint reads, zero field reads, zero PDE builds, and zero PDE solves.
+All ten focused E-035 tests and all `168` workspace tests pass (`12.901 s`).
+All model and test modules compile; `pip check`, all `22` checkpoint-manifest
+digests, Git LFS integrity, canonical JSON structure/decision checks, and Git
+diff checks pass. Module SHA-256 is
+`cce62ed74f18f682fa126ed0e400d788bd8f923cdf0f94b01481a32b6c6e0061`;
+test SHA-256 is
+`a958d1704bc0c2d744824842efaa9f544edfb24eb7876df98de81fc189b2af82`;
+canonical report SHA-256 is
+`a1007ac35c0a54df88e4f4fec26cf9718b388c2acf6de2e7427e6f42b6a88a7e`.
+The report used Python `3.14.6` and NumPy `2.5.1` on the declared `64 GiB`
+host. Its success exit means the audit completed, not that the blocked screen
+passed.
+
+**Next best step:** Run E-036 as a no-solve derivation of a two-parameter
+spatial/directional derivative-error enclosure for the actual fixed ROI,
+including source-transition and curved-boundary terms. Stop if it reduces to
+manufactured recovery evidence or an unvalidated residual proxy. Only if a
+valid enclosure is impossible should a separately fingerprinted exact
+on-demand operator-storage preflight be designed; do not solve a finer grid,
+change the source/box, relax a gate, advance amplitude, or begin physical/
+propulsion interpretation.

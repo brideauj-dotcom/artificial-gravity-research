@@ -1545,3 +1545,64 @@ independent validated derivative enclosure is still required. Accepted E-028
 stage 6 remains immutable. No field, checkpoint, retained work snapshot,
 manifest, amplitude, outer box, density, asymmetry, target, or physical claim
 changes.
+
+## 2026-08-02 E-035 coupled-grid feasibility preregistration
+
+`models/e035_coupled_grid_preregistration.py` audits E-034's proposed fixed
+`R=80` sequence without loading a checkpoint or field, building a PDE system,
+or solving a PDE. It uses exact integer quarter-disk counts, the source and
+direction definitions in E-025, a no-solve static-storage calibration on the
+existing `h=0.125,m=4` grid, and retained E-028 peak RSS/runtime metrics.
+
+Run the deterministic report with:
+
+```bash
+python -m models.e035_coupled_grid_preregistration \
+  --report-json /tmp/e035-preregistration-report.json
+```
+
+E-034's half-height proxy at `r=8 r0` correctly gives `0.8 r0` and `6.4`
+cells. E-035 adds a new prospective full-positive-support criterion. The
+radial smoothstep is positive arbitrarily close to `r=5 r0`, where its local
+tangential scale tends to `0.5 r0`, only four cells at `h=0.125 r0`; the
+maximum `m=4` stencil reach is `0.625 r0`. These equal meters only under the
+fiducial `r0=1 m` translation. No amplitude cutoff was preregistered.
+
+Exact resource geometry is:
+
+| `(h,m)` | Unknowns | Bases | Stored directional operators | Peak RSS projection | One standard campaign core only |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| `(0.125,4)` | `322,319` | `12` | `25` | `1.83 GiB` observed | `2.98 min` calibrated |
+| `(0.0625,5)` | `1,288,052` | `20` | `41` | `8.49-11.79 GiB` | `14.59-19.85 min` |
+| `(0.03125,6)` | `5,149,725` | `24` | `49` | `36.44-56.25 GiB` | `63.68-95.18 min` |
+| `(0.015625,7)` | `20,593,789` | `36` | `73` | `177.95-336.40 GiB` | `5.31-9.51 h` |
+
+The timings omit native-linear, stage-preflight/report/checkpoint, and proposed
+tighter-tolerance replay work. They assume unchanged Newton/GMRES history and
+are lower bounds rather than complete-screen feasibility estimates. The
+current retained-operator implementation scales with unknowns times
+directional bases/operators. The proposed fourth grid's
+calibrated static core is already `66.93 GiB` before curvature, candidate,
+AMG, Krylov, sorting, or construction-temporary storage.
+
+Spatial `h` halves, but directional-resolution ratios are only
+`1.2411,1.1953,1.1639`. The report therefore renames
+`log2(D_0/D_1)` an effective coupled-path contraction index and explicitly
+forbids interpreting it as a pure spatial order, Richardson extrapolate, or
+GCI. Only four signed points have exact dyadic maps. Full mask enumeration,
+boundary-valid reflected recovery, exact solver tolerances and a root-error
+bound, absolute transfer/parity definitions, orientation floors, eigengap
+criteria, and complete runtime accounting remain an incomplete prospective
+design. A shrinking replay difference is only solver-output sensitivity, not
+an algebraic-error enclosure.
+
+The canonical decision is `blocked_before_nonlinear_solve`. E-036 must first
+derive or reject an actual-solution two-parameter derivative-error enclosure
+covering spatial, directional, algebraic, source, reflected-axis, curved-
+boundary, recovery, and between-node errors. Manufactured recovery tests,
+tighter residual replay, and GCI do not satisfy that requirement. E-036 must
+also make the incomplete protocol executable. If no enclosure is possible,
+any on-demand/compressed operator redesign is a new,
+fingerprinted numerical method requiring exact action-equivalence validation
+before a finer build. Accepted E-028 stage 6 remains immutable; no physical
+field or artificial-gravity conclusion follows.

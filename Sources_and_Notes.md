@@ -2201,3 +2201,134 @@ Add sources here with enough detail that future runs can judge quality quickly.
   SHA `ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`.
   No continuum solution, physical field, artificial gravity, inertial
   control, spacetime engineering, FTL, or propulsion is established.
+
+## 2026-08-02 - E-035 Coupled-Grid Verification and Preregistration Sources
+
+- **Roache 1994:** Patrick J. Roache, “Perspective: A Method for Uniform
+  Reporting of Grid Refinement Studies,” *Journal of Fluids Engineering*
+  **116**(3), 405-413, DOI `10.1115/1.2910291`.
+  - GCI is a reporting framework derived from generalized Richardson
+    extrapolation and is fundamentally an asymptotic grid-refinement
+    estimate, not a proof that a mixed discretization has converged.
+  - **E-035 use:** Keep any GCI language away from the fixed `m=4,5,6`
+    coupled path because its spatial and directional scales do not refine by
+    one common ratio.
+
+- **Celik et al. 2008:** Ismail B. Celik, Urmila Ghia, Patrick J. Roache,
+  Christopher J. Freitas, Hugh Coleman, and Peter E. Raad, “Procedure for
+  Estimation and Reporting of Uncertainty Due to Discretization in CFD
+  Applications,” *Journal of Fluids Engineering* **130**(7), 078001, DOI
+  `10.1115/1.2960953`.
+  - Three meaningfully different grids can yield an apparent order plus a
+    signed convergence classification and GCI calculation when the refinement
+    family and signal are suitable.
+    Oscillatory/local convergence, nearly zero differences, and insufficient
+    iterative convergence can invalidate the result; normalized residual
+    reduction alone does not guarantee output convergence.
+  - **E-035 use:** Preserve absolute component/matrix difference norms and
+    signed fixed-point orientation, but call `log2(D_0/D_1)` only a coupled-
+    path contraction index. Pair margin and thresholded topology are not GCI
+    quantities.
+
+- **Eca and Hoekstra 2014:** Luis Eca and Martin Hoekstra, “A Procedure for
+  the Estimation of the Numerical Uncertainty of CFD Calculations Based on
+  Grid Refinement Studies,” *Journal of Computational Physics* **262**,
+  104-130, DOI `10.1016/j.jcp.2014.01.006`.
+  - The leading model `phi(h)-phi_0=alpha h^p` contains three unknowns, so
+    three grids fit it with no redundancy. A fourth grid is strongly useful
+    when scatter or mixed terms are plausible. The method assumes one
+    geometrically similar family representable by a single `h`; it recommends
+    iterative error two to three orders below discretization error.
+  - **E-035 use:** The fixed sequence can only screen contraction. One tighter
+    residual run changing a derivative by `10%` of a grid difference is too
+    weak to act as an error enclosure. The prospective protocol records two
+    tighter output-sensitivity levels at a project-defined `1%` threshold,
+    while still labeling them sensitivity rather than a rigorous root-error
+    bound.
+
+- **Phillips and Roy 2014:** Tyrone S. Phillips and Christopher J. Roy,
+  “Richardson Extrapolation-Based Discretization Uncertainty Estimation for
+  Computational Fluid Dynamics,” *Journal of Fluids Engineering* **136**(12),
+  121401, DOI `10.1115/1.4027353`.
+  - Local quantities can remain outside the asymptotic range after global
+    outputs look well behaved, and oscillatory/divergent local convergence
+    requires separate handling.
+  - **E-035 use:** Source-local Hessian components must pass their own weighted
+    `L2`, `Linf`, signed-orientation, transfer-band, and eigengap screens;
+    force, flux, or global residual contraction cannot substitute.
+
+- **Salas and Atkins 2009:** Manuel D. Salas and Harold L. Atkins, “On
+  Problems Associated with Grid Convergence of Functionals,” *Computers &
+  Fluids* **38**(7), 1445-1454, DOI
+  `10.1016/j.compfluid.2008.01.015`; NASA manuscript
+  `20090030518`.
+  - Same-family uniform refinement, preferably nested, and error norms are
+    central to an interpretable order study. Quadrature/postprocessing error
+    and cancellation can produce misleading apparent orders; nonuniform or
+    ill-converged sets can make order claims meaningless.
+  - **E-035 use:** Restrict native shrinking-support derivatives to exact
+    dyadic common nodes and use the identical coarsest cylindrical weights.
+    The global quiet-volume mask remains secondary to source/transition
+    masks.
+
+- **Vallet et al. 2007:** Marie-Gabrielle Vallet, C.-M. Manole, Julien
+  Dompierre, Steven Dufour, and Francois Guibault, “Numerical Comparison of
+  Some Hessian Recovery Techniques,” *International Journal for Numerical
+  Methods in Engineering* **72**(8), 987-1007, DOI `10.1002/nme.2036`.
+  - In its finite-element mesh-adaptation setting, Hessian recovery is
+    qualified separately on analytic functions and mesh sequences, including
+    interior/boundary behavior.
+  - **E-035 use:** Freeze `C_h`, `C_2h`, and `Q_2h` before any solution and
+    validate scaled weights/monomials at every grid. This validates recovery
+    implementation only; it does not enclose derivative error for the unknown
+    nonlinear solution.
+
+- **Nosek et al. 2018:** Brian A. Nosek, Charles R. Ebersole, Alexander C.
+  DeHaven, and David T. Mellor, “The Preregistration Revolution,” *PNAS*
+  **115**(11), 2600-2606, DOI `10.1073/pnas.1708274114`.
+  - Fixing questions and analysis choices before observing new outcomes
+    distinguishes prospective tests from post hoc explanation; preregistration
+    does not make a weak design valid, and deviations must remain explicit.
+  - **E-035 use:** E-033/E-034 are acknowledged design inputs. The grids,
+    source/domain, common nodes, masks, weights, operators, norms, signal
+    rules, passbands, resource caps, and hard stops are prospective design
+    inputs. E-035 finds that the executable protocol is still incomplete and
+    retains that negative preflight rather than repairing it with a new source
+    cutoff or opportunistic grid.
+
+## 2026-08-02 - E-035 No-Solve Feasibility Result
+
+- **Implementation:** Added
+  `models/e035_coupled_grid_preregistration.py`. It performs exact integer
+  geometry and deterministic resource arithmetic only. The canonical report
+  records zero checkpoint/field reads, zero PDE builds, and zero PDE solves.
+- **Source-resolution criterion:** E-034's `r=8` half-height proxy correctly
+  gives `0.8 r0` and `6.4` cells. E-035 newly asks whether *all* positive
+  support is resolved. That support extends arbitrarily close to `r=5 r0`,
+  where the local tangential scale tends to `0.5 r0`, only four cells at
+  `h=0.125 r0`; the maximum `m=4` reach is `0.625 r0`. The source tends to
+  zero at the endpoint, and no amplitude cutoff was preregistered.
+- **Coupled-rate boundary:** `delta_theta` decreases
+  `0.122489 -> 0.098698 -> 0.082574 -> 0.070949`, with nonconstant ratios
+  `1.2411,1.1953,1.1639` while `h` halves. The path has no pure spatial
+  Richardson order; three points have no redundancy. A fourth adds effective-
+  path consistency and fit/scatter diagnostics, but not pure-spatial validity.
+- **Resource boundary:** Exact unknowns are
+  `322319,1288052,5149725,20593789` and bases are `12,20,24,36`. The
+  `h=0.03125,m=6` projected peak is `36.44-56.25 GiB` and even one partially
+  timed standard-campaign core is `63.68-95.18 min`. The full screen is more
+  expensive because native-linear/preflight/report/checkpoint work and all
+  tighter-tolerance replays are unbudgeted. The fourth grid's calibrated
+  static core is
+  `66.93 GiB` before curvature, candidate, AMG, Krylov, or build-temporary
+  storage; its projected peak is `177.95-336.40 GiB`. The static calibration
+  was independently repeated, but no durable raw trace was retained; treat it
+  as a recoverable-method estimate, not an immutable artifact.
+- **Decision:** `blocked_before_nonlinear_solve`. Accepted lineage remains
+  immutable E-028 stage `6/12`; no continuum or physical claim changes.
+  Only four diagnostic points are exactly mapped; full masks, reflected-axis
+  recovery, tolerance schedules, transfer/parity equations, orientation
+  floors, and eigengap criteria remain an incomplete prospective design.
+  E-036 should test whether an actual-solution two-parameter derivative-error
+  enclosure can replace the infeasible fourth grid and make that protocol
+  executable before any storage rearchitecture or finer solve is considered.

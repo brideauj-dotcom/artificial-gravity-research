@@ -707,6 +707,75 @@ Faster-than-light travel generally creates causality issues in relativity. Any p
   `10.1115/1.2960953`; internal E-034 exact-symbol and manufactured-mixture
   calculations, 2026-08-01.
 
+### B-037: A Fixed Coupled-Grid Screen Can Fail Before Solving
+
+- **Claim:** A preregistered refinement sequence is not scientifically
+  identifying merely because spatial spacing, directional resolution, and
+  stencil reach all decrease. E-035's fixed
+  `(h,m)=(0.125,4),(0.0625,5),(0.03125,6)` screen fails before a new solve:
+  E-035 full-positive-support policy gives only four cells on the coarsest
+  grid; the finest required grid exceeds conservative memory/nightly-time
+  caps even under incomplete one-campaign timing; and the prospective
+  derivative protocol is not executable. The `m=4,5,6` path separately limits
+  the norm ratio to an empirical coupled-path contraction index. The
+  proposed `h=0.015625,m=7` fourth grid is infeasible in the current retained-
+  operator representation.
+- **Why it matters:** E-034's half-height proxy at `r=8 r0` correctly reports
+  `0.8/0.125=6.4` angular-transition cells. E-035 newly requires resolution of
+  all positive support. The radial smoothstep is positive arbitrarily close
+  to `r=5 r0`, where the local tangential scale tends to `0.5 r0` and the
+  coarsest wide stencil reaches `0.625 r0`. No amplitude cutoff was
+  preregistered. Independently, angular-resolution ratios are only
+  `1.2411,1.1953,1.1639` while `h` halves. Standard Richardson/GCI
+  interpretation is therefore not justified by this design.
+- **Strength:** Established internally by the exact source definition,
+  integer grid counts, enumerated directional bases, no-solve static memory
+  accounting, and projections calibrated to retained E-028 RSS/runtime. The
+  `h=0.03125,m=6` peak envelope is `36.44-56.25 GiB`; one partially timed
+  standard-campaign core is `63.68-95.18 min`, excluding native-linear,
+  preflight/report/checkpoint, and proposed tighter-tolerance replay work. Its
+  status depends on the declared `32/40 GiB`
+  soft/hard operating caps. The fourth grid is a harder boundary: its
+  calibrated static core is `66.93 GiB` before solver arrays on a `64 GiB`
+  host. Runtime/memory projections are not guarantees and assume unchanged
+  iteration history; adverse conditioning increases cost. The static
+  calibration was independently repeated but no durable raw trace was
+  retained, so it is a reproducible-method estimate rather than an immutable
+  artifact.
+- **Assumptions and interpretation boundary:** The positive-support `0.5 r0`
+  local tangential scale is an infimum where source amplitude tends to zero;
+  it equals `0.5 m` only under the fiducial `r0=1 m` translation. A prospective,
+  physics-motivated amplitude cutoff could define a different screen, but it
+  cannot retroactively pass this one. Three coupled grids may later report
+  absolute derivative contraction only after full masks, boundary-valid
+  recoveries, solver tolerances/error bounds, absolute transfer/parity rules,
+  orientation floors, eigengap criteria, and full costs are made executable.
+  Such contraction is neither a pure order nor a continuum
+  certificate. Manufactured recovery tests and tighter residual solves do
+  not enclose the actual solution's derivative error.
+- **Operational rule:** Preserve immutable E-028 stage `6/12`, SHA
+  `ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`,
+  and all E-029 through E-035 negative results. Do not run `h=0.0625` alone,
+  alter a source cutoff, shrink `R`, lower `m`, skip the blocked finest grid,
+  change a recovery after outcomes, or call the coupled index GCI/apparent
+  spatial order. Do not advance amplitude, outer box, density, asymmetry,
+  target, EFT, useful-gravity, inertial-control, FTL, or propulsion work.
+- **Possible cracks:** E-036 may attempt a no-solve two-parameter derivative-
+  error enclosure for the actual fixed ROI that covers spatial truncation,
+  directional error, algebraic error, source transition, reflected axis,
+  curved boundary, and between-node behavior. If no such enclosure is
+  possible, an on-demand/compressed directional representation could reduce
+  storage only after separately fingerprinted row-action and manufactured-
+  field equivalence tests. Either route changes numerical feasibility, not
+  the tiny absolute physical scale or the absence of a detected field.
+- **Sources:** Roache 1994, DOI `10.1115/1.2910291`; Celik et al. 2008, DOI
+  `10.1115/1.2960953`; Eca and Hoekstra 2014, DOI
+  `10.1016/j.jcp.2014.01.006`; Phillips and Roy 2014, DOI
+  `10.1115/1.4027353`; Salas and Atkins 2009, DOI
+  `10.1016/j.compfluid.2008.01.015`; Vallet et al. 2007, DOI
+  `10.1002/nme.2036`; Nosek et al. 2018, DOI
+  `10.1073/pnas.1708274114`; internal E-035 no-solve audit, 2026-08-02.
+
 ## Boundary Entry Template
 
 ```markdown
