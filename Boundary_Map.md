@@ -207,7 +207,7 @@ Faster-than-light travel generally creates causality issues in relativity. Any p
 - **Universality boundary:** Weakly self-gravitating stationary bodies have asymptotic scalar charge `Q~=M`, and an exact constant gradient is protected by Galilean symmetry. A finite meter-scale field is not an exact gradient. For the cosmological benchmark a `70 kg` proxy has `r_V~=2.44e9 m`; nonlinear source-target regions overlap, so published two-body work shows that the response must be solved jointly. The paper's spherical mass-ratio fit would imply only a `~2.4e-6` correction for the free E-021 disk, but that estimate cannot be transplanted to disk geometry.
 - **EFT and reaction:** In the minimal cubic estimate, the `H0^-1` bare cutoff wavelength is `~1.12e6 m`, so the free `Z=1` meter-scale reference is below the bare cutoff in length and is not a controlled minimal-EFT cabin prediction. A demonstrated Earth-dressed background lowers the estimate to `~2.40 cm`; the `150 Mpc` benchmark gives `~1.37 cm`, conditionally placing smooth meter-scale profiles above the local cutoff. Physical edges or perforations must be smoothed on at least that local scale, or else state a UV assumption; numerical meshes may be finer only to resolve already-smoothed features. Translation invariance conserves total matter-plus-field momentum, so plate and supports receive the reaction; no closed-craft propulsion follows.
 - **Branch-stability boundary:** A static nonlinear solve must keep the principal matrix `A_ij=delta_ij+2(c3/Lambda^3)[(nabla^2 phi)delta_ij-partial_i partial_j phi]` on an elliptic, healthy-kinetic branch. Numerical residual convergence alone does not establish a physical solution, especially over the `~32`-order density continuation proposed for E-023.
-- **Possible cracks:** A finite annular disk can locally anti-screen near its center hole, so nonlinear enhancement is not always monotonic suppression. E-023/E-024 preserve the centered-grid effect, and E-026 gives a first independent full-source point. The exact center is zero and the cosmological-scale force is tiny. Published enhancement falls to `~1.3` by `mu=3690`, while a `0.10 m` E-021 disk has `mu~=4.58e35`. E-028 must close six-cell and outer-box convergence before density continuation or controlled asymmetry/layering, with full mass, Newtonian, EFT, target, and reaction ledgers.
+- **Possible cracks:** A finite annular disk can locally anti-screen near its center hole, so nonlinear enhancement is not always monotonic suppression. E-023/E-024 preserve the centered-grid effect, and E-026 gives a first independent full-source point. The exact center is zero and the cosmological-scale force is tiny. Published enhancement falls to `~1.3` by `mu=3690`, while a `0.10 m` E-021 disk has `mu~=4.58e35`. E-036 subsequently closed the proposed refinement route without a validated actual-solution enclosure; the annular line is parked under B-038. Only materially new theory/data or explicit user direction can reopen it.
 - **Sources:** Hui and Nicolis 2010; Burrage and Seery 2010; Brax, Burrage, and Davis 2011; Hiramatsu et al. 2013; Andrews, Chu, and Trodden 2013; Bloomfield, Burrage, and Davis 2015; Ogawa, Hiramatsu, and Kobayashi 2018; Bartlett, Desmond, and Ferreira 2021; internal E-021 model.
 
 ### B-021: Annular Galileon Anti-Screening Is A Local Ratio Gain, Not Yet A Usable Field
@@ -219,7 +219,7 @@ Faster-than-light travel generally creates causality issues in relativity. Any p
 - **Numerical boundary:** The published `1e-8` relative-update stop leaves algebraic residual `4.34e-3` and a negative innermost-cell principal coefficient on `200 x 100`. Strict `400 x 200`, `1e-10` runs reach residual `1.47e-4` for the paper source and `1.06e-4` for exact overlap fractions, both with positive spatial/time signs; `400 x 400` is also positive at the paper stop. Center-sampled source volume drifts from `1.249` to `0.937` to `0.938` of nominal across proportional grids; overlap fractions remove this confound. `rmax=80` and `160` agree within `0.5%` on resolved ratio/absolute peak, while `40` is too close. Small under-relaxed updates alone are not a solution certificate.
 - **Absolute-scale boundary:** For `M=Lambda=1.758e-13 eV`, `beta=1`, and `r0=1 m`, the source density is `1.13e-25 kg/m^3`, source mass `6.26e-22 kg`, and full sampled-ray scalar acceleration peak only `~6e-35 m/s^2`. Naively holding the dimensionless/cosmological parameters fixed until the peak reaches `0.01g` requires `r0~1.62e33 m`, outer radius `~4.85e34 m`, and mass `~2.64e78 kg`; this invalidates the model and is only a scale reductio. Symmetry enforces exactly zero vector force at the center and `0/0`, not enhancement, for the center ratio. Source/support reaction balances any internal target force.
 - **Assumptions:** Static flat-space cubic equation; universal conformal coupling; mapped cell-centred spherical coordinates; compact Dirichlet box; discontinuous or volume-fraction wedge; no external environment, target backreaction, EFT cutoff enforcement, or UV completion.
-- **Possible cracks:** E-024's smooth annular source preserves the resolved ridge with residual, flux, source-width, box, and same-grid shifted-2-Hessian agreement. E-026's first independent full-source point retains the enhancement and trends toward E-024, but its centered residual and flux remain under-converged. Controlled asymmetry might later produce a one-sided field, but that does not follow from the present symmetric dilute solve. E-028 must close the independent six-cell/box gate before density continuation.
+- **Possible cracks:** E-024's smooth annular source preserves the resolved ridge with residual, flux, source-width, box, and same-grid shifted-2-Hessian agreement. E-026's first independent full-source point retains the enhancement and trends toward E-024, but its centered residual and flux remain under-converged. E-036 later found no validated actual-solution enclosure from retained evidence and parked the refinement, density, and asymmetry route under B-038. Controlled asymmetry remains a historical conjecture, not an active task.
 - **Sources:** Ogawa, Hiramatsu, and Kobayashi 2018; Ogawa 2019 thesis; Froese, Oberman, and Salvador 2016; White et al. 2020; internal E-023 calculation.
 
 ### B-022: Smooth Annular Anti-Screening Survives Same-Grid Validation, Independent Gate Remains
@@ -232,7 +232,7 @@ Faster-than-light travel generally creates causality issues in relativity. Any p
 - **Branch and solver boundary:** Source-amplitude continuation keeps the spatial-principal and time-kinetic signs positive. On the fine broad rerun the shifted solve reaches original-equation residual `1.21e-7`, global discrete minimum spatial-principal value `0.00616`, and `K_t=1.00003`. The global minimum is in the first radial/equatorial cell at `(r,theta)=(0.0254,0.00785)`; excluding one boundary-cell layer raises it to `0.01282`. This confirms a coordinate-boundary/stencil-sensitive warning, not a condition estimate or evidence by itself of a physically near-degenerate continuum branch. The original Picard field agrees globally and has tiny volume-weighted residual, but its paper-style update stop leaves a conservative unweighted algebraic residual near `1.1e-3`; update size alone is not an acceptance test.
 - **Independence boundary:** The exact shift `u=phi+|x|^2/(8c3)` converts the equation to `sigma_2(D^2u)=3/(16c3^2)+S/(2c3)`, and its pair-sum admissibility is the Galileon principal-sign condition. If both formulations use the same discrete Hessian, however, their residuals are algebraically identical up to `2c3`. E-025/E-026 now supply a separate monotone wide-directional discretization and first full-source point, but only at `3.2` source-transition cells. A discretization certificate still requires the six-cell and outer-boundary sequence.
 - **Absolute-scale and interpretation boundary:** The E-023 cosmological translation remains roughly `6e-35 m/s^2` at `r0=1 m`, more than thirty orders below useful loading. Symmetry gives zero vector force at the center, and any target force has an equal-opposite source/support reaction. No FTL, inertial control, or reactionless propulsion follows.
-- **Possible crack:** A truly independent solver could confirm that geometry-induced local anti-screening is a real continuum feature. Only after that result should density continuation test whether the branch loses ellipticity or the enhancement decays; only after density should controlled asymmetry and target backreaction be considered.
+- **Possible crack:** A quantitatively applicable scheme-specific theorem or genuinely independent data could change this assessment, but E-036 found no validated actual-solution enclosure and parked the solver, density, asymmetry, and target sequence under B-038. Prior validation requirements remain historical constraints, not current authorization.
 - **Sources:** Ogawa, Hiramatsu, and Kobayashi 2018; Ogawa 2019 thesis; White et al. 2020; Froese, Oberman, and Salvador 2016; Dickson et al. 2006; Nicolis, Rattazzi, and Trincherini 2009; internal E-024 calculation.
 
 ### B-023: Fully Nonlinear Validation Requires Joint Spatial, Directional, And Boundary Refinement
@@ -246,7 +246,7 @@ Faster-than-light travel generally creates causality issues in relativity. Any p
 - **2026-07-17 diagnostic result:** The `(0.5,2)` point now has separately evaluated force, centered/White residual, and spherical flux. It gives ratio `2.602`, peak `10.976`, centered original residual `2.96%`, and shell-flux deficits `4.01-4.50%`, materially away from E-024. These are a coarse convergence datum, not validation.
 - **Solver-conditioning result:** E-026 shows that the former stop was a preconditioning boundary, not demonstrated loss of the solved wide-stencil branch. Fixed PyAMG nonsymmetric SA with Petrov-Galerkin-type transfers and lAIR both close the exact `(0.25,3)`, `11/12 -> 1` target with `info=0`, true linear residual ratios below `1e-8`, three full Newton steps, final nonlinear `L2=7.19e-8`, and positive wide-stencil all-frame minima. A separate centered/fixed-frame check is negative at one node (`-0.0251` near `(6.25,0.75)`), already negative at `11/12`; this is an under-resolution/discretization warning, not an AMG regression. The ratio `3.2830`, peak `11.0713`, and flux deficits `1.86-1.99%` trend toward E-024 but remain materially different. Solver closure removes one prerequisite; it does not satisfy continuum admissibility, six-cell, physical-stencil-reach, boundary, or continuum gates.
 - **Assumptions:** Smooth axisymmetric solution; admissible-class comparison/uniqueness; controlled outer truncation; correct continuous and discrete source charge; no assertion that the hypothetical Galileon PDE is physically realized.
-- **Possible cracks:** Low-complexity PyAMG nonsymmetric SA with Petrov-Galerkin-type transfers now carries the first six-cell grid through `4/12`. At that amplitude, fine refinement lowers matched original/White residuals by `30.6% / 47.8%` and worst flux-deficit magnitude by `38.0%`, while ratio changes only `+0.076%`; physical reach remains `0.625 r0`. A separately labeled cone-preserving half-step replay reaches the same fixed-grid endpoint after the canonical first full step leaves an independent reconstructed cone, but neither route supplies a continuum theorem. Higher-accuracy monotone interpolation, matrix-free operators, or a positive-weight locally refined point cloud may later reduce cost. A passing full-source centered/wide six-cell plus outer-box campaign would reopen density continuation, not establish useful artificial gravity, inertial control, FTL, or propulsion.
+- **Possible cracks:** Low-complexity PyAMG nonsymmetric SA with Petrov-Galerkin-type transfers carried the first six-cell grid through partial-source stages, but neither it nor later path/topology/recovery work supplied a continuum theorem. E-036 found no validated actual-solution enclosure and parked further interpolation, matrix-free, local-refinement, outer-box, and density campaigns under B-038. Such numerical redesigns alone cannot reopen the line or establish useful artificial gravity, inertial control, FTL, or propulsion.
 - **Sources:** Froese, Oberman, and Salvador 2016; Froese 2017; Finlay and Oberman 2018; Froese Hamfeldt and Lesniewski 2021; Saad 1994; Eisenstat and Walker 1996; internal E-025 calculation.
 
 ### B-024: Ellipticity and Local ILUT Success Do Not Guarantee Full-Source Krylov Reach
@@ -276,7 +276,7 @@ Faster-than-light travel generally creates causality issues in relativity. Any p
 - **Why it matters:** E-026 closes the exact full-source Krylov wall and produces the first completed independent-discretization refinement point. Without a new boundary, that success could be misreported as confirmation of E-024's force profile or as evidence for a useful field.
 - **Strength:** established as numerical logic; demonstrated internally by the remaining observable and admissibility errors. Deterministic PyAMG nonsymmetric-SA and lAIR fields agree to relative `L2=1.67e-15`, yet the full-source E-025 ratio `3.2830`, peak `11.0713`, and flux deficits `1.86-1.99%` still differ from E-024's `3.4067`, `11.7523`, and `0.188%` flux error. The centered original residual remains `1.963%`, and the independent centered/fixed-frame spatial-principal check reaches `-0.0251` at one node even though the solved wide-stencil gates are positive.
 - **Assumptions:** The active semismooth Jacobian and source/checkpoint fingerprints are correct; each V-cycle is fixed within GMRES; `info=0`, the direct true residual, nonlinear decrease, and all-frame pair/spatial/time gates are enforced; reported comparisons use the same physical normalization.
-- **Possible cracks:** The coupled `(h,m)=(0.125,4)` grid closes strict accepted partial-source stages through `6/12`, with campaign high-water near `1.832 GiB`; this establishes a computational route, not the requested full-source point. E-029 through E-031 do not clear the subsequent tail/refinement boundary. A same-observable outer-box comparison remains blocked until the fine campaign reaches full source with acceptable global, low-tail, and tracked fixed/centered locations. A positive result would raise confidence in a local dimensionless anti-screening feature only. It would not address the `~6e-35 m/s^2` absolute scale, density continuation over more than `32` orders in `mu`, center symmetry, target response, EFT validity, or reaction momentum.
+- **Possible cracks:** The coupled `(h,m)=(0.125,4)` grid closes strict accepted partial-source stages through `6/12`, with campaign high-water near `1.832 GiB`; this preserves computational branch reach, not a full-source continuum result. E-029 through E-036 do not clear the path, tail, refinement, recovery, or actual-solution-enclosure boundaries. B-038 now parks the full-source, outer-box, and density sequence; materially new theory/data or explicit user direction is required to reconsider it.
 - **Sources:** Sala and Tuminaro 2008; Manteuffel, Ruge, and Southworth 2018; PyAMG 5.3 and SciPy 1.18 official documentation; Froese, Oberman, and Salvador 2016; internal E-026 calculation.
 
 ### B-027: Partial-Source Fine-Grid Stages Are Branch Reach, Not Full-Source Refinement
@@ -288,7 +288,7 @@ Faster-than-light travel generally creates causality issues in relativity. Any p
 - **Same-observable boundary:** The current annulus diagnostic chooses flux radii as fractions of the numerical box. An `R=80` versus `R=160` run would therefore sample different physical spheres and cannot by itself establish outer-box stability. Any later box comparison must hold physical flux radii and the interior diagnostic window fixed, while separately reporting global minima over each full box.
 - **Continuation-geometry boundary:** The full stage-2 secant remains a preserved failed predictor, while plain previous-stage seeds close stages 3 through 6. Stage-4-to-5 and stage-5-to-6 increment cosines are `0.999903 / 0.999935`, and their secant misses are `4.166% / 3.659%` of the new increments. These support a smooth sampled fixed-grid continuation but do not supply a Jacobian inverse bound, analytic uniqueness argument, or validated enclosure. Global minima and tracked warning locations move differently, and centered quantitative trends depend on physical difference step; neither global-only nor fixed-location-only tracking is sufficient. Predictor or schedule changes require separate fingerprints and may not rewrite accepted provenance.
 - **Solver-path and tail boundary:** The canonical first correction toward `4/12` passes strict GMRES, Armijo decrease, and solved wide gates but temporarily leaves the fixed/centered `Gamma_2` reconstructions; a separate half-step replay stays positive and reaches the same endpoint. By contrast, fresh stage-5 and stage-6 replays end bitwise-identically, and stage 6 keeps all five accepted corrections plus nine samples on every piecewise-affine segment positive in the three reconstructions. The minimum sampled pair sums are nevertheless close: `0.017445 / 0.002255 / 0.002233` in active/fixed/centered frames. This supports one sampled fixed-grid path; it does not prove a unique continuum branch. At matched centered step `0.25`, the pair minimum erodes `0.05711 -> 0.03590 -> 0.02525 -> 0.01937` across stages 3--6. At stage 6, `pair<0.05` occupies `227/310365` common-window nodes and only `6.54e-5` of full-window axisymmetric weight, but `0.00314` of source-support weight and `0.00334` of source-transition weight. Its `223` positive-weight nodes form one connected near-midplane component spanning `rho=0--6.25`, `z=0--0.75` and reaching the inner source smoothing layer; the full-window denominator therefore understates its source-relative prominence. Record connectivity, threshold sensitivity, source-relative weights, and node counts alongside global minima. In-progress checkpoints remain search states, not scientific endpoints.
-- **Possible cracks:** The strict `7/12` endpoint closes, but its canonical first correction leaves the independent cones and its low-margin core broadens, so accepted branch reach remains `6/12`; see B-030. E-029 subsequently repaired the sampled path but failed the frozen tail gate, E-030 found mesh-dependent deficit growth, and E-031 found the detached coarse persistence feature unresolved under the common-graph sup discrepancy. E-032 then found that the canonical axial attribution changes to radial and shrinks by about `71.2%` at the larger mesh-compatible reconstruction step; see B-034. E-033 localizes the exact nested detail but finds its fixed recovery non-identifying across smooth and aliased controls; see B-035. Only a full-source fine state with positive path/tail gates and convincing coupled refinement could justify the fixed-observable outer-box check. Even that would support only a local dimensionless feature of a hypothetical scalar PDE; it would not address the `~6e-35 m/s^2` absolute scale, useful artificial gravity, inertial control, FTL, or reactionless propulsion.
+- **Possible cracks:** The strict `7/12` endpoint closes, but its canonical first correction leaves the independent cones and its low-margin core broadens, so accepted branch reach remains `6/12`; see B-030. E-029 through E-035 preserve subsequent negative and non-identifying diagnostics. E-036 then found no validated actual-solution enclosure and parked the full-source and fixed-observable outer-box sequence under B-038. Reopening requires materially new theory/data or explicit direction; even a future numerical success would not address the `~6e-35 m/s^2` scale or enable artificial gravity, inertial control, FTL, or reactionless propulsion.
 - **Sources:** Froese, Oberman, and Salvador 2016; Finlay and Oberman 2018/2019; Sala and Tuminaro 2008; Uecker 2022; Kearfott and Xing 1994; PyAMG 5.3 and SciPy 1.18 official documentation; internal E-028 calculations 2026-07-20 through 2026-07-26.
 
 ### B-028: Runtime Or Implementation Provenance Drift Requires Replay, Not Silent Continuation
@@ -760,14 +760,12 @@ Faster-than-light travel generally creates causality issues in relativity. Any p
   change a recovery after outcomes, or call the coupled index GCI/apparent
   spatial order. Do not advance amplitude, outer box, density, asymmetry,
   target, EFT, useful-gravity, inertial-control, FTL, or propulsion work.
-- **Possible cracks:** E-036 may attempt a no-solve two-parameter derivative-
-  error enclosure for the actual fixed ROI that covers spatial truncation,
-  directional error, algebraic error, source transition, reflected axis,
-  curved boundary, and between-node behavior. If no such enclosure is
-  possible, an on-demand/compressed directional representation could reduce
-  storage only after separately fingerprinted row-action and manufactured-
-  field equivalence tests. Either route changes numerical feasibility, not
-  the tiny absolute physical scale or the absence of a detected field.
+- **Possible cracks:** E-036 completed the no-solve definitions but found no
+  validated actual-solution enclosure from retained evidence; see B-038. An
+  on-demand/compressed representation could change storage only after exact
+  equivalence, and cannot by itself reopen the parked line. Only materially
+  new theory/data or explicit user direction can justify a fresh screen; none
+  changes the tiny absolute scale or supplies a detected field.
 - **Sources:** Roache 1994, DOI `10.1115/1.2910291`; Celik et al. 2008, DOI
   `10.1115/1.2960953`; Eca and Hoekstra 2014, DOI
   `10.1016/j.jcp.2014.01.006`; Phillips and Roy 2014, DOI
@@ -775,6 +773,115 @@ Faster-than-light travel generally creates causality issues in relativity. Any p
   `10.1016/j.compfluid.2008.01.015`; Vallet et al. 2007, DOI
   `10.1002/nme.2036`; Nosek et al. 2018, DOI
   `10.1073/pnas.1708274114`; internal E-035 no-solve audit, 2026-08-02.
+
+### B-038: An Executable Validation Protocol Is Not an Actual-Solution Hessian Enclosure
+
+- **Claim:** For the fixed annular problem, the recovered error decomposes as
+  `R_hm(u_tilde-u_h) + R_hm(u_h-I_h u) + (R_hm I_h u-D2u)`.
+  E-036 can define every mask, recovery, solve sensitivity, transfer/parity,
+  orientation, eigengap, and exact row-action test, but no retained result or
+  applicable theorem supplies a finite verified bound for all three terms on
+  the actual solution. A tighter residual, manufactured recovery, or coupled
+  three-grid contraction therefore cannot replace the missing enclosure.
+- **Why it matters:** Recovery amplifies potential error as `h^-2`: the frozen
+  `Q_2h` pure-component row `L1` norms grow
+  `73.14 -> 292.57 -> 1170.29`. Independently,
+  `e_h(x)=h^2 sin(2 pi x/h)` vanishes at every lattice node while
+  `norm(e_h'',inf)=4 pi^2`. This family is not asserted to solve the PDE; it
+  proves that nodal values and potential convergence alone cannot control the
+  between-node Hessian without a quantified PDE regularity/stability result.
+- **Completed definitions:** The five coarsest masks contain
+  `3513,1503,3290,2145,307852` nodes and map exactly by `1,2,4`; every native
+  `C_h`, `C_2h`, and `Q_2h` support is valid with even-`z` reflection and no
+  axis/boundary fallback. Reflected addresses/coalescing are executed on even
+  manufactured fields at `z=0` and `z=h`; norm, replay-separation,
+  transfer/parity, orientation, eigengap, and exact row/action evaluators have
+  passing and rejecting self-controls. Three frozen tolerance campaigns per grid require
+  nine independent designed cores, with an indicative fixed-iteration
+  `4.06-5.90 h` projection before native-linear,
+  verification, diagnostics, reporting, iteration growth, and handoff work.
+  Any on-demand representation must exhaustively match all `25 x 322319`
+  baseline rows, coefficients, offsets, active ties, residuals, and Jacobian
+  actions bitwise; passing changes storage only.
+- **Strength:** The mask counts, digests, support/application checks, recovery
+  weights, quadratic reproduction, evaluator controls, scale covariance,
+  runtime arithmetic, and nodal
+  counterexample are deterministic internal results. Barles-Souganidis gives
+  viscosity-solution convergence under monotonicity, stability, consistency,
+  and comparison; Froese-Oberman-Salvador treats its stated Cartesian
+  2-Hessian schemes; Finlay-Oberman gives formal spatial/directional
+  consistency. None is an instantiated recovered-Hessian reliability theorem
+  for this reflected cylindrical/curved-boundary solution. E-036's decision is
+  a current-evidence closure, not a theorem that no future enclosure can exist.
+- **Operational rule:** Park H-019 and the annular Galileon numerical line.
+  Preserve immutable E-028 stage `6/12`, SHA
+  `ff82363833c84e416e020a8df56d6067b6b1f7612c41f30f6499d6b95690babb`,
+  and every negative/path-conflict artifact. Do not build a finer grid, change
+  source/box/amplitude, rearchitect storage as a workaround, or begin density,
+  asymmetry, target, EFT, artificial-gravity, inertial-control, or propulsion
+  continuation without materially new theory/data or explicit user direction.
+- **Possible cracks:** A quantitatively applicable, scheme-specific theorem
+  with verified solution regularity, uniform ellipticity/inverse stability,
+  residual-to-root inclusion, source/axis/boundary consistency, and
+  between-node Hessian control could change this boundary. New independent
+  physical or numerical data that resolve the same uncertainty could also
+  justify a fresh screen; an exact storage replacement alone cannot.
+- **Sources:** Barles and Souganidis 1991, DOI
+  `10.3233/ASY-1991-4305`; Froese, Oberman, and Salvador 2017, DOI
+  `10.1093/imanum/drw007`; Finlay and Oberman 2019, DOI
+  `10.1137/18M1200269`; Nochetto, Ntogkas, and Zhang,
+  arXiv:`1706.09113`; internal E-036 no-solve closure, 2026-08-03.
+
+### B-039: Diamagnetic Compensation Is Material-Specific Simulated Gravity, Not Curvature
+
+- **Claim:** A weak diamagnet in a static field receives
+  `a_mag = chi B dB/dz/[mu0 rho (1+chi)]`. For ambient water
+  (`chi=-9.1e-6`, `rho=1000 kg/m^3`), cancelling `1g` requires
+  `abs(B dB/dz) ~= 1.354e3 T^2/m`, or an illustrative `84.6 T/m`
+  gradient if the local field is `16 T`. The coil/support receives the equal
+  electromagnetic reaction. This is a real, useful body force but neither
+  spacetime curvature nor inertial control.
+- **Why it matters:** Terrestrial `0.01g` residual requires cancelling `99%`
+  of gravity (`~1.341e3 T^2/m`), whereas applying a `0.01g` magnetic body
+  force in free space needs only `13.54 T^2/m`; confusing these objectives
+  creates a factor-`99` scale error. More fundamentally, tuning full
+  cancellation for water leaves `abs(epsilon) g` differential acceleration
+  in a constituent whose specific susceptibility
+  `chi/[rho(1+chi)]` differs by fractional `epsilon`. A `1%` mismatch therefore
+  leaves `0.01g` internal differential loading even when the water reference
+  floats.
+- **Strength:** Established electromagnetism and demonstrated small-object
+  levitation support the force law. Berry and Geim explain stable levitation
+  near `16 T`; Sanavandi and Guo's ideal simulation reaches
+  `V_1% ~= 4004 microliters`, while its proposed practical-coil simulation
+  reaches about `3450 microliters`, plus a larger Mars-gravity volume. These are
+  material/geometry-specific calculations and demonstrations, not proof that
+  a complex tissue receives uniform gravity-equivalent loading. A local
+  `16 T` field stores `~1.02e8 J/m^3`; this is not a total magnet-energy,
+  cryogenic, structural, or power budget.
+- **Assumptions:** Linear isotropic susceptibility, known density, calibrated
+  `B` and gradient, compact sample, and negligible ferromagnetic contamination.
+  Important confounders include susceptibility heterogeneity, direct static-
+  field biology, conductivity/magnetohydrodynamics, thermal gradients,
+  convection, vibration, container forces, and small usable volume.
+- **Operational rule:** Label the opportunity a gravity-like EM body-force
+  simulator. Validate water, saline/gel, and layered phantoms with field-off,
+  high-`B`/low-gradient, Mars, near-microgravity, and gradient-reversal
+  controls. A pass can establish a long-duration partial-gravity analog for
+  specified materials and volume; it cannot establish universal gravity,
+  human-scale artificial gravity, reactionless acceleration, or inertial
+  control.
+- **Possible cracks:** Larger high-temperature-superconducting gradient coils
+  may expand the well-characterized sample volume, and careful phantom
+  matching may make the platform valuable for materials or selected biology.
+  No magnet design removes the susceptibility dependence that distinguishes
+  the force from gravity.
+- **Sources:** Berry and Geim 1997, DOI
+  `10.1088/0143-0807/18/4/012`; Sanavandi and Guo 2021, DOI
+  `10.1038/s41526-021-00174-4`; Herranz et al. 2012, DOI
+  `10.1186/1471-2164-13-52`; Leng et al. 2024, DOI
+  `10.1103/PhysRevLett.132.123601`; internal E-037 scale and mismatch audit,
+  2026-08-03.
 
 ## Boundary Entry Template
 
