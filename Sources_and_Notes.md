@@ -2332,3 +2332,237 @@ Add sources here with enough detail that future runs can judge quality quickly.
   E-036 should test whether an actual-solution two-parameter derivative-error
   enclosure can replace the infeasible fourth grid and make that protocol
   executable before any storage rearchitecture or finer solve is considered.
+
+## 2026-08-03 - E-036 Actual-Solution Enclosure Source Audit
+
+- **Barles and Souganidis 1991:** Guy Barles and Panagiotis E. Souganidis,
+  “Convergence of Approximation Schemes for Fully Nonlinear Second Order
+  Equations,” *Asymptotic Analysis* **4**, 271-283, DOI
+  `10.3233/ASY-1991-4305`.
+  - The convergence framework applies to stable, consistent, monotone schemes
+    when the limiting equation has a comparison principle. It establishes
+    convergence to a viscosity solution under those hypotheses; it is not an
+    a posteriori Hessian-error estimator and supplies no constants for E-036's
+    saved discrete root.
+  - **E-036 use:** This supports the distinction between potential convergence
+    and a derivative enclosure. It does not bound algebraic root error,
+    recovered-Hessian error, source-transition regularity, or between-node
+    curvature for the project's cylindrical 2-Hessian discretization.
+
+- **Froese, Oberman, and Salvador 2017:** Brittany D. Froese, Adam M. Oberman,
+  and Tiago Salvador, “Numerical Methods for the 2-Hessian Elliptic Partial
+  Differential Equation,” *IMA Journal of Numerical Analysis* **37**(1),
+  209-236, DOI `10.1093/imanum/drw007`.
+  - The paper gives one provably viscosity-convergent discretization and a more
+    accurate method that converges in the reported experiments but lacks a
+    proof. Its ellipticity requires an admissibility/convexity-type constraint.
+  - **E-036 use:** This is the closest equation-family source, but it does not
+    provide a verified actual-solution Hessian enclosure for the project's
+    axisymmetric cylindrical operator, reflected axis, curved boundary,
+    partial source, algebraic solver, or changing direction set.
+
+- **Finlay and Oberman 2019:** Chris Finlay and Adam Oberman, “Improved
+  Accuracy of Monotone Finite Difference Schemes on Point Clouds and Regular
+  Grids,” *SIAM Journal on Scientific Computing* **41**(5), DOI
+  `10.1137/18M1200269`.
+  - On regular grids the constructed consistency error is formally
+    `O(R^2+dtheta^2)`; on point clouds it is `O(R+dtheta^2)`. These estimates
+    concern a specified smooth exact function and scheme geometry.
+  - **E-036 use:** The two scales confirm that spatial and angular errors must
+    be tracked separately. The asymptotic form is not a computable enclosure
+    without verified exact-solution derivatives, boundary/source constants,
+    and stability linking local consistency to the saved nonlinear solution.
+
+- **Nochetto, Ntogkas, and Zhang 2017/2018:** Ricardo H. Nochetto, Dimitrios
+  Ntogkas, and Wujun Zhang, “Two-Scale Method for the Monge-Ampere Equation:
+  Pointwise Error Estimates,” arXiv:`1706.09113`.
+  - The work derives scheme-specific pointwise rates using discrete continuous
+    dependence and an Alexandroff estimate, with classical-solution Holder or
+    Sobolev regularity assumptions and separate results for bounded, piecewise-
+    smooth Hessians.
+  - **E-036 use:** This demonstrates the kind of stability and regularity
+    machinery an actual error theorem needs. Its Monge-Ampere finite-element
+    setting and assumptions do not transfer automatically to the retained
+    cylindrical wide-stencil 2-Hessian solution.
+
+## 2026-08-03 - E-036 Closure Result
+
+- **Executable definitions:** `models/e036_actual_solution_enclosure.py`
+  enumerates and hashes every fixed common mask, freezes exact dyadic
+  restriction, native recovery and support rules, solver tolerances,
+  all-recovery coupled-path/operator-spread metrics, transfer/parity quantities,
+  floating-floor orientation intervals, eigengap gates, and the dormant exact
+  row/nonlinear-action-equivalence manifest. E-034 constructs every 90%-band
+  FFT mask; component parity at `z=0`, windowed Parseval energy, parity
+  amplitudes/correlations, three primary acceptance masks, all three recovery
+  families, 25 canonical operators, deterministic PCG64 probes, and stage-6
+  tie actions are fixed in callable code. Passing and rejecting controls run;
+  reflected rows are mapped/coalesced and tested on even quadratics at `z=0`
+  and `z=h`, with a nonzero mixed `rho*z^2` control. Full baseline
+  row/action equivalence was not executed, so the screen remains unauthorized.
+  Counts are `3513` full-positive-
+  source, `1503` radial-transition, `3290` angular-transition, `2145` inner-
+  feature, and `307852` global-interior points. Every enumerated native support
+  is valid on all three candidate grids.
+- **Recovery validation:** `C_h`, `C_2h`, and `Q_2h` reproduce a general
+  quadratic to `3.93e-12` in the deterministic validation. The second-
+  derivative `Q_2h` row `L1` norms scale
+  `73.14 -> 292.57 -> 1170.29` as `h` halves, so nodal error needs an
+  correspondingly strong verified bound before differentiation.
+- **Missing theorem:** The required identity is
+  `R_hm(u_tilde)-D2u = R_hm(u_tilde-u_h) + R_hm(u_h-I_hu) +
+  (R_hm(I_hu)-D2u)`. None of the three terms has a verified bound for the
+  actual retained solution. `h^2 sin(2*pi*x/h)` has zero nodal samples and
+  nonvanishing `4*pi^2` second-derivative supremum; this is an information and
+  regularity counterexample, not a claim that the family solves the PDE.
+- **Resource projection:** The three-grid, three-schedule design calls for nine
+  independent complete campaign cores. Applying E-035's fixed-iteration
+  standard-core model uniformly to all nine gives an indicative `4.06-5.90 h`
+  projection before native linear solves, root verification, diagnostics,
+  reporting/checkpoint work, iteration growth, and handoff reserve. It is not
+  a demonstrated lower bound for the tighter schedules.
+- **Decision:** No validated actual-solution derivative enclosure is
+  available. E-036 records `parked_no_validated_actual_solution_enclosure`;
+  H-019 and the annular Galileon numerical line are parked. Accepted E-028
+  stage 6 remains immutable. Manufactured recovery, tighter replay, and three
+  coupled-grid differences remain implementation or sensitivity evidence,
+  not continuum curvature evidence.
+
+## 2026-08-03 - E-037 Diversified Portfolio Sources
+
+- **Berry and Geim 1997:** M. V. Berry and A. K. Geim, “Of Flying Frogs and
+  Levitrons,” *European Journal of Physics* **18**, 307-313, DOI
+  `10.1088/0143-0807/18/4/012`.
+  - Establishes ordinary diamagnetic levitation and the magnetic body-force
+    interpretation. The effect is material-dependent electromagnetism, not
+    shielding or modification of gravity.
+
+- **Sanavandi and Guo 2021:** Hamid Sanavandi and Wei Guo, “A Magnetic
+  Levitation Based Low-Gravity Simulator with an Unprecedented Large
+  Functional Volume,” *npj Microgravity* **7**, 40, DOI
+  `10.1038/s41526-021-00174-4`.
+  - Gives the compensation relation using `B*dB/dz`, designs combined
+    superconducting-solenoid/gradient-coil configurations, and reports a
+  ideal-simulation near-microgravity water volume of about `4004 microliters`
+  with residual below `0.01g`; the proposed practical-coil simulation reaches
+  about `3450 microliters`. Larger partial-gravity volumes require substantial
+  apparatus and power.
+  - **E-037 use:** This supplies a realistic small-volume benchmark, not proof
+    for a built apparatus or a human-scale system. Field-map metrology,
+    material response, thermal/convection effects, structural load, total
+    stored energy, cryogenics, and power remain separate gates.
+
+- **Herranz et al. 2012:** Raul Herranz et al., “Microgravity Simulation by
+  Diamagnetic Levitation: Effects of a Strong Gradient Magnetic Field on the
+  Transcriptional Profile of *Drosophila melanogaster*,” *BMC Genomics*
+  **13**, 52, DOI
+  `10.1186/1471-2164-13-52`.
+  - Biological use demonstrates why high-field, high-gradient controls and
+    material-specific response are necessary. A magnetic compensation result
+    cannot by itself isolate a gravity-dose effect.
+
+- **Leng et al. 2024:** Yingchun Leng et al., “Measurement of the Earth Tides
+  with a Diamagnetic-Levitated Micro-Oscillator at Room Temperature,”
+  *Physical Review Letters* **132**, 123601, DOI
+  `10.1103/PhysRevLett.132.123601`.
+  - Provides a current precision benchmark for diamagnetically supported
+    mechanical motion and illustrates both sensitivity and magnetic-systematic
+    control in a compact setup.
+
+- **Jaffe et al. 2017:** Matt Jaffe et al., “Testing Sub-Gravitational Forces
+  on Atoms from a Miniature In-Vacuum Source Mass,” *Nature Physics* **13**,
+  938-942, DOI `10.1038/nphys4189`.
+  - Ordinary curvature from a `0.19 kg` in-vacuum source is a valuable
+    metrology benchmark. Its tiny acceleration is a precision-calibration
+    opportunity, not a useful field-generation mechanism.
+
+- **NASA ACS3 2023:** “Advanced Composite Solar Sail System,” NASA technical
+  description, NTRS `20230008378`.
+  - The `80 m^2`, roughly `16 kg` mission scale anchors an ideal normal-
+    reflection calculation at `1 AU`. The resulting
+    `4.54e-5 m/s^2` is an upper performance baseline before reflectivity,
+    attitude, payload, and thermal penalties; it is external photon-pressure
+    acceleration, not internal artificial gravity.
+
+- **Touboul et al. 2022:** Pierre Touboul et al., “MICROSCOPE Mission: Final
+  Results of the Test of the Equivalence Principle,” *Physical Review Letters*
+  **129**, 121102, DOI `10.1103/PhysRevLett.129.121102`.
+  - Composition-dependent long-range forces face exceptionally tight
+    equivalence-principle constraints. E-038 must state a mediator
+    normalization and range before claiming any remaining `B-L` window.
+
+- **Xu et al. 2025 and earlier spin searches:** Zitong Xu et al.,
+  “Constraints on Axion Mediated Dipole-Dipole Interactions,” *Physical Review
+  Letters* **134**, 181801, DOI `10.1103/PhysRevLett.134.181801`; compare the
+  earlier null-search lineage including Almasi et al. 2020. These experiments bound
+  finite-range spin-dependent couplings with source modulation, shielding, and
+  phase controls.
+  - **E-037 use:** The experimental pattern is retained as precision-force
+    physics, but unpolarized bulk acceleration averages away. The scale gate
+    therefore fails for artificial gravity even when the detector gate passes.
+
+- **Khamehchi et al. 2017:** M. A. Khamehchi et al., “Negative-Mass
+  Hydrodynamics in a Spin-Orbit-Coupled Bose-Einstein Condensate,” *Physical
+  Review Letters* **118**, 155301, DOI
+  `10.1103/PhysRevLett.118.155301`.
+  - Negative effective mass is a band-dispersion/quasiparticle response of a
+    driven trapped condensate. The lasers and trap preserve the reaction and
+    momentum ledger; the result does not reverse bare inertial mass or modify
+    external spacetime.
+
+- **Current short-range force benchmark:** Recent optically levitated
+  microsphere searches, including DOI `10.1038/s41598-026-35656-6`, exploit a
+  multidimensional, multi-harmonic attractor signature and operate where
+  inverse-square constraints weaken at micrometer separations.
+  - **E-037/E-038 use:** This supports a cheap source-to-signal screen with
+    spatial and harmonic signatures. It does not establish a `B-L` signal;
+  electrostatic, magnetic, optical, Casimir, thermal, seismic, and ordinary
+  Newtonian forces must remain explicit confounders.
+
+- **Blanchet 2014:** Luc Blanchet, “Gravitational Radiation from
+  Post-Newtonian Sources and Inspiralling Compact Binaries,” *Living Reviews
+  in Relativity* **17**, 2, DOI `10.12942/lrr-2014-2`.
+  - The standard transverse-traceless quadrupole field is a radiation-zone
+    result with leading amplitude proportional to `G*Qddot/(c^4*r)`. E-037's
+    substitution of the entire `1 GJ` source scale is deliberately optimistic,
+    and one wavelength is only a wave-zone-onset proxy rather than an
+    asymptotic far-zone point; realistic geometry, stress, and velocity reduce
+    the signal further.
+
+## 2026-08-03 - E-037 Portfolio and Scale Result
+
+- **Seven candidates:** P-001 diamagnetic small-sample compensation; P-002
+  solar-photon sail; P-003 short-range `B-L` Yukawa force; P-004 polarized
+  spin force; P-005 negative-effective-mass condensate analog; P-006 laboratory
+  gravitational-wave source; P-007 miniature ordinary source-mass metrology.
+  The matrix records category, source/coupling and reaction, four gate states,
+  and disposition for each.
+- **No practical field generator:** No candidate supports practical artificial
+  gravity or bulk inertial control. For an optimistic `1 GJ` source-energy
+  scale, near-zone gravity at `1 m` is only `7.43e-19 m/s^2`; this is not a
+  wave signal. At one `1 kHz` wavelength (`2.998e5 m`), the corresponding
+  optimistic one-wavelength wave-zone-onset strain proxy is `1.10e-40`, with
+  relative acceleration across a `1 m` baseline below `3e-33 m/s^2`, before stress,
+  motion, geometry, coherence, and radiation-efficiency penalties. P-006 is
+  parked without a numerical campaign.
+- **Deepened analog:** Water-like full compensation requires
+  `|B dB/dz|=1.354e3 T^2/m`, or `84.6 T/m` at local `B=16 T`. Earth-based
+  `0.01g` residual needs `1.341e3 T^2/m`, while a free-space magnetic force of
+  `0.01g` needs `13.54 T^2/m`. The `99x` distinction is recorded explicitly.
+  A `1%` mismatch in specific susceptibility leaves `0.01g` differential
+  loading under full water compensation.
+- **Resource honesty:** Local field energy density at `16 T` is
+  `101.9 MJ/m^3`; this is not total magnet energy, electrical power, cryogenic
+  burden, structural stress, or usable-volume proof.
+- **Falsification artifact:** The bounded design requires an independently
+  calibrated field/gradient map, a prospective target of at least
+  `4000 microliters` below `0.01g` residual for water (above the paper's
+  approximately `3450 microliter` practical-coil simulation), multi-
+  susceptibility and layered phantoms, field-only and
+  gradient-reversal controls, thermal/vibration/convection/support channels,
+  and an explicit coil/cryostat/support/specimen reaction ledger. A pass means
+  a specified-material electromagnetic simulator only.
+- **Next:** E-038 will freeze one short-range `B-L` normalization and range
+  grid, overlay current constraints, and compute a maximum allowed detector
+  signal for a specified neutron-rich modulated source. It is a cheap
+  precision-test screen, not a promoted artificial-gravity concept.

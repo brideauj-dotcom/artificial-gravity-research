@@ -2394,3 +2394,172 @@ valid enclosure is impossible should a separately fingerprinted exact
 on-demand operator-storage preflight be designed; do not solve a finer grid,
 change the source/box, relax a gate, advance amplitude, or begin physical/
 propulsion interpretation.
+
+## 2026-08-03 - E-036 Closure and E-037 Diamagnetic Portfolio Lead
+
+**Focus question:** Can E-036 produce a genuine two-parameter derivative-error
+enclosure for the saved annular Galileon solution without another PDE solve;
+after closing that line, which genuinely different portfolio candidate survives
+source/coupling, constraint, absolute-scale, and falsification gates well enough
+for one bounded deepening?
+
+**Sources reviewed:** For the closure audit, Barles and Souganidis (1991,
+DOI `10.3233/ASY-1991-4305`), Froese, Oberman, and Salvador (2017, DOI
+`10.1093/imanum/drw007`), Finlay and Oberman (2019, DOI
+`10.1137/18M1200269`), and Nochetto, Ntogkas, and Zhang (2018,
+arXiv:`1706.09113`) were checked for the exact scope of their convergence or
+error results. For the portfolio, the primary anchors included Berry and Geim
+(1997, DOI `10.1088/0143-0807/18/4/012`), Sanavandi and Guo (2021, DOI
+`10.1038/s41526-021-00174-4`), Herranz et al. (2012, DOI
+`10.1186/1471-2164-13-52`), Yingchun Leng et al. (2024, DOI
+`10.1103/PhysRevLett.132.123601`), Jaffe et al. (2017, DOI
+`10.1038/nphys4189`), and NASA's ACS3 technical description
+(`20230008378`). Sources for the wider screen also included the MICROSCOPE
+final equivalence-principle result, dedicated spin-force searches, the
+negative-effective-mass condensate experiment, and current short-range
+fifth-force proposals and bounds relevant to a future `B-L` recast.
+
+**Deepening work completed:** Audited four numerical-analysis theorem scopes;
+decomposed the actual-solution recovery error and built a nodal-invisibility
+counterexample; enumerated all masks and native supports; implemented and
+self-tested reflected-axis recovery, all-recovery coupled-path/operator-spread
+metrics, replay separation, frozen-band transfer/parity, floating-floor
+orientation, eigengap, and content-fingerprinted row/nonlinear-action gates;
+screened seven source-distinct mechanisms; computed independent diamagnetic,
+solar-sail, near-zone gravity, and wave-zone strain scales; and converted the
+selected analog into a controlled multi-material falsification design.
+
+**What changed:** Completed E-036 with no checkpoint or field read, no new
+grid, no PDE build, and no PDE solve. The five fixed common masks are now fully
+enumerated and hashed; all native supports, restriction maps, reflected-axis
+rules, curved-boundary exclusions, cylindrical weights, `C_h/C_2h/Q_2h`
+recoveries, three solver tolerances, transfer/parity metrics, orientation and
+eigengap gates, and a lineage-bound dormant row/action-equivalence executor are
+executable. Reflected rows are address-mapped, coalesced, applied, and
+manufactured-tested at `z=0` and the first native axial node, including a
+nonzero mixed `rho*z^2` control at `z=h`. The coupled-path gate now evaluates
+all three recoveries across every mask/metric; the transfer mask comes directly
+from E-034 cutoffs with even/odd axis parity and Parseval-checked windowed
+energy; the orientation radius includes the declared arithmetic floor; and
+the dormant equivalence manifest freezes the retained 24 ordered meridional
+operators plus the azimuthal operator, 65 row probes, and 26 stage-6
+nonlinear/tie actions. Its public executor accepts artifact payloads, enforces
+canonical CSR topology and the exact 322,319-row geometry, hard-binds the
+immutable checkpoint/field/report/E-025/E-028 hashes, derives the system and
+stage-6 source hashes through that accepted report, and derives rather than
+accepts every row and nonlinear action. These mathematical gate definitions
+are complete, but full baseline equivalence was not executed and the screen
+remains unauthorized. Exact mask counts
+are `3513`, `1503`, `3290`, `2145`, and
+`307852`. General quadratics reproduce to `3.93e-12`, but that checks the
+recovery implementation only.
+
+The actual-solution error requires bounds for
+`R_hm(u_tilde-u_h)`, `R_hm(u_h-I_hu)`, and
+`R_hm(I_hu)-D2u`. None of the reviewed theorems or saved numerical artifacts
+provides those bounds for this nonlinear cylindrical wide-stencil problem,
+especially at the source transition, reflected axis, curved boundary, and
+between nodes. The explicit family `h^2 sin(2*pi*x/h)` is zero at every node
+while its second-derivative supremum remains `4*pi^2`; this is an
+information/regularity counterexample, not a PDE solution. `Q_2h` derivative
+row norms grow `73.14 -> 292.57 -> 1170.29`. Applying E-035's fixed-iteration
+cost model uniformly to the designed nine independent campaign cores gives an
+indicative `4.06-5.90 h` projection before important omitted work; this is not
+a demonstrated lower bound for the tighter schedules.
+E-036 therefore records
+`parked_no_validated_actual_solution_enclosure` and parks H-019 and the annular
+Galileon numerical line.
+
+After closure, E-037 screened seven distinct candidates: diamagnetic small-
+sample compensation, solar-photon sails, short-range `B-L` forces, polarized
+spin forces, negative-effective-mass condensate analogs, laboratory
+gravitational-wave generation, and miniature ordinary source-mass metrology.
+Each candidate has an explicit category, source/reaction ledger, four gate
+statuses, and disposition. No candidate supports practical artificial gravity
+or bulk inertial control. P-001 alone was deepened as an established,
+nonuniversal electromagnetic body-force analog.
+
+For water, full terrestrial compensation requires
+`|B dB/dz|=1.354e3 T^2/m`, or locally `84.6 T/m` at `16 T`.
+An Earth-based `0.01g` residual still requires `1.341e3 T^2/m`, whereas a
+free-space magnetic body force of `0.01g` requires `13.54 T^2/m`; the former
+is `99` times larger because it cancels `0.99g`. A `1%` mismatch in specific
+magnetic susceptibility leaves `0.01g` differential loading under full water
+compensation. The local `16 T` magnetic energy density is `101.9 MJ/m^3`,
+explicitly not a total magnet-energy, power, cryogenic, or structural estimate.
+The concrete falsification design sets a prospective mapped `4000 microliter`
+target, explicitly above the paper's approximately `3450 microliter`
+practical-coil simulation,
+multi-material and layered phantoms, field-only and gradient-reversal controls,
+thermal/vibration/convection metrology, and a closed apparatus reaction ledger.
+
+Independent scale checks kept the funnel honest: an ideal ACS3-scale solar sail
+is only about `4.54e-5 m/s^2` at `1 AU`, useful as low-thrust external
+acceleration rather than cabin gravity. For a laboratory gravity-wave source,
+`1 GJ/c^2` gives only `~7.4e-19 m/s^2` of near-zone gravity at `1 m`; at the
+one-wavelength wave-zone-onset proxy for `1 kHz` (`~300 km`), the same
+optimistic quadrupolar energy scale gives strain only `~1.1e-40`; a true
+asymptotic far-zone estimate is smaller. The candidate was parked without
+simulation.
+
+**Reasoning:** The E-036 literature establishes convergence or error estimates
+only under assumptions and schemes that do not furnish the missing numerical
+reliability, consistency, regularity, and algebraic root bounds here. It would
+be scientifically invalid to relabel manufactured polynomial reproduction,
+three coupled-grid differences, or tighter solver output as an enclosure for
+the unknown continuous Hessian. Closing the line is therefore more informative
+than spending further compute on an academically interesting dimensionless
+feature with no validated continuum or physical scale.
+
+Diamagnetic compensation survives a different, limited objective because its
+actuator, standard coupling, absolute acceleration, apparatus reaction, and
+cheap falsification controls are all explicit. Its very material dependence is
+also the decisive boundary: it can emulate reduced loading for selected small
+samples, but cannot supply universal free fall, real spacetime curvature, or
+inertial-mass control. The `B-L` candidate remains next only because a cheap
+source-to-signal and current-constraint envelope can determine whether any
+unexcluded precision-test window is worth retaining; it is not promoted as a
+gravity generator.
+
+**Failure or boundary found:** No rigorous E-036 actual-solution derivative
+enclosure is available, so H-019 and the inherited annular Galileon numerical
+line are parked and must not reopen without materially new theory, data, or
+explicit user direction. E-037 found no practical artificial-gravity or bulk-
+inertial-control candidate. Diamagnetic compensation is limited to compact
+high-field volumes and specified `chi/rho`; material heterogeneity, field
+effects, heating, convection, vibration, and support forces are first-order
+confounders, not corrections to hide.
+
+**Blank space or new idea:** A layered phantom with deliberately separated,
+independently measured `chi/rho` values turns the nonuniversality objection
+into a sharp internal-stress measurement. For new interactions, an isotopically
+tagged modulated attractor can separate ordinary mass coupling from neutron-
+number-rich `B-L` charge in a source-to-signal ledger, but only after current
+range-dependent constraints are overlaid.
+
+**Hypothesis updates:** H-018 and H-019 are parked without changing the
+immutable accepted E-028 stage-6 evidence. H-021 records diamagnetic
+compensation as an established small-sample electromagnetic analog, not real
+gravity. P-001 through P-007 now preserve the diversified gate results. E-036
+and E-037 are complete; E-038 is queued.
+
+**Verification and provenance:** The two new reports record zero PDE solves and
+leave every checkpoint and retained work snapshot unchanged. All `28` focused
+E-036/E-037 tests pass; all `196` workspace tests pass in `14.418 s`; every
+model and test module compiles; `pip check` reports no broken requirements; all
+`22` checkpoint-manifest digests, Git LFS integrity, and Git diff checks pass.
+E-036 module/test SHA-256 values are
+`d8a394e6496512ca9562dc0bd8b8324135cb6690f8283fe8d82875ef90723cbd` /
+`1b0868b6426780b4c228247bdede6d2bb150abb18e09d70a3d402bc9c6d7cd7d`;
+E-037 module/test SHA-256 values are
+`d21c59ff7316faf4e76404c6ea18baf7749b8cd43ab0f367e65dc4c0a5c39c88` /
+`6bc5b0eb0d05f6364bb58116f725c903529d9cfd4d28881070975f8b7a6f8a9e`.
+
+**Next best step:** Run E-038 as a no-hardware, no-PDE short-range `B-L`
+source-to-signal envelope. Freeze one mediator normalization and range grid;
+overlay current equivalence-principle and short-range bounds; compute the
+maximum permitted differential acceleration or detector phase for a specified
+neutron-rich modulated attractor; identify electrostatic, magnetic, Casimir,
+seismic, thermal, and Newtonian-gravity confounders. Park the candidate if the
+allowed absolute signal has no credible detectable window. Generate a
+genuinely different replacement candidate on the same run if it fails.

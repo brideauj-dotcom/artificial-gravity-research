@@ -1606,3 +1606,119 @@ any on-demand/compressed operator redesign is a new,
 fingerprinted numerical method requiring exact action-equivalence validation
 before a finer build. Accepted E-028 stage 6 remains immutable; no physical
 field or artificial-gravity conclusion follows.
+
+## 2026-08-03 E-036 actual-solution enclosure closure
+
+`models/e036_actual_solution_enclosure.py` completes the bounded, no-solve
+closure requested by E-035. It reads no checkpoint or field, builds no grid or
+PDE, and solves no PDE. Run its deterministic report with:
+
+```bash
+.venv/bin/python -m models.e036_actual_solution_enclosure \
+  --report-json /tmp/e036-enclosure-report.json
+```
+
+The module makes the previously incomplete validation definitions executable:
+all five fixed masks are enumerated on the `h=0.125` common grid with frozen
+index hashes; exact restriction multipliers are `[1,2,4]`; axis reflection,
+curved-boundary exclusion, cylindrical weights, recovery rows, tolerance
+schedules, transfer/parity diagnostics, orientation intervals, eigengap gates,
+and a dormant exact row/action-equivalence protocol have callable evaluators
+with passing and rejecting self-controls. Reflected 5x5 addresses are
+materialized, duplicate columns coalesced, and even-quadratic recovery is
+executed at `z=0` and `z=h` on every candidate grid. Mask counts
+are `3513` full-source, `1503` radial-transition, `3290`
+angular-transition, `2145` inner-feature, and `307852` global-interior points.
+Every native recovery support is valid on all three candidate grids, and the
+generated `C_h`, `C_2h`, and `Q_2h` rows reproduce general quadratics to
+`3.93e-12` in the validation calculation.
+
+The completed mathematical protocol evaluates `D_j,r,p` separately for all
+three recoveries, contracts the maximum pairwise operator spread, constructs
+FFT bands from E-034's exact 90%-amplitude cutoffs, applies even/odd axis
+reflection, checks windowed Parseval energy and parity correlations, includes
+the declared orientation arithmetic floor, and content-fingerprints a dormant
+equivalence manifest covering E-025's 24 ordered meridional operators plus its
+azimuthal operator, 65 probes, and 26 stage-6 nonlinear/tie actions. The public
+executor enforces canonical CSR and the exact baseline geometry, binds supplied
+payloads to the immutable checkpoint, field, report, E-025, and E-028 hashes,
+derives the system/source hashes through that accepted report, and derives all
+actions before comparison. Positive and negative tiny-fixture controls
+execute. The full 322,319-row baseline equivalence was not executed, no screen
+is authorized, and these definitions are not an error theorem.
+
+Those implementation checks are not an error enclosure. For an exact solution
+`u`, nodal solution `u_h`, interpolant `I_h u`, and recovered numerical solution
+`R_hm u_tilde`, the needed error separates as
+
+```text
+R_hm(u_tilde)-D2u = R_hm(u_tilde-u_h)
+                  + R_hm(u_h-I_hu)
+                  + (R_hm(I_hu)-D2u).
+```
+
+No available result supplies verified bounds for these three terms on this
+nonlinear cylindrical wide-stencil problem, including its source transition,
+reflected axis, curved boundary, changing direction set, and between-node
+behavior. The family `e_h(x)=h^2 sin(2*pi*x/h)` is zero at every grid node while
+`||e_h''||inf=4*pi^2`; it is an information/regularity counterexample, not a
+PDE solution. It shows why potential convergence and nodal recovery checks do
+not control the continuous Hessian without a scheme-specific stability and
+regularity estimate. The `Q_2h` second-derivative row `L1` norm also grows
+`73.14 -> 292.57 -> 1170.29`, exposing the expected `h^-2` amplification.
+
+The frozen three-tolerance design calls for nine independent nonlinear
+campaign cores. Applying E-035's fixed-iteration standard-core projection to
+all nine gives an indicative `4.06-5.90 h` estimate before
+native linear solves, verification, diagnostics, checkpoint/report work, or
+iteration growth. It is documented but unauthorized. The canonical decision is
+`parked_no_validated_actual_solution_enclosure`: H-019 and the annular Galileon
+numerical line are parked, accepted E-028 stage 6 remains immutable, and the
+line must not reopen without materially new theory, data, or explicit user
+direction.
+
+## 2026-08-03 E-037 diversified portfolio funnel
+
+`models/e037_portfolio_funnel.py` screens seven genuinely distinct candidates
+through explicit source/coupling, constraints, absolute-scale, and falsification
+gates. Run its deterministic report with:
+
+```bash
+.venv/bin/python -m models.e037_portfolio_funnel \
+  --report-json /tmp/e037-portfolio-report.json
+```
+
+The portfolio distinguishes a nonuniversal electromagnetic body force,
+external inertial acceleration, hypothetical new-interaction precision tests,
+analog quasiparticle dynamics, real radiative curvature, and ordinary-source
+curvature metrology. No candidate survives as practical artificial gravity or
+bulk inertial control. Laboratory gravitational-wave generation is parked by
+two deliberately optimistic energy-only scales. At `1 m`, the near-zone
+gravity of `1 GJ/c^2` is only `~7.4e-19 m/s^2`; this is not radiation. At one
+`1 kHz` wavelength (`~300 km`), a wave-zone-onset quadrupolar strain proxy using the
+same energy is only `~1.1e-40`, before realistic stress, velocity, geometry,
+coherence, and radiation-efficiency penalties. An ideal `80 m^2`,
+`16 kg` ACS3-scale photon sail gives about `4.54e-5 m/s^2` at `1 AU`; this is a
+useful low-thrust propulsion baseline, not internal gravity.
+
+P-001, diamagnetic compensation, is deepened only as a small-sample gravity-
+like analog. For water with `chi=-9.1e-6` and `rho=1000 kg/m^3`, full terrestrial
+compensation requires
+`|B dB/dz|=mu0(1+chi)rho*g/|chi|=1.354e3 T^2/m`, equivalent locally to
+`84.6 T/m` at `16 T`. Achieving `0.01g` residual on Earth still requires
+`1.341e3 T^2/m`; applying a free-space magnetic body force of only `0.01g`
+requires `13.54 T^2/m`. These cases differ by a factor of `99` and must not be
+conflated. At full water cancellation, a constituent whose specific magnetic
+susceptibility differs by `1%` experiences `0.01g` differential loading.
+
+The falsification design therefore requires an independently mapped `B` and
+gradient, a prospective `4000 microliter` water-like usable volume with
+residual no larger than `0.01g` (a stretch beyond the paper's approximately
+`3450 microliter` practical-coil simulation), multi-susceptibility and layered
+phantoms, matched-high-field/
+near-zero-gradient and sign-reversal controls, thermal/vibration/convection
+channels, and a closed coil/support/specimen reaction ledger. A pass would
+validate an electromagnetic simulator for specified materials and volumes; it
+would not demonstrate real curvature, universal gravity, human-scale
+artificial gravity, or inertial control. E-038 is the next cheap, distinct
+screen: a short-range `B-L` source-to-signal and current-constraint envelope.

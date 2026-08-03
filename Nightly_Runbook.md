@@ -5,8 +5,36 @@ This is the standing workflow for the midnight automation. Each run should take 
 ## Start Of Run
 
 1. Read `README.md`, `Research_Charter.md`, `Daily_Log.md`, `Hypotheses_Register.md`, `Boundary_Map.md`, `Open_Questions.md`, and the latest entries in `Sources_and_Notes.md`.
-2. Pick one narrow focus question for the night.
-3. State the focus question in the new `Daily_Log.md` entry before researching.
+2. Reconcile the current opportunity portfolio and retired/parked paths before
+   choosing work. Generate or refresh several genuinely distinct candidates;
+   do not fill the screen with variants of one source, PDE, geometry, or model
+   family.
+3. Label each candidate as real spacetime curvature, hypothetical new
+   interaction, precision-force test, simulated/gravity-like body force,
+   analog dynamics, or inertial acceleration/propulsion.
+4. Pick one narrow focus question only after the screen. Deepen a candidate
+   only when it has a specified source/coupling, a credible absolute-scale
+   check, an initial constraint review, or a cheap decisive falsification.
+5. State the focus question in the new `Daily_Log.md` entry.
+
+## Portfolio Funnel
+
+Use these as progressive gates, not prerequisites for brainstorming:
+
+1. Specify the source or actuator, coupling, conservation law, and reaction or
+   backreaction ledger.
+2. Check experimental constraints and theoretical validity limits.
+3. Calculate an absolute acceleration, force, curvature, detector signal,
+   energy, and resource scale appropriate to the stated objective.
+4. Define a falsifiable experiment or observation and its important
+   confounders.
+
+Missing gates define the next cheap question. A failed scale or constraint
+gate normally parks the candidate. A detector-scale or analog-scale pass is
+not an artificial-gravity pass. Do not reopen a parked path without materially
+new theory/data or explicit user direction, and do not spend a run refining a
+dimensionless numerical feature that lacks a credible actuator or absolute
+physical scale.
 
 ## Research Loop
 
@@ -15,17 +43,20 @@ Within the time limit:
 1. Search for primary or high-quality secondary sources.
 2. Extract the relevant physics, assumptions, equations, constraints, and experimental status.
 3. Compare the findings against the current hypothesis register and boundary map.
-4. Look for one of:
+4. Record all four portfolio-gate states for the selected candidate.
+5. Look for one of:
    - a new possible mechanism,
    - a hidden assumption,
    - a better falsification route,
    - an analogy from another domain,
    - an engineering scaling issue,
    - a source that changes confidence in an existing idea.
-5. Convert the source review into original research work for this workspace:
+6. Convert the source review into original research work for this workspace:
    - name at least one blank space between known results and the desired capability,
    - state whether that blank space is blocked by known physics, merely unengineered, or still unclear,
    - propose a new hypothesis, calculation, simulation, or experiment that could reduce the uncertainty.
+   - leave a concrete artifact such as a candidate matrix, worked scale bound,
+     constraint audit, signal budget, or falsification design.
 
 ## Minimum Depth Standard
 
@@ -41,7 +72,7 @@ Before finalizing a normal scheduled run, complete at least four of the followin
 - Turn the failure or boundary into a new blank-space idea, experiment, simulation, or falsification route.
 - Design the next experiment/backlog item precisely enough that the following run can start without rediscovering the setup.
 
-If the initial calculation or source review resolves before 20 minutes have elapsed, continue until the 20-minute floor is actually met. If it resolves before 45 minutes have elapsed and there is no blocker, deepen the same focus with more of the actions above rather than stopping. Preserve the narrow focus; deepen it rather than broadening into unrelated speculation.
+If the initial calculation or source review resolves before 20 minutes have elapsed, continue until the 20-minute floor is actually met. If it resolves before 45 minutes have elapsed and there is no blocker, deepen the same focus with more of the actions above rather than stopping. Preserve the narrow focus. If the candidate fails a hard scale or constraint gate, record and park it, then improve its falsification/constraint artifact or generate the next genuinely different portfolio candidates instead of promoting a weak result.
 
 ## Update Requirements
 

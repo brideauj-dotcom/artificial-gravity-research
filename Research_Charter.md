@@ -32,6 +32,17 @@ Every claim should be labeled as one of:
 - Keep skepticism and imagination together. A run should be allowed to explore strange ideas, but not allowed to hide assumptions.
 - Record negative results. A failed path can still sharpen the search.
 - Separate physics possibility from engineering feasibility.
+- Keep real spacetime curvature, hypothetical new interactions,
+  precision-force tests, simulated/gravity-like body forces, analog dynamics,
+  and inertial acceleration systems explicitly distinct.
+- Screen opportunities progressively by source/coupling and reaction ledger,
+  constraint compatibility, absolute physical/resource scale, and a
+  falsifiable test with confounders. Missing gates define cheap next questions;
+  failed scale or constraint gates normally park a path.
+- Diversify candidate generation across source and model families. Deepen only
+  one screened candidate per run, and do not buy numerical or hardware scale
+  merely to refine a dimensionless feature without a credible actuator or
+  absolute physical scale.
 - Do not present faster-than-light travel as currently enabled by known physics.
 - Look for small cracks: approximation limits, untested parameter ranges, analog systems, scaling laws, and experimental measurement gaps.
 - Do not stop at summarizing sources. Every research pass should ask: what blank space did this source reveal, what assumption might be relaxed, what configuration has not been checked, what quantitative scale decides the issue, and what new idea or test follows?
