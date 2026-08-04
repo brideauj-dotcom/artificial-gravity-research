@@ -883,6 +883,77 @@ Faster-than-light travel generally creates causality issues in relativity. Any p
   `10.1103/PhysRevLett.132.123601`; internal E-037 scale and mismatch audit,
   2026-08-03.
 
+### B-040: A Projected Josephson Phase Is Not a Measured Fifth-Force Noise Budget
+
+- **Claim:** For canonical `L_int=g_X X_mu J_(B-L)^mu`, neutral-atom charge is
+  neutron number and
+  `V=+g_X^2 hbar c Q1 Q2 exp(-r/lambda)/(4 pi r)`. Ordinary bulk matter
+  therefore repels ordinary matter through a hypothetical vector; it does not
+  reproduce universal attractive gravity. The carbon/Josephson proposal's
+  `1e-3 rad` phase criterion corresponds to only `5.49e-21 V` accumulated
+  over `60 s`. It is a theoretical number-phase threshold, not a measured
+  source-modulated electrochemical, magnetic, mechanical, or coherence floor.
+- **Why it matters:** The proposal uses the same coupling symbol in a
+  Lagrangian vertex and in a potential lacking the canonical `1/(4 pi)`, an
+  internal normalization discrepancy. A separately named potential-normalized
+  reproduction parameter maps as `g_X=sqrt(4 pi) g_C`; otherwise phase differs
+  by `4 pi` and quoted coupling reach by `sqrt(4 pi)`. More decisively, sparse
+  repulsive-sign laboratory anchors at `5,10,20,48 um`, converted with the
+  deliberately weak generic material response `q_source*q_target=0.25`, limit
+  the ideal canonical Josephson phase to
+  `1.45e-4,4.51e-5,6.79e-5,1.68e-8 rad`, all
+  below `1e-3`. At `10 um`, an explicit `|alpha|=1.4e4` 95% anchor limits the
+  2026 patterned-source template to about `8.58e-20 N`, about `58` times below
+  the rounded `5e-18 N` fitted-template scale. The separate
+  `1e-17 N/sqrt(Hz)` noise density cannot form a force ratio without bandwidth.
+  Long-range MICROSCOPE cannot
+  be extrapolated into this micron regime, but in its own domain it limits a
+  typical neutral-matter B-L force to about `6e-14` of gravity.
+- **Strength:** The vector sign, charge mapping, coupling conversion, slab
+  integral, Josephson benchmark, and material response recast are analytical.
+  The `10 um` and `48 um` alpha values are explicit published anchors; the
+  `5 um` and `20 um` points are deliberately weak rounded primary-plot/paper
+  screening anchors. The force comparison uses rounded values from the 2026
+  levitated paper and is not a combined likelihood or official B-L exclusion.
+- **Assumptions:** Minimal anomaly-free massive B-L completion, negligible
+  kinetic mixing, no environmental screening, natural-isotope-average
+  compositions, linear superposition, and a source geometry large enough for
+  the slab approximation. The primary physical source is the published Au/Si
+  attractor translated `170 um` peak-to-peak at `3 Hz`. The paper uses each
+  recorded trajectory; E-038 instead states a sinusoidal idealization that has
+  maximum acceleration `3.02e-2 m/s^2` and equal support reaction per moving
+  mass. Neither the recorded path nor absolute moving mass is supplied by this
+  audit. The paper reports
+  measured drive-retracted vibration, electromagnetic, scattered-light, and
+  template null diagnostics, but E-038 does not recover same-template force
+  bounds from them or calculate the ordinary moving-pattern Newtonian
+  background. Josephson contact/patch potentials, capacitive pickup,
+  electrode electrochemical equilibration, Casimir/electrostatic package
+  stress, strain, vibration, thermal and critical-current drift, magnetic
+  contamination, trapped flux, phase slips, and the gauge-invariant transfer
+  from constituent potential to measured junction phase remain unbounded.
+- **Operational rule:** Park P-003/H-022. Do not propose hardware, extrapolate
+  MICROSCOPE to micron ranges, use an attractive-sign alpha curve, call a
+  proposal threshold measured sensitivity, or promote composition dependence
+  to artificial gravity. Reopen only if either the phase channel has two
+  adjacent allowed points above a measured threshold or the patterned-force
+  channel reaches a measured template threshold, with every same-unit
+  confounder bounded below one-fifth of that channel's signal; unknown or
+  unqualified bounds fail closed.
+- **Possible cracks:** A future composition- or isotope-differential detector
+  with a materially better measured source-template reach than the current
+  factor-`58` fitted-template gap,
+  demonstrated source-on/off systematics, and explicit reaction accounting
+  could restore a precision-force opportunity. It would still not provide
+  universal gravity, inertial control, or reactionless propulsion.
+- **Sources:** Fayet 2018, arXiv:`1712.00856`; Touboul et al. 2022, DOI
+  `10.1103/PhysRevLett.129.121102`; Geraci et al. 2008, DOI
+  `10.1103/PhysRevD.78.022002`; Chen et al. 2016, DOI
+  `10.1103/PhysRevLett.116.221102`; Tan et al. 2020, DOI
+  `10.1103/PhysRevLett.124.051301`; Cheng, Sheng, and Yanagida 2025, DOI
+  `10.1016/j.physletb.2024.139156`; Venugopalan et al. 2026, DOI
+  `10.1038/s41598-026-35656-6`; internal E-038 audit, 2026-08-04.
+
 ## Boundary Entry Template
 
 ```markdown
