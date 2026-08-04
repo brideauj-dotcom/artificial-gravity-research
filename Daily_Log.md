@@ -2563,3 +2563,172 @@ neutron-rich modulated attractor; identify electrostatic, magnetic, Casimir,
 seismic, thermal, and Newtonian-gravity confounders. Park the candidate if the
 allowed absolute signal has no credible detectable window. Generate a
 genuinely different replacement candidate on the same run if it fails.
+
+## 2026-08-04 - E-038 Short-Range B-L Negative Closure
+
+**Focus question:** For one explicitly normalized short-range `B-L` vector,
+does a physically specified carbon/Josephson or Au/Si/silica source-to-detector
+signal remain above conservative relevant laboratory constraints and a
+measured noise floor? If not, park P-003 and replace it with genuinely distinct
+portfolio candidates.
+
+**Continuity and scope:** Automation memory confirmed that E-036 had already
+completed its no-solve closure on 2026-08-03 and parked H-019/the annular
+Galileon line. This run did not reopen that line, inspect or change its
+checkpoint, build a grid, solve a PDE, change a source or box, advance an
+amplitude, or request compute. E-038 alone was deepened after a diversified
+screen.
+
+**Model and source frozen:** Added
+`models/e038_bl_short_range_signal.py`. The convention is a canonically
+normalized massive vector with `L_int=g_X X_mu J_(B-L)^mu`, range
+`lambda=hbar/(m_X c)`, and neutral-atom charge `Q_(B-L)=N`. Its static
+potential is
+`V=+g_X^2 hbar c Q1 Q2 exp(-r/lambda)/(4 pi r)`, so ordinary same-sign
+matter repels rather than reproducing universal attractive gravity. The
+gravity-relative pure-neutron coefficient is
+`alpha_N/g_X^2=1.36705e37`. The primary physical source is the published 2026
+density-patterned Au/Si attractor translated laterally by `170 um` peak-to-
+peak at `f=3 Hz`, with approximately `25 um` pattern pitch, `6 um` face gap,
+and a roughly `10 um` silica target. The paper constructs its signal template
+from each recorded trajectory; E-038 does not extract those paths. For
+reaction scaling only, it explicitly idealizes the drive as
+`x(t)=x0+A sin(2 pi f t)`, `A=85 um`, giving maximum velocity and acceleration
+`1.60e-3 m/s` and `3.02e-2 m/s^2`. The actuator/support reaction is therefore
+`3.02e-2 N` per kilogram of unspecified moving mass under that idealization.
+The carbon/Josephson
+geometry is retained only as a secondary ideal phase calculation. The
+hypothetical field exchanges equal and opposite source/target momentum, while
+the drive stage, mounts, junction lattice/package, and laboratory supports
+close the mechanical reaction ledger.
+
+The model assumes a minimal anomaly-free massive B-L completion, negligible
+kinetic mixing, no environmental screening, linear superposition, and natural-
+isotope-average material compositions. It does not claim that such a mediator
+exists. A nonzero result would be a composition-dependent fifth force, not
+artificial gravity or inertial control.
+
+**Normalization audit:** The Josephson proposal writes its potential without
+an explicit `1/(4 pi)` while its appendix uses the same `g_(B-L)` as a
+Lagrangian vertex. Under canonical field normalization those equations have an
+internal factor-`4 pi` discrepancy, not merely a free symbol convention.
+E-038 introduces a separately named potential-normalized reproduction
+parameter `g_C`, with `g_X=sqrt(4 pi) g_C`, only to reproduce the plotted
+benchmark; it does not silently repair or reinterpret the paper. The exact
+infinite-slab integral for its
+`1 cm^2` by `1 cm` carbon plate, neutron density `6.8e29 m^-3`, Cooper-pair
+charge magnitude `2`, `100 nm` electrode separation, and `60 s` integration
+reproduces `0.0030101 rad` at `0.1 um` and `0.0028759 rad` at `1 um` for
+`g_C=1e-16`, `m_X=0.01 eV`. This validates the source-to-phase implementation,
+not the detector. The paper's `1e-3 rad` proposal criterion is equivalent to
+only `5.49e-21 V` over `60 s` and is not a measured source-modulated phase,
+electrochemical, or coherence floor.
+
+**Constraint overlay:** MICROSCOPE's final Ti/Pt result is used only for the
+Earth-source/long-range regime. A conservative transparent recast gives
+`eta_95=6.882e-15`, `epsilon_(B-L)<~4.36e-25`, canonical
+`g_X<~1.32e-25`, and a typical neutral-matter force below about `5.95e-14`
+of gravity. This closes useful long-range reach but is explicitly marked
+inapplicable to every micron-range row.
+
+For short range, E-038 uses the repulsive-sign branch and conservative sparse
+laboratory anchors rather than treating the less constraining 2026 levitated
+sensor as the global envelope. The `5,10,20,48 um` generic-Yukawa magnitudes
+are `1e5,1.4e4,1e4,1`, with the `5` and `20 um` values deliberately rounded
+up from primary plot/paper scales and the `10` and `48 um` values explicit
+published anchors. Natural-average neutron fractions are
+`q_Au=0.5989`, `q_Si=0.5015`, and `q_SiO2=0.5007`; the Au/Si pattern plus
+silica target maps through exact response factor `0.306568`. The historical
+constraint conversion deliberately uses the weaker generic product
+`q_source*q_target=0.25` rather than pretending to have re-fit every apparatus.
+The corresponding maximum ideal canonical Josephson phases are
+`1.45e-4,4.51e-5,6.79e-5,1.68e-8 rad`. Every point is below `1e-3`; no
+interpolation or extrapolation is represented as an official combined curve.
+
+**Measured detector-scale cross-check:** The 2026 levitated experiment is
+valuable as an actual multidimensional/harmonic noise architecture. Its
+rounded `lambda=10 um`, `alpha=1e6` template is about `5 aN`, with force
+sensitivity about `1e-17 N/sqrt(Hz)`. Applying the stronger explicit
+`|alpha|=1.4e4` anchor through the conservative `0.25` historical response
+and exact `0.306568` pattern response gives at most `~8.58e-20 N`, about
+`58x` below the paper's rounded `5e-18 N` fitted-template scale. The separately
+quoted `1e-17 N/sqrt(Hz)` noise density is retained as detector provenance but
+is not divided by a force without a bandwidth, integration time, and estimator.
+Scaling the published template to `alpha=1` gives `5e-24 N` only for a
+finite-range (`lambda=10 um`) generic Yukawa interaction; it is not the
+ordinary Newtonian patterned force. The paper reports drive-retracted
+vibration, electromagnetic-sideband, and scattered-light null diagnostics,
+plus multidimensional/harmonic phase-sensitive template fits, but E-038 did not
+recover a same-template force bound from them. The actual Newtonian moving-
+pattern background was not calculated. This is a conservative scale
+comparison, not a new fit or official B-L exclusion.
+
+**Fail-closed falsification rule:** Retention required either (a) at least two
+adjacent range points with allowed phase at or above `1e-3 rad`, plus every
+phase confounder measured below one-fifth of that phase, or (b) allowed
+patterned force reaching the rounded fitted-template scale, plus every force
+confounder measured below one-fifth of the allowed force. There are no
+qualifying phase pairs, and the force is about `58x` below its comparison
+scale. The levitated experiment has measured null diagnostics, but their same-
+template force bounds were not recovered or qualified against the allowed
+B-L scale in E-038; the ordinary moving-pattern Newtonian background was not
+calculated. Measured source-modulated bounds are absent for the secondary
+Josephson contact/patch potentials, capacitive pickup, electrode
+electrochemical equilibration, Casimir/electrostatic package stress, strain,
+vibration, temperature and critical-current drift, magnetic contamination,
+trapped flux, phase slips, and the gauge-invariant transfer from constituent
+potential to observed junction phase. Unknown or unqualified bounds fail closed.
+
+**Decision and four gates:** Gate 1 passes for the frozen levitated architecture:
+the reported drive envelope, explicit sinusoidal kinematic idealization,
+coupling, target, force sign, actuator/support reaction per moving mass, and
+field reaction are explicit; the actual recorded trajectory and unknown
+absolute moving mass are preserved rather than guessed. Gate 2 is
+partial because completion/no-mixing/no-screening assumptions and sparse
+constraint recasts remain. Gate 3 fails for both objectives: the audited ideal
+detector phase and realistic patterned force are below current thresholds,
+while composition/range and MICROSCOPE preclude useful universal acceleration.
+Gate 4 passes as a concrete falsification design, but its required measured
+background qualifications do not. E-038 records
+`parked_scale_and_measured_background_gate_failed`; H-022/P-003 are parked.
+This is a negative opportunity decision for the frozen architectures, not a
+claim that every B-L model or future detector is impossible.
+
+**Portfolio refresh:** Four genuinely different replacements were screened.
+P-008 is a quantum-corrected symmetron planar-detector constraint audit:
+coupling is specified only at model level while source, boundaries, and support
+reaction remain partial; constraints are partial, absolute allowed signal is
+unknown, and a bounded no-PDE falsification is available. The planar correction
+may not be transferred to nonplanar atom/neutron responses without a controlled
+geometry bound. P-009 is ambient ultralight scalar-dark-matter gradiometry:
+injected phase recovery validates analysis, while physical allowed signal is
+unknown and there is no controllable local actuator. P-010 is optical analogue-
+horizon backreaction: experimentally meaningful nonlinear-optics bookkeeping,
+not real curvature. P-011 is an electric solar-wind sail: a modeled external-
+reaction low-thrust scale with flight-demonstrated thrust still unknown, not
+internal gravity. None supports practical
+artificial gravity or bulk inertial control.
+
+**Artifacts and boundaries:** Added the executable report and focused tests;
+updated H-022/P-003 and P-008 through P-011; completed E-038 and queued E-039;
+answered the B-L open question; and added B-040, “A projected Josephson phase
+is not a measured fifth-force noise budget.” Every checkpoint and retained
+work snapshot remains unchanged.
+
+**Verification:** All `209` workspace unit tests pass in `14.407 s`, including
+the `13` focused E-038 tests and the checkpoint-manifest integrity test. Python
+compilation, `git diff --check`, `git lfs fsck`, and `pip check` also pass.
+Independent reviews
+forced three corrections before closure: the force/noise-density ratio was
+removed, the reported source motion and explicitly idealized support reaction
+were made executable, and the Josephson paper's factor-`4 pi` issue was recorded as an
+internal normalization discrepancy rather than a harmless convention choice.
+
+**Next best step:** Run E-039 as one bounded, no-PDE, no-hardware P-008 audit.
+Freeze a canonical convention, finite-thickness planar source and boundaries,
+support reaction, and planar detector observable. Apply the reported 2026
+correction only to that planar geometry. Convert atom, neutron, torsion, and
+levitated-force nulls into common parameter exclusions, without transferring
+the planar profile correction to their nonplanar response. Require an allowed
+planar signal above a predeclared measured detector threshold. Park P-008 if
+none exists, then move to a distinct candidate.

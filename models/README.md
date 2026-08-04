@@ -1722,3 +1722,62 @@ validate an electromagnetic simulator for specified materials and volumes; it
 would not demonstrate real curvature, universal gravity, human-scale
 artificial gravity, or inertial control. E-038 is the next cheap, distinct
 screen: a short-range `B-L` source-to-signal and current-constraint envelope.
+
+## 2026-08-04 E-038 short-range B-L signal audit
+
+`models/e038_bl_short_range_signal.py` freezes a canonically normalized
+massive vector, neutral-matter neutron-number charges, repulsive sign, natural-
+isotope material fractions, the published driven Au/Si/silica source geometry,
+a secondary ideal carbon/Josephson geometry, and both field and support
+reaction ledgers. Run its deterministic report with:
+
+```bash
+python3 -m models.e038_bl_short_range_signal \
+  --report-json /tmp/e038-bl-signal-report.json
+```
+
+The proposal uses the same symbol for a vertex coupling and a potential that
+omits the canonical `1/(4*pi)`, an internal normalization discrepancy. The
+model therefore introduces a separately named, potential-normalized `g_C`
+solely to reproduce the plotted benchmark through `g_X=sqrt(4*pi) g_C`. It
+reproduces proposal benchmark phases
+`0.0030101 rad` at `0.1 um` and `0.0028759 rad` at `1 um` for
+`g_C=1e-16`, `m=0.01 eV`, and `60 s`, but does not treat the proposed
+`1e-3 rad` number-phase threshold as measured sensitivity. That threshold is
+equivalent to only `5.49e-21 V` over `60 s`.
+
+The constraint screen uses repulsive-sign laboratory anchors rather than the
+weaker 2026 detector architecture alone. At `5,10,20,48 um`, the maximum ideal
+canonical phases, after a deliberately weak generic neutron-fraction product
+of `0.25`, are respectively `1.45e-4`, `4.51e-5`, `6.79e-5`, and
+`1.68e-8 rad`, all below the proposed threshold. The explicit `10 um`,
+`|alpha|=1.4e4` anchor maps the 2026 patterned-source template to about
+`8.58e-20 N`, roughly `58` times below the rounded `5e-18 N` fitted-template
+scale. The separately quoted `1e-17 N/sqrt(Hz)` noise density is not divided by
+this force without a specified bandwidth or estimator. The `5 um` and `20 um` anchors are deliberately weak,
+rounded screening reads; the report is not an official combined likelihood.
+MICROSCOPE is applied only in its long-range Earth-source regime, where an
+approximate conservative recast limits typical neutral-matter B-L force to
+about `6e-14` of gravity. The primary measured architecture laterally drives
+the Au/Si attractor by `170 um` peak-to-peak at `3 Hz`, with approximately
+`25 um` pitch and `6 um` face gap. The paper constructs templates from each
+recorded trajectory; E-038 does not extract those paths and instead states a
+sinusoidal idealization for reaction scaling. That idealization gives maximum
+velocity and acceleration `1.60e-3 m/s` and `3.02e-2 m/s^2`, so the support
+reaction is `3.02e-2 N` per kilogram of unspecified moving mass. Scaling the
+published template to `alpha=1` gives a finite-range (`lambda=10 um`) generic
+Yukawa benchmark of `5e-24 N`, not the ordinary Newtonian background. The
+paper reports vibration, electromagnetic, and scattered-light null studies,
+but E-038 does not recover a same-template force bound from them; the actual
+Newtonian moving-pattern background is likewise not calculated here.
+
+The executable survival rule keeps the candidate only if either independent
+channel closes: two adjacent allowed phase points above threshold with all
+phase confounders below one-fifth of the signal, or an allowed patterned force
+at the fitted-template scale with all force confounders below one-fifth. Neither
+channel passes, and unqualified or unknown bounds fail closed. E-038 therefore parks
+P-003/H-022 as `parked_scale_and_measured_background_gate_failed`. This is a
+negative precision-fifth-force result for the frozen architectures, not a
+claim that B-L is impossible. It provides no evidence for a field and no
+artificial-gravity, inertial-control, or propulsion capability. No PDE, fit,
+hardware action, checkpoint read/write, or resource expansion occurs.

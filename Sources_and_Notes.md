@@ -2566,3 +2566,223 @@ Add sources here with enough detail that future runs can judge quality quickly.
   grid, overlay current constraints, and compute a maximum allowed detector
   signal for a specified neutron-rich modulated source. It is a cheap
   precision-test screen, not a promoted artificial-gravity concept.
+
+## 2026-08-04 - E-038 B-L Vector Sources
+
+- **Fayet 2018:** Pierre Fayet, “MICROSCOPE limits for new long-range forces
+  and implications for unified theories,” *Physical Review D* **97**, 055039,
+  DOI `10.1103/PhysRevD.97.055039`, arXiv:`1712.00856`.
+  - For neutral matter, baryon minus lepton number reduces to neutron number.
+    The paper gives an explicit MICROSCOPE composition normalization. E-038
+    uses its Ti/Pt coefficient with the final MICROSCOPE errors only as an
+    approximate transparent recast, not as an official collaboration limit.
+  - E-038 freezes the canonical convention
+    `L_int=g_X X_mu J_(B-L)^mu`, hence
+    `V=+g_X^2 hbar c Q1 Q2 exp(-r/lambda)/(4 pi r)`. Same-sign ordinary
+    matter is repulsive. The gravity-relative pure-neutron strength is
+    `alpha_N/g_X^2=1.36705e37`.
+
+- **MICROSCOPE final:** Pierre Touboul et al., “MICROSCOPE Mission: Final
+  Results of the Test of the Equivalence Principle,” *Physical Review
+  Letters* **129**, 121102, DOI `10.1103/PhysRevLett.129.121102`,
+  arXiv:`2209.15487`.
+  - Final Ti/Pt result is
+    `eta=[-1.5 +/- 2.3(stat) +/- 1.5(syst)]e-15`. The conservative screen
+    `|central|+1.96 hypot(stat,syst)=6.882e-15`, combined with Fayet's
+    coefficient, gives `epsilon_(B-L)<~4.36e-25`, canonical
+    `g_X<~1.32e-25`, and a typical neutral-matter force below about
+    `5.95e-14` of gravity.
+  - **Domain boundary:** This is an Earth-source, effectively long-range
+    bound. Earth finite-size and orbital-altitude suppression make it
+    inapplicable at micron range; E-038 marks it false for every short-range
+    row rather than extrapolating it.
+
+- **Geraci et al. 2008:** Andrew A. Geraci, Sylvia J. Smullin, David M. Weld,
+  John Chiaverini, and Aharon Kapitulnik, “Improved constraints on
+  non-Newtonian forces at 10 microns,” *Physical Review D* **78**, 022002,
+  DOI `10.1103/PhysRevD.78.022002`, arXiv:`0802.2350`.
+  - The published 95% numerical anchor is `|alpha|=1.4e4` at
+    `lambda=10 um`. E-038 applies the repulsive-sign magnitude because the
+    B-L vector maps to
+    `V=-G m1 m2 [1-alpha_N q1 q2 exp(-r/lambda)]/r`, not the attractive
+    branch.
+
+- **Chen et al. 2016:** Y.-J. Chen et al., “Stronger Limits on Hypothetical
+  Yukawa Interactions in the 30-8000 nm Range,” *Physical Review Letters*
+  **116**, 221102, DOI `10.1103/PhysRevLett.116.221102`,
+  arXiv:`1410.7267`.
+  - The Au/Si Casimir-less differential source provides the relevant
+    repulsive-sign micron constraint. The E-038 `5 um`, `|alpha|=1e5` value
+    is a deliberately weak rounded-up plot-reading used only as a screening
+    anchor. It is not a digitized curve or an official B-L result.
+
+- **Chiaverini et al. 2003 and Tan et al. 2020:** J. Chiaverini et al.,
+  “New Experimental Constraints on Non-Newtonian Forces below 100 microns,”
+  *Physical Review Letters* **90**, 151101, DOI
+  `10.1103/PhysRevLett.90.151101`, arXiv:`hep-ph/0209325`; W.-H. Tan et al.,
+  “Improvement for Testing the Gravitational Inverse-Square Law at the
+  Submillimeter Range,” *Physical Review Letters* **124**, 051301, DOI
+  `10.1103/PhysRevLett.124.051301`.
+  - E-038 retains deliberately conservative sparse anchors of `|alpha|=1e4`
+    at `20 um` and the explicit `|alpha|<=1` scale at `48 um`. No
+    interpolation between sparse points is presented as a global likelihood.
+
+- **Cheng, Sheng, and Yanagida 2025:** Yu Cheng, Jie Sheng, and Tsutomu T.
+  Yanagida, “Detecting a fifth-force gauge boson via superconducting Josephson
+  junctions,” *Physics Letters B* **860**, 139156, DOI
+  `10.1016/j.physletb.2024.139156`, arXiv:`2402.14514`.
+  - Proposed geometry is a `1 cm^2` by `1 cm` carbon source with neutron
+    density `6.8e29 m^-3`, a `100 nm` electrode separation, source distance
+    `0.1-1 um`, and `60 s` integration. Their potential equation has no
+    explicit `1/(4 pi)`, while the appendix uses the same `g_(B-L)` as the
+    Lagrangian vertex coupling. Under canonical field normalization this is an
+    internal factor-`4 pi` discrepancy rather than a free naming convention.
+    E-038 introduces a separately named potential-normalized reproduction
+    parameter `g_C`, with `g_X=sqrt(4 pi) g_C`, solely to reproduce the plotted
+    benchmark; it does not silently repair or reinterpret the paper.
+  - The exact slab integral in the frozen canonical convention reproduces
+    proposal-normalized phases `0.0030101 rad` at `0.1 um` and
+    `0.0028759 rad` at `1 um` for `g_C=1e-16`, `m=0.01 eV`, and `60 s`.
+    The proposed `1e-3 rad` threshold corresponds to only `5.49e-21 V` over
+    `60 s`. A number-phase relation is not a measured source-modulated
+    electrochemical/coherence noise floor.
+
+- **Venugopalan et al. 2026:** Gautam Venugopalan et al., “Optomechanical vector
+  sensing of new forces at 6 micron separation,” *Scientific Reports* **16**,
+  5180, DOI `10.1038/s41598-026-35656-6`, arXiv:`2412.13167v2`.
+  - A density-patterned Au/Si attractor is translated laterally by about
+    `170 um` peak-to-peak at `3 Hz` past a roughly `10 um` silica sphere, with
+    approximately `25 um` pattern pitch and `6 um` face gap. The paper records
+    each trajectory and uses it in the signal template; E-038 does not extract
+    those paths. Its explicit sinusoidal kinematic idealization gives maximum
+    attractor velocity and acceleration `1.60e-3 m/s` and `3.02e-2 m/s^2`.
+    Because the moving mass is also not recovered here, the actuator/support
+    reaction is reported honestly as `3.02e-2 N/kg` under that idealization.
+    The apparatus gives a multidimensional/harmonic signature
+    with force sensitivity near
+    `1e-17 N/sqrt(Hz)`. The text/figures give a peak template scale of about
+    `5 aN` at `alpha=1e6`, `lambda=10 um` and exclusion around `alpha=1e6`
+    above `10 um`; the latter is not the global best bound.
+  - Natural-isotope-average neutron fractions are `q_Au=0.5989`,
+    `q_Si=0.5015`, and `q_SiO2=0.5007`. Reweighting the Au/Si density contrast
+    gives response factor `0.306568`. Applying the stronger `10 um`
+    `|alpha|=1.4e4` anchor with a deliberately weak generic historical
+    response `q_source*q_target=0.25`, then applying the exact `0.306568`
+    Au/Si/silica pattern response, caps the force at about `8.58e-20 N`, about
+    `58` times below the paper's rounded `5e-18 N` fitted-template scale. The
+    `1e-17 N/sqrt(Hz)` noise density is recorded separately: no force/noise-
+    density ratio is formed without a specified bandwidth or estimator.
+    Dividing the published `alpha=1e6` template by `1e6` gives a finite-range
+    (`lambda=10 um`) generic-Yukawa `alpha=1` template of about `5e-24 N`, not
+    the ordinary Newtonian pattern force. The paper reports drive-retracted
+    vibration backgrounds, electromagnetic sidebands, scattered-light null
+    streams, and multidimensional/harmonic template fits. E-038 does not
+    extract a same-template force bound from those diagnostics, and it does
+    not calculate the actual Newtonian moving-pattern background. Both remain
+    qualifications, not evidence that the published nulls are absent.
+
+## 2026-08-04 - Diversified Replacement Source Leads
+
+- **P-008 quantum-corrected symmetron:** Peter Millington and Michael Udemba,
+  “Quantum corrections to symmetron fifth-force profiles,” *JCAP* 2026(02),
+  087, DOI `10.1088/1475-7516/2026/02/087`; the distinct finite-thickness
+  planar extension, “Quantum corrections to symmetron fifth forces for planar
+  sources,” arXiv:`2606.28423`; Andreas Dvorak et al., “Experimental test of
+  symmetron-field based dark energy model using neutron interferometry,”
+  arXiv:`2606.03440v1` (preprint, not yet peer reviewed in this audit).
+  - The planar preprint reports order-`10%` suppression within a Compton
+    wavelength in CANNEX-relevant parameters and enhancement farther away.
+    This is a materially new theoretical profile, not evidence for a force.
+    The fresh neutron null makes a cross-geometry constraint overlay timely.
+    Existing primary anchors include Panda et al.'s lattice atom experiment,
+    *Nature* **631**, 515-520 (2024), arXiv:`2310.01344`, and Z. Yin et al.,
+    “Experimental constraints on the symmetron field with a magnetically
+    levitated force sensor,” *Nature Astronomy* **9** (2025), DOI
+    `10.1038/s41550-024-02465-8`. E-039 must use common parameter definitions
+    and measured thresholds, with no PDE campaign. The finite-thickness planar
+    correction may be applied only to a demonstrably planar source/detector;
+    atom, neutron, torsion, and levitated-force geometries serve as exclusion
+    overlays unless a controlled geometry-valid correction is derived.
+
+- **P-009 ambient ultralight-scalar gradiometry:** C. F. A. Baynham et al.,
+  “A prototype differential atom interferometer for fundamental physics,”
+  *Nature* **654**, 622-628 (2026), DOI `10.1038/s41586-026-10617-1`; theory
+  mapping in Arvanitaki et al., *Physical Review D* **97**, 075020 (2018), DOI
+  `10.1103/PhysRevD.97.075020`.
+  - The `1 mm`-baseline prototype recovered injected `17.3 mrad` coherent
+    oscillations across `100 microHz-100 mHz` at SQL-limited resolution under
+    randomized laser phase. This validates a detector-analysis principle, not
+    a dark-matter signal. The source is an assumed Galactic field, not a local
+    controllable actuator, so the candidate remains precision metrology only.
+
+- **P-010 optical analogue backreaction:** Rodrigo Felipe-Elizarraras et al.,
+  “Measurement of analogue Hawking radiation stimulated by a single photon,”
+  *Nature Communications* **17** (2026), DOI
+  `10.1038/s41467-026-73812-8`; L. M. Procopio et al., “Backreaction of
+  stimulated Hawking radiation in an optical analogue,” *Nature* **655**,
+  336-341 (2026), DOI `10.1038/s41586-026-10720-3`.
+  - These provide laboratory single-photon correlation and pump-backreaction
+    observables with an explicit optical energy/momentum ledger. They are
+    nonlinear dispersive optical analogues, not astrophysical horizons,
+    spacetime curvature, artificial gravity, or propulsion.
+
+- **P-011 electric solar-wind sail:** Pekka Janhunen et al., “Electric solar
+  wind sail: Toward test missions,” *Review of Scientific Instruments* **81**,
+  111301 (2010), DOI `10.1063/1.3514548`.
+  - The paper's baseline estimate is about `1 N` thrust for a `100 kg` system,
+    or `0.01 m/s^2`, with solar-wind momentum explicitly supplying reaction.
+    Deployment and plasma/sheath behavior remain flight-validation gates. This
+    is conventional low-thrust propulsion and cannot produce internal gravity.
+
+## 2026-08-04 - E-038 Result and Portfolio Refresh
+
+- **Executable artifact:** `models/e038_bl_short_range_signal.py` freezes the
+  normalization/sign, material response, long- and short-range domain rules,
+  the driven Au/Si/silica source envelope and explicit kinematic idealization,
+  the secondary carbon/Josephson slab
+  phase, single-pair energy/force, equivalent voltage, source/support reaction,
+  sparse constraint provenance, detector-scale
+  comparison, critical confounders, and survival rule. It performs no PDE
+  build or solve, no new numerical fit, no hardware action, and no checkpoint
+  read/write.
+- **Four gates for P-003:** Gate 1 passes for the frozen levitated architecture:
+  the reported source envelope, explicit sinusoidal idealization, coupling,
+  target, sign, field reaction, and actuator/support reaction per unspecified
+  moving mass are explicit; the recorded path is not claimed. Gate 2 is partial
+  because anomaly cancellation/mass completion, negligible kinetic mixing,
+  no screening, and sparse laboratory recasts are assumptions. Gate 3 fails:
+  allowed ideal phases at `5,10,20,48 um` are only
+  `1.45e-4,4.51e-5,6.79e-5,1.68e-8 rad`, and the realistic `10 um` patterned
+  force is about `58x` below the rounded fitted-template scale. Gate 4 passes
+  as a falsification design,
+  but its measured inputs do not fully qualify the allowed B-L signal. The
+  levitated paper reports vibration, electromagnetic, scattered-light, and
+  template nulls, but their same-template force bounds were not extracted in
+  E-038 and the ordinary Newtonian pattern background was not calculated.
+  Josephson patch, electrochemical, capacitive, Casimir/strain, thermal,
+  vibration, critical-current, magnetic, flux, phase-slip, and gauge-invariant
+  phase-transfer bounds remain unknown.
+- **Predeclared decision:** Survival requires either two adjacent allowed phase
+  points at or above `1e-3 rad` with every phase confounder below one-fifth, or
+  an allowed patterned force at the rounded fitted-template scale with every
+  force confounder below one-fifth. There are zero qualifying phase pairs, the
+  force misses its scale by about `58x`, and both measured-confounder budgets
+  are incomplete. Unknowns fail closed. E-038 records
+  `parked_scale_and_measured_background_gate_failed`; P-003/H-022 are parked.
+  This does not rule out B-L in all models or geometries. It rejects the frozen
+  architectures as a current opportunity and excludes any artificial-gravity
+  interpretation.
+- **Distinct portfolio refresh:** P-008 is a quantum-corrected symmetron
+  planar-detector constraint audit; P-009 is ambient ultralight scalar-dark-
+  matter gradiometry; P-010 is optical analogue-horizon backreaction; P-011 is
+  an electric solar-wind sail. They respectively remain a hypothetical
+  screened-force precision test, ambient precision metrology without a local
+  actuator, analog nonlinear optics rather than curvature, and conventional
+  external-reaction propulsion. None supports practical artificial gravity or
+  bulk inertial control.
+- **Next:** E-039 should be one bounded no-PDE P-008 audit. Freeze the
+  symmetron convention, finite-thickness planar source/boundaries, reaction,
+  and planar detector. Apply the reported 2026 correction only there; convert
+  atom/neutron/torsion/levitated nulls into parameter exclusions without
+  transferring the planar response. Require an allowed planar signal above a
+  measured threshold and park immediately if no window opens.
