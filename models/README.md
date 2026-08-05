@@ -1781,3 +1781,52 @@ negative precision-fifth-force result for the frozen architectures, not a
 claim that B-L is impossible. It provides no evidence for a field and no
 artificial-gravity, inertial-control, or propulsion capability. No PDE, fit,
 hardware action, checkpoint read/write, or resource expansion occurs.
+
+## 2026-08-05 E-039 planar symmetron source-unit audit
+
+`models/e039_symmetron_planar_source_audit.py` tests the physical source in
+the CANNEX-like benchmark of arXiv:`2606.28423v1` against the authors' public
+Mathematica notebook at commit
+`7a9a010a3bf83ae4c423869dc0afc404222a6b26`. Run its deterministic report
+with:
+
+```bash
+python3 -m models.e039_symmetron_planar_source_audit \
+  --report-json /tmp/e039-symmetron-source-audit.json
+```
+
+The notebook encodes the nominal source half-thickness as
+`R=(3e-3 m)(5.06e-6 eV^-1/m)=1.518e-8 eV^-1`. The correct conversion is
+`1 m=5.0677307e6 eV^-1`, so `R=1.5203e4 eV^-1`; the executable source is
+therefore equivalent to about `3 fm`, a factor of approximately `1e12`
+thinner than the stated `3 mm`. For the notebook's silica density,
+`mu=0.1 eV`, and `M=1e6 eV`, the density ratio is
+`D=rho/(mu^2 M^2)=1.1427e9`. A constant-interior thin-sheet match applied to
+the encoded source gives `chi=0.3559817668`, reproducing the notebook's
+reported `chi_0=0.3559817671` to better than `1e-8` relative. This connects
+the unit error to the displayed benchmark rather than to an unused comment.
+
+With the correct physical thickness, `mu R=1520` and the dense-interior
+screening exponent is `m_in R=5.14e7`. That is precisely the large-`R`,
+small-`chi_0` regime the preprint says its Heun implementation cannot evaluate
+reliably. A classical thick-wall asymptotic gives only an order-of-magnitude
+surface value `chi_R~=2.09e-5` and an exponentially smaller centre value; it
+is not a one-loop result or detector prediction. E-039 therefore does not
+repair or rerun the paper's loop calculation. It concludes that the reported
+roughly `10%` CANNEX-scale force correction has no qualified physical source
+or absolute two-plate pressure/gradient signal until the unit is corrected
+and the correct regime is recomputed.
+
+Measured atom, levitated-force, neutron, and torsion experiments remain
+geometry-specific parameter-exclusion overlays. The finite-planar one-loop
+profile is not transferred into their cylindrical, patterned, chamber, or
+finite-plate responses. CANNEX supplies the matching plane-parallel pressure
+and pressure-gradient observable, but its cited `1 nPa` and `1 mPa/m`
+sensitivities remain prospective design targets rather than measured
+source-modulated floors. P-008 is parked as
+`parked_source_unit_and_detector_scale_gates_failed`. This invalidates the
+physical CANNEX interpretation of the published numeric benchmark, not the
+abstract finite-slab equations or all symmetron models. No PDE, one-loop
+recomputation, fit, hardware action, checkpoint access, or resource expansion
+occurs. E-040 is a genuinely different, bounded cold-atom gravitational-
+entanglement discrimination audit.
