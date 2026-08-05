@@ -954,6 +954,62 @@ Faster-than-light travel generally creates causality issues in relativity. Any p
   `10.1016/j.physletb.2024.139156`; Venugopalan et al. 2026, DOI
   `10.1038/s41598-026-35656-6`; internal E-038 audit, 2026-08-04.
 
+### B-041: A Dimensionless Source Check Precedes Profile Interpretation
+
+- **Claim:** A natural-unit field profile cannot be assigned to a physical
+  source until every dimensional input is converted and checked through
+  independent dimensionless groups. In the public notebook accompanying
+  arXiv:`2606.28423v1`, `R=(3e-3 m)(5.06e-6 eV^-1/m)` encodes a nominal
+  `3 mm` half-thickness as `1.518e-8 eV^-1`, physically about `3 fm`.
+  The correct value is `1.5203e4 eV^-1`, approximately `1e12` larger.
+- **Why it matters:** For the stated silica, `mu=0.1 eV`, and `M=1e6 eV`,
+  `D=rho/(mu^2 M^2)=1.1427e9`. The notebook has `mu R=1.518e-9` and
+  `m_in R=5.13e-5`; a constant-interior thin-sheet match then gives
+  `chi=0.3559817668`, reproducing its reported `chi_0=0.3559817671`.
+  The actual plate instead has `mu R=1520` and `m_in R=5.14e7`. It is a
+  deeply screened thick wall, in the large-`R`/small-`chi_0` regime the
+  preprint says its Heun implementation cannot evaluate reliably. The
+  reported relative `~10%` one-loop CANNEX profile therefore cannot be
+  interpreted as a qualified physical detector signal without a corrected
+  computation.
+- **Strength:** The unit conversion, code commit, paper inputs, dimensionless
+  groups, and thin-sheet reconstruction are directly reproducible and
+  analytical. The thick-wall surface value `chi_R~=2.09e-5` is an
+  asymptotic classical estimate only, not a corrected one-loop profile.
+  This boundary invalidates the physical interpretation of the reported
+  numeric benchmark; it does not refute the finite-slab equations or every
+  symmetron parameter region.
+- **Assumptions:** Canonical
+  `A(phi)=1+phi^2/(2M^2)`, the paper's constant-density infinite-lateral slab,
+  vacuum exterior, and source domain `-R<=x<=R`. Source and detector mounts
+  close reaction bookkeeping but their transfer functions are not modeled.
+  Panda, Yin, Dvorak, and HUST observables are finite cylindrical, patterned,
+  chamber, or finite-plate responses and remain parameter-exclusion overlays.
+  CANNEX is the matching plane-parallel pressure/gradient class, but its cited
+  sensitivity is prospective rather than a measured source-modulated floor.
+- **Operational rule:** Before interpreting any numerical source profile,
+  record the original executable value, SI-equivalent value, Compton-scale
+  thickness, screening ratio, and interior penetration exponent. Require the
+  executable geometry to match the claimed apparatus. Do not transfer a
+  planar loop correction into a nonplanar detector without a controlled
+  response calculation, and do not promote a projected threshold to a
+  measured limit. Park P-008/H-023 unless a corrected physical-thickness
+  two-plate signal and measured planar threshold become available, or the
+  user explicitly directs reopening.
+- **Possible cracks:** A corrected implementation may establish a valid
+  finite-thickness result in another parameter region, and a realized CANNEX
+  measurement could eventually provide the proper observable. Either would
+  be materially new evidence and would still describe a hypothetical,
+  screened, composition/environment-dependent fifth force rather than
+  universal artificial gravity or inertial control.
+- **Sources:** Millington and Udemba 2026, arXiv:`2606.28423v1`; public code
+  commit `7a9a010a3bf83ae4c423869dc0afc404222a6b26`; Haghmoradi et al. 2024,
+  arXiv:`2403.10998`; Panda et al. 2024, DOI
+  `10.1038/s41586-024-07561-3`; Yin et al. 2025, DOI
+  `10.1038/s41550-024-02465-8`; Dvorak et al. 2026,
+  arXiv:`2606.03440v1`; Zhao et al. 2022, DOI
+  `10.1103/PhysRevLett.129.141101`; internal E-039 audit, 2026-08-05.
+
 ## Boundary Entry Template
 
 ```markdown

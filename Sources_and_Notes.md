@@ -2786,3 +2786,171 @@ Add sources here with enough detail that future runs can judge quality quickly.
   atom/neutron/torsion/levitated nulls into parameter exclusions without
   transferring the planar response. Require an allowed planar signal above a
   measured threshold and park immediately if no window opens.
+
+## 2026-08-05 - E-039 Planar Symmetron Reproducibility and Constraint Audit
+
+- **Primary theory:** Peter Millington and Michael Udemba, “Quantum
+  corrections to symmetron fifth forces for planar sources,”
+  arXiv:`2606.28423v1` (2026), with public repository
+  `mudemba/planar-symmetron-quantum-corrections`, audited at commit
+  `7a9a010a3bf83ae4c423869dc0afc404222a6b26`.
+  - The paper uses a static constant-density source on `-R<=x<=R`, infinite
+    lateral extent, vacuum exterior, `V=-mu^2 phi^2/2+lambda phi^4/4`, and
+    density coupling `phi^2/(2M^2)`. The canonical conformal factor is
+    `A=1+phi^2/(2M^2)`; the omitted constant in one displayed definition does
+    not affect derivatives but must be restored for the matter metric.
+  - Its CANNEX-like benchmark states silica density, `R=3 mm` (a `6 mm` full
+    plate), `mu=0.1 eV`, `M=1e6 eV`, and reports
+    `chi_0~=0.35598`. The one-loop plots use `lambda=0.9` and report a force
+    just over `10%` below tree level over a CANNEX-relevant separation, with
+    enhancement farther out. These are modeled profiles, not experimental
+    observations.
+  - The public notebook instead defines
+    `R=(3e-3)(5.06e-6) eV^-1=1.518e-8 eV^-1`. Correct natural-unit conversion
+    is `1 m=5.0677307e6 eV^-1`, hence `R=1.5203e4 eV^-1`. The executable source
+    is equivalent to about `2.996e-15 m`, approximately `1e12` too thin.
+  - The notebook density is `rho=1.1427e19 eV^4`, so
+    `D=rho/(mu^2 M^2)=1.1427e9`. In the encoded thin-sheet regime,
+    `1-chi_R^2=sqrt(2) mu R (D-1) chi_R` gives
+    `chi_R=0.3559817668`, reproducing the saved
+    `chi_0=0.3559817671`. This analytic cross-check ties the source-unit error
+    to the numeric benchmark; it is not merely a bad label.
+  - With the physical plate, `mu R=1520` and
+    `sqrt(D-1) mu R=5.14e7`. A linear dense-interior thick-wall match gives
+    an order-of-magnitude classical surface value `chi_R~=2.09e-5` and an
+    exponentially smaller centre. The paper itself states that large
+    `rho/(mu^2 M^2)`, large `R/mu^-1`, and very small `chi_0` cause unacceptable
+    Heun-function accuracy loss. E-039 therefore does not invent a corrected
+    one-loop profile.
+  - **Interpretation:** The source-unit error invalidates the physical CANNEX
+    interpretation of this reported numeric benchmark. It does not disprove
+    the abstract finite-slab equations, the qualitative possibility of loop
+    corrections in another valid regime, or symmetron theory generally.
+
+- **Plane-parallel comparator:** Mohammad Haghmoradi et al., “Force metrology
+  with plane parallel plates: final design review and outlook,” *Physics* **6**,
+  355-419 (2024), arXiv:`2403.10998`.
+  - CANNEX models pressure
+    `P=rho_M[ln A(phi(a))-ln A(phi(a+D))]` and its separation derivative for
+    parallel plates over `3-30 um`. It is the correct observable class for a
+    planar correction only after source thickness, both interfaces, detector
+    plate, and boundary conditions are recomputed consistently.
+  - The quoted `100`-day estimates near `20 um` are `0.259 nN/m^2` pressure
+    and `0.0179 mN/m^3` gradient; symmetron forecasts conservatively use
+    `1 nN/m^2` and `1 mN/m^3`. The apparatus/constraints are described as
+    prospective. E-039 found no measured uniform plane-parallel
+    source-modulated threshold and does not promote these design sensitivities
+    to measurements.
+
+- **Measured geometry-specific overlays:**
+  - Cheng-Gang Panda et al., “Measuring gravitational attraction with a
+    lattice atom interferometer,” *Nature* **631**, 515-520 (2024), DOI
+    `10.1038/s41586-024-07561-3`, arXiv:`2310.01344`. A finite hollow tungsten
+    cylinder produces measured acceleration `33.3 +/- 5.6_stat +/- 2.7_syst
+    nm/s^2`, consistent with Newtonian `35.2 +/- 1.0 nm/s^2`; the 95% absolute
+    anomaly bound is `13 nm/s^2`. This is a source-mass/atomic-acceleration
+    observable, not parallel-plate pressure.
+  - Z. Yin et al., “Experimental constraints on the symmetron field with a
+    magnetically levitated force sensor,” *Nature Astronomy* **9**, 598-607
+    (2025), DOI `10.1038/s41550-024-02465-8`. A rotating finite patterned
+    silica source, shield, and levitated detector give measured
+    pattern-correlated force nulls. The response requires its three-dimensional
+    source/shield model and cannot inherit an infinite-planar loop profile.
+  - Andreas Dvorak et al., “Experimental test of symmetron-field based dark
+    energy model using neutron interferometry,” arXiv:`2606.03440v1` (2026;
+    not peer reviewed in this audit). The observable is an integrated neutron
+    phase through finite vacuum/gas chambers. No tabulated scalar phase floor
+    or released pointwise dataset was available, so E-039 records no invented
+    radian threshold.
+  - Junxiang Zhao et al., “New bounds on macroscopic scalar-field topological
+    defects from torsion-balance experiments,” *Physical Review Letters*
+    **129**, 141101 (2022), DOI `10.1103/PhysRevLett.129.141101`. Its measured
+    patterned-plate torque resolution is `1e-17 N m` at the audited
+    separations; a shielding foil and finite pattern materially enter the
+    response. Its `lambda_H phi^4/4!` convention maps to this workspace's
+    `lambda phi^4/4` through `lambda=lambda_H/6`.
+  - **Geometry rule:** These data can exclude common `(mu,M,lambda)` points
+    only through their own convention-correct forward models. None supplies a
+    measured uniform planar pressure/gradient threshold, and none receives the
+    2026 planar profile correction by analogy.
+
+- **E-039 artifact and gates:** `models/e039_symmetron_planar_source_audit.py`
+  freezes the source values, conversion, reaction ledger, thin/thick
+  asymptotics, detector class, four gates, survival rule, and source
+  provenance. Gate 1 is partial because the nominal source/coupling are
+  explicit but the executable source and full detector/reaction observable
+  fail; gate 2
+  fails for the benchmark's numerical validity and unperformed constraint
+  reassessment; gate 3 fails because no corrected absolute pressure/gradient
+  exists; gate 4 is partial because CANNEX is a concrete planar design but not
+  a measured threshold. P-008/H-023 are parked as
+  `parked_source_unit_and_detector_scale_gates_failed`. No PDE, one-loop
+  recomputation, new fit, hardware action, checkpoint access, or resource
+  expansion occurred.
+
+## 2026-08-05 - Diversified Replacement Screen after P-008
+
+- **P-012 cold-atom gravitationally induced entanglement:**
+  “Gravitationally-induced entanglement in atom interferometry,” accepted in
+  *Physical Review A* (2026), DOI `10.1103/l62d-gz5c`; Joseph Aziz and Richard
+  Howl, “Classical theories of gravity produce entanglement,” *Nature* **646**,
+  813-817 (2025), DOI `10.1038/s41586-025-09595-7`; Martin Plávala, “Existing
+  experiments suffice to indirectly verify the quantum essence of gravity,”
+  *Physical Review D* (2026), DOI `10.1103/87dc-qt73`.
+  - Newtonian mass-density coupling and an atom-number covariance witness are
+    explicit, but the full trap, laser, shield, and support reaction ledger is
+    not yet frozen. The accepted proposal requires near-Planck total mass and
+    long averaging; no gravitational entanglement has been measured.
+  - The 2025 paper supplies a physically local classical-gravity/QFT route to
+    entanglement with different scaling, so entanglement alone is not a unique
+    quantum-gravity label under its enlarged matter assumptions. E-040 must
+    compare the two scalings and actual covariance/SNR rather than repeat a
+    generic two-point phase estimate. Even the familiar
+    `G m^2 t/(hbar d)~=0.32 rad` for two `1e-14 kg` masses, `d=200 um`, and
+    `t=1 s` is only a scale cross-check, not a complete witness.
+  - Retain only if a frozen allowed configuration gives detector SNR at least
+    one while the classical alternative and every dominant electromagnetic,
+    collision, loss, trap, shield, decoherence, and technical background are
+    below a predeclared fraction. A pass would be quantum-gravity precision
+    evidence, not artificial gravity, spacetime engineering, or propulsion.
+
+- **P-013 directional reactor-neutrino force:** Mitrajyoti Ghosh et al.,
+  “Neutrino forces in neutrino backgrounds,” *JHEP* 02 (2023) 092, DOI
+  `10.1007/JHEP02(2023)092`. The Standard-Model source/coupling is real, but
+  even an ideal directional limit is about `1e2-1e3` below current fifth-force
+  sensitivity before finite-core angular/energy smearing. Park unless flux or
+  sensitivity changes materially.
+
+- **P-014 minimal Einstein-Cartan torsion:** Friedrich W. Hehl et al.,
+  *Reviews of Modern Physics* **48**, 393 (1976), DOI
+  `10.1103/RevModPhys.48.393`, plus the explicit algebraic-torsion analysis in
+  *European Physical Journal C* (2015), DOI
+  `10.1140/epjc/s10052-015-3276-1`. Intrinsic spin sources only local,
+  nonpropagating torsion in the minimal theory; exterior torsion is zero and
+  the induced four-fermion term is Planck suppressed. Park the separated-body
+  force idea. Propagating torsion would be a new model with a kinetic term,
+  mass, and independent constraints.
+
+- **P-015 configurable curved-spacetime BEC simulator:** “Quantum field
+  simulator for dynamics in curved spacetime,” *Nature* **611**, 260-264
+  (2022), DOI `10.1038/s41586-022-05313-9`. Trap and interaction ramps create
+  an acoustic metric with measurable curvature-sign and correlation controls.
+  This is a useful analog-dynamics benchmark in the phonon regime, not real
+  curvature or artificial gravity.
+
+- **P-016 E.T.PACK electrodynamic tether:** European Innovation Council,
+  “E.T.PACK-F: a flight-ready electrodynamic tether,” current 2026 status, and
+  Persei Space's `420 m` deployable prototype description. Momentum exchange is
+  explicitly `I dL x B` with the ionosphere/geomagnetic field. At `420 m` and
+  `30 uT`, the ideal scale is `0.0126 N/A`, or `6.3e-5 m/s^2/A` for `200 kg`,
+  before actual current and orientation. Retain as conventional external-
+  reaction propulsion and await the 2026-2027 in-orbit demonstration; it is
+  not internal gravity or reactionless propulsion.
+
+- **Portfolio decision:** No candidate supports practical artificial gravity,
+  inertial control, or spacetime engineering. P-013 and minimal P-014 fail
+  scale/propagation gates and are parked; P-015 is retained only as an analog;
+  P-016 is retained only as external-reaction engineering. P-012 is the sole
+  next deepening target because its source/coupling, preliminary absolute
+  detector scale, and a cheap discriminating calculation survive far enough
+  to justify E-040.

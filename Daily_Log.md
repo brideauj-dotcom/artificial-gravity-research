@@ -2732,3 +2732,143 @@ levitated-force nulls into common parameter exclusions, without transferring
 the planar profile correction to their nonplanar response. Require an allowed
 planar signal above a predeclared measured detector threshold. Park P-008 if
 none exists, then move to a distinct candidate.
+
+## 2026-08-05 - E-039 Planar Symmetron Source-Unit Negative Closure
+
+**Focus question:** Does the reported 2026 finite-thickness one-loop symmetron
+profile instantiate its stated `6 mm` CANNEX-like source and leave a corrected,
+constraint-compatible plane-parallel pressure or gradient above a measured
+threshold? If not, park P-008/H-023 and move to a genuinely different
+candidate.
+
+**Continuity and scope:** Canonical ledgers and the prior automation history
+showed that E-036 was already complete and H-019/the annular Galileon numerical
+line was parked on 2026-08-03; E-037 and E-038 had subsequently completed the
+first portfolio screen and B-L closure. This run did not reopen that inherited
+line, read or alter any checkpoint, build a grid, solve a PDE, change a source
+or box, advance amplitude, recompute a loop integral, request hardware, or buy
+compute. E-039 alone was deepened as the current queue item.
+
+**Canonical model and physical source:** The audited preprint is Millington and
+Udemba, “Quantum corrections to symmetron fifth forces for planar sources,”
+arXiv:`2606.28423v1`, with the authors' public Mathematica notebook frozen at
+commit `7a9a010a3bf83ae4c423869dc0afc404222a6b26`. E-039 uses
+`A(phi)=1+phi^2/(2M^2)`,
+`V_eff=(rho/M^2-mu^2)phi^2/2+lambda phi^4/4`, a constant-density source on
+`-R<=x<=R`, infinite lateral extent, and vacuum exterior. The nominal source
+is a `6 mm` silica plate, so `R=3 mm`; the benchmark has `mu=0.1 eV`,
+`M=1e6 eV`, and one-loop plots at `lambda=0.9`. Source and detector exchange
+scalar-field momentum, while their mounts close the mechanical reaction
+ledger. Support transfer functions are not modeled. This is a hypothetical
+screened fifth force, not evidence for a field, universal gravity, inertial
+control, or propulsion.
+
+**Executable source-unit failure:** The public notebook sets
+`R=(3e-3)(5.06e-6) eV^-1=1.518e-8 eV^-1`, labeling the second factor as the
+conversion from metres. The correct value is
+`1 m=5.0677307e6 eV^-1`, hence `R=1.5203e4 eV^-1`. The notebook's half-source
+is physically about `2.996e-15 m`, not `3e-3 m`: it is approximately `1e12`
+too thin.
+
+This is not an unused annotation. With the notebook density
+`rho=1.1427e19 eV^4`, the screening ratio is
+`D=rho/(mu^2 M^2)=1.1427e9`. Its encoded source has
+`mu R=1.518e-9` and `sqrt(D-1) mu R=5.13e-5`. In this thin-sheet limit,
+matching the nearly constant interior to the exact vacuum exterior gives
+
+```text
+1 - chi_R^2 = sqrt(2) mu R (D - 1) chi_R,
+chi_R = 0.3559817668.
+```
+
+That independently reproduces the notebook's stored
+`chi_0=0.3559817671` to better than `1e-8` relative and links the conversion
+error to the published benchmark. The paper's Figure 1 caption independently
+pairs `R=3 mm` with `chi_0~=0.35598`; the public notebook's Wolfram output and
+figure timestamps strongly link the later profiles as well, though no explicit
+export cell supplies cryptographic figure provenance.
+
+**Corrected regime, not a repaired loop result:** The real source gives
+`mu R=1520` and `sqrt(D-1) mu R=5.14e7`. A linear dense-interior thick-wall
+match gives only an order-of-magnitude classical surface estimate
+`chi_R~=2.09e-5` and an exponentially smaller centre value. This estimate is
+not a corrected one-loop calculation or detector prediction. The preprint
+explicitly says its Heun implementation loses unacceptable accuracy for large
+`rho/(mu^2 M^2)`, `R>>mu^-1`, or `chi_0<<1`; the corrected physical plate
+satisfies all three warnings. E-039 therefore records the absolute signal as
+invalid pending a corrected computation rather than extrapolating the
+reported roughly `10%` relative profile.
+
+**Detector and constraint audit:** CANNEX is the only audited comparator in the
+same uniform plane-parallel pressure/pressure-gradient observable class. Its
+`3-30 um` separation maps to `mu d=1.52-15.2`. The 2024 final-design analysis
+quotes prospective `100`-day sensitivities around `0.259 nN/m^2` pressure and
+`0.0179 mN/m^3` gradient near `20 um`, and conservatively uses `1 nN/m^2` and
+`1 mN/m^3` in symmetron forecasts. These are design targets, not measured
+source-modulated thresholds.
+
+Panda's finite tungsten-cylinder/atom acceleration result, Yin's rotating
+patterned-source levitated-force null, Dvorak's finite chamber/neutron phase,
+and HUST's finite patterned-plate torque remain measured parameter-exclusion
+overlays only. Their canonical parameter conventions and, where applicable,
+`lambda_H phi^4/4! -> lambda=lambda_H/6` conversion are recorded, but the
+finite-planar loop profile is not applied to their geometries. Dvorak publishes
+no tabulated scalar phase threshold and its linked point data remain
+unavailable, so no radian floor is invented. No audited publication supplies
+both a measured threshold and the matching uniform planar observable.
+
+**Decision and four gates:** Gate 1 is partial: the coupling and nominal slab
+are explicit, but the public executable source is `~1e12` too thin and the
+two-plate detector plus full support/backreaction observable are absent. Gate 2
+fails because the corrected source
+lies in the calculation's stated unreliable regime and the paper leaves a
+systematic constraint reassessment to future work. Gate 3 fails because the
+reported relative correction has no qualified corrected absolute two-plate
+pressure/gradient, and the matching CANNEX thresholds are prospective. Gate 4
+is partial: a corrected CANNEX calculation is a concrete falsification design,
+but no measured planar threshold is frozen. E-039 records
+`parked_source_unit_and_detector_scale_gates_failed`; P-008/H-023 are parked.
+This rejects the physical CANNEX interpretation of the reported numeric
+benchmark, not the abstract finite-slab equations or every symmetron model.
+
+**Diversified portfolio refresh:** Five genuinely different replacements were
+screened. P-012, cold-atom gravitationally induced entanglement, is a real-
+gravity quantum precision witness with explicit Newtonian coupling and a
+preliminary detector scale, but it needs a full apparatus ledger and direct
+comparison to a 2025 classical-gravity/QFT entangling model. P-013, a
+directional reactor-neutrino force, is real Standard-Model physics but already
+`~1e2-1e3` below current fifth-force sensitivity in an ideal limit and is
+parked. Minimal Einstein-Cartan P-014 has algebraic, nonpropagating torsion and
+exactly no separated-body exterior field, so it is parked. P-015 retains
+configurable curved-spacetime BEC dynamics only as an acoustic analog, not real
+curvature. P-016 retains the E.T.PACK electrodynamic tether only as conventional
+external-reaction propulsion awaiting flight demonstration. None supports
+practical artificial gravity, bulk inertial control, reactionless propulsion,
+or spacetime engineering.
+
+**Artifacts and boundaries:** Added
+`models/e039_symmetron_planar_source_audit.py` and focused tests; added H-023
+and B-041; completed E-039 and queued E-040; updated P-008 and added P-012
+through P-016; retired the planar-symmetron open question; and preserved every
+checkpoint, retained work snapshot, negative Galileon result, and accepted
+lineage unchanged.
+
+**Verification:** All `221` workspace unit tests pass in `14.016 s` under the
+repository virtual environment, including `12` focused E-039 unit,
+asymptotic, geometry, gate, portfolio, provenance, scope, and CLI tests plus
+the checkpoint-manifest integrity test. Python compilation, `git diff --check`,
+`git lfs fsck`, and `pip check` also pass. The initial system-Python discovery
+run lacked NumPy for `13` historical numerical modules; rerunning through the
+repository environment resolved that environment-only failure without a code
+change. Independent review caught and repaired a machine-readable disposition
+spelling mismatch and removed an unsourced numerical-regime cutoff; the final
+review reports no blockers.
+
+**Next best step:** Run E-040 as one bounded, no-hardware P-012 audit. Freeze
+the accepted 2026 cold-atom proposal's atom number, geometry, interaction time,
+covariance witness, averaging, trap/laser/shield/support reaction ledger, and
+absolute phase/SNR. Reproduce its quantum-gravity scaling beside the 2025
+classical-gravity/QFT entanglement scaling. Retain only if detector SNR reaches
+one while the classical alternative and every dominant background stay below
+a predeclared fraction. Even a pass would be precision evidence about gravity-
+mediated quantum correlations, not artificial gravity or propulsion.
