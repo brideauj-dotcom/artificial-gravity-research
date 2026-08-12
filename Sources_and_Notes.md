@@ -2954,3 +2954,193 @@ Add sources here with enough detail that future runs can judge quality quickly.
   next deepening target because its source/coupling, preliminary absolute
   detector scale, and a cheap discriminating calculation survive far enough
   to justify E-040.
+
+## 2026-08-12 - E-040 Cold-Atom Covariance and Countermodel Audit
+
+- **Quantum proposal:** Richard Howl, Nathan Cooper, and Lucia Hackermueller,
+  “Gravitationally induced entanglement in atom interferometry,” *Physical
+  Review A* **114**, 023306 (2026), DOI `10.1103/l62d-gz5c`.
+  - The published paper supersedes the earlier preprint used in the initial
+    portfolio screen. Its input is a product of `N` independent atoms in a
+    two-mode spatial superposition in each interferometer, not a whole-object
+    N00N state. The normal-ordered Newtonian mass-density Hamiltonian retains
+    cloud self-couplings and the two adjacent inter-interferometer couplings
+    under fixed, nonoverlapping, single-mode wavefunctions. The atom ensembles
+    exchange equal and opposite Newtonian momentum. Lasers, traps, an optional
+    conducting membrane, the vacuum vessel, and mounts carry actuator and
+    support reaction; their transfer functions are not part of the ideal
+    covariance model.
+  - The measurable witness is the output atom-number covariance
+    `S=<J_phi^ab J_z^cd>-<J_phi^ab><J_z^cd>`. Equation (11) gives the exact
+    ideal expression. For `lambda_s~=lambda`, `lambda^2 N<<1`, and optimum
+    phase, `S~=lambda N^2/4`. Equations (12)-(13) and Appendix D give
+    `SNR~=sqrt(M) lambda N` when `lambda N<<1`. The `M` factor is repetitions,
+    not atoms. Reducing the relevant variance in each interferometer by
+    `r_dB` raises SNR by `10^(r_dB/10)` under the paper's convention: `20 dB`
+    in each gives `100x`, and the proposed `40 dB` gives a nominal `1e4x`.
+  - The paper does not freeze one complete demonstrated apparatus tuple. It
+    explicitly combines records from different experiments, quotes measured
+    lattice coherence around `1e2 s`, predicted tweezer lifetimes around
+    `1e4 s`, and a proposal-specific three-body estimate around
+    `1e3-1e4 s`. Narrative examples include unsqueezed `N=1e16` near the
+    Planck-mass scale, `20 dB` with `N=1e14`, and `40 dB` with `N=1e12`,
+    density `1e12 cm^-3`, millimetre spacing, and `t~1e3 s` or `N=1e13`
+    with `t~1e2 s`. Figure 3 instead uses caesium, `35 dB`, five independent
+    setups, and a repetition schedule normalized to `M~1e3` at `t=1e4 s`.
+
+- **Frozen favorable source-to-detector budget:** E-040 deliberately assembles
+  `N=1e12` caesium atoms per interferometer, `n=1e12 cm^-3`, uniform oblate
+  ellipticity `e=0.98`, the quoted `eta~=23` enhancement at the no-clearance
+  limit `d=2c`, `t=1e3 s`, nominal `40 dB` squeezing in each interferometer,
+  `1000` repetitions, and five independent setups.
+  - `V=N/n=1e-6 m^3`, `a=10.6256 mm`, `c=2.11447 mm`, and
+    `d_min=4.22895 mm`. The paper also requires interferometer spacing at
+    least an order below the superposition size, so this tuple implies at
+    least `42.3 mm` superposition. Equality at `d=2c` leaves no conductor,
+    trap, or safety clearance and is an optimistic signal envelope.
+  - With `m_Cs=2.20695e-25 kg`,
+    `lambda=eta G m_Cs^2 t/(hbar d)=1.67652e-19` and
+    `lambda N=1.67652e-7`. The ideal covariance is
+    `S~=4.1913e4 atoms^2`. Ordinary point-mass references at this total mass
+    and spacing are `8.24e-19 m/s^2` acceleration per atom, `1.82e-31 N`
+    ensemble-to-ensemble force, and `-7.69e-34 J` potential energy; the
+    factor-`23` oblate integral enhances the phase model, not those point-mass
+    references. With `M_eff=5000` and the nominal `1e4` squeezing gain, ideal
+    SNR is only `0.11855`. Unity requires
+    `M_eff=3.5578e5` effective trials, `71.2x` the frozen count. Five parallel
+    setups need at least `71,157` sequential shots each, or `2.25` continuous
+    years per setup at `1e3 s` per shot before dead time and technical noise.
+  - There is a factor-two density convention ambiguity: assigning the quoted
+    density separately to each half-populated arm gives `d_min=3.357 mm`,
+    ideal SNR `0.149`, and about `2.24e5` required trials. It does not qualify
+    the frozen tuple. E-040 keeps `V=N/n`, which matches the paper's narrative use of
+    total `N` and density.
+  - This is not a global ideal-parameter exclusion. Figure 3 says only that its
+    repetition schedule has `M~=1e3` at `t=1e4 s`. Inferring fixed live time
+    gives `1e4` repetitions per setup at `t=1e3 s`, ideal SNR `0.37488` at
+    the baseline density, and—using `d~n^(-1/3)`—unity SNR near
+    `n=1.90e13 cm^-3`, `d=1.585 mm`. The paper does not freeze this tuple,
+    and E-040 supplies no joint collision, loss, squeezing, coherence, readout,
+    or background qualification for it. The diagnostic establishes that Gate
+    3 is partial globally even though the frozen benchmark fails unity.
+
+- **Classical-gravity/QFT alternative:** Joseph Aziz and Richard Howl,
+  “Classical theories of gravity produce entanglement,” *Nature* **646**,
+  813-817 (2025), DOI `10.1038/s41586-025-09595-7`, including its
+  supplementary information.
+  - The model couples a classical metric perturbation locally to the quantized
+    stress tensor of massive complex-scalar matter. Each uniform spherical
+    object, total mass `M=N m`, occupies a whole-object left/right N00N state.
+    At second Dyson order the classical field gives branch-local phases. At
+    fourth order virtual-matter propagators connect the objects and Eq. (9)
+    defines the branch correction `vartheta_ij` as a square.
+  - The rendered Eq. (10), confirmed by supplementary Eq. (84), is
+    `sqrt(vartheta)=(6/25)G^2 m^2 M^3 R t/(hbar^3 d_RL)`. Nearby prose says
+    `vartheta` scales as `1/d`, while the equations give `vartheta~1/d^2` and
+    `sqrt(vartheta)~1/d`; this internal notation/prose mismatch is preserved.
+    For the frozen caesium total mass and `t=1e3 s`, the paper's Figure 4
+    convention `R/d=0.1` gives `sqrt(vartheta)=4.7726e-5` and
+    `vartheta=2.2778e-9`. Extrapolating to `R/d=1` gives
+    `vartheta=2.2778e-7` but violates both nonoverlap and `d>>R`, so it is not
+    a valid bound.
+  - More fundamentally, the derivation assumes uniform spherical whole-object
+    N00N states, fixed positions, nonrelativistic/low-energy dynamics,
+    `ct>>d`, small perturbative amplitude, `Delta x>>R`, `d>>R`, and initially
+    `d_RL<<Delta x` (with a separately described small-`Delta x` suppression).
+    It never derives the cold proposal's coherent/binomial four-mode state,
+    oblate geometry, squeezing, `J` operators, covariance, cumulants, or
+    detector/repetition noise. `vartheta` and `sqrt(vartheta)` therefore are
+    diagnostic scales only; neither is divided into, subtracted from, or used
+    as an upper bound on `S`.
+
+- **Component reality checks:** Hosten et al., “Measurement noise 100 times
+  lower than the quantum-projection limit using entangled atoms,” *Nature*
+  **529**, 505-508 (2016), DOI `10.1038/nature16176`, demonstrated
+  `20.1+/-0.3 dB` spin squeezing with `5e5` rubidium atoms, not `40 dB` with
+  `1e12`. Hopton et al., “Enhanced Atom Capture via Multi-Frequency
+  Magneto-Optical Trapping,” arXiv:`2604.23221v1` (2026), measured
+  `1.0(1)e10` rubidium atoms and `1.3(2)e11 atoms/s`; larger values are
+  simulations, so the proposal's `1e14` capture language remains projected.
+  Panda et al., “Coherence limits in lattice atom interferometry at the
+  one-minute scale,” *Nature Physics* **20**, 1234-1239 (2024), DOI
+  `10.1038/s41567-024-02518-9`, demonstrated up to `70 s`, not the frozen
+  `1e3 s` with the other resources. None demonstrates the full tuple.
+
+- **Confounder and decision ledger:** Inter-interferometer electromagnetic
+  coupling is assumed distant or screened. Intra-cloud `s`-wave and magnetic
+  dipole interactions require Feshbach cancellation or an effective scattering
+  scale four to five orders below the Bohr radius, with magnetic stability not
+  quantified. The proposal estimates about `1e-9 Pa` for a `1e3 s`
+  background-collision lifetime, while its three-body lifetime example uses
+  erbium at another density. Trap/laser fluctuations, conductor heating and
+  attraction, multimode/thermal splitting, beam-splitter/detector error,
+  vibration, and support coupling have no same-covariance bounds. Appendix C's
+  classical null applies to specified separable/symmetric mixtures; it is not
+  a calculation of the 2025 alternative. The predeclared rule required ideal
+  SNR at least one and the alternative plus every dominant background below
+  `0.1` of the covariance. The frozen tuple fails its SNR gate while the global
+  ideal scale gate remains partial; the alternative mapping is absent, and
+  every dominant same-observable background is unqualified. P-012/H-024 are
+  parked as `parked_no_joint_detector_or_model_qualification`. This is not
+  a rejection of quantum gravity or every entanglement witness and is not
+  evidence for artificial gravity, inertial control, or propulsion.
+
+## 2026-08-12 - Diversified Replacement Screen after P-012
+
+- **P-017 dimension-six pure-gravity SME striped torsion balance:** The
+  combined HUST/IU analysis in Shao et al., *Physical Review Letters* **117**,
+  071102 (2016), DOI `10.1103/PhysRevLett.117.071102`, independently constrains
+  14 nonrelativistic Lorentz-violation coefficients. A 2026 five-stripe
+  geometry study, *Symmetry* **18**, 559, DOI `10.3390/sym18040559`, supplies
+  new transfer matrices and sidereal-harmonic controls. Source/coupling and a
+  cheap falsification are explicit enough to justify E-041, but E-041 must
+  first verify whether a recoverable joint likelihood, covariance, or other
+  rigorous simultaneous coefficient region is available. No such region has
+  yet been propagated to an absolute allowed torque or
+  compared with same-harmonic noise. Gate 1 partial, Gate 2 partial, Gate 3
+  unknown for detector torque and failed for artificial gravity, Gate 4
+  partial.
+
+- **P-018 Dark SRF emitter-wall-receiver:** Romanenko et al., “Search for Dark
+  Photons with Superconducting Radio Frequency Cavities,” *Physical Review
+  Letters* **130**, 261801 (2023), DOI
+  `10.1103/PhysRevLett.130.261801`, and the 2026 frequency-instability
+  reanalysis, DOI `10.1103/p7r3-c15d`, provide explicit kinetic mixing,
+  emitter, wall, receiver, RF/thermal reaction, and leakage/drift controls.
+  This is real laboratory generation and reconversion of a hypothetical new
+  vector field at exclusion sensitivity, not gravity or acceleration. Gates
+  1-4 pass within that precision-search category; Gate 3 fails for artificial
+  gravity. Retain as a watch rather than deepen.
+
+- **P-019 ALPHA-g antihydrogen free fall:** The ALPHA Collaboration,
+  “Observation of the effect of gravity on the motion of antimatter,”
+  *Nature* **621**, 716-722 (2023), DOI
+  `10.1038/s41586-023-06527-1`, observes downward antihydrogen motion under
+  Earth gravity with magnetic-trap nuisance controls. Source, weak-field
+  coupling, detector scale, and falsification pass for an equivalence-principle
+  test; it has no local field-generation actuator. Retain as precision watch.
+
+- **P-020 ultrasonic standing-wave levitation:** Tsujino and Tomizaki,
+  *Scientific Reports* **6**, 25558 (2016), DOI `10.1038/srep25558`, held a
+  `4 microliter` droplet at `38 kHz` and `2.1+/-0.1 kPa rms`. Air,
+  transducer, reflector, and sample close momentum, so this is ordinary
+  acoustic support. Streaming, heating, deformation, atomization, size, and
+  composition prevent a universal gravity interpretation. Retain as a
+  small-sample simulated-gravity/material-support analog only.
+
+- **P-021 pulsed laser-ablation micropropulsion:** At the portfolio's favorable
+  screened `20 microN s/J` impulse-coupling benchmark, `100 W` of optical
+  power gives only `2 mN`; sustaining `1g` on `1000 kg` would need about
+  `0.49 GW` optical power plus continuous target mass loss. Plume recoil closes
+  momentum and has useful impulse-bit/debris-removal applications. Retain as
+  conventional external-reaction propulsion only, not artificial gravity or
+  reactionless propulsion. Source: *Acta Astronautica* (2025), DOI
+  `10.1016/j.actaastro.2025.03.038`.
+
+- **Portfolio decision:** No candidate supports practical artificial gravity,
+  bulk inertial control, reactionless propulsion, or spacetime engineering.
+  P-018 and P-019 are precision watches, P-020 is a small-sample support analog,
+  and P-021 is conventional propulsion. P-017 alone advances to E-041 because
+  it is a genuinely distinct gravity-sector source/transfer problem with a
+  cheap joint-constraint absolute-torque falsification. A failure will park it
+  rather than trigger solver, hardware, or resource expansion.

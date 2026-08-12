@@ -1010,6 +1010,68 @@ Faster-than-light travel generally creates causality issues in relativity. Any p
   arXiv:`2606.03440v1`; Zhao et al. 2022, DOI
   `10.1103/PhysRevLett.129.141101`; internal E-039 audit, 2026-08-05.
 
+### B-042: An Entanglement Alternative Must Predict the Same State and Readout
+
+- **Claim:** A competing gravity model cannot be bounded by comparing its
+  dimensionless entangling parameter with a different experiment's covariance
+  or SNR. In the 2026 cold-atom proposal, the input is a product of independent
+  atoms in two-mode superpositions and the output is a four-mode atom-number
+  covariance. In the 2025 classical-gravity/QFT countermodel, each uniform
+  spherical object occupies a whole-object N00N state and the fourth-order
+  branch correction is `vartheta`; Eq. (10) reports `sqrt(vartheta)`. The latter
+  paper does not derive the former state, oblate interaction, squeezing,
+  cumulants, covariance, or detector noise.
+- **Why it matters:** Substituting `vartheta` or `sqrt(vartheta)` for the
+  cold-atom covariance would manufacture a discriminator. At the frozen
+  favorable caesium benchmark, the proposal itself gives
+  `lambda N=1.6765e-7`, `S~=4.1913e4 atoms^2`, and ideal SNR `0.11855` for
+  `5000` effective trials. The same mass/spacing gives ordinary point-mass
+  references `a=8.24e-19 m/s^2`, `F=1.82e-31 N`, and
+  `U=-7.69e-34 J`; the oblate factor applies to the phase integral, not these
+  references. The countermodel diagnostic at its `d=10R`
+  convention is `sqrt(vartheta)=4.7726e-5` and
+  `vartheta=2.2778e-9`, but neither has the units or estimator mapping needed
+  for a ratio to `S`. The unknown mapping fails closed rather than counting as
+  a small classical background.
+- **Strength:** The two source papers explicitly define their different states,
+  interactions, and observables. The numerical cold-atom scale follows the
+  proposal's perturbative `S~=lambda N^2/4` and
+  `SNR~=sqrt(M) lambda N` expressions, including its squeezing convention.
+  What remains unknown is an extension of the classical model to the exact
+  cold-atom state and readout, not the dimensional arithmetic.
+- **Assumptions:** The favorable audit uses `N=1e12` caesium atoms per
+  interferometer, `n=1e12 cm^-3`, uniform oblate ellipticity `e=0.98`, the
+  touching/no-clearance limit `d=2c=4.229 mm`, `t=1e3 s`, nominal `40 dB`
+  squeezing in each interferometer, `1000` repetitions, and five independent
+  setups. Treating density per half-populated arm instead changes the ideal SNR
+  only to about `0.149`. Forty-decibel squeezing, `1e12` atoms, `1e3 s`
+  coherence, and the required covariance readout have not been demonstrated
+  together. The source and detector are the atom ensembles; their Newtonian
+  momentum exchange is equal and opposite, while lasers, traps, optional
+  conductor, vessel, and mounts carry apparatus reaction.
+- **Operational rule:** Require an executable prediction or conservative bound
+  for the identical prepared state, geometry, evolution, and measured
+  covariance before comparing alternative models. Require ideal SNR at least
+  one and every classical alternative and dominant same-covariance background
+  below `0.1` of the target. Unknown electromagnetic, collision, loss, trap,
+  screen, support, vibration, thermal, beam-splitter, and detector terms fail
+  closed. Do not assemble component records from different experiments and
+  call the tuple demonstrated. Park P-012/H-024 until materially new
+  simultaneous resources and a same-observable countermodel are available, or
+  explicit user direction reopens it.
+- **Possible cracks:** A derivation of the classical-gravity/QFT dynamics for
+  the coherent four-mode input could predict a distinctive covariance scaling,
+  and a single apparatus could eventually demonstrate the resource tuple and
+  calibrated background budget. Either would be precision evidence about
+  gravity-mediated correlations, never artificial gravity, inertial control,
+  reactionless propulsion, or spacetime engineering by itself.
+- **Sources:** Howl, Cooper, and Hackermueller 2026, *Physical Review A* 114,
+  023306, DOI `10.1103/l62d-gz5c`; Aziz and Howl 2025, *Nature* 646,
+  813-817, DOI `10.1038/s41586-025-09595-7`; Hosten et al. 2016, *Nature*
+  529, 505-508, DOI `10.1038/nature16176`; Hopton et al. 2026,
+  arXiv:`2604.23221`; Panda et al. 2024, *Nature Physics* 20, 1234-1239,
+  DOI `10.1038/s41567-024-02518-9`; internal E-040 audit, 2026-08-12.
+
 ## Boundary Entry Template
 
 ```markdown

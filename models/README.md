@@ -1830,3 +1830,62 @@ abstract finite-slab equations or all symmetron models. No PDE, one-loop
 recomputation, fit, hardware action, checkpoint access, or resource expansion
 occurs. E-040 is a genuinely different, bounded cold-atom gravitational-
 entanglement discrimination audit.
+
+## 2026-08-12 E-040 cold-atom entanglement audit
+
+`models/e040_cold_atom_entanglement_audit.py` freezes a favorable source,
+geometry, covariance witness, averaging rule, squeezing convention, reaction
+ledger, countermodel-domain check, and confounder gate for the published
+cold-atom proposal in *Physical Review A* 114, 023306 (2026). Run its
+deterministic report with:
+
+```bash
+python3 -m models.e040_cold_atom_entanglement_audit \
+  --report-json /tmp/e040-cold-atom-entanglement-audit.json
+```
+
+The assembled benchmark uses `N=1e12` caesium atoms per interferometer,
+`n=1e12 cm^-3`, uniform oblate ellipticity `e=0.98`, the quoted factor-`23`
+interaction enhancement at the touching/no-clearance limit `d=2c`,
+`t=1e3 s`, nominal `40 dB` squeezing in each interferometer, `1000`
+repetitions, and five independent setups. The density fixes
+`a=10.6256 mm`, `c=2.11447 mm`, and `d=4.22895 mm`. The proposal's
+perturbative formulas then give `lambda N=1.67652e-7`, covariance
+`S~=4.1913e4 atoms^2`, and ideal SNR `0.11855`. At the same ensemble mass and
+spacing, ordinary point-mass references are `8.24e-19 m/s^2` acceleration per
+atom, `1.82e-31 N` ensemble-to-ensemble force, and `-7.69e-34 J` potential
+energy; the oblate factor enhances the phase integral rather than these
+point-mass references. Reaching SNR one would need
+about `3.5578e5` effective trials, at least `2.25` continuous years per setup
+for five parallel setups before dead time and technical noise. Treating the
+quoted density per half-populated arm instead raises ideal SNR only to about
+`0.149`, so the convention ambiguity does not change the decision.
+
+The frozen SNR is not a global ideal-parameter bound. If Figure 3's
+`M~=1000` at `t=10000 s` anchor is interpreted as fixed live time, then
+`t=1000 s` would imply `10000` repetitions per setup and ideal SNR `0.37488`
+at the baseline density. Because `d~n^(-1/3)`, unity would occur
+algebraically near `n=1.90e13 cm^-3` and `d=1.585 mm`. This is an inference,
+not a published complete tuple, and it has no joint collision, loss,
+squeezing, coherence, detector, or background qualification. Gate 3 is
+therefore partial rather than a global scale failure.
+
+The 2025 *Nature* countermodel derives a fourth-order correction `vartheta`
+for two uniform spherical whole-object N00N states; its Eq. (10) reports
+`sqrt(vartheta)`. At the paper's `d=10R` convention, the frozen caesium total
+mass gives `vartheta=2.2778e-9`. This is retained only as a model-domain
+diagnostic. The countermodel does not derive the coherent/binomial four-mode
+input, oblate interaction, squeezing, atom-number covariance, cumulants, or
+detector noise, so neither `vartheta` nor `sqrt(vartheta)` is compared with or
+subtracted from `S`.
+
+The executable survival rule requires ideal SNR at least one, an executable
+classical prediction for the identical covariance below `0.1` of the target,
+all dominant same-covariance backgrounds below `0.1`, and simultaneous
+demonstration of the frozen resources. None passes. P-012/H-024 are parked as
+`parked_no_joint_detector_or_model_qualification`. This is a negative
+detector/discrimination audit, not evidence against quantum gravity or every
+gravity-mediated-entanglement experiment. The artifact creates no artificial
+gravity, inertial control, spacetime engineering, or propulsion capability.
+No PDE, hardware, checkpoint, or resource expansion occurs. E-041 moves to a
+distinct dimension-six pure-gravity SME striped-torsion-balance torque audit.
