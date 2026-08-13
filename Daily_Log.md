@@ -3049,3 +3049,165 @@ tilt, thermal, electrostatic, magnetic, actuator, and support budgets. Retain
 only if an allowed harmonic reaches SNR one while each dominant background is
 below `0.1` of the target; otherwise park. Even a pass is a Lorentz-violation
 precision result, not artificial gravity.
+
+## 2026-08-13 - E-041 SME Joint-Region Kill-Gate Closure
+
+**Focus question:** Does the public record contain a rigorous simultaneous
+fourteen-coefficient region and a reproducible five-stripe transfer sufficient
+to bound an absolute source-modulated SME torque harmonic against measured
+same-harmonic noise?
+
+**Continuity and scope:** E-036 was already completed on 2026-08-03. H-019 and
+the annular Galileon numerical line remain parked at immutable accepted stage
+6; nothing in this run reopens them. E-041 was limited to public statistical
+and transfer-artifact recovery plus executable logic. It performed no PDE
+build or solve, fit reconstruction, source/box change, amplitude advance,
+hardware action, checkpoint access, or compute expansion.
+
+**Sources reviewed:**
+
+- Shao et al., “Combined Search for Lorentz Violation in Short-Range
+  Gravity,” *Physical Review Letters* **117**, 071102 (2016), DOI
+  `10.1103/PhysRevLett.117.071102`, arXiv:`1607.06095`, including the journal
+  record, accepted manuscript, arXiv source package, and cited repositories.
+- Kostelecky and Mewes, arXiv:`1611.10313`, specifically its statement that a
+  later spherical-coefficient conversion propagated the 2016 errors while
+  ignoring correlations.
+- Jin et al., “Parameter Optimization for Torsion-Balance Experiments Testing
+  d = 6 Lorentz-Violating Effects in the Pure-Gravity Sector,” *Symmetry*
+  **18**, 559 (2026), DOI `10.3390/sym18040559`, including equations, tables,
+  geometry description, noise estimates, and data-availability statement.
+- Primary leads for the diversified replacement screen: short-arm centrifuge
+  bed-rest trial DOI `10.1093/jbmr/zjaf119`; NASA PSI-9 electrohydrodynamic
+  fluid control DOI `10.60555/18fc-8d56`; Fuchs et al. levitated gravity
+  sensor DOI `10.1126/sciadv.adk2949` and Zenodo `10300430`; Qin et al.
+  arXiv:`2503.11645`; and NASA NIAC pellet-beam propulsion materials.
+
+**Deepening work completed:**
+
+1. Audited the 2016 combined analysis at the first preregistered gate. The
+   paper states a simultaneous fit and publishes 36 Fourier central values
+   with marginal `2 sigma` errors in Table I and fourteen coefficient central
+   values with marginal `2 sigma` errors in Table II. E-041 recovered no
+   coefficient covariance/correlation, likelihood or chi-square surface,
+   posterior samples, a simultaneous confidence contour/ellipsoid, Fourier
+   covariance, the numerical combined `36 x 14` design matrix, nuisance
+   covariance, or repeatable time-series/residual data. Tables III and IV are
+   explicitly one-coefficient-at-a-time results.
+2. Checked the surrounding release surfaces. The arXiv source archive contains
+   only `paper.tex` and `fig1.eps`; no journal supplement or public data/code
+   artifact supplying the missing joint geometry was recovered as of
+   2026-08-13 across the APS/arXiv, institutional, Crossref/DataCite, Zenodo,
+   and HEPData surfaces audited. “Independent
+   degrees of freedom” in the paper is therefore not treated as statistical
+   independence. A later conversion explicitly ignored correlations and
+   cannot repair this gate.
+3. Added an executable non-identifiability witness. Two positive-definite
+   covariance matrices with the same unit marginals and correlations `+0.99`
+   and `-0.99` give variances `3.98` and `0.02` for the same `(1,1)` transfer,
+   a `199`-fold variance and `14.1067`-fold standard-deviation difference. Even
+   under a hypothetical independent-Gaussian assumption, multiplying fourteen
+   marginal `95.45%` coverages gives `0.521028`, while arbitrary-dependence
+   Frechet/Bonferroni bounds span about `0.363-0.9545`; neither calculation is a
+   stated-confidence region for the actual fit. The required ellipsoidal support would depend on
+   `sqrt(q a^T Sigma a)` and therefore on the absent correlations.
+4. Audited the 2026 five-stripe paper independently. It is a proposal and
+   optimization study, not a five-stripe measurement. It specifies tungsten
+   `19.8 x 19.8 x 1.3 mm` plates, a `0.4-1 mm` modulated gap, a `30 um` BeCu
+   shield, analytic harmonic mappings, geometric integrals, and `A1-A5`
+   structures. It does not release numerical transfer entries, machine-readable
+   tooth/spine/lever-arm geometry, CAD/code, optimum-angle tables, measured
+   harmonics, or measured same-harmonic noise and confounder budgets.
+5. Found a separate dimensional limitation in the published optimization
+   metric. Equations (12)-(16) define `A1,A4,A5` as `2 x 2` and `A2,A3` as
+   `4 x 4`, while equations (22)-(23) apply square roots to the determinants of
+   `A1`, `A2`, and `A3` and fourth roots to those of `A4` and `A5` but assign
+   common transfer units. The `A1` square root is correct; `A2/A3` require
+   fourth roots and `A4/A5` square roots to recover entry units. The
+   mismatch can leave a ranking within a fixed matrix group intact but blocks
+   the claimed common-unit absolute or cross-group interpretation.
+6. Refreshed the portfolio with genuinely different mechanisms: established
+   rotational inertial loading with new human-outcome data, electrohydrodynamic
+   fluid-force analog control, superconducting levitated gravity metrology,
+   mechanical-array new-interaction searches, and conventional external-
+   reaction pellet propulsion. Only one candidate was deepened in this run.
+
+**What changed:** E-041 changed from queued to a bounded negative closure;
+P-017 and new hypothesis H-025 changed to parked. The portfolio gained P-022
+through P-026, and E-042 became the sole next deepening task. B-043 now forbids
+multi-coefficient torque propagation from marginal bounds, and B-044 separates
+a determinant ranking metric from a dimensionally valid absolute transfer.
+
+**Reasoning:** A torque harmonic is a linear projection of all fitted SME
+coefficients, so its allowed range depends on the joint feasible geometry.
+Marginal widths leave that support function non-identifying, as the two-
+covariance witness demonstrates. The preregistered stop order therefore ends
+the audit before torque propagation. The missing numerical five-stripe
+transfer and the root-dimension mismatch independently prevent replacing the
+absent joint fit with the proposal's optimization maxima.
+
+**Four-gate decision:**
+
+- **Gate 1 - source/coupling: partial.** SME coefficients and striped tungsten
+  masses are physically specified at proposal level, but a complete numerical
+  transfer and actuator/support chain is not frozen.
+- **Gate 2 - constraints/validity: failed for propagation.** The linearized
+  EFT fit exists, but its public marginals do not identify an exact projection
+  or a stated-confidence fourteen-dimensional region. The run stops here by
+  preregistration.
+- **Gate 3 - absolute scale: unknown for allowed detector torque; not evaluated
+  for artificial gravity.** No authorized torque propagation or SNR was
+  produced, and the precision-test proposal supplies no artificial-gravity
+  evidence.
+- **Gate 4 - falsification: partial.** Sidereal harmonics and stripe controls
+  are concrete, but measured same-harmonic Newtonian fringe, machining/density,
+  tilt, thermal, electrostatic, magnetic, actuator, and support comparisons
+  were not recovered in one common absolute budget.
+
+**Decision and preserved boundary:** P-017/H-025 are parked as
+`parked_joint_region_and_transfer_not_recoverable`. Marginal or one-at-a-time
+limits were not converted into a diagonal covariance, box, ellipsoid, allowed
+torque, SNR, or background fraction. This negative result says that the public
+artifacts do not identify the required projection; it does not refute Lorentz
+violation, the SME, or every torsion-balance implementation. The proposal's
+quoted `11.7e-16 Nm` `C0` and `0.45e-16 Nm` sidereal uncertainties remain
+estimates, not measured five-stripe evidence.
+
+**Failure or boundary found:** The public statistical artifacts cannot identify
+an allowed source-modulated torque, and the public design artifacts cannot
+reproduce a complete absolute transfer. Unknown correlations and backgrounds
+remain unknown; they are not zero. This blocks this P-017 experiment-selection
+claim without refuting the underlying EFT or other Lorentz-violation tests.
+
+**Artifacts and validation:** Added
+`models/e041_sme_joint_region_audit.py`, its deterministic JSON-report path,
+and `tests/test_e041_sme_joint_region_audit.py`; updated the portfolio and
+research ledgers. Final validation used the established repository environment:
+all `244` tests passed in `16.871 s`, including checkpoint-manifest integrity;
+the focused E-041 suite passed `11/11` in `0.002 s`. Python compilation,
+deterministic report generation, `git diff --check`, `git lfs fsck`, and
+`pip check` also passed. No checkpoint or retained work snapshot changed.
+
+**Blank space or new idea:** The useful lesson is architectural: a precision
+gravity proposal should publish a machine-readable source-to-harmonic matrix
+and a nuisance-aware joint statistical object as a single reproducibility
+bundle. Marginal sensitivity plots alone cannot support geometry optimization
+against a constrained multi-coefficient theory. This is an adjacent research-
+infrastructure opportunity, not a field-generation mechanism.
+
+**Hypothesis updates:** Added H-025 as parked, updated P-017 to Gate 2 failed
+for public joint propagation, and added P-022 through P-026 with explicit gate
+states and category labels. H-019 and every prior parked numerical, fifth-
+force, symmetron, and cold-atom path remain unchanged.
+
+**Next best step:** Run E-042 as a bounded evidence audit of the 2025
+randomized 60-day short-arm-centrifuge bed-rest trial as one materially-new-
+evidence exception to the still-parked broad E-008 survey. Freeze the `3.8 m`
+radius, rpm, `~1g` center-of-mass/`2g` feet gradient, session duration and
+frequency, exercise coupling, randomization and non-centrifuged comparator,
+prespecified bone/muscle/cardiovascular endpoints, adverse effects, adherence,
+sample size, follow-up, and flight-generalization
+limits. Produce a dose/outcome matrix. Treat only the rotating-frame loading as
+established; park countermeasure-efficacy claims that fail endpoint or dose
+support, and never reinterpret rotation as localized curvature or inertial
+control.

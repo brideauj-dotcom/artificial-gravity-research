@@ -1889,3 +1889,27 @@ gravity-mediated-entanglement experiment. The artifact creates no artificial
 gravity, inertial control, spacetime engineering, or propulsion capability.
 No PDE, hardware, checkpoint, or resource expansion occurs. E-041 moves to a
 distinct dimension-six pure-gravity SME striped-torsion-balance torque audit.
+
+## E-041 SME joint-region and five-stripe transfer audit
+
+`e041_sme_joint_region_audit.py` records the public statistical and transfer
+artifacts needed to decide whether the 2016 fourteen-coefficient SME fit can be
+propagated through the 2026 five-stripe torsion-balance design. It transcribes
+the published marginal coefficient table, inventories missing joint-fit and
+transfer products, demonstrates with positive-definite covariance matrices why
+identical marginals do not determine a projected harmonic, checks the
+determinant-root dimensions in the design metric, applies the four portfolio
+gates, and records the resulting negative closure.
+
+Run the bounded audit with:
+
+```bash
+python models/e041_sme_joint_region_audit.py --report-json /tmp/e041.json
+```
+
+The output intentionally contains no reconstructed fit, covariance, allowed
+torque, SNR, or background ratio. P-017/H-025 are parked because neither a
+rigorous simultaneous coefficient region nor a complete numerical five-stripe
+transfer and measured same-harmonic budget was recovered on the dated audit
+surfaces. This is a reproducibility and propagation boundary, not evidence
+against Lorentz violation or the SME.
