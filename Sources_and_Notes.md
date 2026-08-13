@@ -3092,13 +3092,15 @@ Add sources here with enough detail that future runs can judge quality quickly.
   071102 (2016), DOI `10.1103/PhysRevLett.117.071102`, independently constrains
   14 nonrelativistic Lorentz-violation coefficients. A 2026 five-stripe
   geometry study, *Symmetry* **18**, 559, DOI `10.3390/sym18040559`, supplies
-  new transfer matrices and sidereal-harmonic controls. Source/coupling and a
+  analytic transfer-matrix structures and sidereal-harmonic controls, not
+  recoverable numerical transfer matrices. Source/coupling and a
   cheap falsification are explicit enough to justify E-041, but E-041 must
   first verify whether a recoverable joint likelihood, covariance, or other
   rigorous simultaneous coefficient region is available. No such region has
   yet been propagated to an absolute allowed torque or
   compared with same-harmonic noise. Gate 1 partial, Gate 2 partial, Gate 3
-  unknown for detector torque and failed for artificial gravity, Gate 4
+  unknown for detector torque; artificial-gravity scale was not evaluated in
+  E-041 and the proposal supplies no artificial-gravity evidence. Gate 4 is
   partial.
 
 - **P-018 Dark SRF emitter-wall-receiver:** Romanenko et al., “Search for Dark
@@ -3144,3 +3146,181 @@ Add sources here with enough detail that future runs can judge quality quickly.
   it is a genuinely distinct gravity-sector source/transfer problem with a
   cheap joint-constraint absolute-torque falsification. A failure will park it
   rather than trigger solver, hardware, or resource expansion.
+
+## 2026-08-13 - E-041 SME Joint-Region and Five-Stripe Transfer Audit
+
+### Shao et al. - Combined dimension-six short-range-gravity analysis
+
+- **Link:** DOI `10.1103/PhysRevLett.117.071102`; recoverable accepted
+  manuscript and source at https://arxiv.org/abs/1607.06095.
+- **Type:** Peer-reviewed combined experimental constraint analysis with an
+  accepted-manuscript source package; no supplement or linked data release was
+  recovered.
+- **Quality:** High for the published model, marginal fitted values, and stated
+  experimental combination; insufficient for a repeatable simultaneous-region
+  projection because the necessary joint statistical artifacts are absent.
+- **Citation:** Cheng-Gang Shao, Yu-Jie Tan, Wen-Hai Tan, Shan-Qing Yang, Jun
+  Luo, Michael Edmund Tobar, Quentin G. Bailey, J. C. Long, E. Weisman, Rui Xu,
+  and V. Alan Kostelecky, “Combined Search for Lorentz Violation in Short-Range
+  Gravity,” *Physical Review Letters* **117**, 071102 (2016).
+- **Relevant claims and artifact audit:**
+  - This is the dimension-six combined HUST-2015/HUST-2011/IU-2012/IU-2002
+    analysis, not the later dimension-eight inverse-sixth-power paper. The
+    inverse-cube correction is linear in the 14 measurable components of the
+    totally symmetric effective coefficient `(k_eff)_JKLM` after the rotational
+    invariant contact combination is removed. Earth rotation produces DC plus
+    sidereal harmonics through `4 omega_earth`.
+  - Table I exposes 36 Fourier-mode central values and marginal `2 sigma`
+    errors. Table II exposes the simultaneous fit's 14 central values and
+    marginal `2 sigma` widths, in `1e-9 m^2`. The word “independent” identifies
+    measurable degrees of freedom/a chosen coordinate basis; neither the text
+    nor tables state that their statistical covariance is diagonal.
+  - E-041 recovered no coefficient covariance/correlation, likelihood or
+    chi-square surface, samples, confidence ellipsoid/contour, Fourier
+    covariance, numerical combined design matrix, nuisance covariance, raw time
+    series, or residuals
+    on the public surfaces audited as of 2026-08-13. Tables III-IV are
+    explicitly limits on underlying coefficients “taken one at a time” and
+    cannot substitute for a 14-dimensional region.
+    The arXiv source archive contains only `paper.tex` and `fig1.eps`; the APS
+    record exposes no supplement. Repository and data-registry checks found
+    article copies but no linked fit product.
+  - Exact implication: for joint ellipsoid
+    `(k-mu)^T Sigma^-1(k-mu)<=q` and torque `tau=a^T k`, the support radius is
+    `sqrt(q a^T Sigma a)`. Unit marginals with correlation `+0.99` versus
+    `-0.99` give the same published widths but projection variances `3.98`
+    versus `0.02` for `a=(1,1)`. The harmonic standard-deviation ratio is
+    `14.1067`. This demonstrates non-identifiability; it is not an inferred
+    covariance for the experiment.
+  - As an additional warning only, fourteen independent Gaussian marginal
+    two-sigma intervals would have product coverage `0.5210`; arbitrary-
+    dependence Frechet/Bonferroni bounds span about `0.363-0.9545`. Neither is
+    a stated-confidence region for this fit. Marginal boxes cannot be labeled
+    95-percent joint regions, and diagonal covariances are prohibited.
+  - Kostelecky and Mewes, “Testing Local Lorentz Invariance with Short-Range
+    Gravity,” *Physics Letters B* **766**, 137-143 (2017), DOI
+    `10.1016/j.physletb.2016.12.062`, arXiv:`1611.10313`, explicitly describe
+    their Cartesian-to-spherical use of the 2016 results as error propagation
+    “ignoring correlations.” That derived spherical table therefore confirms
+    rather than fills the missing public joint-region information.
+- **Useful equation or constraint:** For a joint ellipsoid and linear harmonic,
+  the support radius is `sqrt(q a^T Sigma a)`; the absent `Sigma` is essential.
+- **Impact on hypotheses:** Fails P-017/H-025 Gate 2 for public propagation; it
+  does not weaken the published marginal constraints or refute the SME.
+- **Follow-up:** Reopen only on release of a covariance, joint likelihood,
+  samples, a rigorous simultaneous region, or equivalent repeatable fit data.
+
+### Jin et al. - Five-stripe torsion-balance parameter optimization
+
+- **Link:** https://doi.org/10.3390/sym18040559.
+- **Type:** Peer-reviewed open-access apparatus-design and parameter-
+  optimization paper; not an experimental five-stripe result.
+- **Quality:** Useful for the analytic source concept and within-metric geometry
+  comparison; insufficient for absolute transfer or detector qualification.
+- **Citation:** Tao Jin, Pan-Pan Wang, Weisheng Huang, Rui Luo, Yu-Jie Tan, and
+  Cheng-Gang Shao, “Parameter Optimization for Torsion-Balance Experiments
+  Testing d = 6 Lorentz-Violating Effects in the Pure-Gravity Sector,”
+  *Symmetry* **18**, 559 (2026), DOI `10.3390/sym18040559`.
+- **Relevant claims and artifact audit:**
+  - This is an open design/optimization paper, not a five-stripe measurement.
+    It specifies `19.8 x 19.8 x 1.3 mm` tungsten source/test plates, a
+    `0.4-1 mm` modulated surface gap, a `30 um` BeCu shield, analytic spherical-
+    to-Cartesian harmonic mappings, a geometric integral definition for
+    `Gamma_i`, and analytic matrix structures `A1-A5`.
+  - The paper compares 3-, 5-, and 7-stripe layouts using determinant-derived
+    characteristic maxima and selects five stripes within its metric. It does
+    not release numerical `Gamma` or `A` entries, exact stripe pitch/width,
+    spine and lever-arm geometry, CAD/code, tabulated optimum angles, measured
+    five-stripe harmonics, or measured same-harmonic noise. Its data statement
+    says the contributions are in the article and directs inquiries to the
+    authors.
+  - The quoted `11.7e-16 Nm` `C0` uncertainty and `0.45e-16 Nm` sidereal
+    `Cm/Sm` uncertainty are estimates for the proposed design, not measured
+    five-stripe source-modulated results. Newtonian fringe, machining/density,
+    tilt, thermal, electrostatic, magnetic, actuator, and support channels are
+    not closed in the common absolute harmonic units required by E-041.
+  - Dimensional audit: Equations (12)-(16) make `A1,A4,A5` `2 x 2` matrices
+    and `A2,A3` `4 x 4`. Equations (22)-(23) use square roots of the
+    determinants of `A1`, `A2`, and `A3` and fourth roots for `A4` and `A5`.
+    The `A1` square root is correct; `A2/A3` require fourth roots and `A4/A5`
+    square roots to retain the stated common `Gamma` units. The mismatch does
+    not by itself overturn within-group stripe-count rankings, but it blocks the
+    claimed common-unit/absolute-transfer interpretation of the published `R`
+    values.
+- **Useful equation or constraint:** An `n x n` determinant of entries with
+  transfer units has units `Gamma^n`; its nth root is needed to recover common
+  transfer units.
+- **Impact on hypotheses:** Leaves P-017/H-025 Gates 1 and 4 partial and cannot
+  repair the failed joint-region gate.
+- **Follow-up:** Request or await numerical transfer matrices, complete
+  machine-readable geometry, optimization coordinates, measured harmonics,
+  and a measured same-harmonic nuisance budget before any absolute claim.
+
+- **E-041 result:** Gate 1 partial, Gate 2 failed, Gate 3 unknown for detector
+  torque and not evaluated for artificial-gravity scale, and Gate 4 partial.
+  The precision proposal supplies no artificial-gravity evidence. P-017/H-025
+  are parked as `parked_joint_region_and_transfer_not_recoverable`. No fit was
+  reconstructed; no absolute torque, SNR, or background fraction was computed.
+  This is a public statistical/reproducibility limitation, not evidence against
+  Lorentz violation, the SME, or every optimized torsion balance.
+
+## 2026-08-13 - Diversified Replacement Screen after P-017
+
+- **P-022 short-arm centrifuge artificial gravity:** A 2025 randomized 60-day
+  head-down bed-rest study, Culliton et al., “Artificial Gravity Protects Bone
+  and Prevents Bone Marrow Adipose Tissue Accumulation in Humans During 60 d of
+  Bed Rest,” DOI `10.1093/jbmr/zjaf119`, supplies a genuinely
+  different human-outcome update to the established rotational baseline. It
+  delivered about `1g` at estimated center of mass and `2g` at the feet to two
+  `n=8` intervention groups, with an `n=8` non-centrifuged bed-rest group; it
+  was not a sham-centrifuge design. Source/reaction and human-scale loading
+  pass; endpoint hierarchy, adverse effects, small-sample inference, and
+  flight generalization remain partial. The materially new trial justifies one
+  bounded E-042 exception to the parked broad E-008 rotation survey, not a
+  reopened centrifuge program or localized-field claim.
+
+- **P-023 electrohydrodynamic spacecraft-fluid control:** NASA PSI-9,
+  “Electrically Driven Liquid Film Flow Boiling in the Absence of Gravity,”
+  DOI `10.60555/18fc-8d56`, uses specified electrodes and dielectric-fluid body
+  forces for liquid-film/bubble management. It is potentially useful
+  microgravity engineering with a closed electrical/mechanical reaction
+  ledger, but it is simulated gravity and composition-dependent fluid control,
+  not curvature or universal acceleration. Direct controls include applied
+  EHD/DEP potentials, heat flux, film height, gravity state, and bubble/film
+  observations; no same-unit force-density or flow-performance bound was
+  audited in this screen, so scale and force/heating/reaction gates remain
+  partial.
+
+- **P-024 superconducting levitated gravity sensor:** Fuchs et al., “Measuring
+  Gravity with Milligram Levitated Masses,” *Science Advances* (2024), DOI
+  `10.1126/sciadv.adk2949`, with raw lock-in traces at Zenodo
+  `10300430`, demonstrates a levitated roughly `0.4 mg` precision force sensor.
+  A `2.4 kg` source gives a modeled `1030 aN` coupling with measured
+  `0.5 fN/sqrt(Hz)` force noise. Retain as real Newtonian/attonewton metrology
+  and source calibration, not gravity generation. Its response was
+  `0.35 +/- 0.02` of the modeled force;
+  platform motion/tilt, SQUID-cable effects, and vibration above the thermal
+  floor keep the systematic-closure gate partial.
+
+- **P-025 Windchime mechanical arrays:** Qin et al., “Mechanical Sensors for
+  Ultraheavy Dark Matter Searches via Long-Range Forces,” *Physical Review D*
+  **112**, 072003 (2025), DOI `10.1103/d1gv-l2kh`, arXiv:`2503.11645`, study
+  coherent mechanical-array searches for passing dark matter/new forces. Pure
+  gravitational reach requires about `80 dB` quantum-noise reduction and
+  `100^3` sensors totaling about `600 tonnes`, and is parked; retain only a
+  long-range-interaction detector watch after constraints and noise are frozen.
+
+- **P-026 pellet-beam propulsion:** NASA NIAC's pellet-beam concept is ordinary
+  external momentum transfer. Phase-I claims of pellets above `120 km/s` and a
+  `1 ton` payload to `500 AU` in under 20 years remain modeled and depend on
+  beam creation, divergence, capture, pointing, debris, and heat. Retain as
+  conventional propulsion research, never internal gravity or reactionless
+  propulsion. Primary concept page:
+  https://www.nasa.gov/general/pellet-beam-propulsion-for-breakthrough-space-exploration/.
+
+- **Portfolio decision:** No new candidate supports localized artificial
+  gravity, bulk inertial control, spacetime engineering, or reactionless
+  propulsion. P-022 advances because it is established inertial artificial
+  gravity with new human outcome evidence and an inexpensive evidence audit;
+  P-023/P-024 are useful analog/metrology opportunities, P-025 is a precision
+  new-interaction watch, and P-026 is conventional propulsion.

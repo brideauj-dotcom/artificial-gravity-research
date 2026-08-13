@@ -1072,6 +1072,101 @@ Faster-than-light travel generally creates causality issues in relativity. Any p
   arXiv:`2604.23221`; Panda et al. 2024, *Nature Physics* 20, 1234-1239,
   DOI `10.1038/s41567-024-02518-9`; internal E-040 audit, 2026-08-12.
 
+### B-043: Marginal SME Limits Do Not Identify a Qualified Joint Torque Envelope
+
+- **Claim:** Marginal coefficient intervals from a simultaneous fit do not
+  identify its covariance, exact projection, or a stated-confidence joint
+  region and cannot be treated as those products. Shao et al. report 14
+  effective dimension-six pure-gravity SME coefficients as central values with
+  marginal `2 sigma` widths, but E-041 recovered no covariance/correlation,
+  joint likelihood, samples, confidence contour, Fourier covariance, numerical
+  combined design matrix, nuisance covariance, raw time series, or fit
+  residuals.
+- **Why it matters:** A proposed torque harmonic is a linear projection
+  `tau=a^T k`. For an ellipsoidal joint region its support radius is
+  `sqrt(q a^T Sigma a)`, which explicitly depends on the missing covariance
+  `Sigma`. Two positive-definite two-parameter covariances with the same unit
+  marginals and correlations `+0.99` and `-0.99` give variances `3.98` and
+  `0.02` for the identical projection `a=(1,1)`: a factor `199` in variance or
+  `14.1` in standard deviation. Identical published marginals therefore do not
+  identify even one harmonic uncertainty. Even under the deliberately
+  hypothetical independent-Gaussian assumption, fourteen marginal two-sigma
+  intervals have product coverage about `0.521`; under arbitrary dependence,
+  Frechet/Bonferroni bounds span about `0.363-0.9545`. Neither supplies the
+  fit's stated 95-percent simultaneous region.
+- **Strength:** The public-artifact inventory is direct. Table II provides the
+  14 marginals; Tables III-IV are explicitly “taken one at a time”; the arXiv
+  source archive contains only `paper.tex` and `fig1.eps`; no APS supplement or
+  linked data product was recovered as of 2026-08-13 across the APS/arXiv,
+  institutional, Crossref/DataCite, Zenodo, and HEPData surfaces audited. The
+  covariance example and coverage diagnostic are exact analytical
+  demonstrations, not reconstructions of the
+  experiment.
+- **Assumptions:** E-041 asks for a rigorous public simultaneous region and
+  refuses unreported correlations. “Independent coefficients” denotes an
+  identifiable 14-coordinate basis, not statistical independence. This
+  boundary does not claim the private fit lacked a covariance and does not
+  weaken the published marginal constraints in their stated use.
+- **Operational rule:** Do not diagonalize marginal errors, multiply marginal
+  likelihoods, use the marginal box as a qualified 95-percent joint region, or
+  substitute one-at-a-time underlying-coefficient limits. Park P-017/H-025
+  until a joint likelihood, covariance, samples, or equivalent repeatable fit
+  product is released. Unknown joint geometry fails closed and is not evidence
+  against Lorentz violation or the SME.
+- **Possible cracks:** Author-released fit covariance/samples or enough raw
+  mode data, numerical transfer matrices, and nuisance models to reproduce the
+  joint analysis would reopen the propagation. A new experiment that publishes
+  a complete likelihood could supersede the historical limitation.
+- **Sources:** Shao et al. 2016, *Physical Review Letters* 117, 071102, DOI
+  `10.1103/PhysRevLett.117.071102`, arXiv:`1607.06095`; Kostelecky and Mewes
+  2017, *Physics Letters B* 766, 137-143, DOI
+  `10.1016/j.physletb.2016.12.062`, arXiv:`1611.10313` (derived
+  spherical-error propagation explicitly ignores correlations); internal
+  E-041 audit, 2026-08-13.
+
+### B-044: A Determinant Optimization Metric Is Not an Absolute Transfer
+
+- **Claim:** The 2026 five-stripe paper is a design/parameter-optimization
+  proposal, not a measured torsion-balance result, and its published
+  determinant-root summaries cannot replace the missing numerical transfer
+  matrices. Equations (12)-(16) define `A1,A4,A5` as `2 x 2` and `A2,A3` as
+  `4 x 4`, but Equations (22)-(23) apply square roots to the determinants of
+  `A1`, `A2`, and `A3` and fourth roots to those of `A4` and `A5` while
+  assigning every `R` the same transfer units. The `A1` square root is correct;
+  `A2/A3` require fourth roots and `A4/A5` square roots for entries with units
+  `Gamma`.
+- **Why it matters:** The root mismatch can preserve comparisons among stripe
+  counts inside one fixed matrix group, but it prevents treating the tabled
+  `R` values as common-unit absolute transfers or comparing groups as though
+  they were harmonic amplitudes. The paper also omits numerical `Gamma/A`
+  entries, exact stripe pitch/width/spine/lever-arm geometry, CAD/code,
+  tabulated optimum angles, measured five-stripe harmonics, and measured
+  same-harmonic noise.
+- **Strength:** Matrix sizes, root definitions, table units, plate envelope,
+  estimated uncertainties, and data-availability statement are directly in
+  the open paper. This is a dimensional and reproducibility audit, not a claim
+  that the five-stripe ranking within each individual determinant family is
+  necessarily wrong.
+- **Assumptions:** The published `A` entries share the stated transfer units
+  and the determinant formulas are read literally. Reported `11.7e-16 Nm`
+  for `C0` and `0.45e-16 Nm` for sidereal `Cm/Sm` are proposal estimates, not
+  measured five-stripe source-modulated data. Full actuator/support and
+  Newtonian fringe budgets remain unclosed.
+- **Operational rule:** Do not infer missing transfer entries from heatmaps,
+  use determinant roots as torque harmonics, or call estimated proposal noise
+  measured sensitivity. Require a complete numerical transfer with geometry
+  provenance plus measured same-harmonic Newtonian, machining/density, tilt,
+  thermal, electrostatic, magnetic, actuator, and support budgets before an
+  SNR claim.
+- **Possible cracks:** A corrected machine-readable transfer release, exact
+  geometry, optimum orientations, and source-modulated data could make the
+  design testable. It would remain a precision Lorentz-invariance experiment,
+  not artificial gravity, inertial control, or propulsion.
+- **Sources:** Jin et al. 2026, “Parameter Optimization for Torsion-Balance
+  Experiments Testing d = 6 Lorentz-Violating Effects in the Pure-Gravity
+  Sector,” *Symmetry* 18, 559, DOI `10.3390/sym18040559`; internal E-041
+  audit, 2026-08-13.
+
 ## Boundary Entry Template
 
 ```markdown
