@@ -3211,3 +3211,162 @@ limits. Produce a dose/outcome matrix. Treat only the rotating-frame loading as
 established; park countermeasure-efficacy claims that fail endpoint or dose
 support, and never reinterpret rotation as localized curvature or inertial
 control.
+
+## 2026-08-14 - E-042 AGBRESA Human-Loading and Claim Audit
+
+**Focus question:** What mechanical dose and system-specific outcome claims
+does the materially new 2025 AGBRESA bone/BMAT report actually establish when
+checked against the prospective registry, implementation record, and primary
+muscle, cardiovascular, and tolerability reports?
+
+**Continuity and scope:** The automation's inherited “first transition” text
+is stale relative to the canonical ledgers: E-036 was completed on 2026-08-03,
+and H-019 plus the annular Galileon numerical line remain parked at immutable
+accepted stage 6. This run did not reopen them. E-042 was the queued one-trial
+exception to parked broad E-008. It performed no PDE build/solve, clinical or
+hardware intervention, source/box/amplitude change, checkpoint access, or
+compute expansion.
+
+**Sources reviewed:** Prospective registry DRKS00015677 and its pretrial
+17-page endpoint appendix; Clément et al. AGBRESA protocol/implementation, DOI
+`10.3389/fphys.2022.976926`; Frett et al. tolerability, DOI
+`10.1371/journal.pone.0239228`; Kramer et al. aerobic/muscle function, DOI
+`10.1007/s00421-021-04673-w`; Hoffmann et al. cardiac adaptation, DOI
+`10.1002/ehf2.13103`; Hoenemann et al. orthostatic tolerance, DOI
+`10.1007/s10286-023-00959-5`; Hoenemann et al. autonomic cardiovascular
+control, DOI `10.3389/fcvm.2023.1250727`; and Culliton et al. vertebral
+BMAT/BMD, DOI `10.1093/jbmr/zjaf119`. These are reports from one shared cohort,
+not independent replications.
+
+**Deepening work completed:**
+
+1. Corrected the frozen geometry. `3.8 m` is the centrifuge apparatus radius,
+   not the participant foot radius. Actual speed was `29.1-32.2 rpm`, and foot
+   plates were individually positioned `1.729-2.113 m` from the axis. At mean
+   `30.5 rpm`, `omega=3.19395 rad/s`; `a=omega^2 r` gives `0.96131 m` for the
+   `1g` estimated-COM point and `1.92262 m` for the `2g` foot point, matching
+   the reported loaded range. The gradient is `1.04025 g/m`, and the inner ear
+   received about `0.30g`. A hypothetical point at `3.8 m` would receive
+   `3.95294g`, independently demonstrating why that apparatus number cannot be
+   treated as the foot radius.
+2. Closed the actuator and reaction ledger. Motor-driven centripetal loading
+   acts by contact through participant restraints/foot plate and reacts through
+   the arm, rotor, motor, bearings, facility, and Earth. It is conventional
+   rotating-frame inertial loading with a steep body gradient, not universal
+   free fall, real spacetime curvature, localized field generation, or inertial
+   control.
+3. Froze nominal dose without inventing adherence. Both intervention arms had
+   `30 min/day` plateau time for 60 days: nominal `30 h` per participant,
+   `1/48` of campaign time, and only mechanical proxies of `30 g-hour` at COM,
+   `60 g-hour` at feet, and `9 g-hour` at the inner ear. Exact delivered
+   minutes are not public. The registry specifies `5 min` rests between six
+   intermittent plateaus; primary reports use `3 min`. The discrepancy remains
+   unresolved rather than silently normalized.
+4. Corrected the trial classification. The registry and outcome papers often
+   say randomized, but the implementation paper says semi-random: campaign 1
+   balanced sex; campaign 2 balanced age, sex, height, and weight while
+   complementing campaign 1; four late recruits were deliberately assigned to
+   particular groups. Assignment was hidden until after baseline, but no one
+   conventional random sequence or allocation-concealment method is reported.
+   Arms were `n=8`, there was no sham, and strict blinding was absent.
+5. Audited prospective endpoint status by rendering and visually reviewing all
+   17 appendix pages. Lumbar DXA BMD is explicitly listed. A broad MRI endpoint
+   names vertebral-body volume/composition, but neither BMAT nor fat fraction
+   appears, and no BMAT measure, vertebral level, primary timepoint, analysis,
+   or primary/secondary hierarchy is recoverable. Both registry outcome fields
+   point to this same multi-investigator appendix; no public protocol or SAP
+   fills the hierarchy.
+6. Separated controlled evidence from within-arm significance. At HDT60, BMAT
+   changes were control `+3.93` percentage points (95% CI `-0.28,8.14`),
+   continuous `-1.21` (`-4.01,1.59`), and intermittent `0.00`
+   (`-2.48,2.48`). The three-arm omnibus `p=.032` is a qualified controlled
+   signal, but no pairwise effects/CIs or multiplicity correction show that
+   either regimen separately beat control. No arm differed from its own BMAT
+   baseline. Male-only `p=.014` is exploratory at `6/5/5`; female cells are
+   `2/3/3`. For BMD, the paper explicitly reports no intervention difference;
+   a significant control decline and nonsignificant intervention changes do
+   not establish prevention.
+7. Built a cross-system outcome matrix. Relative VO2max fell about
+   `20%/23%/24%` in intermittent/continuous/control arms with no group-by-time
+   effect (`p=.31`). Jump power, plantar-flexion strength, and plantar-flexion
+   rate showed omnibus interactions, but the authors omitted post-hoc arm
+   tests because of `n=8` and high variability. Participants used voluntary
+   calf/trunk/gluteal contractions from none to nearly continuous to avoid
+   presyncope, so passive loading is not isolated. Cardiac imaging/hemodynamics
+   showed no arm differences, and AG did not abolish cardiovascular
+   deconditioning. A separate autonomic analysis found no protective bed-rest-
+   by-intervention interactions for heart-rate variability or baroreflex
+   sensitivity at this dose.
+8. Qualified the strongest cardiovascular signal. Time to presyncope changed
+   `-801 +/- 354 s` control, `-323 +/- 235 s` continuous, and
+   `-296 +/- 508 s` intermittent, interaction `p=.0249`. Yet control began
+   advantaged at `1376 s` versus `934/896 s` (`p=.047`), while derived post
+   means converged near `575/611/600 s` and the post-group p-value was `.5279`.
+   This is a qualified baseline-sensitive change-score signal requiring
+   individual baseline-adjusted confirmation, not final-tolerance or schedule-
+   superiority proof.
+9. Preserved both safety denominators. The dedicated report records `10/960`
+   prematurely terminated runs (`7` presyncope, `1` severe motion sickness,
+   `2` biopsy pain), but those events involved `6/16` exposed participants.
+   No serious adverse event occurred. Two continuous-arm participants had
+   frequent isolated PVCs on 14 nonconsecutive days with unresolved cause.
+   Continuous daily motion-sickness score was `3.05` versus `1.58`
+   intermittent (`p=.001`), supporting only marginal tolerability advantage.
+10. Refreshed five distinct portfolio categories without promoting a weak
+    result: P-022 inertial human loading, P-023 EHD spacecraft-fluid analog,
+    P-024 real-Newtonian levitated metrology, P-025 ambient new-interaction
+    mechanical arrays, and P-026 conventional pellet propulsion. Only P-022
+    was deepened. No candidate supplies practical localized artificial gravity,
+    bulk inertial control, reactionless propulsion, or spacetime engineering.
+
+**Four-gate decision:**
+
+- **Gate 1 - source/coupling: passed.** Source, participant contact coupling,
+  actuator, and complete ordinary reaction chain are explicit.
+- **Gate 2 - constraints/validity: partial.** Mechanics and 60-day supervised
+  feasibility are established, but semi-random allocation, `n=8`, no sham,
+  endpoint hierarchy/multiplicity, baseline imbalance, variable muscle pumping,
+  protocol discrepancy, and bed-rest external validity limit inference.
+- **Gate 3 - absolute scale: passed for human inertial loading.** The body
+  received about `0.30g` inner ear, `1g` COM, and `2g` feet for a nominal
+  `30 h`; this fails as uniform gravity, real curvature, or field generation.
+- **Gate 4 - falsification: passed.** A prospective controlled trial generated
+  measurable positive and negative system-specific outcomes, and the important
+  confounders are now explicit. A pass here does not make every outcome valid.
+
+**Decision and preserved boundary:** P-022 survives only as established human-
+scale inertial loading with qualified BMAT and orthostatic signals. H-026's
+claim that this exact delivered protocol, including permitted symptom-triggered
+muscle pumping, is a validated multipurpose countermeasure is rejected.
+“Prevents bone loss,” minimum effective dose, continuous-versus-
+intermittent physiological superiority, clinical efficacy, ambulatory-flight
+efficacy, rotating-habitat comfort, and all curvature/inertial-control claims
+fail. Broad E-008 remains parked. A positive physiology endpoint does not
+alter B-001/B-006 or imply a new gravitational field.
+
+**Artifact and validation:** Added `models/e042_agbresa_trial_audit.py`, a
+deterministic JSON report, and `16` focused tests; added H-026 and B-045;
+completed E-042; updated P-022/P-023 and the queue; and retired the bounded
+trial question. All `260` workspace tests passed in `14.964 s` in the
+established repository environment, including checkpoint-manifest integrity.
+The focused E-042 suite passed `16/16`. Python compilation, deterministic
+report generation, `git diff --check`, `git lfs fsck`, and `pip check` passed.
+No checkpoint or retained work snapshot changed.
+
+**Blank space or new idea:** Human-countermeasure papers need a machine-
+readable “dose-to-endpoint contract” released with the registry: participant-
+level rpm/radius/plateau time, interruptions, muscle activation, prespecified
+primary contrasts, multiplicity family, and adverse-event denominator. That
+would make a multimodal platform auditable without conflating nominal exposure,
+delivered dose, and efficacy. This is research-infrastructure synthesis, not a
+new gravity mechanism.
+
+**Next best step:** Run E-043 on the genuinely distinct P-023 electrohydrodynamic
+liquid-film opportunity. Freeze the PSI-9 electrode/fluid geometry, voltage,
+field, permittivity, conductivity, heat flux, and measured film/flow response;
+derive the same-unit Maxwell/DEP/EHD body-force density and integrated force;
+and close electrical input, Joule/dielectric heating, fluid stress, electrode/
+support reaction, breakdown, electroconvection, capillary, and thermal
+confounders. Park it if no primary-source absolute force/performance budget is
+recoverable. Any pass is spacecraft-fluid analog control, never real curvature
+or universal acceleration.
