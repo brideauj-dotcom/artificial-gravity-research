@@ -1913,3 +1913,28 @@ rigorous simultaneous coefficient region nor a complete numerical five-stripe
 transfer and measured same-harmonic budget was recovered on the dated audit
 surfaces. This is a reproducibility and propagation boundary, not evidence
 against Lorentz violation or the SME.
+
+## E-042 AGBRESA trial evidence audit
+
+`e042_agbresa_trial_audit.py` is a deterministic dose/outcome and claim audit
+for the one 60-day AGBRESA bed-rest platform. It independently checks the
+loaded centrifuge geometry with `a=omega^2 r`, distinguishes the `3.8 m`
+apparatus radius from the `1.729-2.113 m` participant foot radii, freezes
+nominal exposure and session-event denominators, records the prospective
+registry and semi-random allocation limits, and separates controlled
+between-arm evidence from within-arm p-values. It then applies the four
+portfolio gates and a claim-kill matrix across BMAT, BMD, orthostatic,
+aerobic, muscle, cardiac, and tolerability outcomes.
+
+Run the bounded audit with:
+
+```bash
+python3 models/e042_agbresa_trial_audit.py --report-json /tmp/e042.json
+```
+
+The report retains qualified BMAT and orthostatic signals but rejects lumbar-
+BMD prevention, multipurpose efficacy, a minimum dose, schedule superiority,
+flight efficacy, and any curvature or inertial-control interpretation. The
+nominal `g-hour` values are explicitly mechanical proxies, not biological dose
+equivalence. Broad E-008 stays parked; no clinical intervention, hardware,
+PDE, checkpoint, or compute expansion occurs.

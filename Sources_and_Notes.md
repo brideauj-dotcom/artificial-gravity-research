@@ -3324,3 +3324,222 @@ Add sources here with enough detail that future runs can judge quality quickly.
   gravity with new human outcome evidence and an inexpensive evidence audit;
   P-023/P-024 are useful analog/metrology opportunities, P-025 is a precision
   new-interaction watch, and P-026 is conventional propulsion.
+
+## 2026-08-14 - E-042 AGBRESA Dose, Outcome, and Claim Audit
+
+This entry corrects the prior screen's terse description of AGBRESA as
+“randomized.” The prospective registry and several outcome papers use that
+term, but the later implementation report documents semi-random allocation,
+including deliberate placement of late recruits to balance groups. The trial
+is therefore treated here as a small prospective semi-random controlled human
+bed-rest analog, not a conventional randomized controlled trial.
+
+### DRKS00015677 - Prospective registry and endpoint appendix
+
+- **Link:** https://drks.de/search/en/trial/DRKS00015677.
+- **Type:** Prospective trial registry, registered 2018-10-02, plus a 17-page
+  investigator endpoint appendix whose file metadata are dated 2018-09-28.
+- **Quality:** High for the pretrial arm descriptions and broad endpoint menu;
+  insufficient for a recoverable primary/secondary hierarchy, statistical
+  analysis plan, random-sequence method, allocation concealment, or blinding.
+- **Relevant details:** Target enrollment was `24`. Registered arms were
+  non-centrifuged bed rest, continuous `30 min/day`, and intermittent six
+  `5 min` plateaus with `5 min` rests. Both primary and secondary outcome
+  fields only say “see appendix.” The appendix explicitly lists lumbar DXA
+  BMD and a broad MRI endpoint for vertebral-body volume/composition. It does
+  not contain the terms “bone marrow adipose tissue” or “fat fraction,” nor
+  does it specify the later BMAT measure, vertebral levels, primary timepoint,
+  analysis, or hierarchy. Thus BMAT was broadly foreseeable under vertebral
+  composition, but its publication-defined primary status is not recoverable
+  as a prospectively specified primary analysis. No public protocol or SAP is
+  linked, and the registry says individual-participant data will not be shared.
+- **Protocol discrepancy:** Every audited primary implementation/outcome
+  report uses `3 min` intermittent rests, not the registered `5 min`. E-042
+  preserves this unresolved registration/report discrepancy.
+
+### Clément et al. - AGBRESA protocol and implementation
+
+- **Link:** https://doi.org/10.3389/fphys.2022.976926.
+- **Type:** Peer-reviewed open-access implementation and standardization report.
+- **Quality:** Highest recovered source for assignment, actual geometry,
+  operations, adherence, and the relationship among AGBRESA substudies.
+- **Citation:** Gilles Clément et al., “Assessing the effects of artificial
+  gravity in an analog of long-duration spaceflight: The protocol and
+  implementation of the AGBRESA bed rest study,” *Frontiers in Physiology*
+  **13**, 976926 (2022), DOI `10.3389/fphys.2022.976926`.
+- **Relevant details:** The study ran in two campaigns. Assignment was
+  explicitly “semi-random”: campaign 1 sought random groups balanced by sex;
+  campaign 2 balanced age, sex, height, and weight while complementing campaign
+  1; four late recruits were assigned to particular arms for demographic
+  balance. Assignments were hidden from participants, staff, and scientists
+  until after baseline on HDT1, but no universal random sequence or concealed
+  allocation method is reported.
+- **Geometry and scale:** The centrifuge has a nominal `3.8 m` apparatus
+  radius. Participants were individually positioned, with rotation
+  `29.1-32.2 rpm`, to give `1g` at estimated COM and about `2g` at feet. The
+  report gives about `0.30g` at inner-ear level. Frett et al. independently
+  report foot-plate radii `1.729-2.113 m` and mean `30.5 +/- 1.0 rpm`. At the
+  mean speed, `omega=3.19395 rad/s`; `a=omega^2 r` gives `0.96131 m` at `1g`
+  and `1.92262 m` at `2g`, with gradient `1.04025 g/m`. A point at `3.8 m`
+  would instead see `3.95294g`, proving the apparatus radius is not the loaded
+  participant foot radius.
+- **Dose and adherence:** Nominal plateau exposure was `30 min/day x 60 = 30 h`
+  per exposed participant, only `1/48` of campaign time, corresponding to
+  nominal mechanical proxies of `30 g-hour` at COM, `60 g-hour` at feet, and
+  `9 g-hour` at the inner ear. These are not biological dose equivalents.
+  Exact delivered minutes are not public. The implementation overview counts
+  `12/960` interrupted sessions, `10` aborted and `2` resumed; its reason
+  classification differs from the dedicated tolerability paper and is retained
+  as a source-level discrepancy rather than silently reconciled.
+
+### Frett et al. - Dedicated tolerability and adverse-event report
+
+- **Link:** https://doi.org/10.1371/journal.pone.0239228.
+- **Type:** Peer-reviewed primary tolerability analysis from the same 16
+  exposed AGBRESA participants.
+- **Quality:** High for session-level monitored events; limited by healthy
+  selection, no sham, `n=8` per schedule, restricted head motion, symptom-
+  triggered muscle pumping, and absence of an unexposed questionnaire control.
+- **Citation:** Timo Frett et al., “Tolerability of daily intermittent or
+  continuous short-arm centrifugation during 60-day 6 degrees head down bed
+  rest (AGBRESA study),” *PLOS ONE* **15**(9), e0239228 (2020), DOI
+  `10.1371/journal.pone.0239228`.
+- **Results:** Of `960` initiated runs, `10` (`1.0417%`) ended early: `7`
+  presyncope (`0.7292%`), `1` severe motion sickness, and `2` biopsy pain.
+  Events involved `6/16` exposed participants (`37.5%`). All resumed on later
+  days and no serious adverse event occurred. Two continuous-arm participants
+  had frequent isolated PVCs on 14 nonconsecutive days; causation could not be
+  assigned. Daily motion-sickness score was `3.05` continuous versus `1.58`
+  intermittent (`p=.001`), and early stops were `8` versus `2`. This supports
+  marginal tolerability advantage for intermittent exposure, not physiological
+  efficacy superiority. Participants could contract calf, trunk, and gluteal
+  muscles when symptomatic, so passive inertial loading was not isolated.
+
+### Culliton et al. - Vertebral BMAT and BMD
+
+- **Link:** https://doi.org/10.1093/jbmr/zjaf119; open full text at
+  https://pmc.ncbi.nlm.nih.gov/articles/PMC12578298/.
+- **Type:** Peer-reviewed 2025 primary outcome analysis from the same AGBRESA
+  cohort, with long follow-up and three BMAT MRI methods.
+- **Quality:** Valuable controlled human-analog evidence; fragile because
+  allocation was semi-random, arms were `n=8`, BMI differed at baseline
+  (`p=.043`), there was no sham or reported analyst blinding, the prospective
+  BMAT hierarchy is unrecoverable, and the paper explicitly used no correction
+  for multiple hypothesis testing.
+- **Citation:** Kathryn Culliton, Gerd Melkus, Adnan Sheikh, Tammy Liu, Alain
+  Berthiaume, Gabi Armbrecht, and Guy Trudel, “Artificial gravity protects bone
+  and prevents bone marrow adipose tissue accumulation in humans during 60 d
+  of bed rest,” *Journal of Bone and Mineral Research* **40**(11), 1218-1227
+  (2025), DOI `10.1093/jbmr/zjaf119`.
+- **BMAT result:** At HDT60, change in raw BMAT percentage points was control
+  `+3.93` (95% CI `-0.28, 8.14`), continuous `-1.21` (`-4.01, 1.59`), and
+  intermittent `0.00` (`-2.48, 2.48`). The descriptive control-minus-AG
+  differences are `5.14` and `3.93` points. The sole arm comparison is a
+  three-arm Kruskal-Wallis omnibus test (`H=6.860`, `p=.032`); no pairwise
+  contrast, CI, or adjusted p-value identifies either regimen as superior to
+  control. No arm differed from its own baseline. Male-only cells `6/5/5`
+  produced omnibus `p=.014`, but there was no treatment-by-sex interaction;
+  female cells were only `2/3/3`. The defensible result is a qualified
+  allocation-associated BMAT signal requiring confirmation, not demonstrated
+  regimen-specific prevention.
+- **BMD kill:** Control changed `-0.028 g/cm^2` at HDT60 (95% CI
+  `-0.045, -0.010`, within-arm `p=.007`), while continuous changed
+  `-0.019 g/cm^2` at HDT30 (`p=.036`). The paper explicitly reports no
+  significant differences between interventions. Comparing a significant
+  within-control change with nonsignificant changes elsewhere is not a
+  treatment effect; “prevents bone loss” is therefore not supported by the
+  controlled between-arm evidence.
+- **Missingness and access:** All 24 completed HDT60/early recovery. Three
+  missed R480 due to COVID-19. Technical exclusions left `415/432` MR scans,
+  `141/144` DXA scans, `1516/1584` BMAT vertebrae, and `546/576` BMD vertebrae.
+  Data are available only by author request with ESA permission.
+
+### Kramer et al. - Aerobic and muscle-function outcomes
+
+- **Link:** https://doi.org/10.1007/s00421-021-04673-w.
+- **Type:** Peer-reviewed primary performance analysis from the same cohort.
+- **Quality:** Appropriate controlled repeated-measures tests, but many
+  outcomes, `n=8` per arm, no strict assessor/analyst blinding, and no post-hoc
+  arm contrasts because interindividual variability exceeded many arm effects.
+- **Citation:** Andreas Kramer et al., “Daily 30-min exposure to artificial
+  gravity during 60 days of bed rest does not maintain aerobic exercise
+  capacity but mitigates some deteriorations of muscle function: results from
+  the AGBRESA RCT,” *European Journal of Applied Physiology* **121**(7)
+  (2021), DOI `10.1007/s00421-021-04673-w`.
+- **Results:** Relative VO2max fell about `20%/23%/24%` in intermittent,
+  continuous, and control arms; group-by-time `p=.31`. Omnibus interactions
+  favored the intervention arms for jump power (`-25%/-26%/-33%`, `p<.001`),
+  plantar-flexion strength (`-35%/-31%/-48%`, `p=.003`), and plantar-flexion
+  rate of force development (`-28%/-12%/-40%`, `p=.020`). The authors did not
+  run post-hoc arm contrasts. Variable anti-presyncope lower-limb contractions
+  plausibly contributed. This is partial mitigation of selected function, not
+  maintained muscle function or evidence for either regimen's superiority.
+
+### Hoenemann et al. - Orthostatic tolerance
+
+- **Link:** https://doi.org/10.1007/s10286-023-00959-5.
+- **Type:** Peer-reviewed primary analysis of a prospectively listed endpoint.
+- **Quality:** Strongest recovered endpoint-level positive signal, with the
+  paper's reported survival analysis for its defined primary objective and
+  multiplicity-adjusted secondary tests; no dated SAP showing that exact
+  analysis was recovered. Semi-random allocation, `n=8` arms, and substantial
+  baseline imbalance remain.
+- **Citation:** J.-N. Hoenemann et al., “Effects of daily artificial gravity
+  training on orthostatic tolerance following 60-day strict head-down tilt
+  bedrest,” *Clinical Autonomic Research* **33**, 401-410 (2023), DOI
+  `10.1007/s10286-023-00959-5`.
+- **Results:** Time to presyncope changed by `-801 +/- 354 s` control,
+  `-323 +/- 235 s` continuous, and `-296 +/- 508 s` intermittent, with
+  bed-rest-by-countermeasure interaction `p=.0249`. But baseline means already
+  differed (`1376/934/896 s`, `p=.047`), while derived post means converged near
+  `575/611/600 s` and the post-bed-rest between-group p-value was `.5279`.
+  The `478-505 s` apparent attenuation is therefore a qualified change-score
+  signal from a baseline-advantaged control arm; baseline-adjusted individual-
+  level confirmation is needed. Passive tilt plus lower-body negative pressure
+  may not transfer to active standing, lunar/Martian locomotion, or flight.
+
+### Hoffmann et al. - Cardiac adaptation
+
+- **Link:** https://doi.org/10.1002/ehf2.13103.
+- **Type:** Peer-reviewed primary cardiac morphology/function analysis from
+  the same cohort.
+- **Quality:** High for the measured imaging and hemodynamics; underpowered for
+  small arm effects.
+- **Citation:** Fabian Hoffmann et al., “Cardiac adaptations to 60 day
+  head-down-tilt bed rest deconditioning. Findings from the AGBRESA study,”
+  *ESC Heart Failure* **8**(1), 729-744 (2021), DOI `10.1002/ehf2.13103`.
+- **Result:** No group differences were observed, so the investigators pooled
+  all 24 participants. Cardiac output, stroke-volume index, and left-
+  ventricular end-diastolic volume decreased while resting and orthostatic
+  heart rate increased. The authors conclude that AG did not abolish
+  cardiovascular deconditioning. This negative system-level result prevents a
+  multipurpose-countermeasure claim.
+
+### Hoenemann et al. - Autonomic cardiovascular control
+
+- **Link:** https://doi.org/10.3389/fcvm.2023.1250727.
+- **Type:** Peer-reviewed primary autonomic-control analysis from the same
+  AGBRESA cohort.
+- **Quality:** Appropriate physiological measures and repeated comparisons;
+  still limited by the shared semi-random `n=8` arms and multiple outcomes.
+- **Citation:** J.-N. Hoenemann et al., “Impact of daily artificial gravity on
+  autonomic cardiovascular control following 60-day head-down tilt bed rest,”
+  *Frontiers in Cardiovascular Medicine* **10**, 1250727 (2023), DOI
+  `10.3389/fcvm.2023.1250727`.
+- **Result:** The analysis recovered no bed-rest-by-intervention interactions
+  showing protection of heart-rate variability or baroreflex sensitivity and
+  concluded that up to `30 min/day` at `1Gz` COM did not suffice to prevent
+  changes in autonomic cardiovascular control. This is another direct limit on
+  the multipurpose claim, not evidence that every longer or combined protocol
+  would fail.
+
+- **E-042 synthesis:** Gate 1 passes with explicit motor/contact/support/Earth
+  reaction. Gate 2 is partial because of semi-random allocation, small arms,
+  endpoint hierarchy/multiplicity, protocol discrepancy, muscle pumping, and
+  analog-to-flight limits. Gate 3 passes for meaningful inertial loading at
+  human scale, not uniform gravity or curvature. Gate 4 passes because the
+  controlled trial generated falsifiable positive and negative system-specific
+  outcomes with named confounders. P-022 survives only as established inertial
+  loading with qualified BMAT/orthostatic signals; H-026's multipurpose claim
+  is rejected. Broad E-008 stays parked. P-023 becomes the distinct E-043
+  same-unit EHD fluid-force/reaction audit.
