@@ -3543,3 +3543,188 @@ bed-rest analog, not a conventional randomized controlled trial.
   loading with qualified BMAT/orthostatic signals; H-026's multipurpose claim
   is rejected. Broad E-008 stays parked. P-023 becomes the distinct E-043
   same-unit EHD fluid-force/reaction audit.
+
+## 2026-08-15 - E-043 PSI-9 EHD/DEP Force, Heat, and Reaction Audit
+
+### NASA PSI-9 investigation and data guide
+
+- **Links:** https://psi.nasa.gov/physci/repo/data/investigations/PSI-9 and
+  https://psi.nasa.gov/geode-py/ws/studies/PSI-9/download?file=PSI-9_Science%20Documents_EHD_Data_Guide.pdf&version=1.
+- **Type:** Official NASA Physical Sciences Informatics investigation record,
+  DOI `10.60555/18fc-8d56`, and the released experiment/data guide.
+- **Quality:** Primary apparatus, flight-matrix, telemetry, and data-product
+  source. It documents measured channels but does not release the COMSOL
+  field/charge map, mesh, calibrated film/bubble kinematics, pump curve, or
+  support-force observable needed for a complete force budget.
+- **Frozen apparatus:** Nominal `2 mm` HFE-7100 film and `100 g` charge; radial
+  Pt-on-silicon EHD pump with characteristic `d=254 um`; grate DEP electrode
+  `1.6 mm` above the grounded heater. The EHD method reaches `1.5 kV`; Flights
+  1 and 3 used `1.0 kV`, Flight 4 used `1.5 kV`, and DEP used `2.0 kV` DC.
+  Flight 4 substituted an unspecified wider-slit electrode, fresh fluid, had
+  possible noncondensables and a breaker interruption, and was excluded from
+  the journal result. The nominal charge, disk area, and `2 mm` film depth are
+  not geometrically reconciled. Journal Fig. 11 captions label flight EHD
+  cases `1.5 kV`, conflicting with the data-guide matrices; the `50 Pa at
+  1.5 kV` pump reference is therefore not assigned to Flights 1/3. The
+  campaign reports `120` parabolas but the guide lists `118` individual
+  condition files, with Flight 4 conditions 23-24 missing. Its introduction
+  says three flight days while the detailed map and journal say four.
+- **Measurement boundary:** Temperature, terminal voltage/current, absolute
+  pressure, baseplate acceleration, and video were measured. Heat flux and
+  heat-transfer coefficient were derived. The reported field maximum, assumed
+  bubble size, buoyancy, DEP force, and approximate pump head were modeled or
+  inferred. The flight heater area is inconsistent: journal `2.25 cm^2`, data
+  guide `2.36 cm^2`, and a `0.625 in` square is `2.520 cm^2`. Later terrestrial
+  testing used a different `1.0 cm^2` heater and smaller DEP hardware.
+
+### Castaneda et al. - Primary heat-transfer result
+
+- **Link:** https://doi.org/10.1115/1.4055566.
+- **Type:** Peer-reviewed primary experiment, “Dielectrophoretically-Assisted
+  Electrohydrodynamic-Driven Liquid Film Flow Boiling in the Presence and
+  Absence of Gravity,” *Journal of Heat and Mass Transfer* **145**, 031601
+  (2023).
+- **Quality:** Best primary result source for geometry, property correlations,
+  thermal outcomes, and the reported/model-derived force scales. The
+  parabolic-flight segments are transient, terrestrial follow-on hardware is
+  different, and the calculation is not a direct bubble-force measurement.
+- **Absolute anchors:** Approximate EHD head `50 Pa` at `1.5 kV` versus about
+  `30 Pa` for a `2 mm` liquid column; bubble-free COMSOL maximum
+  `5.0e6 V/m`; assumed `a=0.1 mm` bubble; modeled buoyancy `6.02e-8 N` and
+  maximum DEP `5.5e-7 N`. Terrestrial CHF changes
+  `9.76 -> 15.63 W/cm^2`; transient-flight dryout changes about
+  `5.5 -> 7.0 W/cm^2`. The paper expressly cautions that the flight dryout is
+  not necessarily true steady-state CHF. Electrical steady state is described
+  only as taking “several minutes,” with no exact duration, versus `15-20 s`
+  microgravity intervals.
+- **Bubble-size provenance:** The `0.1 mm` radius is a Zuber-based estimate in
+  the paper's Eq. 4 at `q''=2 W/cm^2` and `Delta T=15 C`, not a measured bubble
+  distribution and not the paper's separate Rohsenow boiling-curve relation.
+- **Electrical boundary:** The journal gives total current below `0.3 mA` and
+  maximum HV power at most `0.6 W`; a ground-result passage gives `0.4 W`.
+  NASA's guide separately states flight values below `0.1 mA` and `0.1 W`.
+  The tighter flight-only values are nested within the looser all-condition
+  journal bounds and do not conflict. These different-scope terminal summaries
+  omit synchronized branch power, converter, chiller, DAQ, rack, and closed
+  calorimetric power, so capacity-gain/HV ratios are not COP.
+- **Properties and uncertainty:** At `15 C`, the paper's correlations give
+  `rho=1503.925 kg/m^3`, `epsilon_r=7.0069`,
+  `sigma=1.3581e-8 S/m`, and charge-relaxation time `4.568 ms`; its later DEP
+  calculation instead uses `epsilon_r=7.4`. Reported uncertainties include
+  `3.1%` heat flux, `14%` heat-transfer coefficient, `0.7 C` temperature
+  difference, and `2.5 uA` EHD/DEP current.
+
+### Applicable continuum electromechanics
+
+- **Conduction-pump model:** Vázquez et al., “In-Depth Description of
+  Electrohydrodynamic Conduction Pumping of Dielectric Liquids: Physical Model
+  and Regime Analysis,” *Physics of Fluids* **31**, 113601 (2019),
+  DOI `10.1063/1.5121164`. This is the PSI team's primary ion-dissociation,
+  transport, recombination, heterocharge, and flow model. It shows why
+  `J=sigma E` alone is insufficient to reconstruct the pump and why electrode
+  injection/neutralization boundary conditions matter.
+- **Force law:** J. R. Melcher, *Continuum Electromechanics*, chapter 3,
+  https://ocw.mit.edu/ans7870/resources/melcher/resized/cem_811.pdf. For one
+  consistent linear dielectric convention,
+  `T_M=epsilon(EE-E^2 I/2)` and
+  `f_e=rho_e E-E^2 grad(epsilon)/2` plus electrostriction. Electrostriction can
+  be absorbed into pressure for one isothermal incompressible phase, not
+  silently across a boiling interface. A bulk permittivity-gradient force and
+  a sharp-interface Maxwell traction are alternative representations, not
+  additive terms.
+- **Bubble DEP:** Jones and Bliss, “Bubble Dielectrophoresis,” DOI
+  `10.1063/1.323806`. The small undeformed sphere formula is an approximation,
+  not an interface-resolved result. Taylor's leaky-dielectric interface paper,
+  DOI `10.1098/rspa.1966.0086`, and Saville's review, DOI
+  `10.1146/annurev.fluid.29.1.27`, establish that DC interface charge can
+  produce tangential electric shear and circulation.
+- **Thermal coupling:** Ramos et al., DOI
+  `10.1088/0022-3727/31/18/021`, provides the Joule/electrothermal framework.
+  From PSI's published property correlations, a declared sensitivity—not a
+  measurement—with `15 K` aligned across the `1.6 mm` DEP gap gives direct
+  permittivity-gradient pressure about `2.70 Pa` and DC thermocharge/Coulomb
+  pressure about `47.31 Pa`, comparable with the reported pump head. The
+  characteristic mean-field Joule density is `2.12e4 W/m^3`; a fictitious
+  uniform `1 cm^2 x 1.6 mm` volume would dissipate `3.40 mW`, but the public
+  field and conductivity maps do not permit a real volume integral.
+- **Surface tension:** 3M, *Novec 7100 Engineered Fluid Technical Data Sheet*,
+  https://multimedia.3m.com/mws/media/1613377O/3mtm-novectm-7100-engineered-fluid-technical-data-sheet.pdf,
+  reports `13.6 mN/m` at `25 C`. For the assumed bubble, the circular
+  contact-line scale is `8.55e-6 N`, `15.5x` the modeled DEP force; it is a
+  confounder scale, not a detachment law.
+
+### E-043 same-unit synthesis
+
+- The `50 Pa` head is about `1.69g` across only the nominal `2 mm` HFE film
+  using the `15 C` correlated liquid density and
+  `4.38%` of the EHD-gap Maxwell energy-pressure scale. Neither figure is pump
+  efficiency; flow rate is missing. The reported bubble force is `9.14x` the
+  paper's one-g buoyancy estimate and implies
+  `abs(grad(E^2))=3.30e15 V^2/m^3`. Using the correlated liquid density gives
+  an independent `8.90g` force-per-displaced-liquid-mass scale. Neither is
+  measured free-bubble acceleration.
+- The point-dipole approximation is marginal: `a/(reported 0.508 mm grate
+  gap/feature scale)~=0.20`; local
+  `Ca_E~=12` at the reported edge field; and the low-frequency DC
+  leaky-dielectric coefficient `-0.5` is about `23%` larger in magnitude than
+  the paper's pure-permittivity value `-0.405`. Interface deformation, charge,
+  drag, wall effects, capillarity, coalescence, Marangoni stress, boiling
+  recoil, residual acceleration, noncondensables, and electroconvection remain.
+- Reaction closes from supplies/wires to electrodes, field/charge, fluid and
+  vapor, heater/chamber, supports/rack, and aircraft or spacecraft. The full
+  sealed cell cannot accelerate its center of mass internally. Even filling
+  the largest candidate heater volume with the reported local maximum field
+  gives field-energy mass equivalent `4.59e-21 kg`, optimistic acceleration
+  `3.07e-27 m/s^2` at `1 cm`, and curvature scale `~1.7e-40 m^-2`.
+- **Gate result:** Gate 1 passed in principle; Gate 2 partial; Gate 3 passed for
+  this small two-phase thermal/fluid device and failed for universal gravity or
+  useful engineered curvature; ordinary field energy still sources genuine
+  negligible GR curvature. Gate 4 is partial. P-023/H-027 survive only as composition-dependent
+  spacecraft-fluid control. Do not deepen again without released field/charge
+  maps, a measured `delta_p-Q` curve, synchronized reaction forces and
+  calorimetry, and steady microgravity.
+
+## 2026-08-15 - Diversified Replacement Screen after P-023
+
+- **P-027 nanofabricated mutual-gravity torsion pendula:** Manley et al.,
+  *Physical Review Applied* **25**, 054033 (2026), DOI
+  `10.1103/mnrd-3bm2`. Two `32 g` tungsten masses at `30 mm` imply ordinary
+  `F~=7.6e-11 N` and `a~=2.4e-9 m/s^2`; the paper projects `0.7 microHz`
+  mode splitting and a `2 sigma` result in just over two hours if vacuum
+  `Q~=1e6` and readout hold.
+  Retain as real-Newtonian calibration; vacuum Q and same-frequency patch,
+  tilt, vibration, thermal, creep, and readout budgets are the cheap gate.
+- **P-028 Earth-sourced axion-gradient photon interferometry:** Fedderke et
+  al., *Physical Review D* **109**, 015025 (2024), DOI
+  `10.1103/PhysRevD.109.015025`. Explicit Earth scalar-monopole and
+  axion-photon couplings yield opposite-helicity phase. The historical
+  current-limit benchmark is about `6e-12 rad` at finesse `1e4`, `1 m`; the
+  `1 MW`, `300 d` stronger reach is projection-only. Advance E-044 to update
+  both constraints in one convention and compare the allowed phase with
+  measured birefringence and thermal/mechanical noise.
+- **P-029 digital cosmological-particle simulator:** Maceda and Sabín,
+  *Scientific Reports* **15**, 3476 (2025), DOI
+  `10.1038/s41598-025-87015-6`. Four qubits, `96` two-qubit plus `226`
+  one-qubit gates per observable, and about `52%` raw observable error emulate
+  a truncated `1+1` FLRW Bogoliubov map. This is simulated QFT dynamics, not
+  generated particles or curvature; retain only as analog methodology.
+- **P-030 common-propellant chemical/electrospray propulsion:** NASA NTRS
+  `20250008918` and `20240007811`. The architecture uses ordinary expelled
+  ASCENT propellant: `0.1 N`, `215 s` chemical plus total `20-80 microN`,
+  `1800-2800 s` electrospray. It passes spacecraft propulsion scale and direct
+  thrust/orbit falsification, but is conventional external reaction only.
+- **P-031 GQuEST/QUEST:** GQuEST design, *Physical Review X* **15**, 011034
+  (2025), DOI `10.1103/PhysRevX.15.011034`; QUEST broadband result,
+  *Physical Review Letters* **135**, 101402 (2025), DOI
+  `10.1103/61j9-cjkk`, arXiv:`2410.09175`. The `5 m`, `10 kW` design targets
+  `3e-22 m/sqrt(Hz)` at `17.6 MHz` with an order-`1e5 s` test; QUEST measured
+  about `3e-20 strain/sqrt(Hz)` at `40 MHz`. Retain only as a model-specific
+  quantum-spacetime null watch; the ambient source is hypothetical and not an
+  actuator.
+- **Portfolio decision:** The five replacements are genuinely distinct: real
+  Newtonian precision gravity, hypothetical sourced new interaction, digital
+  analog dynamics, conventional reaction propulsion, and ambient-spacetime
+  precision phenomenology. None enables practical artificial gravity,
+  universal inertial control, reactionless propulsion, or spacetime
+  engineering. Only P-023 was deepened this run; P-028 earns the next cheap
+  constraint/noise audit.

@@ -1237,6 +1237,67 @@ Faster-than-light travel generally creates causality issues in relativity. Any p
   `10.3389/fcvm.2023.1250727`; Culliton et al. 2025, DOI
   `10.1093/jbmr/zjaf119`; internal E-042 audit, 2026-08-14.
 
+### B-046: Local EHD/DEP Fluid Control Is Neither Universal Gravity Nor Net Thrust
+
+- **Claim:** PSI-9 demonstrates ordinary electromagnetic control of a specified
+  dielectric liquid/vapor system at useful apparatus scale. It does not create
+  universal free fall, modified inertia, net closed-system thrust, or useful
+  spacetime curvature. DC EHD acts through free charge; DEP acts through the
+  permittivity and conductivity contrast and liquid-vapor interface. Both are
+  composition-, phase-, geometry-, field-, and temperature-dependent.
+- **Why it matters:** The primary record supplies unusually useful absolute
+  anchors for an analog: about `50 Pa` pump head at the generic `1.5 kV`
+  reference (not assigned to Data Guide Flights 1/3), a modeled
+  `5.5e-7 N` force on an assumed `0.1 mm` bubble at `2 kV`, transient-flight
+  dryout `5.5 -> 7.0 W/cm^2`, terrestrial CHF `9.76 -> 15.63 W/cm^2`, and a
+  terminal HV ceiling at most `0.6 W`. But pressure and bubble force were not
+  measured in situ, and dividing capacity gain by an HV ceiling is not system
+  COP. The flight dryout is not steady-state CHF. The missing field/charge map,
+  `delta_p-Q` curve, support load, calorimetry, and chiller/system input prevent
+  hydraulic, force, and energy closure.
+- **Strength:** Established for conservation and the category boundary; mixed
+  for mechanism attribution and scale-up. The force law is
+  `f_e=rho_e E - E^2 grad(epsilon)/2` plus electrostriction under one consistent
+  pressure convention, equivalently integrated by Maxwell stress without
+  double-counting interface traction. The reported bubble force is `9.14x`
+  the paper's one-g buoyancy estimate; dividing by correlated displaced-liquid
+  mass gives an `8.90g` force-per-mass scale, not a measured acceleration. The sphere is not
+  demonstrably asymptotic (`a/0.508 mm feature width~=0.20`), local electric capillary number is
+  about `12`, the capillary circumference scale is `15.5x` larger than modeled
+  DEP, and the DC leaky-dielectric coefficient differs about `23%` from the
+  paper's pure-permittivity coefficient. A declared `15 K` parallel-gradient
+  sensitivity gives a conventional thermocharge pressure near `47 Pa`, similar
+  to the reported pump head; it is a confounder bound, not a PSI measurement.
+- **Assumptions:** Published nominal geometry and terminal scales are accepted
+  with provenance. The flight heater area conflict (`2.25`, `2.36`, or
+  geometric `2.520 cm^2`) is preserved, and the different `1 cm^2` terrestrial
+  hardware is not compared as a gravity-only change. The reported bubble-free
+  COMSOL maximum `5 MV/m`, modeled bubble radius, and force are not converted
+  into experimental measurements. The real-curvature screen deliberately
+  overfills the largest candidate heater volume with the local maximum field;
+  even then field energy gives only `3.07e-27 m/s^2` at `1 cm` and curvature
+  scale about `1.7e-40 m^-2`.
+- **Operational rule:** Classify a pass only as spacecraft two-phase
+  thermal/fluid analog control. Close momentum through powered electrodes,
+  liquid/vapor, heater, chamber, supports, supply, rack, and vehicle; close
+  energy through heater, HV supplies, field storage, phase change, condenser,
+  chiller, and losses. Do not call local Maxwell traction an integrated useful
+  force or a bubble-force ratio actual acceleration. Do not deepen P-023 again
+  without released field/charge maps, a measured pressure-flow curve,
+  synchronized local and whole-cell reaction forces, thermal calorimetry,
+  steady microgravity, and dominant confounders below one tenth of signal.
+- **Possible cracks:** Those measurements could qualify the actuator for
+  spacecraft boiling/condensation hardware and reveal which Coulomb, DEP,
+  thermal, capillary, and electrochemical terms dominate. They cannot turn a
+  closed internal electromagnetic fluid loop into reactionless propulsion or
+  a universal gravitational field. Absent coupling to an external field,
+  plasma, or body, only exported radiation or mass would create conventional
+  external thrust; PSI-9 has no such external momentum coupling.
+- **Sources:** NASA PSI-9 DOI `10.60555/18fc-8d56`; Castaneda et al. 2023,
+  DOI `10.1115/1.4055566`; Vázquez et al. 2019, DOI
+  `10.1063/1.5121164`; 3M Novec 7100 technical data sheet; internal E-043
+  audit, 2026-08-15.
+
 ## Boundary Entry Template
 
 ```markdown
