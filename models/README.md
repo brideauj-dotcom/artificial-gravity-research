@@ -1938,3 +1938,29 @@ flight efficacy, and any curvature or inertial-control interpretation. The
 nominal `g-hour` values are explicitly mechanical proxies, not biological dose
 equivalence. Broad E-008 stays parked; no clinical intervention, hardware,
 PDE, checkpoint, or compute expansion occurs.
+
+## E-043 PSI-9 EHD/DEP liquid-film audit
+
+`e043_ehd_liquid_film_audit.py` is a deterministic same-unit force, heat,
+reaction, and claim audit for NASA PSI-9. It freezes the published HFE-7100
+film and electrode geometry, distinguishes measured telemetry from modeled
+field/bubble quantities, evaluates the Maxwell/Korteweg-Helmholtz and point-
+dipole DEP scales, preserves the flight-heater-area and terminal-power
+discrepancies, closes ordinary apparatus backreaction, applies all four
+portfolio gates, and records five distinct replacement candidates.
+
+Run the bounded audit with:
+
+```bash
+python3 models/e043_ehd_liquid_film_audit.py --report-json /tmp/e043.json
+```
+
+The report retains P-023 only as composition-dependent spacecraft two-phase
+thermal/fluid control. Reported/inferred anchors are about `50 Pa`,
+`5.5e-7 N` on an assumed `0.1 mm` bubble, transient-flight dryout
+`5.5 -> 7.0 W/cm^2`, terrestrial CHF `9.76 -> 15.63 W/cm^2`, and terminal HV
+at most `0.6 W`. It does not relabel those anchors as measured volume force,
+hydraulic/system efficiency, actual bubble acceleration, universal gravity,
+net thrust, or useful curvature. No PDE, field reconstruction, hardware,
+checkpoint, or compute expansion occurs. E-044 becomes the next no-hardware
+P-028 product-constraint and optical-noise audit.

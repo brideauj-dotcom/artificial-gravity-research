@@ -13,7 +13,7 @@ Use this file to choose future nightly focus questions.
 - Which energy-condition assumptions are most central to warp metrics and wormhole-like geometries?
 - Can negative-energy/Casimir configurations generate any controllable stress-energy distribution that survives quantum-inequality limits at useful size and duration?
 - Are there analog gravity systems that reveal controllable behaviors mathematically similar to horizons, curvature, or metric engineering?
-- Can the P-023 electrically driven liquid-film result supply a same-unit EHD/DEP force-density, integrated-force, flow-performance, electrical-input, heating, and full-reaction budget at useful spacecraft-fluid scale, or is “electric gravity” only an uncalibrated analog label?
+- After putting the current Earth-source, equivalence-principle, astrophysical, and axion-photon limits in one convention, what P-028 helicity phase remains, and are measured cavity birefringence, polarization mixing, thermal-length, mechanical, magnetic, and rotation-synchronous backgrounds below one tenth of it?
 - Which genuinely distinct candidates should replace a parked line when none passes a useful-gravity scale, and which detector-, analog-, or propulsion-scale survivors still create worthwhile adjacent-science opportunities without being mislabeled artificial gravity?
 - Can any physically specified scalar actuator maintain both the offset needed to keep macroscopic bodies unscreened and a meter-scale gradient, while closing hull penetration, backreaction, quantum/EFT validity, and reaction momentum?
 
@@ -35,6 +35,23 @@ Use this file to choose future nightly focus questions.
 
 ## Retired Or Answered
 
+- Can the P-023 PSI-9 electrically driven liquid-film result close a same-unit
+  force, heat, and reaction budget? Answered as mixed/supportive at device scale
+  by E-043 on 2026-08-15. The public primary record supplies about `50 Pa` EHD
+  head, a modeled `5.5e-7 N` DEP force on an assumed `0.1 mm` bubble, transient
+  flight dryout near `5.5 -> 7.0 W/cm^2`, terrestrial CHF
+  `9.76 -> 15.63 W/cm^2`, and terminal HV at most `0.6 W`. The bubble-force ratio
+  is `9.14` relative to one-g buoyancy, but it is not a measured acceleration:
+  `a/0.508 mm feature width~=0.20`, local `Ca_E~=12`, and the capillary circumference scale is
+  about `15.5x` the modeled DEP force. No released field/charge map,
+  pressure-flow curve, calibrated film/bubble motion, support force,
+  calorimetry, whole-system input, or steady microgravity result closes
+  mechanism or scale-up. Electrode/fluid/structure/supply/chiller/vehicle
+  reactions are ordinary and internal; a deliberately favorable field-energy
+  screen is only `3.07e-27 m/s^2` at `1 cm` and is not an apparatus bound.
+  P-023 remains composition-dependent
+  spacecraft thermal/fluid control, not universal gravity, inertial control,
+  thrust, or spacetime engineering. H-027 and B-046 freeze this boundary.
 - What dose/outcome relationship did the materially new 2025 AGBRESA 60-day
   bed-rest trial establish? Answered by E-042 on 2026-08-14 as mixed and
   endpoint-specific. The `3.8 m` value is apparatus radius, not loaded foot
