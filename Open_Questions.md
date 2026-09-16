@@ -13,7 +13,7 @@ Use this file to choose future nightly focus questions.
 - Which energy-condition assumptions are most central to warp metrics and wormhole-like geometries?
 - Can negative-energy/Casimir configurations generate any controllable stress-energy distribution that survives quantum-inequality limits at useful size and duration?
 - Are there analog gravity systems that reveal controllable behaviors mathematically similar to horizons, curvature, or metric engineering?
-- After putting the current Earth-source, equivalence-principle, astrophysical, and axion-photon limits in one convention, what P-028 helicity phase remains, and are measured cavity birefringence, polarization mixing, thermal-length, mechanical, magnetic, and rotation-synchronous backgrounds below one tenth of it?
+- Can P-034's trapped-ion proper-time experiment distinguish relativistic clock-motion entanglement from a number-dephased separable mixture, while jointly demonstrating the assumed trap frequency, squeezing, coherence and same-visibility noise budget? E-045 must compare the closed reduced model with its short-time expansion before qualifying a joint witness; clock-only visibility loss and echo recovery are insufficient by themselves.
 - Which genuinely distinct candidates should replace a parked line when none passes a useful-gravity scale, and which detector-, analog-, or propulsion-scale survivors still create worthwhile adjacent-science opportunities without being mislabeled artificial gravity?
 - Can any physically specified scalar actuator maintain both the offset needed to keep macroscopic bodies unscreened and a meter-scale gradient, while closing hull penetration, backreaction, quantum/EFT validity, and reaction momentum?
 
@@ -34,6 +34,8 @@ Use this file to choose future nightly focus questions.
 - Can intermittent short-radius centrifugation provide enough physiological protection to avoid full-time rotating habitats? Broad program remains parked by user preference. E-042 audited the one materially new 60-day platform without reopening a general program; it found no minimum effective dose or schedule-superiority result.
 
 ## Retired Or Answered
+
+- Can P-028's source and optical phase be qualified after current constraints? Answered 2026-09-16 as a negative qualification: in the baryon-only `m<=1e-14 eV` scope, the September pulsar paper's approximate present interpulse product boundary `abs(gB*g_gamma) ~=8e-39 GeV^-1` gives massless phase `1.41725065e-13 rad`. This assumes the stated stellar profile, dipolar return-current geometry and near-surface radio pair cascades, with interpulse confidence unstated; it is not a predicted signal or global allowed region. Earlier three factor comparisons omit this bound. The stronger death-line curve has no exact numeric data recovered, and Eq. (22)'s prospective value is excluded. Ideal full-rotation peak SNR is `3.936e-6` adjacent or `4.33462` octave at declared `1 MW/300 d`, before projection or technical noise. Octave spacing has no measured same-helicity/rotation/dispersion budget; achromatic spin-rotation is spectrally degenerate. P-028/H-028 remain parked until E-044 reopening conditions are met. Higher-mass combined admissibility is unknown.
 
 - Can the P-023 PSI-9 electrically driven liquid-film result close a same-unit
   force, heat, and reaction budget? Answered as mixed/supportive at device scale

@@ -1298,6 +1298,88 @@ Faster-than-light travel generally creates causality issues in relativity. Any p
   `10.1063/1.5121164`; 3M Novec 7100 technical data sheet; internal E-043
   audit, 2026-08-15.
 
+### B-047: An Achromatic Phase Is Not a Qualified Sourced-Field Signal
+
+- **Claim:** P-028's conditional sourced-ALP phase does not yet define a
+  detector-qualified new-interaction opportunity. Ordinary spin-rotation
+  shares its helicity, achromaticity and storage-time dependence. Color
+  subtraction alone leaves an exact axion/rotation degeneracy; unrestricted
+  coating dispersion is also unidentifiable from finitely many colors.
+- **Useful scale:** In the baryon-only, homogeneous-Earth model with
+  `m<=1e-14 eV`, the approximate present pulsar interpulse product boundary
+  `abs(gB*g_gamma) ~=8e-39 GeV^-1` gives massless phase `1.41725065e-13 rad`
+  (`1.88494336e-24 m` equivalent differential cavity length). This is a
+  model-dependent constraint scale, not a predicted signal or joint-confidence bound.
+  At a declared aggregate `1 MW` and 300 days, optimal adjacent-longitudinal-
+  mode subtraction gives ideal full-rotation peak SNR `3.936e-6`; octave
+  spacing gives `4.33462`, before geometric projection or technical noise.
+  There is no measured common resource/transfer/noise tuple. The earlier
+  cluster/solar/laboratory factor comparisons explicitly omit this pulsar
+  constraint; the cluster phase `7.366e-12 rad` is `51.975x` larger and is
+  not a currently allowed maximum.
+  At illustrative 45-degree latitude, two stated spin-response conventions
+  give ordinary Earth terms about `1.545e4` and `3.090e4` times the target.
+  Coherent axial-rate residuals must be below `3.337e-10` or
+  `1.669e-10 rad/s` before additional
+  signal-projection losses. These coefficients are examples, not a certified
+  interval for the unbuilt optical system. Coherent phase must be below
+  `0.1 S=1.417e-14 rad`; hypothetical white equivalent-length ASD for SNR
+  one over 300 days is `9.597e-21 m/sqrt(Hz)`.
+- **Strength:** Established mathematics for estimator conditioning and
+  nuisance-rank degeneracy; modeled for scalar and cavity transfer;
+  unqualified experimentally. The finite-range combined constraint region
+  above the audited low-mass band is unknown. Sparse satellite-only weakening
+  cannot be promoted to a newly allowed large signal. The cluster model,
+  solar-production and laboratory-only photon comparisons remain distinct
+  and do not include the pulsar constraint. The latter uses the same generic
+  linear nucleon source without a QCD mass relation or dark-matter abundance,
+  conditional on an APR one-solar-mass scalar neutron-star profile, dipolar
+  return-current geometry and near-surface radio pair cascades. Its approximate
+  interpulse exclusion has no separately stated confidence. The somewhat
+  stronger death-line curve has an author 95% construction but no exact
+  numeric curve recovered here; Eq. (22)'s `2e-39` sign/geometry-dependent
+  prospective reach is not a present bound.
+- **Assumptions and negative controls:** Reflected opposite-helicity phase is
+  not transmitted ellipticity or linear-polarization resonance splitting.
+  PVLAS's favorable `3-6e-19 m/sqrt(Hz)` single-pass OPD and a 2026
+  three-frequency cavity's `4e-14` at 3 mHz are different observables,
+  configurations and time records; neither establishes the required PSD.
+  For small rocking about vertical, the first modulation harmonic is exactly
+  absent and the leading second-harmonic fraction is `theta0^2/4`.
+  White 300-day integration, octave-compatible coatings and calibrated
+  circular modes are not assumed demonstrated.
+- **Operational rule:** Park H-028/P-028 until a current applicable constraint
+  envelope and measured same-helicity Jones/dispersion/angular response,
+  resource tuple, template noise and all dominant coherent backgrounds below
+  `0.1 S` are available. Rotation/helicity reversals, independent angular
+  metrology, both quadratures, multi-color and phase/thermal/magnetic/pointing
+  injections need recorded residuals and cross-PSDs. Unknown is not zero.
+- **Possible crack:** An ideal rotor axis parallel to Earth's spin with its
+  cavity direction perpendicular to that axis nulls the axial rotation term
+  while retaining radial-source modulation with amplitude `cos(latitude)`.
+  Finite-aperture, retarder, coating, stress and flexure responses remain
+  unbounded, so this is a geometric design calculation rather than evidence
+  of noise rejection. Even a qualified photon detection would identify a
+  coupling product, not artificial gravity, inertial control or propulsion.
+- **Relation to prior boundaries:** B-038's separation of executable checks from validated enclosures
+  and B-043's constraint-propagation discipline remain intact. Here scalar
+  limits and a transfer do exist in a bounded regime, unlike E-041's missing
+  joint fit, but no joint confidence is manufactured. B-008/B-010 continue to
+  rule out useful ordinary laboratory source gravity; the hypothetical
+  massless scalar Earth force is only `5.848e-11 m/s^2` at the chosen scalar
+  envelope. This is a scalar-only diagnostic: the pulsar product does not
+  independently constrain `gB` or certify a simultaneous coupling point.
+- **Sources:** Fedderke et al., DOI `10.1103/PhysRevD.109.015025`; Fayet,
+  DOI `10.1103/17wc-xxjm`; Sisk-Reynes et al., DOI `10.1093/mnras/stab3464`;
+  Witte et al., [present constraint, Appendix B Eqs. (19)-(20)](https://arxiv.org/html/2512.11023v2),
+  revised 8 September 2026, and [companion methods](https://arxiv.org/abs/2609.08840v1),
+  same date and analysis family, not independent field evidence;
+  CAST, DOI `10.1103/PhysRevLett.133.221005`; ALPS II,
+  arXiv:`2512.14110v3`; helicity gyroscope, DOI
+  `10.1103/PhysRevA.111.043502`; PVLAS, DOI
+  `10.1140/epjc/s10052-018-6063-y`; Spector et al., DOI
+  `10.1103/r33m-v1kn`; [worked E-044 audit](models/E044_Audit.md).
+
 ## Boundary Entry Template
 
 ```markdown

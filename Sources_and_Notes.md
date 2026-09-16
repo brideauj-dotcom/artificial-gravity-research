@@ -3728,3 +3728,236 @@ bed-rest analog, not a conventional randomized controlled trial.
   universal inertial control, reactionless propulsion, or spacetime
   engineering. Only P-023 was deepened this run; P-028 earns the next cheap
   constraint/noise audit.
+
+## 2026-09-16 - E-044 Sourced-ALP Constraint and Optical-Qualification Audit
+
+**Same-run correction:** The initial scalar-times-cluster/solar/laboratory
+rows omitted the 8 September pulsar revision. They remain selected-factor
+comparisons, not strongest bounds or currently allowed signal maxima. The
+approximate interpulse product below is propagated separately, retaining its
+model assumptions and the distinction between present and prospective limits.
+
+- **Fedderke et al., source proposal:** M. A. Fedderke, J. O. Thompson,
+  R. Cervantes, B. Giaccone, R. Harnik, D. E. Kaplan, S. Posen and S. Rajendran,
+  “Measuring axion gradients with photon interferometry,” *Physical Review D*
+  **109**, 015025 (2024), DOI `10.1103/PhysRevD.109.015025`,
+  [arXiv:2304.11261v2](https://arxiv.org/html/2304.11261v2).
+  Eqs. (1)-(8) specify the CP-violating baryon scalar source and reflected
+  opposite-helicity transfer. Table I and Eq. (10) are projected resources and
+  noise, not experimental evidence. The executable independently integrates
+  the exterior sphere kernel and preserves separate count versus approximate
+  Eq. (10) conventions. The free-scalar/EFT, baryon-only and uniform-Earth
+  assumptions are explicit; thermal expansion and coating qualification are
+  missing in the proposal. ArXiv and the journal are one source.
+
+- **Fayet, current scalar constraint:** P. Fayet, “The Yukawa potential of a
+  nonhomogeneous sphere, with new limits on an ultralight boson,” *Physical
+  Review D* **112**, 095018 (2025), DOI `10.1103/17wc-xxjm`,
+  [arXiv:2507.02723v2](https://arxiv.org/html/2507.02723v2).
+  Table 6 separates spin zero from spin one. The massless baryon spin-zero
+  bound is `6.4e-25`; at `1e-14 eV` it is `6.6e-25`, so the latter is used
+  only as a conservative low-mass envelope. Satellite altitude and the
+  five-sphere source model control finite-range weakening. Sparse Table 6
+  points are frozen, never interpolated into a global allowed region. An
+  independent source-model sensitivity gives a `-0.1794%` endpoint-transfer
+  change at `1e-14 eV`; it is not an uncertainty enclosure.
+
+- **Sisk-Reynés et al., conditional cluster bound:** J. Sisk-Reynés et al.,
+  “New constraints on light axion-like particles using Chandra transmission
+  grating spectroscopy of the powerful cluster-hosted quasar H1821+643,”
+  *MNRAS* **510**, 1264-1277 (2022), DOI `10.1093/mnras/stab3464`,
+  [arXiv:2109.03261v2](https://arxiv.org/html/2109.03261v2).
+  The `6.3e-13 GeV^-1` comparator has 99.7% Bayesian credibility conditional
+  on `beta=100` magnetic-pressure modeling. Below `1e-13.7 eV`, the authors
+  extend their light-mass limiting posterior; this is the scope used here.
+  The broad headline says most masses below `1e-12 eV`, not an unconditional
+  plateau to `1e-11 eV`. Mixing this credibility with a different experiment's
+  95% confidence does not yield a joint 95% constraint. Magnetic-field and
+  prior assumptions are retained rather than promoted to universal facts.
+
+- **CAST, solar-model comparator:** CAST Collaboration, “A new upper limit
+  on the axion-photon coupling with an extended CAST run with a Xe-based
+  Micromegas detector,” *Physical Review Letters* **133**, 221005 (2024),
+  DOI `10.1103/PhysRevLett.133.221005`,
+  [arXiv:2406.16840v3](https://arxiv.org/abs/2406.16840v3).
+  The final limit is `5.8e-11 GeV^-1` at stated 95% CL for masses below about
+  `0.02 eV`; early `5.7` text is not substituted. Detection is terrestrial,
+  production solar, so this is not the laboratory-only scenario.
+
+- **ALPS II, achieved laboratory bound:** D. C. Brotherton et al., “Any
+  Light Particle Searches with ALPS II: first science results,”
+  [arXiv:2512.14110v3](https://arxiv.org/abs/2512.14110v3), checked revision
+  15 May 2026. The measured light-shining-through-wall limit is
+  `1.5e-9 GeV^-1` at its stated 95% construction for masses below about
+  `0.1 meV`; a planned sensitivity improvement is not measured. No Galactic
+  dark-matter abundance or cluster magnetic field is needed for this row.
+
+- **Short-range constraint boundary:** S. Schlamminger et al., *PRL* **100**,
+  041101 (2008), DOI `10.1103/PhysRevLett.100.041101`,
+  [arXiv:0712.0607](https://arxiv.org/html/0712.0607v1), Fig. 3; G. L. Smith
+  et al., *PRD* **61**, 022001 (1999), DOI `10.1103/PhysRevD.61.022001`.
+  Primary baryon-coupled curves exist. The first explicitly omits source-
+  integration uncertainty and treats part of the 10-1000 km range
+  provisionally. No author-supplied combined numerical envelope was recovered
+  during E-044. Secondary digitizations were not silently promoted to
+  primary or joint-confidence data. Larger-mass admissibility remains unknown.
+
+- **Witte et al., present pulsar product constraint:** Samuel J. Witte,
+  Andrea Caputo, Stefan Stelzl, Alexander Chernoglazov, Alexander A. Philippov
+  and Surjeet Rajendran, “Constraints on light QCD and CP-violating axions from
+  the death line of rotation-powered pulsars,”
+  [arXiv:2512.11023v2](https://arxiv.org/html/2512.11023v2), revised
+  8 September 2026. Appendix B, Eqs. (19)-(20), gives the approximate present
+  interpulse exclusion `abs(gN*g_a_gamma) >=~8e-39 GeV^-1` for
+  `m<=~1e-12 eV`; this audit uses only `m<=1e-14 eV`. The linear nucleon
+  coupling matches the baryon source in absolute product, without a QCD mass
+  relation or dark-matter abundance. Assumptions include an APR one-solar-mass
+  scalar stellar profile, dipolar return-current geometry and near-surface
+  radio pair cascades. Interpulse confidence is unstated. The somewhat stronger
+  death-line red curve has the authors' 95% construction, but no exact numeric
+  curve was recovered. Eq. (22)'s `2e-39` sign/geometry-dependent prospect is
+  excluded from present constraints.
+
+- **Companion methods, same analysis family:** The same six authors,
+  “Axion Hair and Pulsar Electrodynamics: modeling, discharge dynamics, and
+  particle-in-cell simulations,”
+  [arXiv:2609.08840v1](https://arxiv.org/abs/2609.08840v1), submitted
+  8 September 2026. This supplies stellar sourcing, electrodynamic/discharge
+  modeling and particle-in-cell methodology supporting the pulsar inference.
+  The record says published in PRD, but no journal DOI or pagination was
+  recovered here. It is a companion of the constraint paper, not a second
+  independent observational confirmation. Simulated axion hair is not a
+  measurement of an axion field.
+
+- **Pulsar-geometry stress test:** A. K. Galishnikova et al., “Simulations of
+  the radio polarization of a precessing pulsar PSR J1906+0746,” *MNRAS*
+  **497**, 2831 (2020), [arXiv:2008.13750v2](https://arxiv.org/html/2008.13750v2),
+  Sections 3.4 and 4. The geometry input cited by the new bound is inferred
+  from radio-polarization modeling. Profile discrepancies can indicate
+  non-dipolar surface fields, and radio-intensity/plasma-density proportionality
+  is an acknowledged uncertainty. Radio emission near ten stellar radii is
+  not the lower pair-creation altitude used in the exclusion argument.
+  Conversely, the 2026 methods paper's Fig. 9 reports a global PIC check that
+  an active pole can preserve current closure while the other pole is
+  screened. Global closure is not wholly untested. Retain the author-reported
+  approximate exclusion conditional on its dipolar return-current interpretation;
+  no quantified alternative topology rescinding the bound was recovered.
+
+- **Fedderke et al., ordinary achromatic confounder:** M. A. Fedderke,
+  R. Harnik, D. E. Kaplan, S. Posen, S. Rajendran, F. Serra and V. P. Yakovlev,
+  “A Precision Gyroscope from the Helicity of Light,” *PRA* **111**, 043502
+  (2025), DOI `10.1103/PhysRevA.111.043502`,
+  [arXiv:2406.16178v2](https://arxiv.org/html/2406.16178v2).
+  Eqs. (3)-(4) make ordinary rotation helicity-dependent and achromatic.
+  Their order-one phase expression and single-pass prose differ from a
+  direct dispersion-plus-MAGPI-reflection normalization by a factor two;
+  both conventions are carried as examples requiring calibration, not a
+  certified uncertainty interval. Appendix B is a perturbative near-axis
+  treatment, so a geometric axial null is not a measured finite-aperture
+  optical null. This is flat-spacetime apparatus rotation, not frame dragging.
+
+- **Measured optical comparisons:** G. Zavattini et al., “Intrinsic mirror
+  noise in Fabry-Perot based polarimeters: the case for the measurement of
+  vacuum magnetic birefringence,” *EPJC* **78**, 585 (2018), DOI
+  `10.1140/epjc/s10052-018-6063-y`,
+  [arXiv:1805.03198](https://arxiv.org/html/1805.03198), supplies measured
+  linear-birefringence/ellipticity noise and rotation mixing. Its favorable
+  single-pass OPD scale `3-6e-19 m/sqrt(Hz)` at 10-20 Hz is preserved, but
+  the Jones transfer to MAGPI helicity phase is unknown.
+  A. Spector, T. Kozlowski and L. Roberts, “Demonstration of an interferometric
+  technique for measuring vacuum magnetic birefringence with an optical
+  cavity,” *PRA* **113**, 063518 (11 June 2026), DOI `10.1103/r33m-v1kn`,
+  [primary record](https://journals.aps.org/pra/abstract/10.1103/r33m-v1kn),
+  measures linear-polarization equivalent length using three frequencies.
+  Its 3-mHz values are `4e-14 m/sqrt(Hz)` and, with a rotating half-wave plate,
+  `1.3e-13`; records lasted 20 and 15 hours. Neither a `1e-17` projection,
+  rounded time-domain correlations, nor these different observables establish
+  MAGPI's helicity PSD or 300-day white integration.
+
+**Original synthesis and decision:** The worked [E-044 artifact](models/E044_Audit.md)
+and executable separate conditional product ceilings from allowed-region
+claims. The approximate present interpulse product `8e-39 GeV^-1` gives
+massless phase `1.41725065e-13 rad`, `51.975x` below the earlier
+`4.158e-37 GeV^-1` scalar-times-cluster comparison. It corresponds to
+`1.88494336e-24 m` differential cavity length. At the declared aggregate
+`1 MW/300 d`, ideal full-rotation peak SNR is `4.33462` for octave spacing
+and `3.936e-6` for adjacent modes, before projection or technical noise.
+The coherent `0.1 S` phase budget is `1.417e-14 rad`; an assumed white length
+ASD for SNR one in 300 days is `9.597e-21 m/sqrt(Hz)`. These are our model
+calculations, not published instrument performance or a globally allowed
+point. The scalar-only force/energy diagnostics do not acquire a separate
+`gB` bound from this product. The audit optimizes photon allocation for achromatic/length discrimination,
+exhibit the exact spectral degeneracy of axion and rotation columns, and
+identify the second-harmonic suppression of vertical rocking. They preserve
+an ideal geometry perpendicular to Earth's spin as a potential calibration
+route, without declaring its optical residuals controlled. P-028/H-028 are
+parked pending measured same-observable qualification. No PDE or checkpoint
+state was used or changed.
+
+## 2026-09-16 - Diversified Replacement Screen after P-028
+
+- **P-032 real-field gravity tractor:** E. T. Lu and S. G. Love,
+  “Gravitational tractor for towing asteroids,” *Nature* **438**, 177-178
+  (2005), DOI `10.1038/438177a`,
+  [original paper](https://arxiv.org/abs/astro-ph/0509595); NASA 2025
+  [binary-tractor study](https://ntrs.nasa.gov/api/citations/20250004409/downloads/BarbeeMissionPresentation.pdf).
+  Ordinary spacecraft gravity can matter for slow asteroid deflection even
+  though it fails cabin loading. The source's `20 t`, `150 m` separation,
+  `100 m` asteroid radius, `2000 kg/m^3`, and 20-degree plume half-angle give
+  independent `a=Gm/d^2=5.933e-11 m/s^2`, `F=0.497 N`,
+  `T=F/cos[asin(R/d)+20 deg]=1.052 N`, and constant-mass
+  `delta_v=1.872 mm/s/year`. Hovering/exhaust reaction and tracking remain
+  design gates, not completed flight evidence. The old paper's Apophis-risk
+  discussion is historical and is not reused as current risk information.
+
+- **P-033 MHD gas separation:** O. Akay et al., “Magnetically induced
+  convection enhances water electrolysis in microgravity,” *Nature Chemistry*
+  **17**, 1673-1679 (2025), DOI `10.1038/s41557-025-01890-0`,
+  [primary full text](https://pmc.ncbi.nlm.nih.gov/articles/PMC12580345/).
+  Published 18 August 2025 and newly screened here, this is a distinct
+  Lorentz actuator; it does not postdate the August 2026 E-043 audit.
+  Eight-second, three-repeat half-cell observations support local transport, with modeled
+  `J cross B` acceleration `0.05-0.25 m/s^2`. The reported
+  `160.7 -> 385.3 mA/cm^2` is `2.3976x`, a `139.76%` increase, not a 240%
+  increment. At the separate OER current `0.2617 A/cm^2`, ideal Faraday
+  conversion gives `1.875 g O2/day/cm^2`; this is a lossless charge ceiling,
+  not measured gas output. Field-reversal/stirring controls, power, purity,
+  corrosion and long-duration gas handling remain. This is a Lorentz-force
+  actuator and composition-dependent fluid opportunity, not a PSI-9 reopening.
+
+- **P-034 proper-time ion-clock proposal:** G. Sorci, J. Foo, D. Leibfried,
+  C. Sanner and I. Pikovski, “Quantum Signatures of Proper Time in Optical
+  Ion Clocks,” *PRL* **136**, 163602 (2026), DOI `10.1103/qhj9-pc2b`,
+  [arXiv:2509.09573v2](https://arxiv.org/html/2509.09573v2).
+  Its gravity-neglecting relativistic model couples clock energy and motion;
+  trap/electrode and laser energy/reaction are explicit. At the proposed
+  `267 nm`, `20 MHz`, `r=2.26`, `t=1 s` tuple, Eq. (10)'s reduced-model
+  visibility is `0.93944` versus leading Eq. (12)'s `0.92902`. The discrepancy
+  is `0.01041` absolute visibility, or `17.2%` of the closed-model loss; it is
+  approximation error, not a falsification of the theory. The leading
+  fractional shift is `-3.777e-17` (`-0.04241 Hz`). These are calculated,
+  not measured, and separate experimental records do not establish the joint
+  tuple. ArXiv, PRL and the NIST mirror are one source.
+
+- **P-035 nuclear X17 searches:** MEG II Collaboration, *EPJC* **85**, 763
+  (2025), DOI `10.1140/epjc/s10052-025-14345-0`,
+  [null search](https://link.springer.com/article/10.1140/epjc/s10052-025-14345-0);
+  F. Bossi et al., *JHEP* **11** (2025) 007, DOI
+  `10.1007/JHEP11(2025)007`,
+  [PADME revision 24 February 2026](https://arxiv.org/abs/2505.24797v2).
+  MEG II reports no significant signal; PADME's revised excess is about
+  two sigma globally, not discovery. No combined likelihood or universal
+  exclusion is inferred. Independently, `hbar c/(17 MeV)=11.61 fm`; a
+  `1 nm` static Yukawa field is suppressed by `exp(-86151)`. Park its remote-
+  force/gravity/propulsion application immediately, regardless of the anomaly.
+
+**Next-run synthesis, not completed E-045:** In P-034's leading number-
+diagonal clock-motion channel, `Tr[rho exp(i beta n)]` depends only on number
+populations. Replacing motion by its number-dephased mixture leaves the
+clock-only signal unchanged, while the corresponding joint output is a
+separable mixture of number-conditioned clock states. This does not say a
+certified pure squeezed preparation fails to entangle. E-045 must distinguish
+an actual joint witness from preparation-certified trusted-model inference,
+check the full/reduced Hamiltonians and simultaneous resources, and reject
+using clock-only visibility or echo recovery as automatic entanglement proof.
+No second candidate was deepened in E-044; these are rapid source/scale screens.
