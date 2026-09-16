@@ -3555,3 +3555,188 @@ measured cavity birefringence, polarization mixing, thermal-length, mechanical,
 magnetic, and rotation-synchronous backgrounds below one tenth of it. Park on
 constraint or scale failure; a polarization pass would be a new-interaction
 precision signal, not artificial gravity or bulk acceleration.
+
+## 2026-09-16 - E-044 Sourced-ALP Phase, Optical Noise and Rotation Audit
+
+**Focus question:** Does P-028 have a currently constrained Earth-sourced
+helicity phase that can be qualified against measured optical backgrounds?
+
+**Continuity and portfolio screen:** Read the automation memory and canonical
+research ledgers. E-036 was already closed on 2026-08-03: no validated
+actual-solution derivative enclosure exists, and H-019/the annular Galileon
+line remain parked at immutable E-028 stage 6. No research PDE campaign,
+checkpoint modification, source/amplitude advancement or hardware expansion
+was performed. P-027/P-029/P-030/P-031 remain distinct precision-gravity,
+digital-analog, conventional-propulsion and spacetime-phenomenology watches.
+P-028 alone earned the queued cheap constraint/noise audit; only it was
+deepened. Replacement screens P-032 through P-035 are recorded below.
+
+**Sources reviewed:** MAGPI (Fedderke et al., PRD 109, 015025); Fayet's 2025
+spin-zero MICROSCOPE recast; H1821+643 cluster limits; final CAST 2024 and
+ALPS II May 2026 constraints; the 8 September 2026 revision of the pulsar
+death-line/interpulse analysis and its methods companion; the 2025 helicity-gyroscope analysis; measured
+PVLAS mirror noise; the June 2026 three-frequency cavity experiment; and
+primary short-range baryon-force constraints. Source versions, assumptions
+and recoverability limits are in `Sources_and_Notes.md`. The gyro and measured
+optical papers complicate the initially favorable phase estimate.
+
+**Deepening work completed:**
+
+1. Derived a stable analytic exterior Yukawa endpoint transfer and checked it
+   independently against radial/angular volume integration, Coulomb limits,
+   dimensional scaling, mass suppression and finite-range stability. The
+   homogeneous-Earth model is not certified Earth metrology; a five-sphere
+   sensitivity changes the phase about `-0.1794%` at `1e-14 eV`.
+2. Separated selected-factor constraint comparisons. A conservative
+   baryon-only spin-zero envelope `6.6e-25` for `m<=1e-14 eV` gives massless
+   comparison phases `7.366e-12`, `6.782e-10`, and `1.754e-8 rad` with cluster,
+   solar-helioscope and laboratory-only photon assumptions respectively.
+   These three rows omit the newly recovered pulsar product constraint and
+   are not strongest/currently allowed signals. Appendix B, Eqs. (19)-(20) of
+   `arXiv:2512.11023v2` gives an approximate present interpulse exclusion
+   `abs(gB*g_gamma) >=~8e-39 GeV^-1`; its low-mass scope includes the audited
+   `m<=1e-14 eV`. The same generic linear nucleon source applies without a
+   QCD mass relation or dark-matter abundance. Under its neutron-star and
+   radio-discharge assumptions, the boundary gives massless phase
+   `1.41725065e-13 rad`, `51.975x` below the cluster comparison. The separate
+   interpulse confidence is unstated; the somewhat stronger death-line curve
+   has the authors' 95% construction but no exact numerical data recovered.
+   Eq. (22)'s sign/geometry-dependent `2e-39` prospect is excluded from present
+   bounds. Products do not inherit joint confidence; satellite-only
+   higher-mass weakening is not a combined allowed region. CP/shift breaking
+   and cutoff-dependent tuning remain limitations.
+3. Computed scalar-only absolute scales at the selected `gB` envelope:
+   conditional Earth fifth-force
+   acceleration `5.848e-11 m/s^2`, force `4.093e-9 N` on a 70-kg baryon/mass
+   proxy, local scalar-gradient energy `0.3424 J/m^3`, and dimensional
+   curvature source scale `7.109e-44 m^-2`. None is observed, a solved metric,
+   universal free fall, a controllable local source, or full apparatus energy.
+   The pulsar product does not separately bound `gB`; these diagnostics are
+   not a newly qualified simultaneous coupling point.
+4. Minimized photon noise for two-color length subtraction at fixed declared
+   aggregate circulating power. At `1 MW/300 d`, adjacent longitudinal modes
+   give ideal full-rotation peak SNR `3.936e-6` at the approximate interpulse
+   boundary; octave spacing gives `4.33462`, before geometric projection or
+   technical noise. The old cluster-only comparison remains `2.046e-4` and
+   `225.3`, respectively, and omits the pulsar constraint. Count and proposal factor-two conventions,
+   DC versus sinusoidal exposure, and input versus circulating power remain
+   separate. Incident optical energy alone is `1.131 MWh`.
+5. Found a separate ordinary achromatic nuisance. Spin-rotation is exactly
+   degenerate with axion phase across colors. At illustrative 45-degree
+   latitude, two explicit response conventions give Earth terms about
+   `1.545e4` and `3.090e4` times the interpulse-boundary phase. Three colors cannot remove this null
+   direction or an unrestricted coating-response function. Source/mirror/
+   motor/support energy and angular-momentum reactions are identified.
+6. Made modulation and controls precise. Symmetric one-degree rocking about
+   vertical has no first harmonic and only `7.615e-5` second-harmonic fraction;
+   biased rocking has its own attenuation. An ideal axis parallel to Earth's
+   spin nulls axial rotation with a `cos(latitude)` signal penalty, but no
+   finite-aperture optical rejection has been demonstrated. Angular/Jones
+   calibration, reversals, quadratures and injected-background residuals
+   remain mandatory.
+7. Preserved measured comparisons without equating observables. PVLAS's
+   linear-birefringence OPD noise and the 2026 three-frequency
+   linear-polarization data have different transfer functions and bands from
+   the revised target; neither establishes its tighter component budget.
+   Neither is a measured MAGPI helicity PSD or validates
+   300-day integration. Missing same-observable evidence fails qualification.
+
+**Same-run constraint correction:** The initial three factor-by-factor
+comparisons omitted the material September pulsar revision. They are retained
+as comparisons, with the approximate present interpulse product propagated
+separately. Its assumptions include an APR, one-solar-mass scalar neutron-star
+profile, dipolar return-current geometry and near-surface radio pair cascades.
+The companion's simulations support that model; they are not evidence for a
+measured axion field or an independent observational confirmation. The tighter
+conditional budget strengthens the parked decision without claiming an exact
+strongest bound or a globally allowed coupling region.
+
+**What changed / four-gate result:** Gate 1 passes only at model/reaction level.
+Gate 2 is partial and restricted to stated model/constraint scenarios. Gate 3
+is partial for precision detection: adjacent-mode counting fails, while a
+widely spaced ideal estimator survives only projected resources. Gate 4 is
+partial: concrete tests exist, but measured matching residuals do not.
+P-028/H-028 are now
+`parked_no_measured_helicity_noise_and_rotation_budget`. This does not refute
+ALPs or every future photon experiment. It establishes no practical artificial
+gravity, bulk inertial control, engineered curvature, reactionless propulsion
+or FTL capability.
+
+**Failure or boundary found:** B-047 records that achromaticity does not prove
+a sourced interaction and that a conditional product ceiling is not a jointly
+allowed signal. The approximate interpulse-boundary phase requires coherent
+backgrounds below `1.417e-14 rad`, equivalent differential-length residuals
+below `1.885e-25 m`, and a hypothetical white equivalent-length ASD near
+`9.597e-21 m/sqrt(Hz)` for SNR one over 300 days. Smaller couplings tighten
+these requirements. Existing B-038/B-043 validation/constraint discipline and
+B-008/B-010 ordinary-source scale boundaries remain unchanged.
+
+**Blank space or new idea:** Multi-color optics can remove a calibrated length
+nuisance while retaining an achromatic **sum** of axion and rotation effects.
+The missing discriminant is independently calibrated angular/geometric
+response, not merely another wavelength. A two-level null design—spectral
+length removal plus geometric rotation rejection—specifies useful tests,
+but is presently unqualified rather than a reason to expand hardware.
+
+**Portfolio refresh:** P-032 gravity-tractor attraction passes slow asteroid-
+deflection scale (`1.872 mm/s/year` in a constant-mass screen) with external
+thruster reaction. P-033 electrolyte `J cross B` is device-scale simulated
+buoyancy, distinct from PSI-9; its 2025 evidence is newly screened, not newer
+than E-043. P-034 ion proper-time physics has a conditional clock-scale
+signal and a cheap witness-identifiability question. P-035 X17 is promptly
+parked for remote-force range (`11.61 fm`), irrespective of unresolved weak
+signals. None supplies practical artificial gravity or bulk inertial control.
+
+**Artifact and validation:** Added `models/e044_axion_helicity_audit.py`, the
+worked `models/E044_Audit.md`, and independent source/optical tests. The first
+complete verification ran `299` tests successfully in `14.540 s`; compilation,
+`pip check`, `git diff --check` and Git LFS integrity passed. Final review and
+any additional regression result are recorded in the completion note below.
+Accepted checkpoints and retained work snapshots are unchanged.
+
+**Hypothesis updates:** Added H-028/B-047; completed E-044; updated P-028;
+added P-032 through P-035; retired the E-044 question; queued E-045. Historical
+entries were preserved. The new artifact is a mathematical and evidence audit,
+not experimental evidence.
+
+**Next best step:** E-045 asks whether Sorci et al.'s trapped-ion proper-time
+observable distinguishes clock-motion entanglement from a separable
+number-dephased motional mixture with jointly demonstrated resources. Freeze
+its `267 nm/20 MHz/r=2.26/t=1 s` tuple, compare closed reduced visibility
+`0.93944` with leading `0.92902`, then identify a joint witness or explicitly
+preparation-certified trusted-model inference. Audit multimode operation,
+heating, micromotion, differential Stark, laser phase and readout against
+`0.1(1-V)=0.006056` if that observable survives. Park if identifiability,
+resources or matching backgrounds fail. This is a distinct special-relativistic
+clock/motion question and does not reopen P-012 or any parked PDE line.
+
+
+**Final source stress test and verification:** The radio-polarization geometry
+underlying the approximate interpulse constraint allows non-dipolar surface
+fields; its radio-emission altitude is not the lower pair-production altitude.
+The 2026 methods paper supplies a global PIC current-closure check, so that
+support is preserved. These qualifications leave an author-reported approximate
+pulsar-model exclusion anchor, with no independently assigned confidence or
+quantified alternate topology that removes it. The source ledger records both
+sides of this check.
+
+The final full suite passed all `305` tests in `14.533 s`, including `28` new
+source/optical regressions. Independent volume and disjoint-layer integration,
+SI force/energy checks, photon allocation, modulation exposure, spectral
+non-identifiability, and scope/unknown-evidence gates passed. The layered-Earth
+comparison now freezes the primary Table 3 radii and normalized full-sphere
+weights in the executable. Separate-process JSON is deterministic and finite,
+its module digest matches, and compilation, dependency, whitespace and Git LFS
+integrity checks pass. Independent scientific, optical and ledger reviews found
+no unresolved material blocker. Historical checkpoints remain unchanged.
+
+
+**Final falsification refinement:** Settled up/north signed orientation pairs
+provide an independent two-vector check of the continuous rotation null.
+At 45-degree latitude, optimal fixed-total-exposure counting has the same
+factor-two phase-noise penalty as the continuous null-axis geometry, so it
+creates no sensitivity windfall. Stable offsets can cancel, while an unknown
+background proportional to vertical projection remains exactly degenerate
+with the scalar signal. The worked artifact records the matrix, conditioning,
+exposure allocation and required gain/angle/settling controls; qualification
+and the next E-045 choice are unchanged.

@@ -1964,3 +1964,25 @@ hydraulic/system efficiency, actual bubble acceleration, universal gravity,
 net thrust, or useful curvature. No PDE, field reconstruction, hardware,
 checkpoint, or compute expansion occurs. E-044 becomes the next no-hardware
 P-028 product-constraint and optical-noise audit.
+
+## E-044 sourced-ALP helicity qualification audit
+
+`e044_axion_helicity_audit.py` computes a stable exterior Yukawa endpoint
+transfer, explicitly conditional scalar/photon constraint ceilings, photon and
+multi-color estimator budgets, ordinary spin-rotation nuisance scales, and
+missing-evidence gates. See [the worked audit](E044_Audit.md) for equations,
+units, measured-observable comparisons, falsification controls and sources.
+
+```bash
+python -m models.e044_axion_helicity_audit --output /tmp/e044.json
+```
+
+The selected cluster/source comparison gives `7.366e-12 rad`, while a
+September 2026 approximate pulsar interpulse product bound gives a phase
+anchor `1.417e-13 rad` under its neutron-star and radio-emission model. Neither
+is a predicted signal or a globally allowed envelope. Adjacent-frequency
+subtraction fails even ideal photon statistics; the octave case has ideal
+full-rotation peak SNR `4.33` at the pulsar anchor, before geometry and
+technical noise. Measured helicity/rotation/background qualification is
+missing, so P-028/H-028 are parked. No PDE, checkpoint change, source
+actuation, hardware expansion, or practical gravity capability follows.
